@@ -1,0 +1,142 @@
+@use '../basic/' as *;
+
+.header {
+  height: 145px;
+  top: 0;
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  z-index: 110;
+  background-color: $primary;
+  @include media("md") {
+    height: 65px;
+  }
+  
+
+  &__top {
+    background-color: $secondary;
+    color: $text_light;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 19%;
+    
+    &__text {
+      font-size: 12px;
+    }
+  }
+  &__main {
+    height: 56%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 40px;
+    @include media("md") {
+      padding: 0 10px;
+      height: 100%;
+    }
+    &__left {
+      display: flex;
+      align-items: center;
+      @include media("sm") {
+        display: none;
+      }
+      &__first {
+        @include media("md") {
+          display: none;
+        }
+      }
+    }
+
+    &__middle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include media('sm'){
+        justify-content: start;
+      }
+      & h1{
+        font-size: 2.5rem;
+        @include media("md"){
+          font-size: 2rem;
+        }
+      }
+    }
+    &__right {
+      display: flex;
+      justify-content: right;
+      align-items: center;
+      &__first {
+        display: none;
+        @include media("md") {
+          display: block;
+        }
+      }
+    }
+  }
+  &__nav {
+    display: flex;
+    justify-content: center;
+    height: calc(26% + 2px);
+    width: 100%;
+    padding: 0 40px;
+    border-top: 1px solid $border_light;
+    border-bottom: 1px solid $border_light;
+    @include media("md") {
+      display: none;
+    }
+
+    &__box {
+      padding: 0;
+      &__collapse {
+        &__list {
+          width: 100%;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+}
+.nav--link {
+  font-size: 15px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid $border_transparent;
+  color: $text_dark;
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.2s, border 0.2s;
+  &:hover {
+    border-bottom: 1px solid $border_hover_text;
+    color: $text_dark;
+  }
+}
+.text--medium {
+  font-size: 15px;
+  border-bottom: 1px solid $border_transparent;
+  transition: color 0.2s, border 0.2s;
+  font-weight: 400;
+
+  &:hover {
+    border-bottom: 1px solid $border_hover_text;
+    color: $text_dark;
+  }
+}
+
+.icon--left {
+  height: 0.9em;
+  margin-right: 0.7em;
+}
+.ml--20px {
+  margin-left: 20px;
+}
+.p--tb {
+  padding-bottom: 1px;
+  border-bottom: 1px solid $border_transparent;
+  cursor: pointer;
+}

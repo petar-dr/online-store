@@ -1,0 +1,20 @@
+//break points map
+$breakpoints:(
+    "xs": "max-width: 576px",
+    "sm": "(min-width: 0px) and (max-width: 768px)",
+    "md": "(min-width: 0px) and (max-width: 992px)",
+    "lg": "(min-width: 0px) and (max-width: 1200px)",
+    "xl": "(min-width: 0px) and (max-width: 1399.98px)",
+    "xxl": "min-width: 1400px",
+);
+
+@mixin media ($user-value){
+    $my-map: map-get($breakpoints,$user-value);
+    @if my-map{
+        @media(#{$my-map}){
+            @content;
+        }
+    }@else{
+        @error "Breakpoint #{user-value} isn't definded yet"
+    }
+}
