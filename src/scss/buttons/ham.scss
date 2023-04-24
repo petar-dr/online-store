@@ -1,7 +1,8 @@
+@use '../basic/' as *;
+
 .btnH {
   display: none;
 }
-
 .ham {
   width: 30px;
   height: 20px;
@@ -9,13 +10,10 @@
   transition: 0.3s;
   display: none;
   margin-left: 20px;
-}
-@media ((min-width: 0px) and (max-width: 992px)) {
-  .ham {
+  @include media('md'){
     display: block;
   }
 }
-
 .line {
   width: 100%;
   height: 4px;
@@ -55,4 +53,6 @@
 .btnH:checked ~ * .line2 {
   opacity: 0;
   transition: 0.3s;
-}/*# sourceMappingURL=index.css.map */
+}
+
+

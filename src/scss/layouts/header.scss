@@ -1,4 +1,5 @@
-@use '../basic/' as *;
+@use "../basic/" as *;
+@use "../buttons/" as *;
 
 .header {
   height: 145px;
@@ -15,7 +16,6 @@
   @include media("md") {
     height: 65px;
   }
-  
 
   &__top {
     background-color: $secondary;
@@ -25,7 +25,7 @@
     justify-content: center;
     align-items: center;
     height: 19%;
-    
+
     &__text {
       font-size: 12px;
     }
@@ -44,12 +44,17 @@
     &__left {
       display: flex;
       align-items: center;
-      @include media("sm") {
+      @include media("md") {
         display: none;
       }
       &__first {
-        @include media("md") {
+        @include media("lg") {
           display: none;
+        }
+      }
+      &__second{
+        @include media("lg") {
+          margin-left: 0;
         }
       }
     }
@@ -58,12 +63,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      @include media('sm'){
+      @include media("sm") {
         justify-content: start;
       }
-      & h1{
-        font-size: 2.5rem;
-        @include media("md"){
+      & h1 {
+        font-size: 2.2rem;
+        @include media("md") {
           font-size: 2rem;
         }
       }
@@ -78,6 +83,7 @@
           display: block;
         }
       }
+    
     }
   }
   &__nav {
@@ -85,24 +91,29 @@
     justify-content: center;
     height: calc(26% + 2px);
     width: 100%;
-    padding: 0 40px;
+    padding: 0 35px;
     border-top: 1px solid $border_light;
     border-bottom: 1px solid $border_light;
     @include media("md") {
-      display: none;
+      border-top: none;
+      border-bottom: none;
+      width: fit-content;
     }
 
     &__box {
       padding: 0;
-      &__collapse {
-        &__list {
-          width: 100%;
-          justify-content: space-between;
+
+      &__list {
+        width: 100%;
+        justify-content: space-between;
+        @include media("md") {
+          display: none;
         }
       }
     }
   }
 }
+
 .nav--link {
   font-size: 15px;
   padding-bottom: 1px;
@@ -117,7 +128,7 @@
   }
 }
 .text--medium {
-  font-size: 15px;
+  font-size: 20px;
   border-bottom: 1px solid $border_transparent;
   transition: color 0.2s, border 0.2s;
   font-weight: 400;
@@ -129,7 +140,7 @@
 }
 
 .icon--left {
-  height: 0.9em;
+  height: 0.9rem;
   margin-right: 0.7em;
 }
 .ml--20px {

@@ -1,3 +1,62 @@
+.btnH {
+  display: none;
+}
+
+.ham {
+  width: 30px;
+  height: 20px;
+  background-color: transparent;
+  transition: 0.3s;
+  display: none;
+  margin-left: 20px;
+}
+@media ((min-width: 0px) and (max-width: 992px)) {
+  .ham {
+    display: block;
+  }
+}
+
+.line {
+  width: 100%;
+  height: 4px;
+  background-color: black;
+  transition: 0.3s;
+}
+
+.line1 {
+  position: relative;
+  top: 0;
+}
+
+.line2 {
+  position: relative;
+  top: 4px;
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.line3 {
+  position: relative;
+  top: 8px;
+}
+
+.btnH:checked ~ * .line1 {
+  top: 8px;
+  transform: rotate(45deg);
+  transition: 0.3s;
+}
+
+.btnH:checked ~ * .line3 {
+  top: 0px;
+  transform: rotate(-45deg);
+  transition: 0.3s;
+}
+
+.btnH:checked ~ * .line2 {
+  opacity: 0;
+  transition: 0.3s;
+}
+
 .header {
   height: 145px;
   top: 0;
@@ -46,14 +105,19 @@
   display: flex;
   align-items: center;
 }
-@media ((min-width: 0px) and (max-width: 768px)) {
+@media ((min-width: 0px) and (max-width: 992px)) {
   .header__main__left {
     display: none;
   }
 }
-@media ((min-width: 0px) and (max-width: 992px)) {
+@media ((min-width: 0px) and (max-width: 1200px)) {
   .header__main__left__first {
     display: none;
+  }
+}
+@media ((min-width: 0px) and (max-width: 1200px)) {
+  .header__main__left__second {
+    margin-left: 0;
   }
 }
 .header__main__middle {
@@ -67,7 +131,7 @@
   }
 }
 .header__main__middle h1 {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
   .header__main__middle h1 {
@@ -92,21 +156,29 @@
   justify-content: center;
   height: calc(26% + 2px);
   width: 100%;
-  padding: 0 40px;
+  padding: 0 35px;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
   .header__nav {
-    display: none;
+    border-top: none;
+    border-bottom: none;
+    width: -moz-fit-content;
+    width: fit-content;
   }
 }
 .header__nav__box {
   padding: 0;
 }
-.header__nav__box__collapse__list {
+.header__nav__box__list {
   width: 100%;
   justify-content: space-between;
+}
+@media ((min-width: 0px) and (max-width: 992px)) {
+  .header__nav__box__list {
+    display: none;
+  }
 }
 
 .nav--link {
@@ -124,7 +196,7 @@
 }
 
 .text--medium {
-  font-size: 15px;
+  font-size: 20px;
   border-bottom: 1px solid transparent;
   transition: color 0.2s, border 0.2s;
   font-weight: 400;
@@ -135,7 +207,7 @@
 }
 
 .icon--left {
-  height: 0.9em;
+  height: 0.9rem;
   margin-right: 0.7em;
 }
 
