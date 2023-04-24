@@ -1,2 +1,18 @@
 
-@import './layouts/header'
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  @font-face {
+    font-family: "Formular";
+    src: url("../../fonts/formular-regular-trial.otf");
+  }
+  
+  html {
+    font-family: "Formular";
+    font-size: 10px;
+  }
+
+@import './layouts/header';
+@import './layouts/section2';

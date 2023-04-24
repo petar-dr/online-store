@@ -1,0 +1,32 @@
+//a tag buttons
+
+@mixin btn--a{
+    
+    background-color: transparent;
+  
+    // line-height: 1;
+    padding: 0.75em 1.33em 0.8em 1.33em;
+    text-decoration: none;
+ 
+    font-size: 1.3rem;
+    font-weight: bold;
+    
+}
+@mixin btn--a--dark{
+    color: #000;
+    border-color: #000;
+    border: 2px solid #000;
+    &:hover{
+        background-color: #000;
+        color: white;
+    }
+}
+@mixin btn--a--light{
+    color: #fff;
+    border-color: #fff;
+    border: 2px solid #fff;
+    &:hover{
+        background-color: #fff;
+        color: #000;
+    }
+}

@@ -131,11 +131,11 @@
   }
 }
 .header__main__middle h1 {
-  font-size: 2.2rem;
+  font-size: 3.5rem;
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
   .header__main__middle h1 {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 }
 .header__main__right {
@@ -162,10 +162,7 @@
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
   .header__nav {
-    border-top: none;
-    border-bottom: none;
-    width: -moz-fit-content;
-    width: fit-content;
+    display: none;
   }
 }
 .header__nav__box {
