@@ -10,7 +10,6 @@
       rel="stylesheet"
       href="../src/bootstrap-5.0.2-dist/css/bootstrap.css"
     />
-    <script src="../src/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
 
     <!-- main css -->
     <link rel="stylesheet" href="../src/css/main.css" />
@@ -40,7 +39,7 @@
         </div>
         <div class="header__main">
           <div
-            class="header__main__left col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4"
+            class="header__main__left col-lg-4 col-xl-4"
           >
             <span class="header__main__left__first p--tb text--medium">
               <i class="icon--left fa-solid fa-truck"></i>Delivery</span
@@ -51,11 +50,11 @@
             >
           </div>
           <div
-            class="header__main__middle col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4"
+            class="header__main__middle col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4"
           >
             <h1>furniture store</h1>
           </div>
-          <div class="header__main__right col-md-4 col-lg-4 col-xl-4">
+          <div class="header__main__right col-md-6 col-lg-4 col-xl-4">
             <span class="header__main__right__first p--tb ml--20px text--medium"
               ><i class="fa-solid fa-magnifying-glass"></i
             ></span>
@@ -140,11 +139,17 @@
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img
-                src="../img/Carousel/carouselImg1.jpg"
-                class="d-block w-100"
-                alt="carouselImg1"
-              />
+              <picture>
+                <source
+                  media="(max-width: 992px)"
+                  srcset="../img/Carousel/mobile/mob_img1.jpg"
+                />
+                <img
+                  src="../img/Carousel/carouselImg1.jpg"
+                  class="d-block w-100"
+                  alt="carouselImg1"
+                />
+              </picture>
               <div class="my__caption my__caption--black">
                 <h6>Pretty and comfortable</h6>
                 <h2>Explore new collection</h2>
@@ -154,15 +159,23 @@
                   laboriosam sunt ipsam esse in aut dolorem nemo id accusamus
                   dolorum officiis? Consequatur, harum.
                 </p>
-                <a href="#" class="my__caption__a my__caption__a--black">Buy now <span>&#8594;</span></a>
+                <a href="#" class="my__caption__a my__caption__a--black"
+                  >Buy now <span>&#8594;</span></a
+                >
               </div>
             </div>
             <div class="carousel-item">
-              <img
-                src="../img/Carousel/carouselImg2.jpg"
-                class="d-block w-100"
-                alt="carouselImg2"
-              />
+              <picture>
+                <source
+                  media="(max-width: 992px)"
+                  srcset="../img/Carousel/mobile/mob_img2.jpg"
+                />
+                <img
+                  src="../img/Carousel/carouselImg2.jpg"
+                  class="d-block w-100"
+                  alt="carouselImg2"
+                />
+              </picture>
               <div class="my__caption my__caption--white">
                 <h6>Simplicity</h6>
                 <h2>Chair for everyone</h2>
@@ -172,15 +185,23 @@
                   laboriosam sunt ipsam esse in aut dolorem nemo id accusamus
                   dolorum officiis? Consequatur, harum.
                 </p>
-                <a href="#" class="my__caption__a my__caption__a--white">Buy now <span>&#8594;</span></a>
+                <a href="#" class="my__caption__a my__caption__a--white"
+                  >Buy now <span>&#8594;</span></a
+                >
               </div>
             </div>
             <div class="carousel-item">
-              <img
-                src="../img/Carousel/carouselImg3.jpg"
-                class="d-block w-100"
-                alt="carouselImg3."
-              />
+              <picture>
+                <source
+                  media="(max-width: 992px)"
+                  srcset="../img/Carousel/mobile/mob_img3.jpg"
+                />
+                <img
+                  src="../img/Carousel/carouselImg3.jpg"
+                  class="d-block w-100"
+                  alt="carouselImg3."
+                />
+              </picture>
               <div class="my__caption my__caption--white">
                 <h6>New product</h6>
                 <h2>Chair with style</h2>
@@ -190,13 +211,16 @@
                   laboriosam sunt ipsam esse in aut dolorem nemo id accusamus
                   dolorum officiis? Consequatur, harum.
                 </p>
-                <a href="#" class="my__caption__a my__caption__a--white">Buy now <span>&#8594;</span></a>
+                <a href="#" class="my__caption__a my__caption__a--white"
+                  >Buy now <span>&#8594;</span></a
+                >
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <script src="../src/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
     <script src="./src/js/js.js"></script>
   </body>
 </html>
