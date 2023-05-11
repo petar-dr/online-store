@@ -1,0 +1,178 @@
+{
+  "products": {
+    "chairs": [
+      {
+        "id": 1,
+        "name": "Vintage",
+        "price": 220,
+        "inStock": 44,
+        "discount": 10,
+        "new": false,
+        "img": {
+          "img1": "url1",
+          "img2": "url2",
+          "img3": "url3"
+        },
+        "code": 666559,
+        "desc": "The chair is made of oak, its design is permeated by fluid, organic forms, combining strong curves with exceptional lightness. As a result, we got a minimalist design that optimizes comfort and is focused on man and his movements, without lacking aesthetics and characteristic details.",
+        "dimensions": {
+          "width": "62",
+          "height": "80",
+          "length": "39"
+        },
+        "hoverImg": "urlHover"
+      },
+      {
+        "id": 2,
+        "name": "Hibrid",
+        "price": 1399,
+        "inStock": 1,
+        "discount": 0,
+        "new": true,
+        "img": {
+          "img1": "url1",
+          "img2": "url2",
+          "img3": "url3"
+        },
+        "code": 999111,
+        "desc": "This luxury hybrid armchair offers unparalleled seating comfort thanks to its robust frame and soft upholstery. It is characterized by solid legs, made using traditional carpentry techniques, and large armrests and a seat cushion, upholstered in a range of soft fabrics, creating a sense of comfort and lightness in any environment.",
+        "dimensions": {
+          "width": "84",
+          "height": "82",
+          "length": "96"
+        },
+        "hoverImg": "urlHover"
+      },
+      {
+        "id": 3,
+        "name": "Jack",
+        "price": 1199,
+        "inStock": 12,
+        "discount": 10,
+        "new": false,
+        "img": {
+          "img1": "url1",
+          "img2": "url2",
+          "img3": "url3"
+        },
+        "code": 225255,
+        "desc": "The luxurious shapes that characterize the Jack chair are beautiful from every angle. The clean lines of this collection are inspired by Scandinavian modernism. With cushions wrapped in upholstery knitted in Belgium, every detail has been carefully designed and crafted to ensure comfort and elegance when enjoying the outdoors.",
+        "dimensions": {
+          "width": "74",
+          "height": "73",
+          "length": "90"
+        },
+        "hoverImg": "urlHover"
+      }
+    ],
+    "sofas": [
+      {
+        "id": 1,
+        "name": "Laura",
+        "price": 1200,
+        "inStock": 31,
+        "discount": 10,
+        "new": false,
+        "img": {
+          "img1": "url1",
+          "img2": "url2",
+          "img3": "url3"
+        },
+        "code": 777567,
+        "desc": "It is designed like a blank painting canvas, prepared to receive a personal touch, and the backrest in the form of an envelope is ready to hug the cushions of your choice.",
+        "dimensions": {
+          "width": "91",
+          "height": "74",
+          "length": "211"
+        },
+        "hoverImg": "urlHover"
+      },
+      {
+        "id": 2,
+        "name": "Double sofa",
+        "price": 1150,
+        "inStock": 20,
+        "discount": 0,
+        "new": true,
+        "img": {
+          "img1": "url1",
+          "img2": "url2",
+          "img3": "url3"
+        },
+        "code": 484899,
+        "desc": "It is a design that is ready to embrace and relax you, it simply invites you to sit in it and test the comfort that is read already on the visual level. This sofa offers endless ways to combine and adapt it for different spaces.",
+        "dimensions": {
+          "width": "91",
+          "height": "76",
+          "length": "140"
+        },
+        "hoverImg": "urlHover"
+      },
+      {
+        "id": 3,
+        "name": "The King",
+        "price": 1550,
+        "inStock": 5,
+        "discount": 0,
+        "new": false,
+        "img": {
+          "img1": "url1",
+          "img2": "url2",
+          "img3": "url3"
+        },
+        "code": 111212,
+        "desc": "The King modular sofa is a brilliant, modular design with sculptural lines that can be adapted to your individual space and taste, while with its modular elements, hidden through the subtle details of the front profile, it is paired with deep comfort and a soft seat.",
+        "dimensions": {
+          "width": "107",
+          "height": "70",
+          "length": "279"
+        },
+        "hoverImg": "urlHover"
+      }
+    ],
+    "tables": [
+      {
+        "id": 1,
+        "name": "stolica",
+        "price": 1000,
+        "inStock": 31,
+        "discount": 10,
+        "new": true,
+        "img": {
+          "img1": "url1",
+          "img2": "url2",
+          "img3": "url3"
+        },
+        "code": 123456,
+        "desc": "lssada dfsdfsdd fessefsedf fsesfesfe grsgd",
+        "dimensions": {
+          "width": "100cm",
+          "height": "50cm",
+          "length": "20cm"
+        },
+        "hoverImg": "urlHover"
+      },
+      {
+        "id": 2,
+        "name": "stolica2",
+        "price": 1500,
+        "inStock": 20,
+        "discount": 10,
+        "new": false,
+        "img": {
+          "img1": "url1",
+          "img2": "url2",
+          "img3": "url3"
+        },
+        "code": 123456,
+        "desc": "lssada dfsdfsdd fessefsedf fsesfesfe grsgd",
+        "dimensions": {
+          "width": "100cm",
+          "height": "50cm",
+          "length": "20cm"
+        },
+        "hoverImg": "urlHover"
+      }
+    ]
+  }
+}
