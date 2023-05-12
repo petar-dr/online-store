@@ -109,7 +109,7 @@
     ],
     "sofas": [
       {
-        "id": 4,
+        "id": 6,
         "name": "Laura",
         "price": 1200,
         "inStock": 31,
@@ -130,7 +130,7 @@
         "hoverImg": "../data/products/sofa/sofa1/sofa1_hover.jpg"
       },
       {
-        "id": 5,
+        "id": 7,
         "name": "Double sofa",
         "price": 1150,
         "inStock": 20,
@@ -151,7 +151,7 @@
         "hoverImg": "../data/products/sofa/sofa2/sofa2_hover.jpg"
       },
       {
-        "id": 6,
+        "id": 8,
         "name": "The King",
         "price": 1550,
         "inStock": 5,
@@ -174,46 +174,46 @@
     ],
     "tables": [
       {
-        "id": 1,
+        "id": 9,
         "name": "Grand table",
-        "price": 1000,
+        "price": 1650,
         "inStock": 31,
         "discount": 10,
         "new": true,
         "img": {
-          "img1": "url1",
-          "img2": "url2",
-          "img3": "url3"
+          "img1": "../data/products/table/table1/table1_1.jpg",
+          "img2": "../data/products/table/table1/table1_2.jpg",
+          "img3": "../data/products/table/table1/table1_3.jpg"
         },
-        "code": 123456,
+        "code": 666655,
         "desc": "With slender legs, and beveled details to connect to the useful surface, the Air seems to stand without any effort. Strong and slender, infinitely simple, weightless in appearance.",
         "dimensions": {
           "width": "100cm",
           "height": "50cm",
           "length": "20cm"
         },
-        "hoverImg": "urlHover"
+        "hoverImg": "../data/products/table/table1/table1_hover.jpg"
       },
       {
-        "id": 2,
-        "name": "stolica2",
-        "price": 1500,
+        "id": 10,
+        "name": "Ahil",
+        "price": 1350,
         "inStock": 20,
         "discount": 10,
         "new": false,
         "img": {
-          "img1": "url1",
-          "img2": "url2",
-          "img3": "url3"
+          "img1": "../data/products/table/table2/table2_1.jpg",
+          "img2": "../data/products/table/table2/table2_2.jpg",
+          "img3": "../data/products/table/table2/table2_3.jpg"
         },
-        "code": 123456,
-        "desc": "lssada dfsdfsdd fessefsedf fsesfesfe grsgd",
+        "code": 876521,
+        "desc": "The round dining table from the Bok collection made of solid oak is an ideal option for an adaptable dining room in a smaller space. With an internal extension, the round table can easily be converted into a multi-person table in just a few steps",
         "dimensions": {
           "width": "100cm",
           "height": "50cm",
           "length": "20cm"
         },
-        "hoverImg": "urlHover"
+        "hoverImg": "../data/products/table/table2/table2_hover.jpg"
       }
     ]
   }
