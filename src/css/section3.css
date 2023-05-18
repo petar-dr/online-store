@@ -79,25 +79,38 @@ a:hover {
 .card {
   border: none;
   border-right: 1px solid #ddd;
-  width: 34%;
+  width: 33%;
   padding: 0 40px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .card:last-child {
   border: none;
 }
 .card__divImg {
   overflow: hidden;
+  width: 80%;
 }
 .card__divImg img {
   transition: 0.3s;
+  width: 100%;
 }
-.card--btn {
+.card__text {
+  width: 100%;
+}
+.card__text__title {
+  font-size: 30px;
+  margin: 20px 0;
+}
+.card__text__btn {
   background-color: transparent;
   padding: 0.75em 1.33em 0.8em 1.33em;
   text-decoration: none;
   font-size: 1.3rem;
   font-weight: bold;
+  font-size: 16px;
   width: 50%;
   color: #000;
   border-color: #000;
@@ -107,7 +120,7 @@ a:hover {
 .card:hover > div > img {
   scale: 1.05;
 }
-.card:hover > div > .card--btn {
+.card:hover > div > .card__text__btn {
   background-color: #000;
   color: white;
   transition: 0.3s;
