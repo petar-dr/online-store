@@ -86,6 +86,13 @@ footer {
       @include media("sm") {
         display: none;
       }
+      &__item{
+        border-bottom: 1px solid transparent;
+        width: fit-content;
+        &:hover{
+          border-bottom: 1px solid black;
+        }
+      }
     }
   }
 }
