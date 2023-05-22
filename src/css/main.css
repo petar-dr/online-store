@@ -578,6 +578,11 @@ footer {
 .top__box__text {
   width: 450px;
 }
+@media ((min-width: 0px) and (max-width: 576px)) {
+  .top__box__text {
+    width: 100%;
+  }
+}
 .top__box__text h3 {
   font-size: 30px;
   margin-bottom: 20px;
@@ -598,6 +603,11 @@ footer {
   width: 250px;
   padding: 10px;
   color: black;
+}
+@media ((min-width: 0px) and (max-width: 576px)) {
+  .top__box__input__buttons__email {
+    width: 100%;
+  }
 }
 .top__box__input__buttons__email:focus {
   outline: none;
