@@ -5,6 +5,11 @@ export const view = (function () {
     main: "main",
     footer:"footer"
   };
+ 
 
-  return {};
+  return {
+    getDOMString: function(){
+      return DOMString;
+    }
+  };
 })();
