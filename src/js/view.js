@@ -5,8 +5,6 @@ export const view = (function () {
     main: "main",
     footer:"footer"
   };
- 
-
   return {
     getDOMString: function(){
       return DOMString;
