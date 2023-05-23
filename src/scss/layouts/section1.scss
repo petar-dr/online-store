@@ -1,0 +1,97 @@
+@use "../basic/" as *;
+@use "../buttons/" as *;
+
+.section1 {
+  height: calc(100vh - 145px);
+  width: 100%;
+  @include media("md") {
+    height: calc(100vh - 65px);
+    margin-top: 65px;
+  }
+  @include media("xs") {
+    background-color: #e3e2dc;
+    height: calc(700px + 65px);
+  }
+}
+.carousel-item {
+  @include media("xs") {
+    height: calc(700px + 65px);
+  }
+}
+.carousel-item img {
+  object-fit: cover;
+  position: relative;
+  bottom: 0;
+  height: calc(100vh - 145px);
+
+  @include media("md") {
+    height: calc(100vh - 65px);
+  }
+  @include media("xs") {
+    height: 50%;
+  }
+}
+.my__caption {
+  position: absolute;
+  max-width: 500px;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  text-align: start;
+  @include media("md") {
+    max-width: 300px;
+  }
+  @include media("xs") {
+    width: 90%;
+    max-width: none;
+    top: 55%;
+    transform: none;
+  }
+
+  & h6 {
+    font-size: 1.06em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    @include media("xxs") {
+      font-size: 1em;
+    }
+  }
+  & h2 {
+    font-size: 3.6em;
+    font-weight: bold;
+    margin-bottom: 0.7em;
+    @include media("xxs") {
+      font-size: 2.5em;
+    }
+  }
+  & p {
+    font-size: 1.4rem;
+    max-width: 80%;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    font-weight: bold;
+    
+    @include media("xxs") {
+      font-size: 1em;
+    }
+  }
+  &__a {
+    @include btn--a;
+  }
+  & span {
+    font-size: 20px;
+  }
+}
+
+.my__caption__a--black {
+  @include btn--a--dark;
+}
+.my__caption__a--white {
+  @include btn--a--light;
+}
+.my__caption--black {
+  color: $secondary;
+}
+.my__caption--white {
+  color: $primary;
+}

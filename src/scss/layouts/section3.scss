@@ -1,71 +1,72 @@
 @use "../basic/" as *;
-@use "../buttons/" as *;
 
-a {
-  text-decoration: none;
-  color: black;
-  &:hover {
-    color: black;
-  }
-}
 .section3 {
-  height: fit-content;
-  margin: 100px 0;
-  display: flex;
-  flex-direction: row;
   width: 100%;
-  text-decoration: none;
-  overflow: hidden;
-}
-.card {
-  border: none;
-  border-right: 1px solid $border_light;
-  width: 33%;
-  padding: 0 40px;
-  cursor: pointer;
+  height: fit-content;
+  margin-bottom: 100px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+.item {
+  width: 20%;
+  border-right: 1px solid $border_light;
+  height: fit-content;
   &:last-child {
-    border: none;
+    border-right: none;
   }
-  &__divImg {
-    overflow: hidden;
-    width: 80%;
-
-    & img {
-      transition: 0.3s;
+}
+.article {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  &__heart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    z-index: 3;
+    & i {
+      color: #e3e2dc;
+      &:hover {
+        color: black;
+      }
+    }
+  }
+  &__tag {
+    &__box {
+      position: relative;
       width: 100%;
-      
-    }
-  }
-
-  &__text {
-    width: 100%;
-   
-    &__title{
-      font-size: 30px;
-      margin: 20px 0;
-    }
-    &__btn {
-      @include btn--a;
-      font-size: 16px;
-      width: 50%;
-      color: #000;
-      border-color: #000;
-      border: 2px solid #000;
-      transition: 0.3s;
-    }
-   
-  }
-  &:hover {
-    & > div > img {
-      scale: 1.05;
-    }
-    & > div > .card__text__btn {
-      background-color: #000;
-      color: white;
-      transition: 0.3s;
+      &:hover .article__tag__box__background {
+        visibility: visible;
+      }
+      &__background {
+        position: absolute;
+        visibility: hidden;
+        height: 100%;
+        z-index: 2;
+      }
+      &__img {
+        width: 100%;
+      }
+      &__text {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        &__p {
+          color: white;
+          background-color: black;
+          padding: 5px 10px;
+          font-size: 10px;
+          font-weight: bold;
+        }
+        &__name {
+          font-size: 26px;
+        }
+        &__price {
+          font-size: 16px;
+        }
+      }
     }
   }
 }

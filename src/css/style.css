@@ -329,18 +329,18 @@ html {
   transition: 0.3s;
 }
 
-.section2 {
+.section1 {
   height: calc(100vh - 145px);
   width: 100%;
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
-  .section2 {
+  .section1 {
     height: calc(100vh - 65px);
     margin-top: 65px;
   }
 }
 @media ((min-width: 0px) and (max-width: 576px)) {
-  .section2 {
+  .section1 {
     background-color: #e3e2dc;
     height: 765px;
   }
@@ -529,7 +529,7 @@ a:hover {
   color: black;
 }
 
-.section3 {
+.section2 {
   height: -moz-fit-content;
   height: fit-content;
   margin: 100px 0;

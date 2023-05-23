@@ -1,11 +1,15 @@
 //CONTROLER
-export const controler = (function (model, view) {
+export const controller = (function (model, view) {
     let setupLisiner = function () {
-      let DOM = view.getDimString();
+      let DOM = view.getDOMString();
      
     };
-    let loadHomePage = function (){
-        
+    function loadHomePage(){
+       let DOM = view.getDOMString()
+       const main = document.getElementById(DOM.main);
+       const section1 = view.section1();
+       const section2 = view.section2();
+       main.innerHTML = section1 + section2;
     }
     
     return {

@@ -1,6 +1,6 @@
-import {controler} from "./controler.js";
+import {controller} from "./controller.js";
 import {view} from "./view.js";
 import {model}  from "./model.js";
 
 
-controler(model, view).init();
+controller(model, view).init();
