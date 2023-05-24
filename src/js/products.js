@@ -13,26 +13,26 @@ function print(data) {
   let content = "";
   data.forEach((elem) => {
     content += `<div class="item">
-                <div class="article">
-                <div class="article__heart">
+                <div class="item__article">
+                <div class="item__article__heart">
                 <i class="fa-solid fa-heart"></i>
                 </div>
                 <a href="#" class="article__tag">
-                <div class="article__tag__box">
+                <div class="item__article__tag__box">
                 <img
-                    class="article__tag__box__background"
+                    class="item__article__tag__box__background"
                     src=${elem.hoverImg}
                     alt=${elem.name}
           />
           <img
-            class="article__tag__box__img"
+            class="item__article__tag__box__img"
             src=${elem.img.img1}
             alt=${elem.name}
           />
-          <div class="article__tag__box__text">
-            <p class="article__tag__box__text__p">${elem.new}</p>
-            <h4 class="article__tag__box__text__name">${elem.name}</h4>
-            <span class="article__tag__box__text__price">${elem.price}$</span>
+          <div class="item__article__tag__box__text">
+            <p class="item__article__tag__box__text__p">${elem.new}</p>
+            <h4 class="item__article__tag__box__text__name">${elem.name}</h4>
+            <span class="item__article__tag__box__text__price">${elem.price}$</span>
           </div>
         </div>
       </a>

@@ -13,6 +13,7 @@ export const controller = function (model, view) {
  
     main.innerHTML = section1 + section2 ;
     main.appendChild(section3)
+    
   }
 
   return {

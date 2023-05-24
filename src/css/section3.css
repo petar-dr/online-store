@@ -24,14 +24,6 @@
   height: fit-content;
   margin-top: 50px;
 }
-@media ((min-width: 0px) and (max-width: 992px)) {
-  .item {
-    width: 25%;
-  }
-  .item:last-child {
-    display: none;
-  }
-}
 @media ((min-width: 0px) and (max-width: 768px)) {
   .item {
     width: 50%;
@@ -40,58 +32,57 @@
 .item:last-child {
   border-right: none;
 }
-
-.article {
+.item__article {
   width: 100%;
   overflow: hidden;
   position: relative;
 }
-.article__heart {
+.item__article__heart {
   position: absolute;
   top: 10px;
   right: 10px;
   font-size: 25px;
   z-index: 3;
 }
-.article__heart i {
+.item__article__heart i {
   color: #e3e2dc;
 }
-.article__heart i:hover {
+.item__article__heart i:hover {
   color: green;
 }
-.article__tag__box {
+.item__article__tag__box {
   position: relative;
   width: 100%;
 }
-.article__tag__box:hover .article__tag__box__background {
+.item__article__tag__box:hover .item__article__tag__box__background {
   visibility: visible;
 }
-.article__tag__box__background {
+.item__article__tag__box__background {
   position: absolute;
   visibility: hidden;
   height: 100%;
   z-index: 2;
 }
-.article__tag__box__img {
+.item__article__tag__box__img {
   width: 100%;
 }
-.article__tag__box__text {
+.item__article__tag__box__text {
   text-align: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-.article__tag__box__text__p {
+.item__article__tag__box__text__p {
   color: white;
   background-color: black;
   padding: 5px 10px;
   font-size: 10px;
   font-weight: bold;
 }
-.article__tag__box__text__name {
+.item__article__tag__box__text__name {
   font-size: 26px;
 }
-.article__tag__box__text__price {
+.item__article__tag__box__text__price {
   font-size: 16px;
 }/*# sourceMappingURL=section3.css.map */

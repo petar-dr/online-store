@@ -7,93 +7,81 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  &__title{
-    & h2{
+  &__title {
+    & h2 {
       font-size: 40px;
     }
   }
-  &__popularProducts{
+  &__popularProducts {
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    
   }
-
 }
 .item {
   width: 20%;
   border-right: 1px solid $border_light;
   height: fit-content;
   margin-top: 50px;
-  @include media ("md"){
-    width: 25%;
-    &:last-child {
-      display: none;
-      
-    }
-  }
-  @include media ("sm"){
+  @include media("sm") {
     width: 50%;
-   
   }
   &:last-child {
     border-right: none;
   }
-}
-.article {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  &__heart {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 25px;
-    z-index: 3;
-    & i {
-      color: #e3e2dc;
-      &:hover {
-        color: green;
-       
+  &__article {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    &__heart {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 25px;
+      z-index: 3;
+      & i {
+        color: #e3e2dc;
+        &:hover {
+          color: green;
+        }
       }
-      
     }
-  }
-  &__tag {
-    &__box {
-      position: relative;
-      width: 100%;
-      &:hover .article__tag__box__background {
-        visibility: visible;
-      }
-      &__background {
-        position: absolute;
-        visibility: hidden;
-        height: 100%;
-        z-index: 2;
-      }
-      &__img {
+    &__tag {
+      &__box {
+        position: relative;
         width: 100%;
-      }
-      &__text {
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        &__p {
-          color: white;
-          background-color: black;
-          padding: 5px 10px;
-          font-size: 10px;
-          font-weight: bold;
+        &:hover .item__article__tag__box__background {
+          visibility: visible;
         }
-        &__name {
-          font-size: 26px;
+        &__background {
+          position: absolute;
+          visibility: hidden;
+          height: 100%;
+          z-index: 2;
         }
-        &__price {
-          font-size: 16px;
+        &__img {
+          width: 100%;
+        }
+        &__text {
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          &__p {
+            color: white;
+            background-color: black;
+            padding: 5px 10px;
+            font-size: 10px;
+            font-weight: bold;
+          }
+          &__name {
+            font-size: 26px;
+          }
+          &__price {
+            font-size: 16px;
+          }
         }
       }
     }

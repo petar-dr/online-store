@@ -11,11 +11,11 @@ export const view = (function () {
     item.classList.add("item");
     // div article
     const article = document.createElement("div");
-    article.classList.add("article");
+    article.classList.add("item__article");
     item.appendChild(article);
     //div for heart icon
     const articleHeart = document.createElement("div");
-    articleHeart.classList.add("article__heart");
+    articleHeart.classList.add("item__article__heart");
     article.appendChild(articleHeart);
     // heart icon
     const icon = document.createElement("i");
@@ -25,44 +25,44 @@ export const view = (function () {
     //a tag
     const aTag = document.createElement("a");
     aTag.setAttribute("href", "#");
-    aTag.classList.add("article__tag");
+    aTag.classList.add("item__article__tag");
     article.appendChild(aTag);
     // div for images
     const box = document.createElement("div");
-    box.classList.add("article__tag__box");
+    box.classList.add("item__article__tag__box");
     aTag.appendChild(box);
     // img background
     const imgBackground = document.createElement("img");
     imgBackground.setAttribute("src", obj.hoverImg);
     imgBackground.setAttribute("alt", obj.name);
     imgBackground.setAttribute("href", "#");
-    imgBackground.classList.add("article__tag__box__background");
+    imgBackground.classList.add("item__article__tag__box__background");
     box.appendChild(imgBackground);
     const img = document.createElement("img");
     // item img
     img.setAttribute("src", obj.img.img1);
     img.setAttribute("alt", obj.name);
     img.setAttribute("href", "#");
-    img.classList.add("article__tag__box__img");
+    img.classList.add("item__article__tag__box__img");
     box.appendChild(img);
     // div text
     const text = document.createElement("div");
-    text.classList.add("article__tag__box__text");
+    text.classList.add("item__article__tag__box__text");
     box.appendChild(text);
     // text p tag new
     const p = document.createElement("p");
-    p.classList.add("article__tag__box__text__p");
+    p.classList.add("item__article__tag__box__text__p");
     // obj.new ? p.classList.add("displayMark") : p.classList.add("noDisplayMark");
     p.innerHTML = "NEW";
     text.appendChild(p);
     // text h4 item name
     const name = document.createElement("h4");
-    name.classList.add("article__tag__box__text__name");
+    name.classList.add("item__article__tag__box__text__name");
     name.innerHTML = obj.name;
     text.appendChild(name);
     // text price
     const price = document.createElement("span");
-    price.classList.add("article__tag__box__text__name");
+    price.classList.add("item__article__tag__box__text__name");
     price.innerHTML = obj.price;
     text.appendChild(price);
 
