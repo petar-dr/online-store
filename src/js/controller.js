@@ -2,7 +2,16 @@
 export const controller = function (model, view) {
   let setupLisiner = function () {
     let DOM = view.getDOMString();
+    document.getElementById(DOM.delivery).addEventListener("click", displayDelivery);
+    document.getElementById(DOM.service).addEventListener("click", displayService)
+
   };
+  function displayDelivery(){
+    view.loadDelivery();
+  }
+  function displayService(){
+    view.loadService();
+  }
   async function loadHomePage() {
     let DOM = view.getDOMString();
     let main = document.getElementById(DOM.main);
@@ -19,6 +28,7 @@ export const controller = function (model, view) {
   return {
     init: function () {
       loadHomePage();
+      setupLisiner();
     },
   };
 };

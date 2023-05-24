@@ -4,6 +4,8 @@ export const view = (function () {
     header: "header",
     main: "main",
     footer: "footer",
+    delivery: "iconDelivery",
+    service: "iconService",
   };
   function item(obj) {
     //div item
@@ -67,6 +69,28 @@ export const view = (function () {
     text.appendChild(price);
 
     return item;
+  }
+  function loadDelivery() {
+    const main = document.getElementById("main");
+    const content = `   <div class="products">
+    <aside class="products__aside">
+      <h3>Delivery</h3>
+     
+    </aside>
+    <div id="productsItems" class="products__items">OVO JE DELIVERY</div>
+    </div>`;
+    main.innerHTML = content;
+  }
+  function loadService() {
+    const main = document.getElementById("main");
+    const content = `   <div class="products">
+    <aside class="products__aside">
+      <h3>Service</h3>
+     
+    </aside>
+    <div id="productsItems" class="products__items">OVO JE Service</div>
+    </div>`;
+    main.innerHTML = content;
   }
   function loadSection1() {
     const content = `<div class="section1">
@@ -289,6 +313,12 @@ export const view = (function () {
     },
     section3: function (obj) {
       return loadSection3(obj);
+    },
+    loadDelivery: function () {
+      return loadDelivery();
+    },
+    loadService: function () {
+      return loadService();
     },
   };
 })();
