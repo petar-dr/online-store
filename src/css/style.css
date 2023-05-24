@@ -606,6 +606,7 @@ a:hover {
   width: 100%;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .item {
@@ -614,6 +615,19 @@ a:hover {
   height: -moz-fit-content;
   height: fit-content;
   margin-top: 50px;
+}
+@media ((min-width: 0px) and (max-width: 992px)) {
+  .item {
+    width: 25%;
+  }
+  .item:last-child {
+    display: none;
+  }
+}
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .item {
+    width: 50%;
+  }
 }
 .item:last-child {
   border-right: none;
