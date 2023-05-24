@@ -6,29 +6,24 @@ export const controller = function (model, view) {
     document.getElementById(DOM.service).addEventListener("click", displayService)
 
   };
+  //header function
   function displayDelivery(){
     view.loadDelivery();
   }
   function displayService(){
     view.loadService();
   }
-  async function loadHomePage() {
+  async function displayHomePage() {
     let DOM = view.getDOMString();
-    let main = document.getElementById(DOM.main);
-    let section1 = view.section1();
-    let section2 = view.section2();
+    let main = document.getElementById(DOM.homePage);
     const data = await model.takeData();
-    let section3 = await view.section3(data);
- 
-    main.innerHTML = section1 + section2 ;
-    main.appendChild(section3)
-    
+    main.appendChild(view.loadHomePage(data));
   }
 
   return {
     init: function () {
-      loadHomePage();
-      setupLisiner();
+      displayHomePage();
+      // setupLisiner();
     },
   };
 };
