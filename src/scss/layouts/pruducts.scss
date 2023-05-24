@@ -1,0 +1,27 @@
+@use "../basic/" as *;
+
+.products{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    &__aside{
+        padding: 40px;
+        font-size: 18px;
+        width: 20%;
+        & ul{
+            padding: 0;
+            list-style: none;
+            & li{
+                border-bottom: ;
+            }
+        }
+
+    }
+    &__items{
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 50px;
+    }
+}

@@ -144,7 +144,7 @@ export const view = (function () {
   }
   function loadSection2() {
     const content = `<div class="section2">
-      z<a href="#" class="card text-center">
+      <a href="#" class="card text-center">
       <div class="card__divImg">
         <img
           class="card-img-top"
@@ -198,6 +198,51 @@ export const view = (function () {
   </div>  `;
     return content;
   }
+  function loadSection3(obj) {
+    const section3 = document.createElement("div");
+    section3.classList.add("section3");
+    section3.setAttribute("id", "section3");
+    const title = document.createElement("div");
+    title.classList.add("section3__title");
+    title.innerHTML = `<div class="section3__title"> <h2> Popular products</h2</div>`;
+    const popularProducts = document.createElement("div");
+    popularProducts.classList.add("section3__popularProducts");
+
+    let content = "";
+    console.log(obj);
+    obj.forEach((elem) => {
+      content += `<div class="item">
+                    <div class="article">
+                      <div class="article__heart">
+                       <i class="fa-solid fa-heart"></i>
+                      </div>
+                      <a href="#" class="article__tag">
+                        <div class="article__tag__box">
+                          <img class="article__tag__box__background"
+                            src="${elem.hoverImg}"
+                            alt="${elem.name}"
+                            href="#"
+                          />
+                          <img class="article__tag__box__img"
+                            src="${elem.img.img1}"
+                            alt="${elem.name}"
+                          />
+                          <div class="article__tag__box__text">
+                            <p class="article__tag__box__text__p">NEW</p>
+                            <h4 class="article__tag__box__text__name">${elem.name}</h4>
+                            <span class="article__tag__box__text__price">${elem.price}$</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                `;
+    });
+    popularProducts.innerHTML = content;
+    section3.appendChild(title);
+    section3.appendChild(popularProducts);
+    return section3;
+  }
   return {
     getDOMString: function () {
       return DOMString;
@@ -207,6 +252,9 @@ export const view = (function () {
     },
     section2: function () {
       return loadSection2();
+    },
+    section3: function (obj) {
+      return loadSection3(obj);
     },
   };
 })();

@@ -5,11 +5,25 @@
   height: fit-content;
   margin-bottom: 100px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__title{
+    & h2{
+      font-size: 40px;
+    }
+  }
+  &__popularProducts{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+
 }
 .item {
   width: 20%;
   border-right: 1px solid $border_light;
   height: fit-content;
+  margin-top: 50px;
   &:last-child {
     border-right: none;
   }
@@ -27,8 +41,10 @@
     & i {
       color: #e3e2dc;
       &:hover {
-        color: black;
+        color: green;
+       
       }
+      
     }
   }
   &__tag {

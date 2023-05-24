@@ -1,7 +1,11 @@
 //MODEL
 export const model = (function () {
-  
-    return {
-     
-    };
-  })();
+  const urlPopular = "http://localhost:5000/products/popular";
+  async function takeData() {
+    let response = await fetch(urlPopular).then(res=>res.json());
+    return await response;
+  }
+  return {
+    takeData,
+  };
+})();

@@ -1,7 +1,8 @@
 const baseUrl = "http://localhost:5000";
 const path = "/products";
 var allProducts = [];
-const main = document.getElementById("main");
+const products = document.getElementById("productsItems");
+console.log(products)
 
 async function getData(source, callback) {
   data = await fetch(baseUrl + source).then((response) => response.json());
@@ -9,9 +10,9 @@ async function getData(source, callback) {
 }
 
 function print(data) {
-  let print = "";
+  let content = "";
   data.forEach((elem) => {
-    print += `<div class="item">
+    content += `<div class="item">
                 <div class="article">
                 <div class="article__heart">
                 <i class="fa-solid fa-heart"></i>
@@ -38,6 +39,6 @@ function print(data) {
     </div>
   </div>`;
   });
-  main.innerHTML=print;
+  products.innerHTML = content;
 }
 getData(path, print);
