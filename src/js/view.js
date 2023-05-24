@@ -5,6 +5,69 @@ export const view = (function () {
     main: "main",
     footer: "footer",
   };
+  function item(obj) {
+    //div item
+    const item = document.createElement("div");
+    item.classList.add("item");
+    // div article
+    const article = document.createElement("div");
+    article.classList.add("article");
+    item.appendChild(article);
+    //div for heart icon
+    const articleHeart = document.createElement("div");
+    articleHeart.classList.add("article__heart");
+    article.appendChild(articleHeart);
+    // heart icon
+    const icon = document.createElement("i");
+    icon.classList.add("fa-solid");
+    icon.classList.add("fa-heart");
+    articleHeart.appendChild(icon);
+    //a tag
+    const aTag = document.createElement("a");
+    aTag.setAttribute("href", "#");
+    aTag.classList.add("article__tag");
+    article.appendChild(aTag);
+    // div for images
+    const box = document.createElement("div");
+    box.classList.add("article__tag__box");
+    aTag.appendChild(box);
+    // img background
+    const imgBackground = document.createElement("img");
+    imgBackground.setAttribute("src", obj.hoverImg);
+    imgBackground.setAttribute("alt", obj.name);
+    imgBackground.setAttribute("href", "#");
+    imgBackground.classList.add("article__tag__box__background");
+    box.appendChild(imgBackground);
+    const img = document.createElement("img");
+    // item img
+    img.setAttribute("src", obj.img.img1);
+    img.setAttribute("alt", obj.name);
+    img.setAttribute("href", "#");
+    img.classList.add("article__tag__box__img");
+    box.appendChild(img);
+    // div text
+    const text = document.createElement("div");
+    text.classList.add("article__tag__box__text");
+    box.appendChild(text);
+    // text p tag new
+    const p = document.createElement("p");
+    p.classList.add("article__tag__box__text__p");
+    // obj.new ? p.classList.add("displayMark") : p.classList.add("noDisplayMark");
+    p.innerHTML = "NEW";
+    text.appendChild(p);
+    // text h4 item name
+    const name = document.createElement("h4");
+    name.classList.add("article__tag__box__text__name");
+    name.innerHTML = obj.name;
+    text.appendChild(name);
+    // text price
+    const price = document.createElement("span");
+    price.classList.add("article__tag__box__text__name");
+    price.innerHTML = obj.price;
+    text.appendChild(price);
+
+    return item;
+  }
   function loadSection1() {
     const content = `<div class="section1">
     <div
@@ -207,38 +270,9 @@ export const view = (function () {
     title.innerHTML = `<div class="section3__title"> <h2> Popular products</h2</div>`;
     const popularProducts = document.createElement("div");
     popularProducts.classList.add("section3__popularProducts");
-
-    let content = "";
-    console.log(obj);
     obj.forEach((elem) => {
-      content += `<div class="item">
-                    <div class="article">
-                      <div class="article__heart">
-                       <i class="fa-solid fa-heart"></i>
-                      </div>
-                      <a href="#" class="article__tag">
-                        <div class="article__tag__box">
-                          <img class="article__tag__box__background"
-                            src="${elem.hoverImg}"
-                            alt="${elem.name}"
-                            href="#"
-                          />
-                          <img class="article__tag__box__img"
-                            src="${elem.img.img1}"
-                            alt="${elem.name}"
-                          />
-                          <div class="article__tag__box__text">
-                            <p class="article__tag__box__text__p">NEW</p>
-                            <h4 class="article__tag__box__text__name">${elem.name}</h4>
-                            <span class="article__tag__box__text__price">${elem.price}$</span>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                `;
+      popularProducts.appendChild(item(elem));
     });
-    popularProducts.innerHTML = content;
     section3.appendChild(title);
     section3.appendChild(popularProducts);
     return section3;

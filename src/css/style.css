@@ -819,9 +819,6 @@ footer {
   padding: 0;
   list-style: none;
 }
-.products__aside ul li {
-  padding-left: 20px;
-}
 .products__items {
   width: 80%;
   display: flex;
