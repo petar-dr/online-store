@@ -1,6 +1,6 @@
 @use "../basic/" as *;
 
-#main {
+.main {
   margin-top: 145px;
   @include media("md") {
     margin-top: 65px;

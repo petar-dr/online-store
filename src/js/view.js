@@ -828,10 +828,15 @@ export const view = (function () {
       const homeContent = document.createElement("div");
       homeContent.setAttribute("id","homeContent")
 
+      const main = document.createElement("div");
+      main.classList.add("main");
+
+      main.appendChild(loadSection1());
+      main.appendChild(loadSection2());
+      main.appendChild(loadSection3(data));
+
       homeContent.appendChild(loadHeader());
-      homeContent.appendChild(loadSection1());
-      homeContent.appendChild(loadSection2());
-      homeContent.appendChild(loadSection3(data));
+      homeContent.appendChild(main);
       homeContent.appendChild(loadFooter());
 
       return homeContent;

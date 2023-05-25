@@ -261,11 +261,11 @@ html {
   cursor: pointer;
 }
 
-#main {
+.main {
   margin-top: 145px;
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
-  #main {
+  .main {
     margin-top: 65px;
   }
 }
