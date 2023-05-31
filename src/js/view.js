@@ -171,7 +171,7 @@ export const view = (function () {
 
     // Create header__main__middle link element
     var middleLink = document.createElement("a");
-    middleLink.href = "#";
+    middleLink.href = "index.html";
     headerMainMiddle.appendChild(middleLink);
 
     // Create middleLink heading element
@@ -847,6 +847,9 @@ export const view = (function () {
     var productsItemsDiv = document.createElement("div");
     productsItemsDiv.id = "productsItems";
     productsItemsDiv.classList.add("products__items");
+    obj.forEach((elem) => {
+      productsItemsDiv.appendChild(item(elem));
+    });
     productsDiv.appendChild(productsItemsDiv);
 
     return productsDiv;
@@ -876,7 +879,6 @@ export const view = (function () {
       pageContent.appendChild(loadHeader());
       pageContent.appendChild(main);
       pageContent.appendChild(loadFooter());
-      console.log("pozvana");
       return pageContent;
     },
     loadProductsPage: (data) => {
