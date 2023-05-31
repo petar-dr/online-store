@@ -2,28 +2,47 @@
 export const controller = function (model, view) {
   let setupLisiner = function () {
     let DOM = view.getDOMString();
-    document.getElementById(DOM.delivery).addEventListener("click", displayDelivery);
-    document.getElementById(DOM.service).addEventListener("click", displayService)
-
+    document
+      .getElementById(DOM.delivery)
+      .addEventListener("click", displayDelivery);
+    document
+      .getElementById(DOM.service)
+      .addEventListener("click", displayService);
+    // document
+    //   .getElementById(DOM.products)
+    //   .addEventListener("click", displayProductsPage);
   };
   //header function
-  function displayDelivery(){
+  function displayDelivery() {
     view.loadDelivery();
   }
-  function displayService(){
+  function displayService() {
     view.loadService();
   }
   async function displayHomePage() {
     let DOM = view.getDOMString();
+    let url = model.getUrl();
+
     let main = document.getElementById(DOM.homePage);
-    const data = await model.takeData();
+    const data = await model.loadData(url.popularProducts);
     main.appendChild(view.loadHomePage(data));
+  }
+  async function displayProductsPage() {
+    let DOM = view.getDOMString();
+    let url = model.getUrl();
+
+    let main = document.getElementById(DOM.productsPage);
+    const data = await model.loadData(url.allProducts);
+    main.appendChild(view.loadProductsPage(data));
   }
 
   return {
-    init: function () {
+    init: () => {
       displayHomePage();
       // setupLisiner();
     },
+    products: ()=>{
+      displayProductsPage();
+    }
   };
 };

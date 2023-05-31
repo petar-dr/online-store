@@ -3,6 +3,8 @@ export const view = (function () {
   const DOMString = {
     homePage: "home_page",
     header: "header",
+    products: "products",
+    productsPage: "products_page",
     main: "main",
     footer: "footer",
     delivery: "iconDelivery",
@@ -575,7 +577,7 @@ export const view = (function () {
     bottomSection.appendChild(mastercardImage);
     return footer;
   }
-  // home page sections
+  // home page - sections
   function loadSection1() {
     // Create section1 container
     var section1Div = document.createElement("div");
@@ -813,21 +815,57 @@ export const view = (function () {
     section3.appendChild(popularProducts);
     return section3;
   }
+  // products page
+  function loadProductsMain(obj) {
+    // Create products container
+    var productsDiv = document.createElement("div");
+    productsDiv.classList.add("products");
+
+    // Create aside
+    var aside = document.createElement("aside");
+    aside.classList.add("products__aside");
+    productsDiv.appendChild(aside);
+
+    // Create "Products" heading
+    var heading = document.createElement("h3");
+    heading.textContent = "Products";
+    aside.appendChild(heading);
+
+    // Create ul element
+    var ul = document.createElement("ul");
+    aside.appendChild(ul);
+
+    // Create list items
+    var categories = ["All", "Chairs", "Tables", "Sofas"];
+    categories.forEach(function (category) {
+      var li = document.createElement("li");
+      li.textContent = category;
+      ul.appendChild(li);
+    });
+
+    // Create products items container
+    var productsItemsDiv = document.createElement("div");
+    productsItemsDiv.id = "productsItems";
+    productsItemsDiv.classList.add("products__items");
+    productsDiv.appendChild(productsItemsDiv);
+
+    return productsDiv;
+  }
+
   return {
-    getDOMString: function () {
+    getDOMString: () => {
       return DOMString;
     },
-   
-    loadDelivery: function () {
+
+    loadDelivery: () => {
       return loadDelivery();
     },
-    loadService: function () {
+    loadService: () => {
       return loadService();
     },
-    loadHomePage: function (data) {
-      const homeContent = document.createElement("div");
-      homeContent.setAttribute("id","homeContent")
-
+    loadHomePage: (data) => {
+      const pageContent = document.createElement("div");
+      pageContent.setAttribute("id", "pageContent");
       const main = document.createElement("div");
       main.classList.add("main");
 
@@ -835,11 +873,26 @@ export const view = (function () {
       main.appendChild(loadSection2());
       main.appendChild(loadSection3(data));
 
-      homeContent.appendChild(loadHeader());
-      homeContent.appendChild(main);
-      homeContent.appendChild(loadFooter());
+      pageContent.appendChild(loadHeader());
+      pageContent.appendChild(main);
+      pageContent.appendChild(loadFooter());
+      console.log("pozvana");
+      return pageContent;
+    },
+    loadProductsPage: (data) => {
+      const pageContent = document.createElement("div");
+      pageContent.setAttribute("id", "pageContent");
+      const main = document.createElement("div");
+      main.classList.add("main");
+      main.setAttribute("id", "main");
 
-      return homeContent;
+      main.appendChild(loadProductsMain(data));
+
+      pageContent.appendChild(loadHeader());
+      pageContent.appendChild(main);
+      pageContent.appendChild(loadFooter());
+
+      return pageContent;
     },
   };
 })();
