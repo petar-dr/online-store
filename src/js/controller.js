@@ -8,9 +8,6 @@ export const controller = function (model, view) {
     document
       .getElementById(DOM.service)
       .addEventListener("click", displayService);
-    // document
-    //   .getElementById(DOM.products)
-    //   .addEventListener("click", displayProductsPage);
   };
   //header function
   function displayDelivery() {

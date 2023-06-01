@@ -58,7 +58,7 @@ export const view = (function () {
     // text p tag new
     const p = document.createElement("p");
     p.classList.add("item__article__tag__box__text__p");
-    // obj.new ? p.classList.add("displayMark") : p.classList.add("noDisplayMark");
+    obj.new ? p.classList.add("displayMark") : p.classList.add("noDisplayMark");
     p.innerHTML = "NEW";
     text.appendChild(p);
     // text h4 item name

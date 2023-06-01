@@ -71,7 +71,6 @@
           align-items: center;
           &__p {
             color: white;
-            background-color: black;
             padding: 5px 10px;
             font-size: 10px;
             font-weight: bold;
@@ -86,4 +85,11 @@
       }
     }
   }
+}
+.displayMark{
+  background-color: black;
+}
+.noDisplayMark{
+  background-color: white;
+
 }
