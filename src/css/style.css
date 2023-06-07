@@ -74,9 +74,9 @@ html {
 
 .header {
   height: 145px;
-  top: 0;
+  top: -26px;
   display: flex;
-  position: fixed;
+  position: sticky;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -261,9 +261,6 @@ html {
   cursor: pointer;
 }
 
-.main {
-  margin-top: 145px;
-}
 @media ((min-width: 0px) and (max-width: 992px)) {
   .main {
     margin-top: 65px;

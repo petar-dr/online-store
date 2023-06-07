@@ -59,9 +59,9 @@
 
 .header {
   height: 145px;
-  top: 0;
+  top: -26px;
   display: flex;
-  position: fixed;
+  position: sticky;
   flex-direction: column;
   justify-content: center;
   align-items: center;
