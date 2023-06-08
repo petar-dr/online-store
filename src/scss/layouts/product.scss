@@ -8,14 +8,25 @@
   justify-content: center;
   column-gap: 5%;
   margin-top: 50px;
+  @include media("md") {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+  }
   &__images {
     height: fit-content;
+    @include media("md") {
+      margin-bottom: 30px;
+    }
     &__carousel {
-        height: calc(100vh - 200px);
+      height: calc(100vh - 200px);
     }
   }
   &__info {
     width: 40%;
+    @include media("md") {
+      width: 90%;
+    }
     &__header {
       width: 100%;
       display: flex;
@@ -54,11 +65,11 @@
       height: 43px;
       margin-bottom: 20px;
 
-
       &__quantity {
         height: 100%;
         display: inline-flex;
-        width: 100px;
+        min-width: 100px;
+        max-width: 150px;
 
         &__minus {
           height: 100%;
@@ -94,6 +105,8 @@
       &__addToCart {
         height: 100%;
         width: 60%;
+        min-width: 200px;
+        max-width: 400px;
         font-size: 18px;
         border: none;
         color: black;
@@ -104,19 +117,24 @@
         }
       }
     }
-    
   }
 }
 
 // carousel/carousel img
 .carousel--item--poducts {
   height: calc(100vh - 200px);
+  @include media("md") {
+    max-height: 500px;
+  }
 }
 .carousel--item--poducts img {
   object-fit: cover;
   position: relative;
   bottom: 0;
   height: calc(100vh - 200px);
+  @include media("md") {
+    max-height: 500px;
+  }
 }
 
 // accordion description/dimension
@@ -138,8 +156,6 @@
   color: black;
   border: none;
   box-shadow: 0 0 0 0px $border_light !important;
-
- 
 }
 .accordion-button:active {
   background-color: #fff;
