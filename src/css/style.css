@@ -344,12 +344,12 @@ html {
 }
 
 @media ((min-width: 0px) and (max-width: 576px)) {
-  .carousel-item {
+  .carousel--item--section1 {
     height: 765px;
   }
 }
 
-.carousel-item img {
+.carousel--item--section1 img {
   -o-object-fit: cover;
      object-fit: cover;
   position: relative;
@@ -357,12 +357,12 @@ html {
   height: calc(100vh - 145px);
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
-  .carousel-item img {
+  .carousel--item--section1 img {
     height: calc(100vh - 65px);
   }
 }
 @media ((min-width: 0px) and (max-width: 576px)) {
-  .carousel-item img {
+  .carousel--item--section1 img {
     height: 50%;
   }
 }
@@ -789,7 +789,7 @@ footer {
   color: #e3e2dc;
 }
 .item__article__heart i:hover {
-  color: green;
+  color: greenyellow;
 }
 .item__article__tag__box {
   position: relative;
@@ -833,4 +833,173 @@ footer {
 
 .noDisplayMark {
   background-color: white;
+}
+
+.productPage__main {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  -moz-column-gap: 5%;
+       column-gap: 5%;
+  margin-top: 50px;
+}
+.productPage__main__images {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.productPage__main__images__carousel {
+  height: calc(100vh - 200px);
+}
+.productPage__main__info {
+  width: 40%;
+}
+.productPage__main__info__heart {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.productPage__main__info__heart__available {
+  font-size: 15px;
+}
+.productPage__main__info__heart__available__icon {
+  color: greenyellow;
+}
+.productPage__main__info__heart__icon {
+  color: #e3e2dc;
+}
+.productPage__main__info__heart__icon:hover {
+  color: greenyellow;
+}
+.productPage__main__info__name {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.productPage__main__info__price {
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.productPage__main__info__code {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.productPage__main__info__cartButtons {
+  display: flex;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  height: 43px;
+  margin-bottom: 20px;
+}
+.productPage__main__info__cartButtons__quantity {
+  height: 100%;
+  display: inline-flex;
+  width: 100px;
+}
+.productPage__main__info__cartButtons__quantity__minus {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  width: 33%;
+  background-color: black;
+  color: white;
+  font-size: 18px;
+}
+.productPage__main__info__cartButtons__quantity__number {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  width: 33%;
+  background-color: black;
+  color: white;
+  font-size: 18px;
+}
+.productPage__main__info__cartButtons__quantity__plus {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  width: 33%;
+  background-color: black;
+  color: white;
+  font-size: 18px;
+}
+.productPage__main__info__cartButtons__addToCart {
+  height: 100%;
+  width: 60%;
+  font-size: 18px;
+  border: none;
+  color: black;
+  background-color: greenyellow;
+}
+.productPage__main__info__cartButtons__addToCart:hover {
+  color: white;
+  background-color: black;
+}
+
+.carousel--item--poducts {
+  height: calc(100vh - 200px);
+}
+
+.carousel--item--poducts img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: relative;
+  bottom: 0;
+  height: calc(100vh - 200px);
+}
+
+.accordion-item--text {
+  font-size: 16px;
+}
+
+.accordion-button--title,
+.thridAccordion {
+  padding-left: 0;
+  font-size: 18px;
+  padding: 0;
+  padding: 16px 0;
+}
+
+.accordion-button:focus {
+  z-index: 3;
+  border-color: #fff !important;
+  outline: 0;
+  background-color: #fff;
+  color: black;
+  border: none;
+  box-shadow: 0 0 0 0px #ddd !important;
+}
+
+.accordion-button:active {
+  background-color: #fff;
+  color: black;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #fff;
+  color: black;
+}
+
+.thridAccordion {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+.thridAccordion a i {
+  padding-right: 10px;
+  font-size: 20px;
+  color: black;
+}
+.thridAccordion__title {
+  font-size: 18px !important;
+  font-weight: 0 !important;
+  margin: 0;
 }/*# sourceMappingURL=style.css.map */

@@ -13,12 +13,12 @@
     height: calc(700px + 65px);
   }
 }
-.carousel-item {
+.carousel--item--section1 {
   @include media("xs") {
     height: calc(700px + 65px);
   }
 }
-.carousel-item img {
+.carousel--item--section1 img {
   object-fit: cover;
   position: relative;
   bottom: 0;

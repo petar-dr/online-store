@@ -1,0 +1,22 @@
+.products {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+}
+.products__aside {
+  padding: 40px;
+  font-size: 18px;
+  width: 20%;
+}
+.products__aside ul {
+  padding: 0;
+  list-style: none;
+}
+.products__items {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}/*# sourceMappingURL=products.css.map */

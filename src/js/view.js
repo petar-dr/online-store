@@ -656,7 +656,7 @@ export const view = (function () {
 
       // Create carousel item
       var itemDiv = document.createElement("div");
-      itemDiv.classList.add("carousel-item");
+      itemDiv.classList.add("carousel-item", "carousel--item--section1");
       if (j === 0) {
         itemDiv.classList.add("active");
       }

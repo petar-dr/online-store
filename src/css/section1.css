@@ -75,12 +75,12 @@
 }
 
 @media ((min-width: 0px) and (max-width: 576px)) {
-  .carousel-item {
+  .carousel--item--section1 {
     height: 765px;
   }
 }
 
-.carousel-item img {
+.carousel--item--section1 img {
   -o-object-fit: cover;
      object-fit: cover;
   position: relative;
@@ -88,12 +88,12 @@
   height: calc(100vh - 145px);
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
-  .carousel-item img {
+  .carousel--item--section1 img {
     height: calc(100vh - 65px);
   }
 }
 @media ((min-width: 0px) and (max-width: 576px)) {
-  .carousel-item img {
+  .carousel--item--section1 img {
     height: 50%;
   }
 }
