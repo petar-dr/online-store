@@ -856,23 +856,23 @@ footer {
 .productPage__main__info {
   width: 40%;
 }
-.productPage__main__info__heart {
+.productPage__main__info__header {
   width: 100%;
   display: flex;
   justify-content: space-between;
   font-size: 20px;
   margin-bottom: 20px;
 }
-.productPage__main__info__heart__available {
+.productPage__main__info__header__available {
   font-size: 15px;
 }
-.productPage__main__info__heart__available__icon {
+.productPage__main__info__header__available__icon {
   color: greenyellow;
 }
-.productPage__main__info__heart__icon {
+.productPage__main__info__header__icon {
   color: #e3e2dc;
 }
-.productPage__main__info__heart__icon:hover {
+.productPage__main__info__header__icon:hover {
   color: greenyellow;
 }
 .productPage__main__info__name {
