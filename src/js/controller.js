@@ -28,12 +28,11 @@ export const controller = function (model, view) {
     let DOM = view.getDOMString();
     let url = model.getUrl();
 
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const category = urlParams.get("category");
+    let queryString = window.location.search;
+    let urlParams = new URLSearchParams(queryString);
+    let category = urlParams.get("category");
 
     let data;
-    console.log(typeof category);
     switch (category) {
       case "chairs":
         data = await model.loadData(url.chairs);
@@ -51,7 +50,19 @@ export const controller = function (model, view) {
     let main = document.getElementById(DOM.productsPage);
     main.appendChild(view.loadProductsPage(data));
   }
+  async function displayProductPage() {
+    let DOM = view.getDOMString();
+    let url = model.getUrl();
 
+    let queryString = window.location.search;
+    let urlParams = new URLSearchParams(queryString);
+    let id = urlParams.get("id");
+
+    console.log(url.productId + id);
+    let data = await model.loadData(url.productId + id);
+    let main = document.getElementById(DOM.productPage);
+    main.appendChild(view.loadProductPage(data));
+  }
   return {
     init: () => {
       displayHomePage();
@@ -59,6 +70,9 @@ export const controller = function (model, view) {
     },
     products: () => {
       displayProductsPage();
+    },
+    product: () => {
+      displayProductPage();
     },
   };
 };

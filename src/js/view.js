@@ -5,6 +5,7 @@ export const view = (function () {
     header: "header",
     products: "products",
     productsPage: "products_page",
+    productPage: "product_page",
     main: "main",
     footer: "footer",
     delivery: "iconDelivery",
@@ -12,7 +13,6 @@ export const view = (function () {
     chairs: "chairs",
     tables: "tables",
     sofas: "sofas",
-
   };
 
   function item(obj) {
@@ -34,7 +34,8 @@ export const view = (function () {
     articleHeart.appendChild(icon);
     //a tag
     const aTag = document.createElement("a");
-    aTag.setAttribute("href", "#");
+    let url = "product.html?id=" + obj.id;
+    aTag.setAttribute("href", url);
     aTag.classList.add("item__article__tag");
     article.appendChild(aTag);
     // div for images
@@ -739,7 +740,7 @@ export const view = (function () {
         imageSrc: "../img/section2/chair.jpg",
         imageAlt: "Card image cap",
         title: "Chairs",
-        aUrl:"products.html?category=chairs",
+        aUrl: "products.html?category=chairs",
         content:
           "Some quick example text to build on the card title and make up the bulk of the card's content.",
       },
@@ -747,7 +748,7 @@ export const view = (function () {
         imageSrc: "../img/section2/table.jpg",
         imageAlt: "Card image cap",
         title: "Tables",
-        aUrl:"products.html?category=tables",
+        aUrl: "products.html?category=tables",
         content:
           "Some quick example text to build on the card title and make up the bulk of the card's content.",
       },
@@ -755,7 +756,7 @@ export const view = (function () {
         imageSrc: "../img/section2/sofa.jpg",
         imageAlt: "Card image cap",
         title: "Sofas",
-        aUrl:"products.html?category=sofas",
+        aUrl: "products.html?category=sofas",
         content:
           "Some quick example text to build on the card title and make up the bulk of the card's content.",
       },
@@ -845,8 +846,12 @@ export const view = (function () {
     // Create list items
     var categories = ["All", "Chairs", "Tables", "Sofas"];
     categories.forEach(function (category) {
+      let a = document.createElement("a");
+      a.textContent = category;
+      let url = "products.html?category=" + category.toLowerCase();
+      a.href = url;
       var li = document.createElement("li");
-      li.textContent = category;
+      li.appendChild(a);
       ul.appendChild(li);
     });
 
@@ -860,6 +865,335 @@ export const view = (function () {
     productsDiv.appendChild(productsItemsDiv);
 
     return productsDiv;
+  }
+  // product page
+  function loadProductMain(obj) {
+    // Create main container
+    var mainDiv = document.createElement("main");
+    mainDiv.classList.add("productPage__main");
+
+    // Create images container
+    var imagesDiv = document.createElement("div");
+    imagesDiv.classList.add("productPage__main__images");
+    mainDiv.appendChild(imagesDiv);
+
+    // Create carousel container
+    var carouselDiv = document.createElement("div");
+    carouselDiv.id = "carouselProductPage";
+    carouselDiv.classList.add("carousel", "carousel-dark");
+    carouselDiv.setAttribute("data-bs-interval", "false");
+    imagesDiv.appendChild(carouselDiv);
+
+    // Create carousel inner container
+    var carouselInnerDiv = document.createElement("div");
+    carouselInnerDiv.classList.add("carousel-inner");
+    carouselDiv.appendChild(carouselInnerDiv);
+
+    // Create carousel items
+    var images = [obj.img.img1, obj.img.img2, obj.img.img3];
+    images.forEach(function (image, index) {
+      var carouselItemDiv = document.createElement("div");
+      carouselItemDiv.classList.add("carousel-item", "carousel--item--poducts");
+      if (index === 0) {
+        carouselItemDiv.classList.add("active");
+      }
+
+      var img = document.createElement("img");
+      img.src = image;
+      img.classList.add("d-block", "w-100");
+      img.alt = "...";
+
+      carouselItemDiv.appendChild(img);
+      carouselInnerDiv.appendChild(carouselItemDiv);
+    });
+
+    // Create carousel controls
+    var prevButton = createCarouselControlButton(
+      "carousel-control-prev",
+      "carouselProductPage",
+      "prev",
+      "carousel-control-prev-icon",
+      "Previous"
+    );
+    carouselDiv.appendChild(prevButton);
+
+    var nextButton = createCarouselControlButton(
+      "carousel-control-next",
+      "carouselProductPage",
+      "next",
+      "carousel-control-next-icon",
+      "Next"
+    );
+    carouselDiv.appendChild(nextButton);
+
+    // Create info section container
+    var infoDiv = document.createElement("div");
+    infoDiv.classList.add("productPage__main__info");
+    mainDiv.appendChild(infoDiv);
+
+    // Create info header
+    var infoHeaderDiv = document.createElement("div");
+    infoHeaderDiv.classList.add("productPage__main__info__header");
+    infoDiv.appendChild(infoHeaderDiv);
+
+    // Create availability section
+    var availableDiv = document.createElement("div");
+    availableDiv.classList.add("productPage__main__info__header__available");
+    infoHeaderDiv.appendChild(availableDiv);
+
+    var availableTextSpan = document.createElement("span");
+    availableTextSpan.classList.add(
+      "productPage__main__info__header__available__text"
+    );
+    availableTextSpan.textContent = "Available ";
+
+    var availableIcon = document.createElement("i");
+    availableIcon.classList.add(
+      "fa-solid",
+      "fa-circle-check",
+      "productPage__main__info__header__available__icon"
+    );
+
+    availableTextSpan.appendChild(availableIcon);
+    availableDiv.appendChild(availableTextSpan);
+
+    // Create heart icon
+    var heartIcon = document.createElement("i");
+    heartIcon.classList.add(
+      "fa-solid",
+      "fa-heart",
+      "productPage__main__info__header__icon"
+    );
+    infoHeaderDiv.appendChild(heartIcon);
+
+    // Create product name
+    var productName = document.createElement("h2");
+    productName.classList.add("productPage__main__info__name");
+    productName.textContent = obj.name;
+    infoDiv.appendChild(productName);
+
+    // Create product price
+    var productPrice = document.createElement("p");
+    productPrice.classList.add("productPage__main__info__price");
+    productPrice.textContent = obj.price + "$";
+    infoDiv.appendChild(productPrice);
+
+    // Create product code
+    var productCode = document.createElement("p");
+    productCode.classList.add("productPage__main__info__code");
+    productCode.innerHTML = `Code: <span>${obj.code}</span>`;
+    infoDiv.appendChild(productCode);
+
+    // Create cart buttons container
+    var cartButtonsDiv = document.createElement("div");
+    cartButtonsDiv.classList.add("productPage__main__info__cartButtons");
+    infoDiv.appendChild(cartButtonsDiv);
+
+    // Create quantity buttons
+    var quantityDiv = document.createElement("div");
+    quantityDiv.classList.add("productPage__main__info__cartButtons__quantity");
+    cartButtonsDiv.appendChild(quantityDiv);
+
+    var minusButton = document.createElement("button");
+    minusButton.classList.add(
+      "productPage__main__info__cartButtons__quantity__minus"
+    );
+    minusButton.textContent = "-";
+    quantityDiv.appendChild(minusButton);
+
+    var amountButton = document.createElement("button");
+    amountButton.classList.add(
+      "productPage__main__info__cartButtons__quantity__number"
+    );
+    amountButton.textContent = "1";
+    quantityDiv.appendChild(amountButton);
+
+    var plusButton = document.createElement("button");
+    plusButton.classList.add(
+      "productPage__main__info__cartButtons__quantity__plus"
+    );
+    plusButton.textContent = "+";
+    quantityDiv.appendChild(plusButton);
+
+    // Create addToCart button
+    var addToCartButton = document.createElement("button");
+    addToCartButton.classList.add(
+      "productPage__main__info__cartButtons__addToCart"
+    );
+    addToCartButton.textContent = "Add to cart";
+    cartButtonsDiv.appendChild(addToCartButton);
+
+    // Create accordion
+    var accordionDiv = document.createElement("div");
+    accordionDiv.classList.add(
+      "accordion",
+      "accordion-flush",
+      "productPage__main__info__accordionProductPage"
+    );
+    accordionDiv.id = "accordionProductPage";
+    infoDiv.appendChild(accordionDiv);
+
+    // Create description accordion item
+    var descriptionAccordionItemDiv = document.createElement("div");
+    descriptionAccordionItemDiv.classList.add(
+      "accordion-item",
+      "accordion-item--text"
+    );
+    accordionDiv.appendChild(descriptionAccordionItemDiv);
+
+    var descriptionAccordionHeaderDiv = document.createElement("h2");
+    descriptionAccordionHeaderDiv.classList.add("accordion-header");
+    descriptionAccordionItemDiv.appendChild(descriptionAccordionHeaderDiv);
+
+    var descriptionAccordionButton = createAccordionButton(
+      "Description",
+      "collapseOne",
+      "headingOne",
+      true
+    );
+    descriptionAccordionHeaderDiv.appendChild(descriptionAccordionButton);
+
+    var descriptionAccordionCollapseDiv = document.createElement("div");
+    descriptionAccordionCollapseDiv.id = "collapseOne";
+    descriptionAccordionCollapseDiv.classList.add(
+      "accordion-collapse",
+      "collapse",
+      "show"
+    );
+    descriptionAccordionCollapseDiv.setAttribute(
+      "aria-labelledby",
+      "headingOne"
+    );
+    descriptionAccordionCollapseDiv.setAttribute(
+      "data-bs-parent",
+      "#accordionProductPage"
+    );
+    descriptionAccordionItemDiv.appendChild(descriptionAccordionCollapseDiv);
+
+    var descriptionAccordionBodyDiv = document.createElement("div");
+    descriptionAccordionBodyDiv.classList.add("accordion-body");
+    descriptionAccordionBodyDiv.innerHTML = obj.desc;
+    descriptionAccordionCollapseDiv.appendChild(descriptionAccordionBodyDiv);
+
+    // Create dimensions accordion item
+    var dimensionsAccordionItemDiv = document.createElement("div");
+    dimensionsAccordionItemDiv.classList.add(
+      "accordion-item",
+      "accordion-item--text"
+    );
+    accordionDiv.appendChild(dimensionsAccordionItemDiv);
+
+    var dimensionsAccordionHeaderDiv = document.createElement("h2");
+    dimensionsAccordionHeaderDiv.classList.add("accordion-header");
+    dimensionsAccordionItemDiv.appendChild(dimensionsAccordionHeaderDiv);
+
+    var dimensionsAccordionButton = createAccordionButton(
+      "Dimensions",
+      "collapseTwo",
+      "headingTwo",
+      false
+    );
+    dimensionsAccordionHeaderDiv.appendChild(dimensionsAccordionButton);
+
+    var dimensionsAccordionCollapseDiv = document.createElement("div");
+    dimensionsAccordionCollapseDiv.id = "collapseTwo";
+    dimensionsAccordionCollapseDiv.classList.add(
+      "accordion-collapse",
+      "collapse"
+    );
+    dimensionsAccordionCollapseDiv.setAttribute(
+      "aria-labelledby",
+      "headingTwo"
+    );
+    dimensionsAccordionCollapseDiv.setAttribute(
+      "data-bs-parent",
+      "#accordionProductPage"
+    );
+    dimensionsAccordionItemDiv.appendChild(dimensionsAccordionCollapseDiv);
+
+    var dimensionsAccordionBodyDiv = document.createElement("div");
+    dimensionsAccordionBodyDiv.classList.add("accordion-body");
+    dimensionsAccordionBodyDiv.innerHTML = 
+    ` <p>height: <span>${obj.dimensions.height}</span>cm</p> 
+      <p>width: <span>${obj.dimensions.width}</span>cm</p>
+      <p>length: <span>${obj.dimensions.length}</span>cm</p>`;
+    dimensionsAccordionCollapseDiv.appendChild(dimensionsAccordionBodyDiv);
+
+    // Create share section
+    var shareDiv = document.createElement("div");
+    shareDiv.classList.add("thridAccordion");
+    infoDiv.appendChild(shareDiv);
+
+    var shareTitle = document.createElement("p");
+    shareTitle.classList.add("thridAccordion__title");
+    shareTitle.textContent = "Share";
+    shareDiv.appendChild(shareTitle);
+
+    var shareIconsDiv = document.createElement("div");
+    shareIconsDiv.classList.add("thridAccordion__icons");
+    shareDiv.appendChild(shareIconsDiv);
+
+    var socialMediaLinks = [
+      { href: "https://www.facebook.com/", iconClass: "fa-facebook" },
+      { href: "https://www.instagram.com/", iconClass: "fa-instagram" },
+      { href: "https://twitter.com/", iconClass: "fa-twitter" },
+      { href: "https://www.pinterest.com/", iconClass: "fa-pinterest" },
+    ];
+
+    socialMediaLinks.forEach(function (link) {
+      var iconLink = document.createElement("a");
+      iconLink.href = link.href;
+
+      var icon = document.createElement("i");
+      icon.classList.add("fa-brands", `${link.iconClass}`);
+
+      iconLink.appendChild(icon);
+      shareIconsDiv.appendChild(iconLink);
+    });
+
+    return mainDiv;
+    // Helper function to create carousel control buttons
+    function createCarouselControlButton(
+      className,
+      target,
+      slide,
+      iconClass,
+      ariaLabel
+    ) {
+      var button = document.createElement("button");
+      button.classList.add(className);
+      button.type = "button";
+      button.setAttribute("data-bs-target", "#" + target);
+      button.setAttribute("data-bs-slide", slide);
+
+      var iconSpan = document.createElement("span");
+      iconSpan.classList.add(iconClass);
+      iconSpan.setAttribute("aria-hidden", "true");
+
+      var labelSpan = document.createElement("span");
+      labelSpan.classList.add("visually-hidden");
+      labelSpan.textContent = ariaLabel;
+
+      button.appendChild(iconSpan);
+      button.appendChild(labelSpan);
+
+      return button;
+    }
+
+    // Helper function to create accordion button
+    function createAccordionButton(title, collapseId, headingId, expanded) {
+      var button = document.createElement("button");
+      button.classList.add("accordion-button", "accordion-button--title");
+      button.type = "button";
+      button.setAttribute("data-bs-toggle", "collapse");
+      button.setAttribute("data-bs-target", "#" + collapseId);
+      button.setAttribute("aria-expanded", expanded);
+      button.setAttribute("aria-controls", collapseId);
+      button.id = headingId;
+      button.textContent = title;
+
+      return button;
+    }
   }
 
   return {
@@ -896,6 +1230,21 @@ export const view = (function () {
       main.setAttribute("id", "main");
 
       main.appendChild(loadProductsMain(data));
+
+      pageContent.appendChild(loadHeader());
+      pageContent.appendChild(main);
+      pageContent.appendChild(loadFooter());
+
+      return pageContent;
+    },
+    loadProductPage: (data) => {
+      const pageContent = document.createElement("div");
+      pageContent.setAttribute("id", "pageContent");
+      const main = document.createElement("div");
+      main.classList.add("main");
+      main.setAttribute("id", "main");
+
+      main.appendChild(loadProductMain(data));
 
       pageContent.appendChild(loadHeader());
       pageContent.appendChild(main);

@@ -7,7 +7,7 @@ export const model = (function () {
     tables: "http://localhost:5000/products/tables",
     sofas: "http://localhost:5000/products/sofas",
     popularProducts: "http://localhost:5000/products/popular",
-    productId: "http://localhost:5000/products/:id",
+    productId: "http://localhost:5000/product/",
   };
   
   async function loadData(url) {

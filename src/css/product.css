@@ -181,6 +181,7 @@
 }
 
 .thridAccordion {
+  border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   margin-bottom: 50px;
   display: flex;
