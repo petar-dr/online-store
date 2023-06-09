@@ -9,6 +9,10 @@ export const view = (function () {
     footer: "footer",
     delivery: "iconDelivery",
     service: "iconService",
+    chairs: "chairs",
+    tables: "tables",
+    sofas: "sofas",
+
   };
 
   function item(obj) {
@@ -735,6 +739,7 @@ export const view = (function () {
         imageSrc: "../img/section2/chair.jpg",
         imageAlt: "Card image cap",
         title: "Chairs",
+        aUrl:"products.html?category=chairs",
         content:
           "Some quick example text to build on the card title and make up the bulk of the card's content.",
       },
@@ -742,6 +747,7 @@ export const view = (function () {
         imageSrc: "../img/section2/table.jpg",
         imageAlt: "Card image cap",
         title: "Tables",
+        aUrl:"products.html?category=tables",
         content:
           "Some quick example text to build on the card title and make up the bulk of the card's content.",
       },
@@ -749,6 +755,7 @@ export const view = (function () {
         imageSrc: "../img/section2/sofa.jpg",
         imageAlt: "Card image cap",
         title: "Sofas",
+        aUrl:"products.html?category=sofas",
         content:
           "Some quick example text to build on the card title and make up the bulk of the card's content.",
       },
@@ -757,7 +764,7 @@ export const view = (function () {
     cards.forEach(function (card) {
       // Create card link
       var cardLink = document.createElement("a");
-      cardLink.href = "#";
+      cardLink.href = card.aUrl;
       cardLink.classList.add("card", "text-center");
       section2Div.appendChild(cardLink);
 

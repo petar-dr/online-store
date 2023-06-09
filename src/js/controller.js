@@ -28,8 +28,23 @@ export const controller = function (model, view) {
     let DOM = view.getDOMString();
     let url = model.getUrl();
 
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const category = urlParams.get("category");
+
+    let data;
+    switch (category) {
+      case "chairs":
+        data = await model.loadData(url.chairs);
+      case "tables":
+        data = await model.loadData(url.tables);
+      case "sofas":
+        data = await model.loadData(url.sofas);
+      default:
+        data = await model.loadData(url.allProducts);
+    }
+
     let main = document.getElementById(DOM.productsPage);
-    const data = await model.loadData(url.allProducts);
     main.appendChild(view.loadProductsPage(data));
   }
 
@@ -38,8 +53,8 @@ export const controller = function (model, view) {
       displayHomePage();
       // setupLisiner();
     },
-    products: ()=>{
+    products: () => {
       displayProductsPage();
-    }
+    },
   };
 };

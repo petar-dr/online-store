@@ -3,6 +3,9 @@ export const model = (function () {
 
   const url = {
     allProducts: "http://localhost:5000/products",
+    chairs: "http://localhost:5000/products/chairs",
+    tables: "http://localhost:5000/products/tables",
+    sofas: "http://localhost:5000/products/sofas",
     popularProducts: "http://localhost:5000/products/popular",
     productId: "http://localhost:5000/products/:id",
   };
