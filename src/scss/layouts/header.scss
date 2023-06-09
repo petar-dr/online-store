@@ -14,7 +14,8 @@
   z-index: 110;
   background-color: $primary;
   @include media("md") {
-    height: 65px;
+    // height: 65px;
+    height: fit-content;
   }
 
   &__top {
@@ -39,11 +40,12 @@
     justify-content: space-between;
     padding: 0 40px;
     @include media("md") {
-      padding: 0 30px;
+      padding: 10px 30px;
       height: 100%;
+      border-bottom: 1px solid $border_light;
     }
     @include media("sm") {
-      padding: 0 20px;
+      padding: 10px 20px;
       height: 100%;
     }
 

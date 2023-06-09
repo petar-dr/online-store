@@ -6,7 +6,6 @@
   width: 100%;
   @include media("md") {
     height: calc(100vh - 65px);
-    margin-top: 65px;
   }
   @include media("xs") {
     background-color: #e3e2dc;

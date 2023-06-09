@@ -72,7 +72,8 @@
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
   .header {
-    height: 65px;
+    height: -moz-fit-content;
+    height: fit-content;
   }
 }
 .header__top {
@@ -98,13 +99,14 @@
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
   .header__main {
-    padding: 0 30px;
+    padding: 10px 30px;
     height: 100%;
+    border-bottom: 1px solid #ddd;
   }
 }
 @media ((min-width: 0px) and (max-width: 768px)) {
   .header__main {
-    padding: 0 20px;
+    padding: 10px 20px;
     height: 100%;
   }
 }

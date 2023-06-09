@@ -87,7 +87,8 @@ html {
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
   .header {
-    height: 65px;
+    height: -moz-fit-content;
+    height: fit-content;
   }
 }
 .header__top {
@@ -113,13 +114,14 @@ html {
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
   .header__main {
-    padding: 0 30px;
+    padding: 10px 30px;
     height: 100%;
+    border-bottom: 1px solid #ddd;
   }
 }
 @media ((min-width: 0px) and (max-width: 768px)) {
   .header__main {
-    padding: 0 20px;
+    padding: 10px 20px;
     height: 100%;
   }
 }
@@ -327,7 +329,6 @@ html {
 @media ((min-width: 0px) and (max-width: 992px)) {
   .section1 {
     height: calc(100vh - 65px);
-    margin-top: 65px;
   }
 }
 @media ((min-width: 0px) and (max-width: 576px)) {
@@ -744,6 +745,15 @@ footer {
 .products__aside ul {
   padding: 0;
   list-style: none;
+}
+.products__aside ul li {
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.products__aside ul li:hover {
+  border-bottom: 1px solid #000;
 }
 .products__items {
   width: 80%;
