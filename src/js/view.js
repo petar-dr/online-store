@@ -1093,6 +1093,7 @@ export const view = (function () {
       "headingTwo",
       false
     );
+    dimensionsAccordionButton.classList.add("collapsed")
     dimensionsAccordionHeaderDiv.appendChild(dimensionsAccordionButton);
 
     var dimensionsAccordionCollapseDiv = document.createElement("div");
