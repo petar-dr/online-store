@@ -74,7 +74,7 @@ export const view = (function () {
     // text price
     const price = document.createElement("span");
     price.classList.add("item__article__tag__box__text__name");
-    price.innerHTML = obj.price;
+    price.innerHTML = obj.price + " $";
     text.appendChild(price);
 
     return item;
