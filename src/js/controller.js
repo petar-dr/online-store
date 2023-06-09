@@ -33,13 +33,17 @@ export const controller = function (model, view) {
     const category = urlParams.get("category");
 
     let data;
+    console.log(typeof category);
     switch (category) {
       case "chairs":
         data = await model.loadData(url.chairs);
+        break;
       case "tables":
         data = await model.loadData(url.tables);
+        break;
       case "sofas":
         data = await model.loadData(url.sofas);
+        break;
       default:
         data = await model.loadData(url.allProducts);
     }
