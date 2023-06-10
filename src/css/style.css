@@ -1081,11 +1081,11 @@ footer {
 }
 
 .carousel-control-prev--product {
-  left: -40px;
+  left: -8%;
 }
 
 .carousel-control-next--product {
-  right: -40px;
+  right: -8%;
 }
 
 .carousel-control-prev-icon,
