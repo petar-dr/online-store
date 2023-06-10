@@ -60,22 +60,64 @@ export const view = (function () {
     const text = document.createElement("div");
     text.classList.add("item__article__tag__box__text");
     box.appendChild(text);
+    // marksBox
+    const marksBox = document.createElement("div");
+    marksBox.classList.add("item__article__tag__box__text__marksBox");
+    text.appendChild(marksBox);
     // text p tag new
-    const p = document.createElement("p");
-    p.classList.add("item__article__tag__box__text__p");
-    obj.new ? p.classList.add("displayMark") : p.classList.add("noDisplayMark");
-    p.innerHTML = "NEW";
-    text.appendChild(p);
+    if (obj.new) {
+      const spanNew = document.createElement("span");
+      spanNew.classList.add("item__article__tag__box__text__marksBox__spanNew");
+      spanNew.innerHTML = "NEW";
+
+      marksBox.appendChild(spanNew);
+    }
+    if (obj.discount > 0) {
+      const spanDis = document.createElement("span");
+      spanDis.classList.add("item__article__tag__box__text__marksBox__spanDis");
+      spanDis.innerHTML =`<strong>-</strong> ${ obj.discount}%`;
+      marksBox.appendChild(spanDis);
+      
+    }
     // text h4 item name
     const name = document.createElement("h4");
     name.classList.add("item__article__tag__box__text__name");
     name.innerHTML = obj.name;
     text.appendChild(name);
+
+    // priceBox
+    const priceBox = document.createElement("div");
+    priceBox.classList.add("item__article__tag__box__text__priceBox");
+    text.appendChild(priceBox);
+    
+    //price with discount
+    if (obj.discount > 0) {
+
+      const oldPrice = document.createElement("span");
+      oldPrice.classList.add("item__article__tag__box__text__priceBox__oldPrice");
+      oldPrice.innerHTML =` <del> ${ obj.price}.00 $ </del>`;
+      priceBox.appendChild(oldPrice);
+
+      let newPrice = obj.price - Math.floor(obj.price / obj.discount)
+      console.log(newPrice)
+      const price = document.createElement("span");
+      price.classList.add("item__article__tag__box__text__priceBox__price");
+      price.innerHTML =` ${ obj.price}.00 $`;
+      priceBox.appendChild(price);
+
+    }
+    //price without discount
+    else{
+      const price = document.createElement("span");
+      price.classList.add("item__article__tag__box__text__priceBox__price");
+      price.innerHTML =` ${ obj.price}.00 $`;
+      priceBox.appendChild(price);
+    }
     // text price
-    const price = document.createElement("span");
-    price.classList.add("item__article__tag__box__text__name");
-    price.innerHTML = obj.price + " $";
-    text.appendChild(price);
+    // const price = document.createElement("span");
+    // price.classList.add("item__article__tag__box__text__price");
+    // price.innerHTML = obj.price + ".00 $";
+    // text.appendChild(price);
 
     return item;
   }
@@ -1095,7 +1137,7 @@ export const view = (function () {
       "headingTwo",
       false
     );
-    dimensionsAccordionButton.classList.add("collapsed")
+    dimensionsAccordionButton.classList.add("collapsed");
     dimensionsAccordionHeaderDiv.appendChild(dimensionsAccordionButton);
 
     var dimensionsAccordionCollapseDiv = document.createElement("div");
@@ -1116,8 +1158,7 @@ export const view = (function () {
 
     var dimensionsAccordionBodyDiv = document.createElement("div");
     dimensionsAccordionBodyDiv.classList.add("accordion-body");
-    dimensionsAccordionBodyDiv.innerHTML = 
-    ` <p>height: <span>${obj.dimensions.height}</span></p> 
+    dimensionsAccordionBodyDiv.innerHTML = ` <p>height: <span>${obj.dimensions.height}</span></p> 
       <p>width: <span>${obj.dimensions.width}</span></p>
       <p>length: <span>${obj.dimensions.length}</span></p>`;
     dimensionsAccordionCollapseDiv.appendChild(dimensionsAccordionBodyDiv);
@@ -1165,7 +1206,7 @@ export const view = (function () {
       ariaLabel
     ) {
       var button = document.createElement("button");
-      button.classList.add(className,className2);
+      button.classList.add(className, className2);
       button.type = "button";
       button.setAttribute("data-bs-target", "#" + target);
       button.setAttribute("data-bs-slide", slide);
