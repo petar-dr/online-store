@@ -107,7 +107,7 @@
         height: 100%;
         width: 60%;
         min-width: 200px;
-        max-width: 400px;
+        max-width: 300px;
         font-size: 18px;
         border: none;
         color: black;
@@ -188,7 +188,6 @@
   }
 }
 //carousel arrow
-
 .carousel-control-prev--product {
   left: -80px;
 }
@@ -197,9 +196,17 @@
   right: -80px;
 }
 
+//size of arrow
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   display: inline-block;
   width: 3rem;
   height: 3rem;
+}
+//size of button
+.carousel-control-prev,
+.carousel-control-next {
+  top: calc(50% - 3rem);
+  bottom: calc(50% - 3rem);
+  width: 10%;
 }

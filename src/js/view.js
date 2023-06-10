@@ -1117,9 +1117,9 @@ export const view = (function () {
     var dimensionsAccordionBodyDiv = document.createElement("div");
     dimensionsAccordionBodyDiv.classList.add("accordion-body");
     dimensionsAccordionBodyDiv.innerHTML = 
-    ` <p>height: <span>${obj.dimensions.height}</span>cm</p> 
-      <p>width: <span>${obj.dimensions.width}</span>cm</p>
-      <p>length: <span>${obj.dimensions.length}</span>cm</p>`;
+    ` <p>height: <span>${obj.dimensions.height}</span></p> 
+      <p>width: <span>${obj.dimensions.width}</span></p>
+      <p>length: <span>${obj.dimensions.length}</span></p>`;
     dimensionsAccordionCollapseDiv.appendChild(dimensionsAccordionBodyDiv);
 
     // Create share section

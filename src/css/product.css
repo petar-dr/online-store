@@ -116,7 +116,7 @@
   height: 100%;
   width: 60%;
   min-width: 200px;
-  max-width: 400px;
+  max-width: 300px;
   font-size: 18px;
   border: none;
   color: black;
@@ -212,4 +212,11 @@
   display: inline-block;
   width: 3rem;
   height: 3rem;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  top: calc(50% - 3rem);
+  bottom: calc(50% - 3rem);
+  width: 10%;
 }/*# sourceMappingURL=product.css.map */
