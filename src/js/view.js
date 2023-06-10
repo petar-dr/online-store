@@ -264,7 +264,8 @@ export const view = (function () {
     searchIcon.appendChild(searchIconElement);
 
     // Create profile icon
-    var profileIcon = document.createElement("span");
+    const profileIcon = document.createElement("a");
+    profileIcon.setAttribute("href","profile.html")
     profileIcon.classList.add(
       "header__main__right__profile",
       "p--tb",
@@ -274,12 +275,14 @@ export const view = (function () {
     headerMainRight.appendChild(profileIcon);
 
     // Create profile icon element
-    var profileIconElement = document.createElement("i");
+    const profileIconElement = document.createElement("i");
     profileIconElement.classList.add("fa-solid", "fa-user");
     profileIcon.appendChild(profileIconElement);
 
     // Create favorite icon
-    var favoriteIcon = document.createElement("span");
+    const favoriteIcon = document.createElement("a");
+    favoriteIcon.setAttribute("href","favorite.html")
+
     favoriteIcon.classList.add(
       "header__main__right__favorite",
       "p--tb",
@@ -294,7 +297,8 @@ export const view = (function () {
     favoriteIcon.appendChild(favoriteIconElement);
 
     // Create cart icon
-    var cartIcon = document.createElement("span");
+    const cartIcon = document.createElement("a");
+    cartIcon.setAttribute("href","cart.html")
     cartIcon.classList.add(
       "header__main__right__cart",
       "p--tb",
