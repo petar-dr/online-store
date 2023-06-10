@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  column-gap: 5%;
+  column-gap: 10%;
   margin-top: 50px;
   margin-bottom: 50px;
   @include media("md") {
@@ -21,6 +21,7 @@
     }
     &__carousel {
       height: calc(100vh - 200px);
+      margin: 0 80px;
     }
   }
   &__info {
@@ -189,11 +190,11 @@
 }
 //carousel arrow
 .carousel-control-prev--product {
-  left: -80px;
+  left: -40px;
 }
 
 .carousel-control-next--product {
-  right: -80px;
+  right: -40px;
 }
 
 //size of arrow

@@ -872,8 +872,8 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  -moz-column-gap: 5%;
-       column-gap: 5%;
+  -moz-column-gap: 10%;
+       column-gap: 10%;
   margin-top: 50px;
   margin-bottom: 50px;
 }
@@ -895,6 +895,7 @@ footer {
 }
 .productPage__main__images__carousel {
   height: calc(100vh - 200px);
+  margin: 0 80px;
 }
 .productPage__main__info {
   width: 40%;
@@ -1067,11 +1068,11 @@ footer {
 }
 
 .carousel-control-prev--product {
-  left: -80px;
+  left: -40px;
 }
 
 .carousel-control-next--product {
-  right: -80px;
+  right: -40px;
 }
 
 .carousel-control-prev-icon,
