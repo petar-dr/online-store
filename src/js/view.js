@@ -91,11 +91,13 @@ export const view = (function () {
 
     //price with discount
     if (obj.discount > 0) {
-      const oldPrice = document.createElement("span");
+      const oldPrice = document.createElement("del");
       oldPrice.classList.add(
         "item__article__tag__box__text__priceBox__oldPrice"
       );
-      oldPrice.innerHTML = ` <del> ${obj.price}.00 $ </del>`;
+      oldPrice.innerHTML = `${obj.price}.00 $ `;
+     
+
       priceBox.appendChild(oldPrice);
 
       let newPrice = obj.price - Math.floor(obj.price / obj.discount);
@@ -1024,11 +1026,40 @@ export const view = (function () {
     productName.textContent = obj.name;
     infoDiv.appendChild(productName);
 
-    // Create product price
-    var productPrice = document.createElement("p");
-    productPrice.classList.add("productPage__main__info__price");
-    productPrice.textContent = obj.price + "$";
-    infoDiv.appendChild(productPrice);
+    // Create product price box
+    const  priceBox = document.createElement("span");
+    priceBox.classList.add(
+      "productPage__main__info__priceBox"
+    );
+    infoDiv.appendChild(priceBox);
+
+    if (obj.discount > 0) {
+      const oldPrice = document.createElement("del");
+      oldPrice.classList.add(
+        "productPage__main__info__priceBox__oldPrice"
+      );
+       oldPrice.innerHTML = `  ${obj.price}.00 $ `;
+
+      priceBox.appendChild(oldPrice);
+
+      let newPrice = obj.price - Math.floor(obj.price / obj.discount);
+    
+      const price = document.createElement("span");
+      price.classList.add("productPage__main__info__priceBox__price");
+      price.innerHTML = ` ${newPrice}.00 $`;
+      priceBox.appendChild(price);
+    }
+    //price without discount
+    else {
+      const price = document.createElement("span");
+      price.classList.add("productPage__main__info__priceBox__price");
+      price.innerHTML = ` ${obj.price}.00 $`;
+      priceBox.appendChild(price);
+    }
+    // var productPrice = document.createElement("p");
+    // productPrice.classList.add("productPage__main__info__price");
+    // productPrice.textContent = obj.price + "$";
+    // infoDiv.appendChild(productPrice);
 
     // Create product code
     var productCode = document.createElement("p");

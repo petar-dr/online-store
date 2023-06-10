@@ -52,11 +52,24 @@
       font-size: 30px;
       margin-bottom: 20px;
     }
-    &__price {
-      font-size: 25px;
-      font-weight: 500;
+    &__priceBox {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      column-gap: 10px;
       margin-bottom: 20px;
+      &__oldPrice {
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &__price {
+        font-size: 25px;
+        font-weight: 500;
+      }
     }
+
     &__code {
       font-size: 16px;
       margin-bottom: 20px;
