@@ -849,6 +849,7 @@ footer {
   -moz-column-gap: 5%;
        column-gap: 5%;
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
   .productPage__main {
@@ -1037,4 +1038,19 @@ footer {
   font-size: 18px !important;
   font-weight: 0 !important;
   margin: 0;
+}
+
+.carousel-control-prev--product {
+  left: -80px;
+}
+
+.carousel-control-next--product {
+  right: -80px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
 }/*# sourceMappingURL=style.css.map */

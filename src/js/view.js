@@ -910,6 +910,7 @@ export const view = (function () {
     // Create carousel controls
     var prevButton = createCarouselControlButton(
       "carousel-control-prev",
+      "carousel-control-prev--product",
       "carouselProductPage",
       "prev",
       "carousel-control-prev-icon",
@@ -919,6 +920,7 @@ export const view = (function () {
 
     var nextButton = createCarouselControlButton(
       "carousel-control-next",
+      "carousel-control-next--product",
       "carouselProductPage",
       "next",
       "carousel-control-next-icon",
@@ -1156,13 +1158,14 @@ export const view = (function () {
     // Helper function to create carousel control buttons
     function createCarouselControlButton(
       className,
+      className2,
       target,
       slide,
       iconClass,
       ariaLabel
     ) {
       var button = document.createElement("button");
-      button.classList.add(className);
+      button.classList.add(className,className2);
       button.type = "button";
       button.setAttribute("data-bs-target", "#" + target);
       button.setAttribute("data-bs-slide", slide);
