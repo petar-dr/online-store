@@ -75,9 +75,8 @@ export const view = (function () {
     if (obj.discount > 0) {
       const spanDis = document.createElement("span");
       spanDis.classList.add("item__article__tag__box__text__marksBox__spanDis");
-      spanDis.innerHTML =`<strong>-</strong> ${ obj.discount}%`;
+      spanDis.innerHTML = `<strong>-</strong> ${obj.discount}%`;
       marksBox.appendChild(spanDis);
-      
     }
     // text h4 item name
     const name = document.createElement("h4");
@@ -89,28 +88,28 @@ export const view = (function () {
     const priceBox = document.createElement("div");
     priceBox.classList.add("item__article__tag__box__text__priceBox");
     text.appendChild(priceBox);
-    
+
     //price with discount
     if (obj.discount > 0) {
-
       const oldPrice = document.createElement("span");
-      oldPrice.classList.add("item__article__tag__box__text__priceBox__oldPrice");
-      oldPrice.innerHTML =` <del> ${ obj.price}.00 $ </del>`;
+      oldPrice.classList.add(
+        "item__article__tag__box__text__priceBox__oldPrice"
+      );
+      oldPrice.innerHTML = ` <del> ${obj.price}.00 $ </del>`;
       priceBox.appendChild(oldPrice);
 
-      let newPrice = obj.price - Math.floor(obj.price / obj.discount)
-      console.log(newPrice)
+      let newPrice = obj.price - Math.floor(obj.price / obj.discount);
+      console.log(newPrice);
       const price = document.createElement("span");
       price.classList.add("item__article__tag__box__text__priceBox__price");
-      price.innerHTML =` ${ obj.price}.00 $`;
+      price.innerHTML = ` ${newPrice}.00 $`;
       priceBox.appendChild(price);
-
     }
     //price without discount
-    else{
+    else {
       const price = document.createElement("span");
       price.classList.add("item__article__tag__box__text__priceBox__price");
-      price.innerHTML =` ${ obj.price}.00 $`;
+      price.innerHTML = ` ${obj.price}.00 $`;
       priceBox.appendChild(price);
     }
     // text price
@@ -170,6 +169,10 @@ export const view = (function () {
     var headerMainLeft = document.createElement("div");
     headerMainLeft.classList.add("header__main__left", "col-lg-4", "col-xl-4");
     headerMain.appendChild(headerMainLeft);
+    //Create a tag for Delivery
+    const aDelivery = document.createElement("a");
+    aDelivery.setAttribute("href", "delivery.html");
+    headerMainLeft.appendChild(aDelivery);
 
     // Create iconDelivery element
     var iconDelivery = document.createElement("span");
@@ -179,13 +182,18 @@ export const view = (function () {
       "p--tb",
       "text--medium"
     );
-    headerMainLeft.appendChild(iconDelivery);
+    aDelivery.appendChild(iconDelivery);
 
     // Create iconDelivery icon element
     var iconDeliveryIcon = document.createElement("i");
     iconDeliveryIcon.classList.add("icon--left", "fa-solid", "fa-truck");
     iconDelivery.appendChild(iconDeliveryIcon);
     iconDelivery.innerHTML += "Delivery";
+
+    //Create a tag for Service
+    const aService = document.createElement("a");
+    aService.setAttribute("href", "service.html");
+    headerMainLeft.appendChild(aService);
 
     // Create iconService element
     var iconService = document.createElement("span");
@@ -196,7 +204,7 @@ export const view = (function () {
       "text--medium",
       "ml--20px"
     );
-    headerMainLeft.appendChild(iconService);
+    aService.appendChild(iconService);
 
     // Create iconService icon element
     var iconServiceIcon = document.createElement("i");

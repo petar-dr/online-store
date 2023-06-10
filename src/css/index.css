@@ -1,4 +1,9 @@
-/*# sourceMappingURL=index.css.map */width: 30px;
+.btnH {
+  display: none;
+}
+
+.ham {
+  width: 30px;
   height: 20px;
   background-color: transparent;
   transition: 0.3s;
