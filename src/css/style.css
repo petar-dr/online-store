@@ -856,9 +856,6 @@ footer {
 }
 .item__article__tag__box__text__priceBox__oldPrice {
   font-size: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .item__article__tag__box__text__priceBox__price {
   font-size: 20px;
@@ -938,9 +935,6 @@ footer {
 }
 .productPage__main__info__priceBox__oldPrice {
   font-size: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .productPage__main__info__priceBox__price {
   font-size: 25px;
