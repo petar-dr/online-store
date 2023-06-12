@@ -49,13 +49,13 @@
   font-size: 15px;
 }
 .productPage__main__info__header__available__icon {
-  color: greenyellow;
+  color: #87d61f;
 }
 .productPage__main__info__header__icon {
   color: #e3e2dc;
 }
 .productPage__main__info__header__icon:hover {
-  color: greenyellow;
+  color: #87d61f;
 }
 .productPage__main__info__name {
   font-size: 30px;
@@ -131,7 +131,7 @@
   font-size: 18px;
   border: none;
   color: black;
-  background-color: greenyellow;
+  background-color: #87d61f;
 }
 .productPage__main__info__cartButtons__addToCart:hover {
   color: white;

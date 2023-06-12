@@ -25,7 +25,7 @@
       height: fit-content;
       z-index: 3;
       &:hover i {
-        color: greenyellow;
+        color: $accent;
       }
       & i {
         color: #e3e2dc;
@@ -68,7 +68,7 @@
             }
             &__spanDis {
               color: white;
-              background-color: greenyellow;
+              background-color: $accent;
               padding: 5px 10px;
               font-weight: 1000;
             }
