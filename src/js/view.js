@@ -23,15 +23,11 @@ export const view = (function () {
     const article = document.createElement("div");
     article.classList.add("item__article");
     item.appendChild(article);
-    //div for heart icon
-    const articleHeart = document.createElement("div");
-    articleHeart.classList.add("item__article__heart");
-    article.appendChild(articleHeart);
     // heart icon
-    const icon = document.createElement("i");
-    icon.classList.add("fa-solid");
-    icon.classList.add("fa-heart");
-    articleHeart.appendChild(icon);
+    // const icon = document.createElement("i");
+    // icon.setAttribute("id","itemLikeIcon")
+    // icon.classList.add("fa-solid", "fa-heart", "item__article__heart");
+    // article.appendChild(icon);
     //a tag
     const aTag = document.createElement("a");
     let url = "product.html?id=" + obj.id;
@@ -44,16 +40,16 @@ export const view = (function () {
     aTag.appendChild(box);
     // img background
     const imgBackground = document.createElement("img");
+    imgBackground.setAttribute("id", "itemBackground");
     imgBackground.setAttribute("src", obj.hoverImg);
     imgBackground.setAttribute("alt", obj.name);
-    imgBackground.setAttribute("href", "#");
+    
     imgBackground.classList.add("item__article__tag__box__background");
     box.appendChild(imgBackground);
     const img = document.createElement("img");
     // item img
     img.setAttribute("src", obj.img.img1);
     img.setAttribute("alt", obj.name);
-    img.setAttribute("href", "#");
     img.classList.add("item__article__tag__box__img");
     box.appendChild(img);
     // div text
@@ -113,14 +109,10 @@ export const view = (function () {
       price.innerHTML = ` ${obj.price}.00 $`;
       priceBox.appendChild(price);
     }
-    // text price
-    // const price = document.createElement("span");
-    // price.classList.add("item__article__tag__box__text__price");
-    // price.innerHTML = obj.price + ".00 $";
-    // text.appendChild(price);
-
+    
     return item;
   }
+  
   function loadDelivery() {
     const main = document.getElementById("main");
     const content = `   <div class="products">

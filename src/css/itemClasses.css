@@ -30,12 +30,10 @@
   height: -moz-fit-content;
   height: fit-content;
   z-index: 3;
-}
-.item__article__heart:hover i {
-  color: #87d61f;
-}
-.item__article__heart i {
   color: #e3e2dc;
+}
+.item__article__heart:hover {
+  color: #87d61f;
 }
 .item__article__tag__box {
   position: relative;

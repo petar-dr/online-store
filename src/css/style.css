@@ -795,8 +795,9 @@ footer {
   height: -moz-fit-content;
   height: fit-content;
   z-index: 3;
+  color: #e3e2dc;
 }
-.item__article__heart:hover i {
+.item__article__heart:hover {
   color: #87d61f;
 }
 .item__article__heart i {

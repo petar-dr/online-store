@@ -2,12 +2,8 @@
 export const controller = function (model, view) {
   let setupLisiner = function () {
     let DOM = view.getDOMString();
-    document
-      .getElementById(DOM.delivery)
-      .addEventListener("click", displayDelivery);
-    document
-      .getElementById(DOM.service)
-      .addEventListener("click", displayService);
+    
+    
   };
   //header function
   function displayDelivery() {
@@ -95,7 +91,7 @@ export const controller = function (model, view) {
   return {
     init: () => {
       displayHomePage();
-      // setupLisiner();
+      //setupLisiner();
     },
     products: () => {
       displayProductsPage();

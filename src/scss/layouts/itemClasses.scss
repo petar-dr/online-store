@@ -24,11 +24,9 @@
       width: fit-content;
       height: fit-content;
       z-index: 3;
-      &:hover i {
+      color: #e3e2dc;
+      &:hover {
         color: $accent;
-      }
-      & i {
-        color: #e3e2dc;
       }
     }
     &__tag {
