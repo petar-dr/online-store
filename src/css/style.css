@@ -912,6 +912,7 @@ footer {
 }
 .productPage__main__info__header__available {
   font-size: 15px;
+  cursor: pointer;
 }
 .productPage__main__info__header__available__icon {
   color: #87d61f;

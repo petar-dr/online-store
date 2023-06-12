@@ -37,6 +37,8 @@
       margin-bottom: 20px;
       &__available {
         font-size: 15px;
+        cursor: pointer;
+
         &__icon {
           color: $accent;
         }
