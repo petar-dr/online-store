@@ -43,6 +43,7 @@
       }
       &__icon {
         color: #e3e2dc;
+        cursor: pointer;
         &:hover {
           color: $accent;
         }

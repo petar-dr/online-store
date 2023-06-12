@@ -53,6 +53,7 @@
 }
 .productPage__main__info__header__icon {
   color: #e3e2dc;
+  cursor: pointer;
 }
 .productPage__main__info__header__icon:hover {
   color: #87d61f;

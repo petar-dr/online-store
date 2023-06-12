@@ -215,6 +215,7 @@ html {
 .header__nav__box__list {
   width: 100%;
   justify-content: space-between;
+  cursor: pointer;
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
   .header__nav__box__list {
@@ -917,6 +918,7 @@ footer {
 }
 .productPage__main__info__header__icon {
   color: #e3e2dc;
+  cursor: pointer;
 }
 .productPage__main__info__header__icon:hover {
   color: #87d61f;
