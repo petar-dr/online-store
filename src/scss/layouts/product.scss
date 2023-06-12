@@ -43,11 +43,10 @@
           color: $accent;
         }
       }
-      &__icon {
-        color: #e3e2dc;
+      &__heartIcon {
         cursor: pointer;
         &:hover {
-          color: $accent;
+          color: black;
         }
       }
     }
@@ -223,4 +222,10 @@
   top: calc(50% - 3rem);
   bottom: calc(50% - 3rem);
   width: 10%;
+}
+.productPage__main__info__header__heartIcon--normal{
+  color: #e3e2dc;
+}
+.productPage__main__info__header__heartIcon--clicked{
+  color: $accent;
 }

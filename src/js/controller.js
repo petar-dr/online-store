@@ -53,15 +53,44 @@ export const controller = function (model, view) {
   async function displayProductPage() {
     let DOM = view.getDOMString();
     let url = model.getUrl();
+    let likeArray = JSON.parse(localStorage.getItem("likeItems"));
 
     let queryString = window.location.search;
     let urlParams = new URLSearchParams(queryString);
     let id = urlParams.get("id");
 
-    console.log(url.productId + id);
     let data = await model.loadData(url.productId + id);
     let main = document.getElementById(DOM.productPage);
-    main.appendChild(view.loadProductPage(data));
+    main.appendChild(view.loadProductPage(data, likeArray));
+
+    //Event listener for like button
+    document.getElementById("heartIcon").addEventListener("click", addLike);
+  }
+  // like icon
+  function addLike() {
+    const like = document.getElementById("heartIcon");
+    like.classList.toggle("productPage__main__info__header__heartIcon--normal");
+    like.classList.toggle(
+      "productPage__main__info__header__heartIcon--clicked"
+    );
+    setLocalStorageLike(like.dataset.id);
+  }
+  function setLocalStorageLike(data) {
+    let likeArray = [];
+    if (localStorage.getItem("likeItems") == null) {
+      likeArray.push(data);
+
+      localStorage.setItem("likeItems", JSON.stringify(likeArray));
+    } else {
+      likeArray = JSON.parse(localStorage.getItem("likeItems"));
+      console.log(Array);
+      if (likeArray.indexOf(data) > -1) {
+        likeArray.splice(likeArray.indexOf(data), 1);
+      } else {
+        likeArray.push(data);
+      }
+      localStorage.setItem("likeItems", JSON.stringify(likeArray));
+    }
   }
   return {
     init: () => {

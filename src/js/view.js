@@ -96,12 +96,11 @@ export const view = (function () {
         "item__article__tag__box__text__priceBox__oldPrice"
       );
       oldPrice.innerHTML = `${obj.price}.00 $ `;
-     
 
       priceBox.appendChild(oldPrice);
 
       let newPrice = obj.price - Math.floor(obj.price / obj.discount);
-      console.log(newPrice);
+
       const price = document.createElement("span");
       price.classList.add("item__article__tag__box__text__priceBox__price");
       price.innerHTML = ` ${newPrice}.00 $`;
@@ -265,7 +264,7 @@ export const view = (function () {
 
     // Create profile icon
     const profileIcon = document.createElement("a");
-    profileIcon.setAttribute("href","profile.html")
+    profileIcon.setAttribute("href", "profile.html");
     profileIcon.classList.add(
       "header__main__right__profile",
       "p--tb",
@@ -281,7 +280,7 @@ export const view = (function () {
 
     // Create favorite icon
     const favoriteIcon = document.createElement("a");
-    favoriteIcon.setAttribute("href","favorite.html")
+    favoriteIcon.setAttribute("href", "favorite.html");
 
     favoriteIcon.classList.add(
       "header__main__right__favorite",
@@ -298,7 +297,7 @@ export const view = (function () {
 
     // Create cart icon
     const cartIcon = document.createElement("a");
-    cartIcon.setAttribute("href","cart.html")
+    cartIcon.setAttribute("href", "cart.html");
     cartIcon.classList.add(
       "header__main__right__cart",
       "p--tb",
@@ -923,7 +922,7 @@ export const view = (function () {
     return productsDiv;
   }
   // product page
-  function loadProductMain(obj) {
+  function loadProductMain(obj, array) {
     // Create main container
     var mainDiv = document.createElement("main");
     mainDiv.classList.add("productPage__main");
@@ -1017,11 +1016,24 @@ export const view = (function () {
 
     // Create heart icon
     var heartIcon = document.createElement("i");
+    heartIcon.setAttribute("id", "heartIcon");
     heartIcon.classList.add(
       "fa-solid",
       "fa-heart",
-      "productPage__main__info__header__icon"
+      "productPage__main__info__header__heartIcon"
     );
+
+    if (array.includes(obj.id.toString())) {
+      heartIcon.classList.add(
+        "productPage__main__info__header__heartIcon--clicked"
+      );
+    } else {
+      heartIcon.classList.add(
+        "productPage__main__info__header__heartIcon--normal"
+      );
+    }
+
+    heartIcon.setAttribute("data-id", `${obj.id}`);
     infoHeaderDiv.appendChild(heartIcon);
 
     // Create product name
@@ -1031,23 +1043,19 @@ export const view = (function () {
     infoDiv.appendChild(productName);
 
     // Create product price box
-    const  priceBox = document.createElement("span");
-    priceBox.classList.add(
-      "productPage__main__info__priceBox"
-    );
+    const priceBox = document.createElement("span");
+    priceBox.classList.add("productPage__main__info__priceBox");
     infoDiv.appendChild(priceBox);
 
     if (obj.discount > 0) {
       const oldPrice = document.createElement("del");
-      oldPrice.classList.add(
-        "productPage__main__info__priceBox__oldPrice"
-      );
-       oldPrice.innerHTML = `  ${obj.price}.00 $ `;
+      oldPrice.classList.add("productPage__main__info__priceBox__oldPrice");
+      oldPrice.innerHTML = `  ${obj.price}.00 $ `;
 
       priceBox.appendChild(oldPrice);
 
       let newPrice = obj.price - Math.floor(obj.price / obj.discount);
-    
+
       const price = document.createElement("span");
       price.classList.add("productPage__main__info__priceBox__price");
       price.innerHTML = ` ${newPrice}.00 $`;
@@ -1325,14 +1333,14 @@ export const view = (function () {
 
       return pageContent;
     },
-    loadProductPage: (data) => {
+    loadProductPage: (data, array) => {
       const pageContent = document.createElement("div");
       pageContent.setAttribute("id", "pageContent");
       const main = document.createElement("div");
       main.classList.add("main");
       main.setAttribute("id", "main");
 
-      main.appendChild(loadProductMain(data));
+      main.appendChild(loadProductMain(data, array));
 
       pageContent.appendChild(loadHeader());
       pageContent.appendChild(main);

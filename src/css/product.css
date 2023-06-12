@@ -52,12 +52,11 @@
 .productPage__main__info__header__available__icon {
   color: #87d61f;
 }
-.productPage__main__info__header__icon {
-  color: #e3e2dc;
+.productPage__main__info__header__heartIcon {
   cursor: pointer;
 }
-.productPage__main__info__header__icon:hover {
-  color: #87d61f;
+.productPage__main__info__header__heartIcon:hover {
+  color: black;
 }
 .productPage__main__info__name {
   font-size: 30px;
@@ -232,4 +231,12 @@
   top: calc(50% - 3rem);
   bottom: calc(50% - 3rem);
   width: 10%;
+}
+
+.productPage__main__info__header__heartIcon--normal {
+  color: #e3e2dc;
+}
+
+.productPage__main__info__header__heartIcon--clicked {
+  color: #87d61f;
 }/*# sourceMappingURL=product.css.map */
