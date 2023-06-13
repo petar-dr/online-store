@@ -1,0 +1,84 @@
+.signupPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signupPage__signupBox {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 0;
+  font-size: 18px;
+  row-gap: 20px;
+  width: 100%;
+  max-width: 300px;
+}
+.signupPage__signupBox__title {
+  font-size: 30px;
+}
+.signupPage__signupBox__name__input {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 100%;
+}
+.signupPage__signupBox__name__input:focus {
+  outline: none;
+}
+.signupPage__signupBox__name__warning {
+  display: none;
+  color: red;
+  font-size: 16px;
+  margin: 0;
+}
+.signupPage__signupBox__email__input {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 100%;
+}
+.signupPage__signupBox__email__input:focus {
+  outline: none;
+}
+.signupPage__signupBox__email__warning {
+  display: none;
+  color: red;
+  font-size: 16px;
+  margin: 0;
+}
+.signupPage__signupBox__password {
+  margin-bottom: 20px;
+}
+.signupPage__signupBox__password__input {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 100%;
+}
+.signupPage__signupBox__password__input:focus {
+  outline: none;
+}
+.signupPage__signupBox__password__warning {
+  display: none;
+  color: red;
+  font-size: 16px;
+  margin: 0;
+}
+.signupPage__signupBox__submit {
+  border: none;
+  background-color: black;
+  color: white;
+  font-size: 20px;
+}
+.signupPage__signupBox__submit:hover {
+  background-color: #87d61f;
+  color: black;
+}
+.signupPage__signupBox__message {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  color: grey;
+}
+.signupPage__signupBox__message__link {
+  border-bottom: 1px solid transparent;
+}
+.signupPage__signupBox__message__link:hover {
+  border-bottom: 1px solid black;
+}/*# sourceMappingURL=singup.css.map */

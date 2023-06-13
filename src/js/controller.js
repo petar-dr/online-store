@@ -2,16 +2,14 @@
 export const controller = function (model, view) {
   let setupLisiner = function () {
     let DOM = view.getDOMString();
+    window.addEventListener('click', ispis);
     
-    
+   
   };
-  //header function
-  function displayDelivery() {
-    view.loadDelivery();
+  function ispis(){
+    console.log("promenjeno")
   }
-  function displayService() {
-    view.loadService();
-  }
+  //pages
   async function displayHomePage() {
     let DOM = view.getDOMString();
     let url = model.getUrl();
@@ -62,6 +60,13 @@ export const controller = function (model, view) {
     //Event listener for like button
     document.getElementById("heartIcon").addEventListener("click", addLike);
   }
+  function displayLoginPage(){
+    let DOM = view.getDOMString();
+    let url = model.getUrl();  
+
+    let main = document.getElementById(DOM.loginPage);
+    main.appendChild(view.loadLoginPage());
+  }
   // like icon
   function addLike() {
     const like = document.getElementById("heartIcon");
@@ -88,16 +93,20 @@ export const controller = function (model, view) {
       localStorage.setItem("likeItems", JSON.stringify(likeArray));
     }
   }
+  
   return {
     init: () => {
       displayHomePage();
-      //setupLisiner();
+      setupLisiner();
     },
     products: () => {
       displayProductsPage();
     },
     product: () => {
       displayProductPage();
+    },
+    login: () => {
+      displayLoginPage();
     },
   };
 };

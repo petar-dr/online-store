@@ -6,6 +6,7 @@ export const view = (function () {
     products: "products",
     productsPage: "products_page",
     productPage: "product_page",
+    loginPage: "login_page",
     main: "main",
     footer: "footer",
     delivery: "iconDelivery",
@@ -43,7 +44,7 @@ export const view = (function () {
     imgBackground.setAttribute("id", "itemBackground");
     imgBackground.setAttribute("src", obj.hoverImg);
     imgBackground.setAttribute("alt", obj.name);
-    
+
     imgBackground.classList.add("item__article__tag__box__background");
     box.appendChild(imgBackground);
     const img = document.createElement("img");
@@ -109,10 +110,10 @@ export const view = (function () {
       price.innerHTML = ` ${obj.price}.00 $`;
       priceBox.appendChild(price);
     }
-    
+
     return item;
   }
-  
+
   function loadDelivery() {
     const main = document.getElementById("main");
     const content = `   <div class="products">
@@ -254,21 +255,21 @@ export const view = (function () {
     searchIconElement.classList.add("fa-solid", "fa-magnifying-glass");
     searchIcon.appendChild(searchIconElement);
 
-    // Create profile icon
-    const profileIcon = document.createElement("a");
-    profileIcon.setAttribute("href", "profile.html");
-    profileIcon.classList.add(
+    // Create account icon
+    const accountIcon = document.createElement("a");
+    accountIcon.setAttribute("href", "singup.html");
+    accountIcon.classList.add(
       "header__main__right__profile",
       "p--tb",
       "ml--20px",
       "text--medium"
     );
-    headerMainRight.appendChild(profileIcon);
+    headerMainRight.appendChild(accountIcon);
 
-    // Create profile icon element
-    const profileIconElement = document.createElement("i");
-    profileIconElement.classList.add("fa-solid", "fa-user");
-    profileIcon.appendChild(profileIconElement);
+    // Create account icon element
+    const accountIconElement = document.createElement("i");
+    accountIconElement.classList.add("fa-solid", "fa-user");
+    accountIcon.appendChild(accountIconElement);
 
     // Create favorite icon
     const favoriteIcon = document.createElement("a");
@@ -1283,7 +1284,84 @@ export const view = (function () {
       return button;
     }
   }
+  function loadLoginMain() {
+    // Create main loginPageMain container
+    const loginPageMain = document.createElement("div");
+    loginPageMain.classList.add("loginPageMain");
 
+    // Create loginBox
+    const loginBoxDiv = document.createElement("div");
+    loginBoxDiv.classList.add("loginPageMain__loginBox");
+    loginPageMain.appendChild(loginBoxDiv);
+
+    // Create loginBox title
+    const titleH3 = document.createElement("h3");
+    titleH3.classList.add("loginPageMain__loginBox__title");
+    titleH3.textContent = "Log in";
+    loginBoxDiv.appendChild(titleH3);
+
+    // Create email input field
+    const emailDiv = document.createElement("div");
+    emailDiv.classList.add("loginPageMain__loginBox__email");
+    loginBoxDiv.appendChild(emailDiv);
+
+    const emailInput = document.createElement("input");
+    emailInput.type = "email";
+    emailInput.classList.add("loginPageMain__loginBox__email__input");
+    emailInput.placeholder = "youremail@email.com";
+    emailDiv.appendChild(emailInput);
+
+    const emailWarningP = document.createElement("p");
+    emailWarningP.id = "emailInput";
+    emailWarningP.classList.add("loginPageMain__loginBox__email__warning");
+    emailWarningP.textContent = "enter email";
+    emailDiv.appendChild(emailWarningP);
+
+    // Create password input field
+    const passwordDiv = document.createElement("div");
+    passwordDiv.classList.add("loginPageMain__loginBox__password");
+    loginBoxDiv.appendChild(passwordDiv);
+
+    const passwordInput = document.createElement("input");
+    passwordInput.type = "password";
+    passwordInput.classList.add("loginPageMain__loginBox__password__input");
+    passwordInput.placeholder = "password";
+    passwordDiv.appendChild(passwordInput);
+
+    const passwordWarningP = document.createElement("p");
+    passwordWarningP.id = "passwordInput";
+    passwordWarningP.classList.add(
+      "loginPageMain__loginBox__password__warning"
+    );
+    passwordWarningP.textContent = "enter password";
+    passwordDiv.appendChild(passwordWarningP);
+
+    // Create login button
+    const loginButton = document.createElement("button");
+    loginButton.classList.add("loginPageMain__loginBox__submit");
+    loginButton.textContent = "Log in";
+    loginBoxDiv.appendChild(loginButton);
+
+    // Create message section
+    const messageDiv = document.createElement("div");
+    messageDiv.classList.add("loginPageMain__loginBox__message");
+    loginBoxDiv.appendChild(messageDiv);
+
+    // Create message p
+    const messageP = document.createElement("p");
+    messageP.innerHTML = "If you don't have an account, ";
+
+    //Create message link and text
+    const aLink = document.createElement("a");
+    aLink.setAttribute("href", 'signup.html');
+    aLink.classList.add("loginPageMain__loginBox__message__link");
+    aLink.textContent = "sign up";
+    messageDiv.appendChild(messageP);
+    messageP.appendChild(aLink);
+    messageP.innerHTML += ".";
+
+    return loginPageMain;
+  }
   return {
     getDOMString: () => {
       return DOMString;
@@ -1336,6 +1414,16 @@ export const view = (function () {
 
       pageContent.appendChild(loadHeader());
       pageContent.appendChild(main);
+      pageContent.appendChild(loadFooter());
+
+      return pageContent;
+    },
+    loadLoginPage: () => {
+      const pageContent = document.createElement("div");
+      pageContent.setAttribute("id", "pageContent");
+
+      pageContent.appendChild(loadHeader());
+      pageContent.appendChild(loadLoginMain());
       pageContent.appendChild(loadFooter());
 
       return pageContent;
