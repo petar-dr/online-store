@@ -1385,15 +1385,15 @@ export const view = (function () {
     signupBoxDiv.appendChild(nameDiv);
 
     const nameInput = document.createElement("input");
+    nameInput.id = "nameInput";
     nameInput.type = "text";
     nameInput.classList.add("signupPageMain__signupBox__name__input");
     nameInput.placeholder = "name";
     nameDiv.appendChild(nameInput);
 
     const nameWarningP = document.createElement("p");
-    nameWarningP.id = "nameInput";
+    nameWarningP.id = "nameWarning";
     nameWarningP.classList.add("signupPageMain__signupBox__name__warning");
-    nameWarningP.textContent = "enter name";
     nameDiv.appendChild(nameWarningP);
 
     // Create email input field
@@ -1402,38 +1402,45 @@ export const view = (function () {
     signupBoxDiv.appendChild(emailDiv);
 
     const emailInput = document.createElement("input");
+    emailInput.id = "emailInput";
     emailInput.type = "email";
     emailInput.classList.add("signupPageMain__signupBox__email__input");
     emailInput.placeholder = "youremail@email.com";
     emailDiv.appendChild(emailInput);
 
     const emailWarningP = document.createElement("p");
-    emailWarningP.id = "emailInput";
+    emailWarningP.id = "emailWarning";
     emailWarningP.classList.add("signupPageMain__signupBox__email__warning");
-    emailWarningP.textContent = "enter email";
     emailDiv.appendChild(emailWarningP);
 
     // Create password input field
     const passwordDiv = document.createElement("div");
     passwordDiv.classList.add("signupPageMain__signupBox__password");
     signupBoxDiv.appendChild(passwordDiv);
+    
+    //Create password icon
+    const passwordIcon = document.createElement("i");
+    passwordIcon.id = "passwordIcon";
+    passwordIcon.classList.add("fa-solid", "fa-eye-slash");
+    passwordDiv.appendChild(passwordIcon);
 
     const passwordInput = document.createElement("input");
+    passwordInput.id = "passwordInput";
     passwordInput.type = "password";
     passwordInput.classList.add("signupPageMain__signupBox__password__input");
     passwordInput.placeholder = "password";
     passwordDiv.appendChild(passwordInput);
 
     const passwordWarningP = document.createElement("p");
-    passwordWarningP.id = "passwordInput";
+    passwordWarningP.id = "passwordWarning";
     passwordWarningP.classList.add(
       "signupPageMain__signupBox__password__warning"
     );
-    passwordWarningP.textContent = "enter password";
     passwordDiv.appendChild(passwordWarningP);
 
     // Create signup button
     const signupButton = document.createElement("button");
+    signupButton.id = "submitBtn";
     signupButton.classList.add("signupPageMain__signupBox__submit");
     signupButton.textContent = "Sign up";
     signupBoxDiv.appendChild(signupButton);
@@ -1445,8 +1452,8 @@ export const view = (function () {
 
     // Create message p
     const messageP = document.createElement("p");
-   messageP.innerHTML ="If you already have an account, ";
-  
+    messageP.innerHTML = "If you already have an account, ";
+
     //Create message link and text
     const aLink = document.createElement("a");
     aLink.setAttribute("href", "login.html");
@@ -1529,12 +1536,11 @@ export const view = (function () {
       const pageContent = document.createElement("div");
       pageContent.setAttribute("id", "pageContent");
 
-       pageContent.appendChild(loadHeader());
+      pageContent.appendChild(loadHeader());
       pageContent.appendChild(loadSignupMain());
       pageContent.appendChild(loadFooter());
 
       return pageContent;
-     
     },
   };
 })();

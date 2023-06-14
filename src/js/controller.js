@@ -2,12 +2,10 @@
 export const controller = function (model, view) {
   let setupLisiner = function () {
     let DOM = view.getDOMString();
-    window.addEventListener('click', ispis);
-    
-   
+    window.addEventListener("click", ispis);
   };
-  function ispis(){
-    console.log("promenjeno")
+  function ispis() {
+    console.log("promenjeno");
   }
   //pages
   async function displayHomePage() {
@@ -60,17 +58,73 @@ export const controller = function (model, view) {
     //Event listener for like button
     document.getElementById("heartIcon").addEventListener("click", addLike);
   }
-  function displayLoginPage(){
+  function displayLoginPage() {
     let DOM = view.getDOMString();
 
     let main = document.getElementById(DOM.loginPage);
     main.appendChild(view.loadLoginPage());
   }
-  function displaySignupPage(){
+  function displaySignupPage() {
     let DOM = view.getDOMString();
 
     let main = document.getElementById(DOM.signupPage);
     main.appendChild(view.loadSignupPage());
+
+    document.getElementById("submitBtn").addEventListener("click", checkData);
+    document
+      .getElementById("passwordIcon")
+      .addEventListener("click", passwordIcon);
+  }
+  function passwordIcon() {
+    document.getElementById("passwordIcon").classList.toggle("fa-eye-slash");
+    document.getElementById("passwordIcon").classList.toggle("fa-eye");
+    const type = document.getElementById("passwordInput").type;
+    console.log(type);
+    type == "password"
+      ? (document.getElementById("passwordInput").type = "text")
+      : (document.getElementById("passwordInput").type = "password");
+  }
+  function checkData() {
+    // Check name
+    let name = document.getElementById("nameInput").value;
+    let checkName = new RegExp(/^[a-zA-Z]{2,15}$/);
+    if (name === "") {
+      document.getElementById("nameWarning").innerHTML = "Field name is empty";
+    } else if (checkName.test(name)) {
+      document.getElementById("nameWarning").innerHTML = "";
+    } else {
+      document.getElementById("nameWarning").innerHTML =
+        "The name was not entered correctly!";
+    }
+    // Check email
+    let email = document.getElementById("emailInput").value;
+    let checkEmail = new RegExp(
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    );
+    if (email === "") {
+      document.getElementById("emailWarning").innerHTML =
+        "Field email is empty";
+    } else if (checkEmail.test(email)) {
+      document.getElementById("emailWarning").innerHTML = "";
+    } else {
+      document.getElementById("emailWarning").innerHTML =
+        "The email was not entered correctly!";
+    }
+    // Check password
+    let password = document.getElementById("passwordInput").value;
+    console.log(password);
+    let checkPassword = new RegExp(
+      /^(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]){6,16}/
+    );
+    if (password === "") {
+      document.getElementById("passwordWarning").innerHTML =
+        "Field password is empty";
+    } else if (checkPassword.test(password)) {
+      document.getElementById("passwordWarning").innerHTML = "";
+    } else {
+      document.getElementById("passwordWarning").innerHTML =
+        "The password was not entered correctly!";
+    }
   }
   // like icon
   function addLike() {
@@ -98,7 +152,7 @@ export const controller = function (model, view) {
       localStorage.setItem("likeItems", JSON.stringify(likeArray));
     }
   }
-  
+
   return {
     init: () => {
       displayHomePage();
@@ -115,6 +169,6 @@ export const controller = function (model, view) {
     },
     signup: () => {
       displaySignupPage();
-    }
+    },
   };
 };

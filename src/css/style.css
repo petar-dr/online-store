@@ -1130,7 +1130,6 @@ footer {
   outline: none;
 }
 .signupPageMain__signupBox__name__warning {
-  display: none;
   color: red;
   font-size: 16px;
   margin: 0;
@@ -1144,13 +1143,19 @@ footer {
   outline: none;
 }
 .signupPageMain__signupBox__email__warning {
-  display: none;
   color: red;
   font-size: 16px;
   margin: 0;
 }
 .signupPageMain__signupBox__password {
   margin-bottom: 20px;
+  position: relative;
+}
+.signupPageMain__signupBox__password i {
+  position: absolute;
+  right: 0;
+  top: 8px;
+  font-size: 16px;
 }
 .signupPageMain__signupBox__password__input {
   border: none;
@@ -1161,7 +1166,6 @@ footer {
   outline: none;
 }
 .signupPageMain__signupBox__password__warning {
-  display: none;
   color: red;
   font-size: 16px;
   margin: 0;

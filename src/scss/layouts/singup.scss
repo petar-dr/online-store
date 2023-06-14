@@ -25,7 +25,6 @@
         }
       }
       &__warning {
-        display: none;
         color: red;
         font-size: 16px;
         margin: 0;
@@ -42,7 +41,6 @@
         }
       }
       &__warning {
-        display: none;
         color: red;
         font-size: 16px;
         margin: 0;
@@ -50,6 +48,13 @@
     }
     &__password {
       margin-bottom: 20px;
+      position: relative;
+      & i {
+        position: absolute;
+        right: 0;
+        top: 8px;
+        font-size: 16px;
+      }
       &__input {
         border: none;
         border-bottom: 1px solid black;
@@ -59,7 +64,6 @@
         }
       }
       &__warning {
-        display: none;
         color: red;
         font-size: 16px;
         margin: 0;
