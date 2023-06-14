@@ -7,6 +7,7 @@ export const view = (function () {
     productsPage: "products_page",
     productPage: "product_page",
     loginPage: "login_page",
+    signupPage: "signup_page",
     main: "main",
     footer: "footer",
     delivery: "iconDelivery",
@@ -257,7 +258,7 @@ export const view = (function () {
 
     // Create account icon
     const accountIcon = document.createElement("a");
-    accountIcon.setAttribute("href", "singup.html");
+    accountIcon.setAttribute("href", "signup.html");
     accountIcon.classList.add(
       "header__main__right__profile",
       "p--tb",
@@ -1353,7 +1354,7 @@ export const view = (function () {
 
     //Create message link and text
     const aLink = document.createElement("a");
-    aLink.setAttribute("href", 'signup.html');
+    aLink.setAttribute("href", "signup.html");
     aLink.classList.add("loginPageMain__loginBox__message__link");
     aLink.textContent = "sign up";
     messageDiv.appendChild(messageP);
@@ -1362,6 +1363,102 @@ export const view = (function () {
 
     return loginPageMain;
   }
+  function loadSignupMain() {
+    // Create main signupPage container
+    const signupPageDiv = document.createElement("div");
+    signupPageDiv.classList.add("signupPageMain");
+
+    // Create signupBox
+    const signupBoxDiv = document.createElement("div");
+    signupBoxDiv.classList.add("signupPageMain__signupBox");
+    signupPageDiv.appendChild(signupBoxDiv);
+
+    // Create signupBox title
+    const titleH3 = document.createElement("h3");
+    titleH3.classList.add("signupPageMain__signupBox__title");
+    titleH3.textContent = "Sign up";
+    signupBoxDiv.appendChild(titleH3);
+
+    // Create name input field
+    const nameDiv = document.createElement("div");
+    nameDiv.classList.add("signupPageMain__signupBox__name");
+    signupBoxDiv.appendChild(nameDiv);
+
+    const nameInput = document.createElement("input");
+    nameInput.type = "text";
+    nameInput.classList.add("signupPageMain__signupBox__name__input");
+    nameInput.placeholder = "name";
+    nameDiv.appendChild(nameInput);
+
+    const nameWarningP = document.createElement("p");
+    nameWarningP.id = "nameInput";
+    nameWarningP.classList.add("signupPageMain__signupBox__name__warning");
+    nameWarningP.textContent = "enter name";
+    nameDiv.appendChild(nameWarningP);
+
+    // Create email input field
+    const emailDiv = document.createElement("div");
+    emailDiv.classList.add("signupPageMain__signupBox__email");
+    signupBoxDiv.appendChild(emailDiv);
+
+    const emailInput = document.createElement("input");
+    emailInput.type = "email";
+    emailInput.classList.add("signupPageMain__signupBox__email__input");
+    emailInput.placeholder = "youremail@email.com";
+    emailDiv.appendChild(emailInput);
+
+    const emailWarningP = document.createElement("p");
+    emailWarningP.id = "emailInput";
+    emailWarningP.classList.add("signupPageMain__signupBox__email__warning");
+    emailWarningP.textContent = "enter email";
+    emailDiv.appendChild(emailWarningP);
+
+    // Create password input field
+    const passwordDiv = document.createElement("div");
+    passwordDiv.classList.add("signupPageMain__signupBox__password");
+    signupBoxDiv.appendChild(passwordDiv);
+
+    const passwordInput = document.createElement("input");
+    passwordInput.type = "password";
+    passwordInput.classList.add("signupPageMain__signupBox__password__input");
+    passwordInput.placeholder = "password";
+    passwordDiv.appendChild(passwordInput);
+
+    const passwordWarningP = document.createElement("p");
+    passwordWarningP.id = "passwordInput";
+    passwordWarningP.classList.add(
+      "signupPageMain__signupBox__password__warning"
+    );
+    passwordWarningP.textContent = "enter password";
+    passwordDiv.appendChild(passwordWarningP);
+
+    // Create signup button
+    const signupButton = document.createElement("button");
+    signupButton.classList.add("signupPageMain__signupBox__submit");
+    signupButton.textContent = "Sign up";
+    signupBoxDiv.appendChild(signupButton);
+
+    // Create message section
+    const messageDiv = document.createElement("div");
+    messageDiv.classList.add("signupPageMain__signupBox__message");
+    signupBoxDiv.appendChild(messageDiv);
+
+    // Create message p
+    const messageP = document.createElement("p");
+   messageP.innerHTML ="If you already have an account, ";
+  
+    //Create message link and text
+    const aLink = document.createElement("a");
+    aLink.setAttribute("href", "login.html");
+    aLink.classList.add("signupPageMain__signupBox__message__link");
+    aLink.textContent = "log in";
+    messageDiv.appendChild(messageP);
+    messageP.appendChild(aLink);
+    messageP.innerHTML += ".";
+
+    return signupPageDiv;
+  }
+
   return {
     getDOMString: () => {
       return DOMString;
@@ -1427,6 +1524,17 @@ export const view = (function () {
       pageContent.appendChild(loadFooter());
 
       return pageContent;
+    },
+    loadSignupPage: () => {
+      const pageContent = document.createElement("div");
+      pageContent.setAttribute("id", "pageContent");
+
+       pageContent.appendChild(loadHeader());
+      pageContent.appendChild(loadSignupMain());
+      pageContent.appendChild(loadFooter());
+
+      return pageContent;
+     
     },
   };
 })();

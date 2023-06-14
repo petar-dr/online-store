@@ -62,10 +62,15 @@ export const controller = function (model, view) {
   }
   function displayLoginPage(){
     let DOM = view.getDOMString();
-    let url = model.getUrl();  
 
     let main = document.getElementById(DOM.loginPage);
     main.appendChild(view.loadLoginPage());
+  }
+  function displaySignupPage(){
+    let DOM = view.getDOMString();
+
+    let main = document.getElementById(DOM.signupPage);
+    main.appendChild(view.loadSignupPage());
   }
   // like icon
   function addLike() {
@@ -108,5 +113,8 @@ export const controller = function (model, view) {
     login: () => {
       displayLoginPage();
     },
+    signup: () => {
+      displaySignupPage();
+    }
   };
 };
