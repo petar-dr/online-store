@@ -63,6 +63,11 @@ export const controller = function (model, view) {
 
     let main = document.getElementById(DOM.loginPage);
     main.appendChild(view.loadLoginPage());
+
+    document.getElementById("submitBtnLogin").addEventListener("click", checkData);
+    document
+      .getElementById("passwordIcon")
+      .addEventListener("click", passwordIcon);
   }
   function displaySignupPage() {
     let DOM = view.getDOMString();
@@ -112,7 +117,6 @@ export const controller = function (model, view) {
     }
     // Check password
     let password = document.getElementById("passwordInput").value;
-    console.log(password);
     let checkPassword = new RegExp(
       /^(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]){6,16}/
     );

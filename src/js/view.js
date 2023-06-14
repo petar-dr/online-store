@@ -1307,13 +1307,14 @@ export const view = (function () {
     loginBoxDiv.appendChild(emailDiv);
 
     const emailInput = document.createElement("input");
+    emailInput.id = "emailInput";
     emailInput.type = "email";
     emailInput.classList.add("loginPageMain__loginBox__email__input");
     emailInput.placeholder = "youremail@email.com";
     emailDiv.appendChild(emailInput);
 
     const emailWarningP = document.createElement("p");
-    emailWarningP.id = "emailInput";
+    emailWarningP.id = "emailWarning";
     emailWarningP.classList.add("loginPageMain__loginBox__email__warning");
     emailWarningP.textContent = "enter email";
     emailDiv.appendChild(emailWarningP);
@@ -1323,14 +1324,21 @@ export const view = (function () {
     passwordDiv.classList.add("loginPageMain__loginBox__password");
     loginBoxDiv.appendChild(passwordDiv);
 
+    //Create password icon
+    const passwordIcon = document.createElement("i");
+    passwordIcon.id = "passwordIcon";
+    passwordIcon.classList.add("fa-solid", "fa-eye-slash");
+    passwordDiv.appendChild(passwordIcon);
+
     const passwordInput = document.createElement("input");
+    passwordInput.id = "passwordInput";
     passwordInput.type = "password";
     passwordInput.classList.add("loginPageMain__loginBox__password__input");
     passwordInput.placeholder = "password";
     passwordDiv.appendChild(passwordInput);
 
     const passwordWarningP = document.createElement("p");
-    passwordWarningP.id = "passwordInput";
+    passwordWarningP.id = "passwordWarning";
     passwordWarningP.classList.add(
       "loginPageMain__loginBox__password__warning"
     );
@@ -1339,6 +1347,7 @@ export const view = (function () {
 
     // Create login button
     const loginButton = document.createElement("button");
+    loginButton.id = "submitBtnLogin";
     loginButton.classList.add("loginPageMain__loginBox__submit");
     loginButton.textContent = "Log in";
     loginBoxDiv.appendChild(loginButton);
@@ -1417,7 +1426,7 @@ export const view = (function () {
     const passwordDiv = document.createElement("div");
     passwordDiv.classList.add("signupPageMain__signupBox__password");
     signupBoxDiv.appendChild(passwordDiv);
-    
+
     //Create password icon
     const passwordIcon = document.createElement("i");
     passwordIcon.id = "passwordIcon";
