@@ -781,6 +781,7 @@ export const view = (function () {
   function loadSection2() {
     // Create section2 container
     var section2Div = document.createElement("div");
+    section2Div.id="section2"
     section2Div.classList.add("section2");
 
     // Create cards
@@ -855,6 +856,9 @@ export const view = (function () {
     });
 
     return section2Div;
+  }
+  function loadSection2Small(){
+
   }
   function loadSection3(obj) {
     const section3 = document.createElement("div");
@@ -1551,5 +1555,8 @@ export const view = (function () {
 
       return pageContent;
     },
+    loadSection2,
+    loadSection2Small,
+ 
   };
 })();

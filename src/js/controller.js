@@ -15,6 +15,22 @@ export const controller = function (model, view) {
     let main = document.getElementById(DOM.homePage);
     const data = await model.loadData(url.popularProducts);
     main.appendChild(view.loadHomePage(data));
+
+    let screenWidthSection2 = window.matchMedia("(max-width: 992px)");
+    screenWidthSection2.addEventListener("change", resposniveSection2);
+  
+  }
+  function resposniveSection2() {
+    let screenWidthSection2 = window.matchMedia("(max-width: 992px)");
+    const section2 = document.getElementById("section2");
+
+    if(screenWidthSection2.matches){
+      section2.innerHTML="";
+      // section2.appendChild(view.loadSection2Small())
+    }else{
+      section2.innerHTML="";
+      section2.appendChild(view.loadSection2())
+    }
   }
   async function displayProductsPage() {
     let DOM = view.getDOMString();
@@ -64,7 +80,9 @@ export const controller = function (model, view) {
     let main = document.getElementById(DOM.loginPage);
     main.appendChild(view.loadLoginPage());
 
-    document.getElementById("submitBtnLogin").addEventListener("click", checkData);
+    document
+      .getElementById("submitBtnLogin")
+      .addEventListener("click", checkData);
     document
       .getElementById("passwordIcon")
       .addEventListener("click", passwordIcon);
