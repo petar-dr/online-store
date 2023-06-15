@@ -791,7 +791,7 @@ export const view = (function () {
         title: "Chairs",
         aUrl: "products.html?category=chairs",
         content:
-          "Some quick example text to build on the card title and make up the bulk of the card's content.",
+          "",
       },
       {
         imageSrc: "../img/section2/table.jpg",
@@ -799,7 +799,7 @@ export const view = (function () {
         title: "Tables",
         aUrl: "products.html?category=tables",
         content:
-          "Some quick example text to build on the card title and make up the bulk of the card's content.",
+          "",
       },
       {
         imageSrc: "../img/section2/sofa.jpg",
@@ -807,7 +807,7 @@ export const view = (function () {
         title: "Sofas",
         aUrl: "products.html?category=sofas",
         content:
-          "Some quick example text to build on the card title and make up the bulk of the card's content.",
+          "",
       },
     ];
 
