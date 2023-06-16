@@ -19,3 +19,14 @@
     flex-wrap: wrap;
   }
 }
+.item--popular {
+  @include media("lg") {
+    width: 25%;
+    &:last-child {
+      display: none;
+    }
+  }
+  @include media("md") {
+    width: 50%;
+  }
+}

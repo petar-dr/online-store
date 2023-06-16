@@ -26,6 +26,10 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  @include media("md") {
+    width: 100%;
+    padding: 0;
+  }
   &:last-child {
     border: none;
   }
@@ -36,14 +40,13 @@ a {
     & img {
       transition: 0.3s;
       width: 100%;
-      
     }
   }
 
   &__text {
     width: 100%;
-   
-    &__title{
+
+    &__title {
       font-size: 30px;
       margin: 20px 0;
     }
@@ -56,7 +59,6 @@ a {
       border: 2px solid #000;
       transition: 0.3s;
     }
-   
   }
   &:hover {
     & > div > img {

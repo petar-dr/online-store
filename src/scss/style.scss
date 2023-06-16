@@ -1,32 +1,25 @@
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  @font-face {
-    font-family: "Formular";
-    src: url("../../fonts/formular-regular-trial.otf");
-  }
-  
-  html {
-    font-family: "Formular";
-    font-size: 10px;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "Formular";
+  src: url("../../fonts/formular-regular-trial.otf");
+}
 
-@import './layouts/header';
-@import './layouts/section1';
-@import './layouts/section2';
-@import './layouts/section3';
-@import './layouts/footer';
-@import './layouts/products';
-@import './layouts/itemClasses';
-@import './layouts/product';
-@import './layouts/singup';
-@import './layouts/login';
-
-
-
-
-
-
+html {
+  font-family: "Formular";
+  font-size: 10px;
+}
+@import "./layouts/itemClasses";
+@import "./layouts/header";
+@import "./layouts/section1";
+@import "./layouts/section2";
+@import "./layouts/section2Small";
+@import "./layouts/section3";
+@import "./layouts/footer";
+@import "./layouts/products";
+@import "./layouts/product";
+@import "./layouts/singup";
+@import "./layouts/login";

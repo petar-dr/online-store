@@ -5,9 +5,6 @@
   border-right: 1px solid $border_light;
   height: fit-content;
   margin-top: 50px;
-  @include media("sm") {
-    width: 50%;
-  }
   &:last-child {
     border-right: none;
   }

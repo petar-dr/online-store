@@ -16,11 +16,79 @@ export const view = (function () {
     tables: "tables",
     sofas: "sofas",
   };
+  const cardsSection2 = [
+    {
+      imageSrc: "../img/section2/chair.jpg",
+      imageAlt: "Card image cap",
+      title: "Chairs",
+      aUrl: "products.html?category=chairs",
+      content: "",
+    },
+    {
+      imageSrc: "../img/section2/table.jpg",
+      imageAlt: "Card image cap",
+      title: "Tables",
+      aUrl: "products.html?category=tables",
+      content: "",
+    },
+    {
+      imageSrc: "../img/section2/sofa.jpg",
+      imageAlt: "Card image cap",
+      title: "Sofas",
+      aUrl: "products.html?category=sofas",
+      content: "",
+    },
+  ];
 
-  function item(obj) {
+  function createCardsSection2(card, cardClass2) {
+    // Create card link
+    const cardLink = document.createElement("a");
+    cardLink.id = "card";
+    cardLink.href = card.aUrl;
+    cardLink.classList.add("card", "text-center", cardClass2);
+
+    // Create card image container
+    const divImg = document.createElement("div");
+    divImg.classList.add("card__divImg");
+    cardLink.appendChild(divImg);
+
+    // Create card image
+    const cardImg = document.createElement("img");
+    cardImg.classList.add("card-img-top");
+    cardImg.src = card.imageSrc;
+    cardImg.alt = card.imageAlt;
+    divImg.appendChild(cardImg);
+
+    // Create card text container
+    const cardText = document.createElement("div");
+    cardText.classList.add("card__text");
+    cardLink.appendChild(cardText);
+
+    // Create card title
+    const cardTitle = document.createElement("h2");
+    cardTitle.classList.add("card__text__title");
+    cardTitle.textContent = card.title;
+    cardText.appendChild(cardTitle);
+
+    // Create card content
+    const cardContent = document.createElement("p");
+    cardContent.classList.add("card-text");
+    cardContent.textContent = card.content;
+    cardText.appendChild(cardContent);
+
+    // Create "See more" button
+    const seeMoreBtn = document.createElement("button");
+    seeMoreBtn.classList.add("card__text__btn");
+    seeMoreBtn.textContent = "See more";
+    cardText.appendChild(seeMoreBtn);
+
+    return cardLink;
+  }
+
+  function item(obj, itemClass2) {
     //div item
     const item = document.createElement("div");
-    item.classList.add("item");
+    item.classList.add("item", itemClass2);
     // div article
     const article = document.createElement("div");
     article.classList.add("item__article");
@@ -140,28 +208,28 @@ export const view = (function () {
   // header and footer
   function loadHeader() {
     // create header element
-    var header = document.createElement("header");
+    const header = document.createElement("header");
     header.id = "header";
     header.classList.add("header", "container-fluid");
 
     // Create header__top element
-    var headerTop = document.createElement("div");
+    const headerTop = document.createElement("div");
     headerTop.classList.add("header__top");
     header.appendChild(headerTop);
 
     // Create header__top__text element
-    var headerTopText = document.createElement("snap");
+    const headerTopText = document.createElement("snap");
     headerTopText.classList.add("header__top__text");
     headerTopText.textContent = "Welcome to furniture store.";
     headerTop.appendChild(headerTopText);
 
     // Create header__main element
-    var headerMain = document.createElement("div");
+    const headerMain = document.createElement("div");
     headerMain.classList.add("header__main");
     header.appendChild(headerMain);
 
     // Create header__main__left element
-    var headerMainLeft = document.createElement("div");
+    const headerMainLeft = document.createElement("div");
     headerMainLeft.classList.add("header__main__left", "col-lg-4", "col-xl-4");
     headerMain.appendChild(headerMainLeft);
     //Create a tag for Delivery
@@ -170,7 +238,7 @@ export const view = (function () {
     headerMainLeft.appendChild(aDelivery);
 
     // Create iconDelivery element
-    var iconDelivery = document.createElement("span");
+    const iconDelivery = document.createElement("span");
     iconDelivery.id = "iconDelivery";
     iconDelivery.classList.add(
       "header__main__left__first",
@@ -180,7 +248,7 @@ export const view = (function () {
     aDelivery.appendChild(iconDelivery);
 
     // Create iconDelivery icon element
-    var iconDeliveryIcon = document.createElement("i");
+    const iconDeliveryIcon = document.createElement("i");
     iconDeliveryIcon.classList.add("icon--left", "fa-solid", "fa-truck");
     iconDelivery.appendChild(iconDeliveryIcon);
     iconDelivery.innerHTML += "Delivery";
@@ -191,7 +259,7 @@ export const view = (function () {
     headerMainLeft.appendChild(aService);
 
     // Create iconService element
-    var iconService = document.createElement("span");
+    const iconService = document.createElement("span");
     iconService.id = "iconService";
     iconService.classList.add(
       "header__main__left__second",
@@ -202,13 +270,13 @@ export const view = (function () {
     aService.appendChild(iconService);
 
     // Create iconService icon element
-    var iconServiceIcon = document.createElement("i");
+    const iconServiceIcon = document.createElement("i");
     iconServiceIcon.classList.add("icon--left", "fa-solid", "fa-phone");
     iconService.appendChild(iconServiceIcon);
     iconService.innerHTML += "Customer service";
 
     // Create header__main__middle element
-    var headerMainMiddle = document.createElement("div");
+    const headerMainMiddle = document.createElement("div");
     headerMainMiddle.classList.add(
       "header__main__middle",
       "col-11",
@@ -220,17 +288,17 @@ export const view = (function () {
     headerMain.appendChild(headerMainMiddle);
 
     // Create header__main__middle link element
-    var middleLink = document.createElement("a");
+    const middleLink = document.createElement("a");
     middleLink.href = "index.html";
     headerMainMiddle.appendChild(middleLink);
 
     // Create middleLink heading element
-    var middleLinkHeading = document.createElement("h1");
+    const middleLinkHeading = document.createElement("h1");
     middleLinkHeading.textContent = "furniture store";
     middleLink.appendChild(middleLinkHeading);
 
     // Create header__main__right element
-    var headerMainRight = document.createElement("div");
+    const headerMainRight = document.createElement("div");
     headerMainRight.classList.add(
       "header__main__right",
       "col-1",
@@ -242,7 +310,7 @@ export const view = (function () {
     headerMain.appendChild(headerMainRight);
 
     // Create search icon
-    var searchIcon = document.createElement("span");
+    const searchIcon = document.createElement("span");
     searchIcon.classList.add(
       "header__main__right__search",
       "p--tb",
@@ -252,7 +320,7 @@ export const view = (function () {
     headerMainRight.appendChild(searchIcon);
 
     // Create search icon element
-    var searchIconElement = document.createElement("i");
+    const searchIconElement = document.createElement("i");
     searchIconElement.classList.add("fa-solid", "fa-magnifying-glass");
     searchIcon.appendChild(searchIconElement);
 
@@ -285,7 +353,7 @@ export const view = (function () {
     headerMainRight.appendChild(favoriteIcon);
 
     // Create favorite icon element
-    var favoriteIconElement = document.createElement("i");
+    const favoriteIconElement = document.createElement("i");
     favoriteIconElement.classList.add("fa-solid", "fa-heart");
     favoriteIcon.appendChild(favoriteIconElement);
 
@@ -301,44 +369,44 @@ export const view = (function () {
     headerMainRight.appendChild(cartIcon);
 
     // Create cart icon element
-    var cartIconElement = document.createElement("i");
+    const cartIconElement = document.createElement("i");
     cartIconElement.classList.add("fa-solid", "fa-bag-shopping");
     cartIcon.appendChild(cartIconElement);
 
     // Create menu button
-    var menuBtnInput = document.createElement("input");
+    const menuBtnInput = document.createElement("input");
     menuBtnInput.type = "checkbox";
     menuBtnInput.id = "menu-btn";
     menuBtnInput.classList.add("btnH");
     headerMainRight.appendChild(menuBtnInput);
 
     // Create menu button label
-    var menuBtnLabel = document.createElement("label");
+    const menuBtnLabel = document.createElement("label");
     menuBtnLabel.htmlFor = "menu-btn";
     headerMainRight.appendChild(menuBtnLabel);
 
     // Create ham-button element
-    var hamButton = document.createElement("div");
+    const hamButton = document.createElement("div");
     hamButton.classList.add("ham", "header__main__right__ham");
     menuBtnLabel.appendChild(hamButton);
 
     // Create line1 element
-    var line1 = document.createElement("div");
+    const line1 = document.createElement("div");
     line1.classList.add("line1", "line");
     hamButton.appendChild(line1);
 
     // Create line2 element
-    var line2 = document.createElement("div");
+    const line2 = document.createElement("div");
     line2.classList.add("line2", "line");
     hamButton.appendChild(line2);
 
     // Create line3 element
-    var line3 = document.createElement("div");
+    const line3 = document.createElement("div");
     line3.classList.add("line3", "line");
     hamButton.appendChild(line3);
 
     // Create navbar element
-    var navbar = document.createElement("div");
+    const navbar = document.createElement("div");
     navbar.classList.add(
       "header__nav",
       "navbar",
@@ -348,12 +416,12 @@ export const view = (function () {
     header.appendChild(navbar);
 
     // Create header__nav__box element
-    var navBox = document.createElement("div");
+    const navBox = document.createElement("div");
     navBox.classList.add("header__nav__box", "container-fluid");
     navbar.appendChild(navBox);
 
     // Create header__nav__box__list element
-    var navList = document.createElement("ul");
+    const navList = document.createElement("ul");
     navList.classList.add(
       "header__nav__box__list",
       "navbar-nav",
@@ -373,13 +441,13 @@ export const view = (function () {
       { id: "search", text: "Search" },
     ];
 
-    for (var i = 0; i < navItems.length; i++) {
-      var navItem = navItems[i];
-      var listItem = document.createElement("li");
+    for (let i = 0; i < navItems.length; i++) {
+      let navItem = navItems[i];
+      const listItem = document.createElement("li");
       listItem.classList.add("nav--item");
       navList.appendChild(listItem);
 
-      var link = document.createElement("a");
+      const link = document.createElement("a");
       link.classList.add("nav--link");
       link.id = navItem.id;
       link.textContent = navItem.text;
@@ -393,239 +461,239 @@ export const view = (function () {
   }
   function loadFooter() {
     // Create footer element
-    var footer = document.createElement("footer");
+    const footer = document.createElement("footer");
     footer.id = "footer";
 
     // Create top section
-    var topSection = document.createElement("div");
+    const topSection = document.createElement("div");
     topSection.classList.add("top");
     footer.appendChild(topSection);
 
     // Create top__box div
-    var topBox = document.createElement("div");
+    const topBox = document.createElement("div");
     topBox.classList.add("top__box");
     topSection.appendChild(topBox);
 
     // Create top__box__text div
-    var topBoxText = document.createElement("div");
+    const topBoxText = document.createElement("div");
     topBoxText.classList.add("top__box__text");
     topBox.appendChild(topBoxText);
 
     // Create newsletter title
-    var newsletterTitle = document.createElement("h3");
+    const newsletterTitle = document.createElement("h3");
     newsletterTitle.textContent = "Newsletter registration";
     topBoxText.appendChild(newsletterTitle);
 
     // Create newsletter description
-    var newsletterDescription = document.createElement("p");
+    const newsletterDescription = document.createElement("p");
     newsletterDescription.textContent =
       "Subscribe to our free newsletter and get the first information about new products, interesting people and events.";
     topBoxText.appendChild(newsletterDescription);
 
     // Create top__box__input div
-    var topBoxInput = document.createElement("div");
+    const topBoxInput = document.createElement("div");
     topBoxInput.classList.add("top__box__input");
     topBox.appendChild(topBoxInput);
 
     // Create form element
-    var form = document.createElement("form");
+    const form = document.createElement("form");
     form.action = "post";
     topBoxInput.appendChild(form);
 
     // Create top__box__input__buttons div
-    var inputButtons = document.createElement("div");
+    const inputButtons = document.createElement("div");
     inputButtons.classList.add("top__box__input__buttons");
     form.appendChild(inputButtons);
 
     // Create email input field
-    var emailInput = document.createElement("input");
+    const emailInput = document.createElement("input");
     emailInput.classList.add("top__box__input__buttons__email");
     emailInput.type = "email";
     emailInput.placeholder = "Enter your email";
     inputButtons.appendChild(emailInput);
 
     // Create submit button
-    var submitButton = document.createElement("input");
+    const submitButton = document.createElement("input");
     submitButton.classList.add("top__box__input__buttons__submit");
     submitButton.type = "submit";
     submitButton.value = "Send";
     inputButtons.appendChild(submitButton);
 
     // Create middle section
-    var middleSection = document.createElement("div");
+    const middleSection = document.createElement("div");
     middleSection.classList.add("middle");
     footer.appendChild(middleSection);
 
     // Create customerService div
-    var customerServiceDiv = document.createElement("div");
+    const customerServiceDiv = document.createElement("div");
     customerServiceDiv.id = "customerService";
     customerServiceDiv.classList.add("middle__box");
     middleSection.appendChild(customerServiceDiv);
 
     // Create customerService title
-    var customerServiceTitle = document.createElement("span");
+    const customerServiceTitle = document.createElement("span");
     customerServiceTitle.classList.add("middle__box__title");
     customerServiceTitle.textContent = "Customer service";
     customerServiceDiv.appendChild(customerServiceTitle);
 
     // Create customerService list
-    var customerServiceList = document.createElement("ul");
+    const customerServiceList = document.createElement("ul");
     customerServiceList.classList.add("middle__box__list");
     customerServiceDiv.appendChild(customerServiceList);
 
     // Create customerService list items
-    var customerServiceItems = ["Contact", "Delivery", "FAQ"];
-    for (var i = 0; i < customerServiceItems.length; i++) {
-      var customerServiceItem = customerServiceItems[i];
-      var listItem = document.createElement("li");
+    const customerServiceItems = ["Contact", "Delivery", "FAQ"];
+    for (let i = 0; i < customerServiceItems.length; i++) {
+      let customerServiceItem = customerServiceItems[i];
+      const listItem = document.createElement("li");
       listItem.classList.add("middle__box__list__item");
       customerServiceList.appendChild(listItem);
 
-      var link = document.createElement("a");
+      const link = document.createElement("a");
       link.href = "#";
       link.textContent = customerServiceItem;
       listItem.appendChild(link);
     }
 
     // Create information div
-    var informationDiv = document.createElement("div");
+    const informationDiv = document.createElement("div");
     informationDiv.id = "information";
     informationDiv.classList.add("middle__box");
     middleSection.appendChild(informationDiv);
 
     // Create information title
-    var informationTitle = document.createElement("span");
+    const informationTitle = document.createElement("span");
     informationTitle.classList.add("middle__box__title");
     informationTitle.textContent = "Information";
     informationDiv.appendChild(informationTitle);
 
     // Create information list
-    var informationList = document.createElement("ul");
+    const informationList = document.createElement("ul");
     informationList.classList.add("middle__box__list");
     informationDiv.appendChild(informationList);
 
     // Create information list items
-    var informationItems = ["Terms of use", "Privacy policy"];
-    for (var i = 0; i < informationItems.length; i++) {
-      var informationItem = informationItems[i];
-      var listItem = document.createElement("li");
+    const informationItems = ["Terms of use", "Privacy policy"];
+    for (let i = 0; i < informationItems.length; i++) {
+      let informationItem = informationItems[i];
+      const listItem = document.createElement("li");
       listItem.classList.add("middle__box__list__item");
       informationList.appendChild(listItem);
 
-      var link = document.createElement("a");
+      const link = document.createElement("a");
       link.href = "#";
       link.textContent = informationItem;
       listItem.appendChild(link);
     }
 
     // Create stayInTouch div
-    var stayInTouchDiv = document.createElement("div");
+    const stayInTouchDiv = document.createElement("div");
     stayInTouchDiv.id = "stayInTouch";
     stayInTouchDiv.classList.add("middle__box");
     middleSection.appendChild(stayInTouchDiv);
 
     // Create stayInTouch title
-    var stayInTouchTitle = document.createElement("span");
+    const stayInTouchTitle = document.createElement("span");
     stayInTouchTitle.classList.add("middle__box__title");
     stayInTouchTitle.textContent = "Stay in touch";
     stayInTouchDiv.appendChild(stayInTouchTitle);
 
     // Create stayInTouch list
-    var stayInTouchList = document.createElement("ul");
+    const stayInTouchList = document.createElement("ul");
     stayInTouchList.id = "stayInTouch__list";
     stayInTouchList.classList.add("middle__box__list");
     stayInTouchDiv.appendChild(stayInTouchList);
 
     // Create stayInTouch list items
-    var stayInTouchItems = ["Facebook", "Instagram", "Pinterest", "LinkedIn"];
-    for (var i = 0; i < stayInTouchItems.length; i++) {
-      var stayInTouchItem = stayInTouchItems[i];
-      var listItem = document.createElement("li");
+    const stayInTouchItems = ["Facebook", "Instagram", "Pinterest", "LinkedIn"];
+    for (let i = 0; i < stayInTouchItems.length; i++) {
+      let stayInTouchItem = stayInTouchItems[i];
+      const listItem = document.createElement("li");
       listItem.classList.add("middle__box__list__item");
       stayInTouchList.appendChild(listItem);
 
-      var link = document.createElement("a");
+      const link = document.createElement("a");
       link.href = "#";
       link.textContent = stayInTouchItem;
       listItem.appendChild(link);
     }
 
     // Create inspiration div
-    var inspirationDiv = document.createElement("div");
+    const inspirationDiv = document.createElement("div");
     inspirationDiv.id = "inspiration";
     inspirationDiv.classList.add("middle__box");
     middleSection.appendChild(inspirationDiv);
 
     // Create inspiration title
-    var inspirationTitle = document.createElement("span");
+    const inspirationTitle = document.createElement("span");
     inspirationTitle.classList.add("middle__box__title");
     inspirationTitle.textContent = "Inspiration";
     inspirationDiv.appendChild(inspirationTitle);
 
     // Create inspiration list
-    var inspirationList = document.createElement("ul");
+    const inspirationList = document.createElement("ul");
     inspirationList.id = "inspiration__list";
     inspirationList.classList.add("middle__box__list");
     inspirationDiv.appendChild(inspirationList);
 
     // Create inspiration list items
-    var inspirationItems = ["Ideas", "Story"];
-    for (var i = 0; i < inspirationItems.length; i++) {
-      var inspirationItem = inspirationItems[i];
-      var listItem = document.createElement("li");
+    const inspirationItems = ["Ideas", "Story"];
+    for (let i = 0; i < inspirationItems.length; i++) {
+      let inspirationItem = inspirationItems[i];
+      const listItem = document.createElement("li");
       listItem.classList.add("middle__box__list__item");
       inspirationList.appendChild(listItem);
 
-      var link = document.createElement("a");
+      const link = document.createElement("a");
       link.href = "#";
       link.textContent = inspirationItem;
       listItem.appendChild(link);
     }
     // Create aboutUs div
-    var aboutUsDiv = document.createElement("div");
+    const aboutUsDiv = document.createElement("div");
     aboutUsDiv.id = "aboutUs";
     aboutUsDiv.classList.add("middle__box");
     middleSection.appendChild(aboutUsDiv);
 
     // Create aboutUs title
-    var aboutUsTitle = document.createElement("span");
+    const aboutUsTitle = document.createElement("span");
     aboutUsTitle.classList.add("middle__box__title");
     aboutUsTitle.textContent = "About us";
     aboutUsDiv.appendChild(aboutUsTitle);
 
     // Create aboutUs list
-    var aboutUsList = document.createElement("ul");
+    const aboutUsList = document.createElement("ul");
     aboutUsList.id = "aboutUs__list";
     aboutUsList.classList.add("middle__box__list");
     aboutUsDiv.appendChild(aboutUsList);
 
     // Create aboutUs list items
-    var aboutUsItems = ["Our Store", "Production"];
-    for (var i = 0; i < aboutUsItems.length; i++) {
-      var aboutUsItem = aboutUsItems[i];
-      var listItem = document.createElement("li");
+    const aboutUsItems = ["Our Store", "Production"];
+    for (let i = 0; i < aboutUsItems.length; i++) {
+      let aboutUsItem = aboutUsItems[i];
+      const listItem = document.createElement("li");
       listItem.classList.add("middle__box__list__item");
       aboutUsList.appendChild(listItem);
 
-      var link = document.createElement("a");
+      const link = document.createElement("a");
       link.href = "#";
       link.textContent = aboutUsItem;
       listItem.appendChild(link);
     }
 
     // Create bottom section
-    var bottomSection = document.createElement("div");
+    const bottomSection = document.createElement("div");
     bottomSection.classList.add("bottom");
     footer.appendChild(bottomSection);
 
     // Create visa card image
-    var visaImage = document.createElement("img");
+    const visaImage = document.createElement("img");
     visaImage.src = "../img/footer/visa.png";
     visaImage.alt = "Visa card img";
     bottomSection.appendChild(visaImage);
 
     // Create mastercard image
-    var mastercardImage = document.createElement("img");
+    const mastercardImage = document.createElement("img");
     mastercardImage.src = "../img/footer/mastercard.png";
     mastercardImage.alt = "Mastercard img";
     bottomSection.appendChild(mastercardImage);
@@ -634,18 +702,18 @@ export const view = (function () {
   // home page - sections
   function loadSection1() {
     // Create section1 container
-    var section1Div = document.createElement("div");
+    const section1Div = document.createElement("div");
     section1Div.classList.add("section1");
 
     // Create carousel container
-    var carouselDiv = document.createElement("div");
+    const carouselDiv = document.createElement("div");
     carouselDiv.id = "carouselExampleIndicators";
     carouselDiv.classList.add("section1__carousel", "carousel", "slide");
     carouselDiv.setAttribute("data-bs-ride", "carousel");
     section1Div.appendChild(carouselDiv);
 
     // Create carousel indicators container
-    var indicatorsDiv = document.createElement("div");
+    const indicatorsDiv = document.createElement("div");
     indicatorsDiv.classList.add(
       "section1__carousel__indicatots",
       "carousel-indicators"
@@ -653,8 +721,8 @@ export const view = (function () {
     carouselDiv.appendChild(indicatorsDiv);
 
     // Create carousel indicator buttons
-    for (var i = 0; i < 3; i++) {
-      var button = document.createElement("button");
+    for (let i = 0; i < 3; i++) {
+      const button = document.createElement("button");
       button.type = "button";
       button.setAttribute("data-bs-target", "#carouselExampleIndicators");
       button.setAttribute("data-bs-slide-to", i.toString());
@@ -667,12 +735,12 @@ export const view = (function () {
     }
 
     // Create carousel inner container
-    var innerDiv = document.createElement("div");
+    const innerDiv = document.createElement("div");
     innerDiv.classList.add("carousel-inner");
     carouselDiv.appendChild(innerDiv);
 
     // Create carousel items
-    var carouselItems = [
+    const carouselItems = [
       {
         imageSrc: "../img/Carousel/carouselImg1.jpg",
         imageAlt: "carouselImg1",
@@ -705,11 +773,11 @@ export const view = (function () {
       },
     ];
 
-    for (var j = 0; j < carouselItems.length; j++) {
-      var carouselItem = carouselItems[j];
+    for (let j = 0; j < carouselItems.length; j++) {
+      let carouselItem = carouselItems[j];
 
       // Create carousel item
-      var itemDiv = document.createElement("div");
+      const itemDiv = document.createElement("div");
       itemDiv.classList.add("carousel-item", "carousel--item--section1");
       if (j === 0) {
         itemDiv.classList.add("active");
@@ -717,11 +785,11 @@ export const view = (function () {
       innerDiv.appendChild(itemDiv);
 
       // Create picture element
-      var pictureElem = document.createElement("picture");
+      const pictureElem = document.createElement("picture");
       itemDiv.appendChild(pictureElem);
 
       // Create source elements for responsive images
-      var imageSources = [
+      const imageSources = [
         {
           media: "(max-width: 400px)",
           srcset: "../img/Carousel/xs/400_img" + (j + 1) + ".jpg",
@@ -736,40 +804,40 @@ export const view = (function () {
         },
       ];
 
-      for (var k = 0; k < imageSources.length; k++) {
-        var sourceElem = document.createElement("source");
+      for (let k = 0; k < imageSources.length; k++) {
+        const sourceElem = document.createElement("source");
         sourceElem.media = imageSources[k].media;
         sourceElem.srcset = imageSources[k].srcset;
         pictureElem.appendChild(sourceElem);
       }
 
       // Create image element
-      var imgElem = document.createElement("img");
+      const imgElem = document.createElement("img");
       imgElem.src = carouselItem.imageSrc;
       imgElem.alt = carouselItem.imageAlt;
       imgElem.classList.add("d-block", "w-100");
       pictureElem.appendChild(imgElem);
 
       // Create carousel item caption
-      var captionDiv = document.createElement("div");
+      const captionDiv = document.createElement("div");
       captionDiv.classList.add("my__caption", "my__caption--white");
       itemDiv.appendChild(captionDiv);
 
       // Create caption elements
-      var captionTitle = document.createElement("h6");
+      const captionTitle = document.createElement("h6");
       captionTitle.textContent = "New product";
       captionDiv.appendChild(captionTitle);
 
-      var captionSubtitle = document.createElement("h2");
+      const captionSubtitle = document.createElement("h2");
       captionSubtitle.textContent = "Chair with style";
       captionDiv.appendChild(captionSubtitle);
 
-      var captionContent = document.createElement("p");
+      const captionContent = document.createElement("p");
       captionContent.textContent =
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae voluptates nam quibusdam quas alias libero sapiente, laboriosam sunt ipsam esse in aut dolorem nemo id accusamus  dolorum officiis? Consequatur, harum.";
       captionDiv.appendChild(captionContent);
 
-      var captionLink = document.createElement("a");
+      const captionLink = document.createElement("a");
       captionLink.href = "#";
       captionLink.classList.add("my__caption__a", "my__caption__a--white");
       captionLink.innerHTML = "Buy now <span>&#8594;</span>";
@@ -778,87 +846,93 @@ export const view = (function () {
 
     return section1Div;
   }
+
   function loadSection2() {
     // Create section2 container
-    var section2Div = document.createElement("div");
-    section2Div.id="section2"
+    const section2Div = document.createElement("div");
+    section2Div.id = "section2";
     section2Div.classList.add("section2");
 
-    // Create cards
-    var cards = [
-      {
-        imageSrc: "../img/section2/chair.jpg",
-        imageAlt: "Card image cap",
-        title: "Chairs",
-        aUrl: "products.html?category=chairs",
-        content:
-          "",
-      },
-      {
-        imageSrc: "../img/section2/table.jpg",
-        imageAlt: "Card image cap",
-        title: "Tables",
-        aUrl: "products.html?category=tables",
-        content:
-          "",
-      },
-      {
-        imageSrc: "../img/section2/sofa.jpg",
-        imageAlt: "Card image cap",
-        title: "Sofas",
-        aUrl: "products.html?category=sofas",
-        content:
-          "",
-      },
-    ];
+    const cards = cardsSection2;
 
     cards.forEach(function (card) {
-      // Create card link
-      var cardLink = document.createElement("a");
-      cardLink.href = card.aUrl;
-      cardLink.classList.add("card", "text-center");
-      section2Div.appendChild(cardLink);
-
-      // Create card image container
-      var divImg = document.createElement("div");
-      divImg.classList.add("card__divImg");
-      cardLink.appendChild(divImg);
-
-      // Create card image
-      var cardImg = document.createElement("img");
-      cardImg.classList.add("card-img-top");
-      cardImg.src = card.imageSrc;
-      cardImg.alt = card.imageAlt;
-      divImg.appendChild(cardImg);
-
-      // Create card text container
-      var cardText = document.createElement("div");
-      cardText.classList.add("card__text");
-      cardLink.appendChild(cardText);
-
-      // Create card title
-      var cardTitle = document.createElement("h2");
-      cardTitle.classList.add("card__text__title");
-      cardTitle.textContent = card.title;
-      cardText.appendChild(cardTitle);
-
-      // Create card content
-      var cardContent = document.createElement("p");
-      cardContent.classList.add("card-text");
-      cardContent.textContent = card.content;
-      cardText.appendChild(cardContent);
-
-      // Create "See more" button
-      var seeMoreBtn = document.createElement("button");
-      seeMoreBtn.classList.add("card__text__btn");
-      seeMoreBtn.textContent = "See more";
-      cardText.appendChild(seeMoreBtn);
+      section2Div.appendChild(createCardsSection2(card));
     });
 
     return section2Div;
   }
-  function loadSection2Small(){
+  function loadSection2Small() {
+    // Create images container
+    const caroselSection2 = document.createElement("div");
+    caroselSection2.id = "section2Small";
+    caroselSection2.classList.add("section2Small");
+    // Create carousel container
+    const carouselDiv = document.createElement("div");
+    carouselDiv.id = "carouselSection2";
+    carouselDiv.classList.add("carousel", "carousel-dark");
+    carouselDiv.setAttribute("data-bs-interval", "false");
+    caroselSection2.appendChild(carouselDiv);
+    // Create carousel inner container
+    const carouselInnerDiv = document.createElement("div");
+    carouselInnerDiv.classList.add("carousel-inner");
+    carouselDiv.appendChild(carouselInnerDiv);
+    // Create carousel items
+    const cards = cardsSection2;
+    cards.forEach(function (card, index) {
+      const carouselItemDiv = document.createElement("div");
+      carouselItemDiv.classList.add("carousel-item");
+      if (index === 0) {
+        carouselItemDiv.classList.add("active");
+      }
 
+      const class1 = "card--section2Small";
+      carouselItemDiv.appendChild(createCardsSection2(card, class1));
+      carouselInnerDiv.appendChild(carouselItemDiv);
+    });
+    // Create carousel controls
+    const prevButton = createCarouselControlButton(
+      "carousel-control-prev",
+      "carousel-control-prev--product",
+      "carouselSection2",
+      "prev",
+      "carousel-control-prev-icon",
+      "Previous"
+    );
+    carouselDiv.appendChild(prevButton);
+    const nextButton = createCarouselControlButton(
+      "carousel-control-next",
+      "carousel-control-next--product",
+      "carouselSection2",
+      "next",
+      "carousel-control-next-icon",
+      "Next"
+    );
+    carouselDiv.appendChild(nextButton);
+    function createCarouselControlButton(
+      className,
+      className2,
+      target,
+      slide,
+      iconClass,
+      ariaLabel
+    ) {
+      const button = document.createElement("button");
+      button.classList.add(className, className2);
+      button.type = "button";
+      button.setAttribute("data-bs-target", "#" + target);
+      button.setAttribute("data-bs-slide", slide);
+      const iconSpan = document.createElement("span");
+      iconSpan.classList.add(iconClass);
+      iconSpan.setAttribute("aria-hidden", "true");
+      const labelSpan = document.createElement("span");
+      labelSpan.classList.add("visually-hidden");
+      labelSpan.textContent = ariaLabel;
+      button.appendChild(iconSpan);
+      button.appendChild(labelSpan);
+      return button;
+    }
+
+    return caroselSection2;
   }
   function loadSection3(obj) {
     const section3 = document.createElement("div");
@@ -870,7 +944,8 @@ export const view = (function () {
     const popularProducts = document.createElement("div");
     popularProducts.classList.add("section3__popularProducts");
     obj.forEach((elem) => {
-      popularProducts.appendChild(item(elem));
+      const classPopular = "item--popular";
+      popularProducts.appendChild(item(elem, classPopular));
     });
     section3.appendChild(title);
     section3.appendChild(popularProducts);
@@ -879,41 +954,42 @@ export const view = (function () {
   // products page
   function loadProductsMain(obj) {
     // Create products container
-    var productsDiv = document.createElement("div");
+    const productsDiv = document.createElement("div");
     productsDiv.classList.add("products");
 
     // Create aside
-    var aside = document.createElement("aside");
+    const aside = document.createElement("aside");
     aside.classList.add("products__aside");
     productsDiv.appendChild(aside);
 
     // Create "Products" heading
-    var heading = document.createElement("h3");
+    const heading = document.createElement("h3");
     heading.textContent = "Products";
     aside.appendChild(heading);
 
     // Create ul element
-    var ul = document.createElement("ul");
+    const ul = document.createElement("ul");
     aside.appendChild(ul);
 
     // Create list items
-    var categories = ["All", "Chairs", "Tables", "Sofas"];
+    const categories = ["All", "Chairs", "Tables", "Sofas"];
     categories.forEach(function (category) {
       let a = document.createElement("a");
       a.textContent = category;
       let url = "products.html?category=" + category.toLowerCase();
       a.href = url;
-      var li = document.createElement("li");
+      const li = document.createElement("li");
       li.appendChild(a);
       ul.appendChild(li);
     });
 
     // Create products items container
-    var productsItemsDiv = document.createElement("div");
+    const productsItemsDiv = document.createElement("div");
     productsItemsDiv.id = "productsItems";
     productsItemsDiv.classList.add("products__items");
     obj.forEach((elem) => {
-      productsItemsDiv.appendChild(item(elem));
+      const itemClass = "item-products";
+      productsItemsDiv.appendChild(item(elem, itemClass));
     });
     productsDiv.appendChild(productsItemsDiv);
 
@@ -922,36 +998,36 @@ export const view = (function () {
   // product page
   function loadProductMain(obj, array) {
     // Create main container
-    var mainDiv = document.createElement("main");
+    const mainDiv = document.createElement("main");
     mainDiv.classList.add("productPage__main");
 
     // Create images container
-    var imagesDiv = document.createElement("div");
+    const imagesDiv = document.createElement("div");
     imagesDiv.classList.add("productPage__main__images");
     mainDiv.appendChild(imagesDiv);
 
     // Create carousel container
-    var carouselDiv = document.createElement("div");
-    carouselDiv.id = "carouselProductPage";
+    const carouselDiv = document.createElement("div");
+    carouselDiv.id = "carouselSection2";
     carouselDiv.classList.add("carousel", "carousel-dark");
     carouselDiv.setAttribute("data-bs-interval", "false");
     imagesDiv.appendChild(carouselDiv);
 
     // Create carousel inner container
-    var carouselInnerDiv = document.createElement("div");
+    const carouselInnerDiv = document.createElement("div");
     carouselInnerDiv.classList.add("carousel-inner");
     carouselDiv.appendChild(carouselInnerDiv);
 
     // Create carousel items
-    var images = [obj.img.img1, obj.img.img2, obj.img.img3];
+    const images = [obj.img.img1, obj.img.img2, obj.img.img3];
     images.forEach(function (image, index) {
-      var carouselItemDiv = document.createElement("div");
+      const carouselItemDiv = document.createElement("div");
       carouselItemDiv.classList.add("carousel-item", "carousel--item--poducts");
       if (index === 0) {
         carouselItemDiv.classList.add("active");
       }
 
-      var img = document.createElement("img");
+      const img = document.createElement("img");
       img.src = image;
       img.classList.add("d-block", "w-100");
       img.alt = "...";
@@ -961,20 +1037,20 @@ export const view = (function () {
     });
 
     // Create carousel controls
-    var prevButton = createCarouselControlButton(
+    const prevButton = createCarouselControlButton(
       "carousel-control-prev",
       "carousel-control-prev--product",
-      "carouselProductPage",
+      "carouselSection2",
       "prev",
       "carousel-control-prev-icon",
       "Previous"
     );
     carouselDiv.appendChild(prevButton);
 
-    var nextButton = createCarouselControlButton(
+    const nextButton = createCarouselControlButton(
       "carousel-control-next",
       "carousel-control-next--product",
-      "carouselProductPage",
+      "carouselSection2",
       "next",
       "carousel-control-next-icon",
       "Next"
@@ -982,27 +1058,27 @@ export const view = (function () {
     carouselDiv.appendChild(nextButton);
 
     // Create info section container
-    var infoDiv = document.createElement("div");
+    const infoDiv = document.createElement("div");
     infoDiv.classList.add("productPage__main__info");
     mainDiv.appendChild(infoDiv);
 
     // Create info header
-    var infoHeaderDiv = document.createElement("div");
+    const infoHeaderDiv = document.createElement("div");
     infoHeaderDiv.classList.add("productPage__main__info__header");
     infoDiv.appendChild(infoHeaderDiv);
 
     // Create availability section
-    var availableDiv = document.createElement("div");
+    const availableDiv = document.createElement("div");
     availableDiv.classList.add("productPage__main__info__header__available");
     infoHeaderDiv.appendChild(availableDiv);
 
-    var availableTextSpan = document.createElement("span");
+    const availableTextSpan = document.createElement("span");
     availableTextSpan.classList.add(
       "productPage__main__info__header__available__text"
     );
     availableTextSpan.textContent = "Available ";
 
-    var availableIcon = document.createElement("i");
+    const availableIcon = document.createElement("i");
     availableIcon.classList.add(
       "fa-solid",
       "fa-circle-check",
@@ -1013,7 +1089,7 @@ export const view = (function () {
     availableDiv.appendChild(availableTextSpan);
 
     // Create heart icon
-    var heartIcon = document.createElement("i");
+    const heartIcon = document.createElement("i");
     heartIcon.setAttribute("id", "heartIcon");
     heartIcon.classList.add(
       "fa-solid",
@@ -1035,7 +1111,7 @@ export const view = (function () {
     infoHeaderDiv.appendChild(heartIcon);
 
     // Create product name
-    var productName = document.createElement("h2");
+    const productName = document.createElement("h2");
     productName.classList.add("productPage__main__info__name");
     productName.textContent = obj.name;
     infoDiv.appendChild(productName);
@@ -1066,42 +1142,42 @@ export const view = (function () {
       price.innerHTML = ` ${obj.price}.00 $`;
       priceBox.appendChild(price);
     }
-    // var productPrice = document.createElement("p");
+    // const productPrice = document.createElement("p");
     // productPrice.classList.add("productPage__main__info__price");
     // productPrice.textContent = obj.price + "$";
     // infoDiv.appendChild(productPrice);
 
     // Create product code
-    var productCode = document.createElement("p");
+    const productCode = document.createElement("p");
     productCode.classList.add("productPage__main__info__code");
     productCode.innerHTML = `Code: <span>${obj.code}</span>`;
     infoDiv.appendChild(productCode);
 
     // Create cart buttons container
-    var cartButtonsDiv = document.createElement("div");
+    const cartButtonsDiv = document.createElement("div");
     cartButtonsDiv.classList.add("productPage__main__info__cartButtons");
     infoDiv.appendChild(cartButtonsDiv);
 
     // Create quantity buttons
-    var quantityDiv = document.createElement("div");
+    const quantityDiv = document.createElement("div");
     quantityDiv.classList.add("productPage__main__info__cartButtons__quantity");
     cartButtonsDiv.appendChild(quantityDiv);
 
-    var minusButton = document.createElement("button");
+    const minusButton = document.createElement("button");
     minusButton.classList.add(
       "productPage__main__info__cartButtons__quantity__minus"
     );
     minusButton.textContent = "-";
     quantityDiv.appendChild(minusButton);
 
-    var amountButton = document.createElement("button");
+    const amountButton = document.createElement("button");
     amountButton.classList.add(
       "productPage__main__info__cartButtons__quantity__number"
     );
     amountButton.textContent = "1";
     quantityDiv.appendChild(amountButton);
 
-    var plusButton = document.createElement("button");
+    const plusButton = document.createElement("button");
     plusButton.classList.add(
       "productPage__main__info__cartButtons__quantity__plus"
     );
@@ -1109,7 +1185,7 @@ export const view = (function () {
     quantityDiv.appendChild(plusButton);
 
     // Create addToCart button
-    var addToCartButton = document.createElement("button");
+    const addToCartButton = document.createElement("button");
     addToCartButton.classList.add(
       "productPage__main__info__cartButtons__addToCart"
     );
@@ -1117,7 +1193,7 @@ export const view = (function () {
     cartButtonsDiv.appendChild(addToCartButton);
 
     // Create accordion
-    var accordionDiv = document.createElement("div");
+    const accordionDiv = document.createElement("div");
     accordionDiv.classList.add(
       "accordion",
       "accordion-flush",
@@ -1127,18 +1203,18 @@ export const view = (function () {
     infoDiv.appendChild(accordionDiv);
 
     // Create description accordion item
-    var descriptionAccordionItemDiv = document.createElement("div");
+    const descriptionAccordionItemDiv = document.createElement("div");
     descriptionAccordionItemDiv.classList.add(
       "accordion-item",
       "accordion-item--text"
     );
     accordionDiv.appendChild(descriptionAccordionItemDiv);
 
-    var descriptionAccordionHeaderDiv = document.createElement("h2");
+    const descriptionAccordionHeaderDiv = document.createElement("h2");
     descriptionAccordionHeaderDiv.classList.add("accordion-header");
     descriptionAccordionItemDiv.appendChild(descriptionAccordionHeaderDiv);
 
-    var descriptionAccordionButton = createAccordionButton(
+    const descriptionAccordionButton = createAccordionButton(
       "Description",
       "collapseOne",
       "headingOne",
@@ -1146,7 +1222,7 @@ export const view = (function () {
     );
     descriptionAccordionHeaderDiv.appendChild(descriptionAccordionButton);
 
-    var descriptionAccordionCollapseDiv = document.createElement("div");
+    const descriptionAccordionCollapseDiv = document.createElement("div");
     descriptionAccordionCollapseDiv.id = "collapseOne";
     descriptionAccordionCollapseDiv.classList.add(
       "accordion-collapse",
@@ -1163,24 +1239,24 @@ export const view = (function () {
     );
     descriptionAccordionItemDiv.appendChild(descriptionAccordionCollapseDiv);
 
-    var descriptionAccordionBodyDiv = document.createElement("div");
+    const descriptionAccordionBodyDiv = document.createElement("div");
     descriptionAccordionBodyDiv.classList.add("accordion-body");
     descriptionAccordionBodyDiv.innerHTML = obj.desc;
     descriptionAccordionCollapseDiv.appendChild(descriptionAccordionBodyDiv);
 
     // Create dimensions accordion item
-    var dimensionsAccordionItemDiv = document.createElement("div");
+    const dimensionsAccordionItemDiv = document.createElement("div");
     dimensionsAccordionItemDiv.classList.add(
       "accordion-item",
       "accordion-item--text"
     );
     accordionDiv.appendChild(dimensionsAccordionItemDiv);
 
-    var dimensionsAccordionHeaderDiv = document.createElement("h2");
+    const dimensionsAccordionHeaderDiv = document.createElement("h2");
     dimensionsAccordionHeaderDiv.classList.add("accordion-header");
     dimensionsAccordionItemDiv.appendChild(dimensionsAccordionHeaderDiv);
 
-    var dimensionsAccordionButton = createAccordionButton(
+    const dimensionsAccordionButton = createAccordionButton(
       "Dimensions",
       "collapseTwo",
       "headingTwo",
@@ -1189,7 +1265,7 @@ export const view = (function () {
     dimensionsAccordionButton.classList.add("collapsed");
     dimensionsAccordionHeaderDiv.appendChild(dimensionsAccordionButton);
 
-    var dimensionsAccordionCollapseDiv = document.createElement("div");
+    const dimensionsAccordionCollapseDiv = document.createElement("div");
     dimensionsAccordionCollapseDiv.id = "collapseTwo";
     dimensionsAccordionCollapseDiv.classList.add(
       "accordion-collapse",
@@ -1205,7 +1281,7 @@ export const view = (function () {
     );
     dimensionsAccordionItemDiv.appendChild(dimensionsAccordionCollapseDiv);
 
-    var dimensionsAccordionBodyDiv = document.createElement("div");
+    const dimensionsAccordionBodyDiv = document.createElement("div");
     dimensionsAccordionBodyDiv.classList.add("accordion-body");
     dimensionsAccordionBodyDiv.innerHTML = ` <p>height: <span>${obj.dimensions.height}</span></p> 
       <p>width: <span>${obj.dimensions.width}</span></p>
@@ -1213,20 +1289,20 @@ export const view = (function () {
     dimensionsAccordionCollapseDiv.appendChild(dimensionsAccordionBodyDiv);
 
     // Create share section
-    var shareDiv = document.createElement("div");
+    const shareDiv = document.createElement("div");
     shareDiv.classList.add("thridAccordion");
     infoDiv.appendChild(shareDiv);
 
-    var shareTitle = document.createElement("p");
+    const shareTitle = document.createElement("p");
     shareTitle.classList.add("thridAccordion__title");
     shareTitle.textContent = "Share";
     shareDiv.appendChild(shareTitle);
 
-    var shareIconsDiv = document.createElement("div");
+    const shareIconsDiv = document.createElement("div");
     shareIconsDiv.classList.add("thridAccordion__icons");
     shareDiv.appendChild(shareIconsDiv);
 
-    var socialMediaLinks = [
+    const socialMediaLinks = [
       { href: "https://www.facebook.com/", iconClass: "fa-facebook" },
       { href: "https://www.instagram.com/", iconClass: "fa-instagram" },
       { href: "https://twitter.com/", iconClass: "fa-twitter" },
@@ -1234,10 +1310,10 @@ export const view = (function () {
     ];
 
     socialMediaLinks.forEach(function (link) {
-      var iconLink = document.createElement("a");
+      const iconLink = document.createElement("a");
       iconLink.href = link.href;
 
-      var icon = document.createElement("i");
+      const icon = document.createElement("i");
       icon.classList.add("fa-brands", `${link.iconClass}`);
 
       iconLink.appendChild(icon);
@@ -1254,17 +1330,17 @@ export const view = (function () {
       iconClass,
       ariaLabel
     ) {
-      var button = document.createElement("button");
+      const button = document.createElement("button");
       button.classList.add(className, className2);
       button.type = "button";
       button.setAttribute("data-bs-target", "#" + target);
       button.setAttribute("data-bs-slide", slide);
 
-      var iconSpan = document.createElement("span");
+      const iconSpan = document.createElement("span");
       iconSpan.classList.add(iconClass);
       iconSpan.setAttribute("aria-hidden", "true");
 
-      var labelSpan = document.createElement("span");
+      const labelSpan = document.createElement("span");
       labelSpan.classList.add("visually-hidden");
       labelSpan.textContent = ariaLabel;
 
@@ -1276,7 +1352,7 @@ export const view = (function () {
 
     // Helper function to create accordion button
     function createAccordionButton(title, collapseId, headingId, expanded) {
-      var button = document.createElement("button");
+      const button = document.createElement("button");
       button.classList.add("accordion-button", "accordion-button--title");
       button.type = "button";
       button.setAttribute("data-bs-toggle", "collapse");
@@ -1557,6 +1633,5 @@ export const view = (function () {
     },
     loadSection2,
     loadSection2Small,
- 
   };
 })();

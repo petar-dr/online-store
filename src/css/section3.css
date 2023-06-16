@@ -15,4 +15,18 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+@media ((min-width: 0px) and (max-width: 1200px)) {
+  .item--popular {
+    width: 25%;
+  }
+  .item--popular:last-child {
+    display: none;
+  }
+}
+@media ((min-width: 0px) and (max-width: 992px)) {
+  .item--popular {
+    width: 50%;
+  }
 }/*# sourceMappingURL=section3.css.map */

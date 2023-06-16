@@ -28,4 +28,21 @@
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 50px;
+  justify-content: center;
+}
+
+@media ((min-width: 0px) and (max-width: 1200px)) {
+  .item-products {
+    width: 25%;
+  }
+}
+@media ((min-width: 0px) and (max-width: 992px)) {
+  .item-products {
+    width: 33%;
+  }
+}
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .item-products {
+    width: 50%;
+  }
 }/*# sourceMappingURL=products.css.map */

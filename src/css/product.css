@@ -24,6 +24,7 @@
 @media ((min-width: 0px) and (max-width: 992px)) {
   .productPage__main__images {
     margin-bottom: 30px;
+    width: 80%;
   }
 }
 .productPage__main__images__carousel {
@@ -83,8 +84,8 @@
 }
 .productPage__main__info__cartButtons {
   display: flex;
-  -moz-column-gap: 20px;
-       column-gap: 20px;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
   height: 43px;
   margin-bottom: 20px;
 }
@@ -93,6 +94,12 @@
   display: inline-flex;
   min-width: 100px;
   max-width: 150px;
+}
+@media ((min-width: 0px) and (max-width: 992px)) {
+  .productPage__main__info__cartButtons__quantity {
+    width: 30%;
+    min-width: 50px;
+  }
 }
 .productPage__main__info__cartButtons__quantity__minus {
   height: 100%;
@@ -134,6 +141,12 @@
   color: black;
   background-color: #87d61f;
 }
+@media ((min-width: 0px) and (max-width: 992px)) {
+  .productPage__main__info__cartButtons__addToCart {
+    width: 50%;
+    min-width: 100px;
+  }
+}
 .productPage__main__info__cartButtons__addToCart:hover {
   color: white;
   background-color: black;
@@ -141,10 +154,12 @@
 
 .carousel--item--poducts {
   height: calc(100vh - 200px);
+  max-height: 700px;
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
   .carousel--item--poducts {
-    max-height: 500px;
+    height: -moz-fit-content;
+    height: fit-content;
   }
 }
 
@@ -153,12 +168,7 @@
      object-fit: cover;
   position: relative;
   bottom: 0;
-  height: calc(100vh - 200px);
-}
-@media ((min-width: 0px) and (max-width: 992px)) {
-  .carousel--item--poducts img {
-    max-height: 500px;
-  }
+  height: 100%;
 }
 
 .accordion-item--text {

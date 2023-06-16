@@ -16,20 +16,20 @@ export const controller = function (model, view) {
     const data = await model.loadData(url.popularProducts);
     main.appendChild(view.loadHomePage(data));
 
+    resposniveSection2();
     let screenWidthSection2 = window.matchMedia("(max-width: 992px)");
     screenWidthSection2.addEventListener("change", resposniveSection2);
-  
   }
   function resposniveSection2() {
     let screenWidthSection2 = window.matchMedia("(max-width: 992px)");
     const section2 = document.getElementById("section2");
 
-    if(screenWidthSection2.matches){
-      section2.innerHTML="";
-      // section2.appendChild(view.loadSection2Small())
-    }else{
-      section2.innerHTML="";
-      section2.appendChild(view.loadSection2())
+    if (screenWidthSection2.matches) {
+      section2.innerHTML = "";
+      section2.appendChild(view.loadSection2Small())
+    } else {
+      section2.innerHTML = "";
+      section2.appendChild(view.loadSection2());
     }
   }
   async function displayProductsPage() {
