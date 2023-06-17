@@ -4,7 +4,7 @@ export const controller = function (model, view) {
     document.getElementById("hamBtn").addEventListener("click", hamMenu);
   }
   function hamMenu() {
-    console.log("usao");
+    
     const checkBox = document.getElementById("menu-btn");
     if (checkBox.checked === false) {
       view.displayHamMenu();
