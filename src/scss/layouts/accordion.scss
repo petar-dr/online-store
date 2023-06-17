@@ -1,0 +1,92 @@
+@use "../basic/" as *;
+
+// Product page
+.accordion-item--text {
+  font-size: 16px;
+}
+.accordion-button--title,
+.thridAccordion {
+  padding-left: 0;
+  font-size: 18px;
+  padding: 0;
+  padding: 16px 0;
+}
+.accordion-button--productPage:focus {
+  outline: none;
+  background-color: #fff;
+  color: black;
+  border: none;
+  box-shadow: none;
+}
+.accordion-button--productPage:active {
+  background-color: #fff;
+  color: black;
+}
+.accordion-button--productPage:not(.collapsed) {
+  background-color: #fff;
+  color: black;
+}
+
+// share
+.thridAccordion {
+  border-top: 1px solid $border_light;
+  border-bottom: 1px solid $border_light;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  & a {
+    & i {
+      padding-right: 10px;
+      font-size: 20px;
+      color: black;
+    }
+  }
+  &__title {
+    font-size: 18px !important;
+    font-weight: 0 !important;
+    margin: 0;
+  }
+}
+// Footer menu small version
+.accordion-item--footerMenu {
+  border: none;
+  color: black;
+  box-shadow: none;
+  border-bottom: 1px solid black;
+}
+.accordion-button--footerMenu {
+  color: black;
+  background-color: #e3e2dc;
+}
+.accordion-button--footerMenu:active {
+  color: black;
+}
+.accordion-button--footerMenu:focus {
+  color: black;
+  background-color: #e3e2dc;
+  box-shadow: none;
+}
+.accordion-button--footerMenu:not(.collapsed) {
+  box-shadow: none;
+  color: black;
+
+  background-color: #e3e2dc;
+}
+.accordion-body--footerMenu {
+  background-color: #e3e2dc;
+  padding: 1rem 0;
+}
+.accordionFooterMenu__list {
+  list-style: none;
+  padding: 0;
+  &__item {
+    cursor: pointer;
+    border-bottom: 1px solid $border_transparent;
+    width: fit-content;
+    font-size: 18px;
+
+    &:hover {
+      border-bottom: 1px solid $border_hover_text;
+    }
+  }
+}

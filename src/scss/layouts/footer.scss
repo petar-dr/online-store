@@ -71,6 +71,11 @@ footer {
     flex-direction: column;
     padding: 0;
   }
+  &__footerMenuLarge{
+    width: 100%;
+    display: flex;
+  justify-content: space-between;
+  }
   &__box {
     min-width: 100px;
     padding: 0 10px;

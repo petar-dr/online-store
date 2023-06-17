@@ -76,6 +76,11 @@ footer {
     padding: 0;
   }
 }
+.middle__footerMenuLarge {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
 .middle__box {
   min-width: 100px;
   padding: 0 10px;

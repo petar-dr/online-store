@@ -162,60 +162,9 @@
  
 }
 
-// accordion description/dimension
-.accordion-item--text {
-  font-size: 16px;
-}
-.accordion-button--title,
-.thridAccordion {
-  padding-left: 0;
-  font-size: 18px;
-  padding: 0;
-  padding: 16px 0;
-}
-.accordion-button:focus {
-  z-index: 3;
-  border-color: #fff !important;
-  outline: 0;
-  background-color: #fff;
-  color: black;
-  border: none;
-  box-shadow: 0 0 0 0px $border_light !important;
-}
-.accordion-button:active {
-  background-color: #fff;
-  color: black;
-}
-.accordion-button:not(.collapsed) {
-  background-color: #fff;
-  color: black;
-}
-
-// share
-.thridAccordion {
-  border-top: 1px solid $border_light;
-  border-bottom: 1px solid $border_light;
-  margin-bottom: 50px;
-  display: flex;
-  justify-content: space-between;
-  & a {
-    & i {
-      padding-right: 10px;
-      font-size: 20px;
-      color: black;
-    }
-  }
-  &__title {
-    font-size: 18px !important;
-    font-weight: 0 !important;
-    margin: 0;
-  }
-}
 //carousel arrow
 .carousel-control-prev--product {
   left: -8%;
-  
-
 }
 
 .carousel-control-next--product {

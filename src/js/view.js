@@ -16,6 +16,29 @@ export const view = (function () {
     tables: "tables",
     sofas: "sofas",
   };
+  const footerMenuData = [
+    {
+      title: "Costumer service",
+      content: ["Contact", "Delivery", "FAQ"],
+    },
+    {
+      title: "Information",
+      content: ["Term of use", "Privacy policy"],
+    },
+    {
+      title: "Stay in touch",
+      content: ["Facebook", "Instagram", "Pinterest", "Linkedin"],
+    },
+    {
+      title: "Inspiration",
+      content: ["Ideas", "Story"],
+    },
+    {
+      title: "About us",
+      content: ["Our Store", "Production"],
+    },
+  ];
+
   const cardsSection2 = [
     {
       imageSrc: "../img/section2/chair.jpg",
@@ -39,18 +62,268 @@ export const view = (function () {
       content: "",
     },
   ];
+  function loadfooterMenuSmall() {
+    const accordionData = footerMenuData;
+
+    // Create accordion
+    const accordionDiv = document.createElement("div");
+    accordionDiv.classList.add("accordion", "footerMenuSmall");
+    accordionDiv.id = "accordionFooterMenu";
+
+    // Helper function to create accordion button
+    function createAccordionButton(title, collapseId, headingId, expanded) {
+      const button = document.createElement("button");
+      button.classList.add(
+        "accordion-button",
+        "accordion-flush",
+        "accordion-button--footerMenu",
+        "accordion-button--title",
+        "collapsed"
+      );
+      button.type = "button";
+      button.setAttribute("data-bs-toggle", "collapse");
+      button.setAttribute("data-bs-target", "#" + collapseId);
+      button.setAttribute("aria-expanded", expanded);
+      button.setAttribute("aria-controls", collapseId);
+      button.id = headingId;
+      button.textContent = title;
+
+      return button;
+    }
+
+    // Loop through the footerMenuData and create accordion items
+    accordionData.forEach((item, index) => {
+      // Create accordion item div
+      const accordionItemDiv = document.createElement("div");
+      accordionItemDiv.classList.add(
+        "accordion-item",
+        "accordion-item--footerMenu",
+        "accordion-item--text"
+      );
+      accordionDiv.appendChild(accordionItemDiv);
+
+      // Create accordion header div
+      const accordionHeaderDiv = document.createElement("h2");
+      accordionHeaderDiv.classList.add("accordion-header");
+      accordionItemDiv.appendChild(accordionHeaderDiv);
+
+      // Create accordion button
+      const accordionButton = createAccordionButton(
+        item.title,
+        `collapse${index + 1}`,
+        `heading${index + 1}`,
+        index === 0 // Expand the first item by default
+      );
+      accordionHeaderDiv.appendChild(accordionButton);
+
+      // Create accordion collapse div
+      const accordionCollapseDiv = document.createElement("div");
+      accordionCollapseDiv.id = `collapse${index + 1}`;
+      accordionCollapseDiv.classList.add("accordion-collapse", "collapse");
+      accordionCollapseDiv.setAttribute(
+        "aria-labelledby",
+        `heading${index + 1}`
+      );
+      accordionCollapseDiv.setAttribute(
+        "data-bs-parent",
+        "#accordionFooterMenu"
+      );
+      accordionItemDiv.appendChild(accordionCollapseDiv);
+
+      // Create accordion body div
+      const accordionBodyDiv = document.createElement("div");
+      accordionBodyDiv.classList.add(
+        "accordion-body",
+        "accordion-body--footerMenu"
+      );
+      const ul = document.createElement("ul");
+      ul.classList.add("accordionFooterMenu__list");
+      item.content.forEach((contentItem) => {
+        const li = document.createElement("li");
+        li.classList.add("accordionFooterMenu__list__item");
+        li.textContent = contentItem;
+        ul.appendChild(li);
+      });
+      accordionBodyDiv.appendChild(ul);
+      accordionCollapseDiv.appendChild(accordionBodyDiv);
+    });
+    // Append the accordion to the desired element in the document
+
+    return accordionDiv;
+  }
+  function loadfooterMenuLarge() {
+    const accordionData = footerMenuData;
+
+    // Create footerMenuLarge div
+    const footerMenuLarge = document.createElement("div");
+    footerMenuLarge.classList.add("middle__footerMenuLarge");
+    footerMenuLarge.id = "footerMenuLarge";
+    // Create customerService div
+    const customerServiceDiv = document.createElement("div");
+    customerServiceDiv.id = "customerService";
+    customerServiceDiv.classList.add("middle__box");
+    footerMenuLarge.appendChild(customerServiceDiv);
+
+    // Create customerService title
+    const customerServiceTitle = document.createElement("span");
+    customerServiceTitle.classList.add("middle__box__title");
+    customerServiceTitle.textContent = "Customer service";
+    customerServiceDiv.appendChild(customerServiceTitle);
+
+    // Create customerService list
+    const customerServiceList = document.createElement("ul");
+    customerServiceList.classList.add("middle__box__list");
+    customerServiceDiv.appendChild(customerServiceList);
+
+    // Create customerService list items
+    const customerServiceItems = ["Contact", "Delivery", "FAQ"];
+    for (let i = 0; i < customerServiceItems.length; i++) {
+      let customerServiceItem = customerServiceItems[i];
+      const listItem = document.createElement("li");
+      listItem.classList.add("middle__box__list__item");
+      customerServiceList.appendChild(listItem);
+
+      const link = document.createElement("a");
+      link.href = "#";
+      link.textContent = customerServiceItem;
+      listItem.appendChild(link);
+    }
+
+    // Create information div
+    const informationDiv = document.createElement("div");
+    informationDiv.id = "information";
+    informationDiv.classList.add("middle__box");
+    footerMenuLarge.appendChild(informationDiv);
+
+    // Create information title
+    const informationTitle = document.createElement("span");
+    informationTitle.classList.add("middle__box__title");
+    informationTitle.textContent = "Information";
+    informationDiv.appendChild(informationTitle);
+
+    // Create information list
+    const informationList = document.createElement("ul");
+    informationList.classList.add("middle__box__list");
+    informationDiv.appendChild(informationList);
+
+    // Create information list items
+    const informationItems = ["Terms of use", "Privacy policy"];
+    for (let i = 0; i < informationItems.length; i++) {
+      let informationItem = informationItems[i];
+      const listItem = document.createElement("li");
+      listItem.classList.add("middle__box__list__item");
+      informationList.appendChild(listItem);
+
+      const link = document.createElement("a");
+      link.href = "#";
+      link.textContent = informationItem;
+      listItem.appendChild(link);
+    }
+
+    // Create stayInTouch div
+    const stayInTouchDiv = document.createElement("div");
+    stayInTouchDiv.id = "stayInTouch";
+    stayInTouchDiv.classList.add("middle__box");
+    footerMenuLarge.appendChild(stayInTouchDiv);
+
+    // Create stayInTouch title
+    const stayInTouchTitle = document.createElement("span");
+    stayInTouchTitle.classList.add("middle__box__title");
+    stayInTouchTitle.textContent = "Stay in touch";
+    stayInTouchDiv.appendChild(stayInTouchTitle);
+
+    // Create stayInTouch list
+    const stayInTouchList = document.createElement("ul");
+    stayInTouchList.id = "stayInTouch__list";
+    stayInTouchList.classList.add("middle__box__list");
+    stayInTouchDiv.appendChild(stayInTouchList);
+
+    // Create stayInTouch list items
+    const stayInTouchItems = ["Facebook", "Instagram", "Pinterest", "LinkedIn"];
+    for (let i = 0; i < stayInTouchItems.length; i++) {
+      let stayInTouchItem = stayInTouchItems[i];
+      const listItem = document.createElement("li");
+      listItem.classList.add("middle__box__list__item");
+      stayInTouchList.appendChild(listItem);
+
+      const link = document.createElement("a");
+      link.href = "#";
+      link.textContent = stayInTouchItem;
+      listItem.appendChild(link);
+    }
+
+    // Create inspiration div
+    const inspirationDiv = document.createElement("div");
+    inspirationDiv.id = "inspiration";
+    inspirationDiv.classList.add("middle__box");
+    footerMenuLarge.appendChild(inspirationDiv);
+
+    // Create inspiration title
+    const inspirationTitle = document.createElement("span");
+    inspirationTitle.classList.add("middle__box__title");
+    inspirationTitle.textContent = "Inspiration";
+    inspirationDiv.appendChild(inspirationTitle);
+
+    // Create inspiration list
+    const inspirationList = document.createElement("ul");
+    inspirationList.id = "inspiration__list";
+    inspirationList.classList.add("middle__box__list");
+    inspirationDiv.appendChild(inspirationList);
+
+    // Create inspiration list items
+    const inspirationItems = ["Ideas", "Story"];
+    for (let i = 0; i < inspirationItems.length; i++) {
+      let inspirationItem = inspirationItems[i];
+      const listItem = document.createElement("li");
+      listItem.classList.add("middle__box__list__item");
+      inspirationList.appendChild(listItem);
+
+      const link = document.createElement("a");
+      link.href = "#";
+      link.textContent = inspirationItem;
+      listItem.appendChild(link);
+    }
+    // Create aboutUs div
+    const aboutUsDiv = document.createElement("div");
+    aboutUsDiv.id = "aboutUs";
+    aboutUsDiv.classList.add("middle__box");
+    footerMenuLarge.appendChild(aboutUsDiv);
+
+    // Create aboutUs title
+    const aboutUsTitle = document.createElement("span");
+    aboutUsTitle.classList.add("middle__box__title");
+    aboutUsTitle.textContent = "About us";
+    aboutUsDiv.appendChild(aboutUsTitle);
+
+    // Create aboutUs list
+    const aboutUsList = document.createElement("ul");
+    aboutUsList.id = "aboutUs__list";
+    aboutUsList.classList.add("middle__box__list");
+    aboutUsDiv.appendChild(aboutUsList);
+
+    // Create aboutUs list items
+    const aboutUsItems = ["Our Store", "Production"];
+    for (let i = 0; i < aboutUsItems.length; i++) {
+      let aboutUsItem = aboutUsItems[i];
+      const listItem = document.createElement("li");
+      listItem.classList.add("middle__box__list__item");
+      aboutUsList.appendChild(listItem);
+
+      const link = document.createElement("a");
+      link.href = "#";
+      link.textContent = aboutUsItem;
+      listItem.appendChild(link);
+    }
+    return footerMenuLarge;
+  }
   function displayHamMenu() {
-
-     const navbar = document.getElementById("navbar");
-     navbar.classList.add("displayNavbar");
-
+    const navbar = document.getElementById("navbar");
+    navbar.classList.add("displayNavbar");
   }
   function closeHamMenu() {
-
     const navbar = document.getElementById("navbar");
     navbar.classList.remove("displayNavbar");
-
- }
+  }
   function createCardsSection2(card, cardClass2) {
     // Create card link
     const cardLink = document.createElement("a");
@@ -420,7 +693,7 @@ export const view = (function () {
 
     // Create navbar element
     const navbar = document.createElement("div");
-    navbar.id="navbar"
+    navbar.id = "navbar";
     navbar.classList.add(
       "header__nav",
       "navbar",
@@ -536,165 +809,9 @@ export const view = (function () {
 
     // Create middle section
     const middleSection = document.createElement("div");
+    middleSection.id = "footerMenu";
     middleSection.classList.add("middle");
     footer.appendChild(middleSection);
-
-    // Create customerService div
-    const customerServiceDiv = document.createElement("div");
-    customerServiceDiv.id = "customerService";
-    customerServiceDiv.classList.add("middle__box");
-    middleSection.appendChild(customerServiceDiv);
-
-    // Create customerService title
-    const customerServiceTitle = document.createElement("span");
-    customerServiceTitle.classList.add("middle__box__title");
-    customerServiceTitle.textContent = "Customer service";
-    customerServiceDiv.appendChild(customerServiceTitle);
-
-    // Create customerService list
-    const customerServiceList = document.createElement("ul");
-    customerServiceList.classList.add("middle__box__list");
-    customerServiceDiv.appendChild(customerServiceList);
-
-    // Create customerService list items
-    const customerServiceItems = ["Contact", "Delivery", "FAQ"];
-    for (let i = 0; i < customerServiceItems.length; i++) {
-      let customerServiceItem = customerServiceItems[i];
-      const listItem = document.createElement("li");
-      listItem.classList.add("middle__box__list__item");
-      customerServiceList.appendChild(listItem);
-
-      const link = document.createElement("a");
-      link.href = "#";
-      link.textContent = customerServiceItem;
-      listItem.appendChild(link);
-    }
-
-    // Create information div
-    const informationDiv = document.createElement("div");
-    informationDiv.id = "information";
-    informationDiv.classList.add("middle__box");
-    middleSection.appendChild(informationDiv);
-
-    // Create information title
-    const informationTitle = document.createElement("span");
-    informationTitle.classList.add("middle__box__title");
-    informationTitle.textContent = "Information";
-    informationDiv.appendChild(informationTitle);
-
-    // Create information list
-    const informationList = document.createElement("ul");
-    informationList.classList.add("middle__box__list");
-    informationDiv.appendChild(informationList);
-
-    // Create information list items
-    const informationItems = ["Terms of use", "Privacy policy"];
-    for (let i = 0; i < informationItems.length; i++) {
-      let informationItem = informationItems[i];
-      const listItem = document.createElement("li");
-      listItem.classList.add("middle__box__list__item");
-      informationList.appendChild(listItem);
-
-      const link = document.createElement("a");
-      link.href = "#";
-      link.textContent = informationItem;
-      listItem.appendChild(link);
-    }
-
-    // Create stayInTouch div
-    const stayInTouchDiv = document.createElement("div");
-    stayInTouchDiv.id = "stayInTouch";
-    stayInTouchDiv.classList.add("middle__box");
-    middleSection.appendChild(stayInTouchDiv);
-
-    // Create stayInTouch title
-    const stayInTouchTitle = document.createElement("span");
-    stayInTouchTitle.classList.add("middle__box__title");
-    stayInTouchTitle.textContent = "Stay in touch";
-    stayInTouchDiv.appendChild(stayInTouchTitle);
-
-    // Create stayInTouch list
-    const stayInTouchList = document.createElement("ul");
-    stayInTouchList.id = "stayInTouch__list";
-    stayInTouchList.classList.add("middle__box__list");
-    stayInTouchDiv.appendChild(stayInTouchList);
-
-    // Create stayInTouch list items
-    const stayInTouchItems = ["Facebook", "Instagram", "Pinterest", "LinkedIn"];
-    for (let i = 0; i < stayInTouchItems.length; i++) {
-      let stayInTouchItem = stayInTouchItems[i];
-      const listItem = document.createElement("li");
-      listItem.classList.add("middle__box__list__item");
-      stayInTouchList.appendChild(listItem);
-
-      const link = document.createElement("a");
-      link.href = "#";
-      link.textContent = stayInTouchItem;
-      listItem.appendChild(link);
-    }
-
-    // Create inspiration div
-    const inspirationDiv = document.createElement("div");
-    inspirationDiv.id = "inspiration";
-    inspirationDiv.classList.add("middle__box");
-    middleSection.appendChild(inspirationDiv);
-
-    // Create inspiration title
-    const inspirationTitle = document.createElement("span");
-    inspirationTitle.classList.add("middle__box__title");
-    inspirationTitle.textContent = "Inspiration";
-    inspirationDiv.appendChild(inspirationTitle);
-
-    // Create inspiration list
-    const inspirationList = document.createElement("ul");
-    inspirationList.id = "inspiration__list";
-    inspirationList.classList.add("middle__box__list");
-    inspirationDiv.appendChild(inspirationList);
-
-    // Create inspiration list items
-    const inspirationItems = ["Ideas", "Story"];
-    for (let i = 0; i < inspirationItems.length; i++) {
-      let inspirationItem = inspirationItems[i];
-      const listItem = document.createElement("li");
-      listItem.classList.add("middle__box__list__item");
-      inspirationList.appendChild(listItem);
-
-      const link = document.createElement("a");
-      link.href = "#";
-      link.textContent = inspirationItem;
-      listItem.appendChild(link);
-    }
-    // Create aboutUs div
-    const aboutUsDiv = document.createElement("div");
-    aboutUsDiv.id = "aboutUs";
-    aboutUsDiv.classList.add("middle__box");
-    middleSection.appendChild(aboutUsDiv);
-
-    // Create aboutUs title
-    const aboutUsTitle = document.createElement("span");
-    aboutUsTitle.classList.add("middle__box__title");
-    aboutUsTitle.textContent = "About us";
-    aboutUsDiv.appendChild(aboutUsTitle);
-
-    // Create aboutUs list
-    const aboutUsList = document.createElement("ul");
-    aboutUsList.id = "aboutUs__list";
-    aboutUsList.classList.add("middle__box__list");
-    aboutUsDiv.appendChild(aboutUsList);
-
-    // Create aboutUs list items
-    const aboutUsItems = ["Our Store", "Production"];
-    for (let i = 0; i < aboutUsItems.length; i++) {
-      let aboutUsItem = aboutUsItems[i];
-      const listItem = document.createElement("li");
-      listItem.classList.add("middle__box__list__item");
-      aboutUsList.appendChild(listItem);
-
-      const link = document.createElement("a");
-      link.href = "#";
-      link.textContent = aboutUsItem;
-      listItem.appendChild(link);
-    }
 
     // Create bottom section
     const bottomSection = document.createElement("div");
@@ -1209,11 +1326,7 @@ export const view = (function () {
 
     // Create accordion
     const accordionDiv = document.createElement("div");
-    accordionDiv.classList.add(
-      "accordion",
-      "accordion-flush",
-      "productPage__main__info__accordionProductPage"
-    );
+    accordionDiv.classList.add("accordion", "accordion-flush");
     accordionDiv.id = "accordionProductPage";
     infoDiv.appendChild(accordionDiv);
 
@@ -1368,7 +1481,11 @@ export const view = (function () {
     // Helper function to create accordion button
     function createAccordionButton(title, collapseId, headingId, expanded) {
       const button = document.createElement("button");
-      button.classList.add("accordion-button", "accordion-button--title");
+      button.classList.add(
+        "accordion-button",
+        "accordion-button--productPage",
+        "accordion-button--title"
+      );
       button.type = "button";
       button.setAttribute("data-bs-toggle", "collapse");
       button.setAttribute("data-bs-target", "#" + collapseId);
@@ -1650,5 +1767,7 @@ export const view = (function () {
     loadSection2Small,
     displayHamMenu,
     closeHamMenu,
+    loadfooterMenuSmall,
+    loadfooterMenuLarge,
   };
 })();

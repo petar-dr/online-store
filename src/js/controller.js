@@ -1,31 +1,41 @@
 //CONTROLER
 export const controller = function (model, view) {
-  function setupHeaderLisiner() {
+  //EVENT LISTENERS -- START
+  function setupPageListners(){
+    setupHeaderListners();
+    setupFooterListners();
+  }
+
+  function setupHeaderListners() {
     document.getElementById("hamBtn").addEventListener("click", hamMenu);
   }
+  function setupFooterListners() {
+    responsivefooterMenu();
+    let screenWidthFooterMenu = window.matchMedia("(max-width: 768px)");
+    screenWidthFooterMenu.addEventListener("change", responsivefooterMenu);
+  }
+  //EVENT LISTENERS -- END
+
+  // function
+  function responsivefooterMenu() {
+    let screenWidthFooterMenu = window.matchMedia("(max-width: 768px)");
+    const footerMenu = document.getElementById("footerMenu");
+
+    if (screenWidthFooterMenu.matches) {
+      footerMenu.innerHTML = "";
+      footerMenu.appendChild(view.loadfooterMenuSmall());
+    } else {
+      footerMenu.innerHTML = "";
+      footerMenu.appendChild(view.loadfooterMenuLarge());
+    }
+  }
   function hamMenu() {
-    
     const checkBox = document.getElementById("menu-btn");
     if (checkBox.checked === false) {
       view.displayHamMenu();
     } else {
       view.closeHamMenu();
     }
-  }
-  //pages
-  async function displayHomePage() {
-    let DOM = view.getDOMString();
-    let url = model.getUrl();
-
-    let main = document.getElementById(DOM.homePage);
-    const data = await model.loadData(url.popularProducts);
-    main.appendChild(view.loadHomePage(data));
-
-    resposniveSection2();
-    let screenWidthSection2 = window.matchMedia("(max-width: 992px)");
-    screenWidthSection2.addEventListener("change", resposniveSection2);
-
-    setupHeaderLisiner();
   }
   function resposniveSection2() {
     let screenWidthSection2 = window.matchMedia("(max-width: 992px)");
@@ -39,6 +49,22 @@ export const controller = function (model, view) {
       section2.appendChild(view.loadSection2());
     }
   }
+  // PAGES -- START
+  async function displayHomePage() {
+    let DOM = view.getDOMString();
+    let url = model.getUrl();
+
+    let main = document.getElementById(DOM.homePage);
+    const data = await model.loadData(url.popularProducts);
+    main.appendChild(view.loadHomePage(data));
+
+    resposniveSection2();
+    let screenWidthSection2 = window.matchMedia("(max-width: 992px)");
+    screenWidthSection2.addEventListener("change", resposniveSection2);
+
+    setupPageListners();
+  }
+
   async function displayProductsPage() {
     let DOM = view.getDOMString();
     let url = model.getUrl();
@@ -65,7 +91,7 @@ export const controller = function (model, view) {
     let main = document.getElementById(DOM.productsPage);
     main.appendChild(view.loadProductsPage(data));
 
-    setupHeaderLisiner();
+    setupPageListners();
   }
   async function displayProductPage() {
     let DOM = view.getDOMString();
@@ -82,8 +108,7 @@ export const controller = function (model, view) {
 
     //Event listener for like button
     document.getElementById("heartIcon").addEventListener("click", addLike);
-    setupHeaderLisiner();
-
+    setupPageListners();
   }
   function displayLoginPage() {
     let DOM = view.getDOMString();
@@ -98,9 +123,7 @@ export const controller = function (model, view) {
       .getElementById("passwordIcon")
       .addEventListener("click", passwordIcon);
 
-
-    setupHeaderLisiner();
-
+      setupPageListners();
   }
   function displaySignupPage() {
     let DOM = view.getDOMString();
@@ -113,9 +136,9 @@ export const controller = function (model, view) {
       .getElementById("passwordIcon")
       .addEventListener("click", passwordIcon);
 
-    setupHeaderLisiner();
-
+      setupPageListners();
   }
+    // PAGES -- END
   function passwordIcon() {
     document.getElementById("passwordIcon").classList.toggle("fa-eye-slash");
     document.getElementById("passwordIcon").classList.toggle("fa-eye");
