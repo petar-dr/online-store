@@ -20,6 +20,8 @@
 .productPage__main__images {
   height: -moz-fit-content;
   height: fit-content;
+  display: flex;
+  justify-content: center;
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
   .productPage__main__images {

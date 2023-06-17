@@ -1,14 +1,16 @@
 @use "../basic/" as *;
 
 #carouselSection2 {
-  width: 80%;
+  @include media("md") {
+    width: 80%;
+  }
 }
 .section2Small {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
   width: 100%;
 }
 
-.card__divImg{
-    width: 100%;
+.card__divImg {
+  width: 100%;
 }

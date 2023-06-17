@@ -1,11 +1,16 @@
 //CONTROLER
 export const controller = function (model, view) {
-  let setupLisiner = function () {
-    let DOM = view.getDOMString();
-    window.addEventListener("click", ispis);
-  };
-  function ispis() {
-    console.log("promenjeno");
+  function setupHeaderLisiner() {
+    document.getElementById("hamBtn").addEventListener("click", hamMenu);
+  }
+  function hamMenu() {
+    console.log("usao");
+    const checkBox = document.getElementById("menu-btn");
+    if (checkBox.checked === false) {
+      view.displayHamMenu();
+    } else {
+      view.closeHamMenu();
+    }
   }
   //pages
   async function displayHomePage() {
@@ -19,6 +24,8 @@ export const controller = function (model, view) {
     resposniveSection2();
     let screenWidthSection2 = window.matchMedia("(max-width: 992px)");
     screenWidthSection2.addEventListener("change", resposniveSection2);
+
+    setupHeaderLisiner();
   }
   function resposniveSection2() {
     let screenWidthSection2 = window.matchMedia("(max-width: 992px)");
@@ -26,7 +33,7 @@ export const controller = function (model, view) {
 
     if (screenWidthSection2.matches) {
       section2.innerHTML = "";
-      section2.appendChild(view.loadSection2Small())
+      section2.appendChild(view.loadSection2Small());
     } else {
       section2.innerHTML = "";
       section2.appendChild(view.loadSection2());
@@ -57,6 +64,8 @@ export const controller = function (model, view) {
 
     let main = document.getElementById(DOM.productsPage);
     main.appendChild(view.loadProductsPage(data));
+
+    setupHeaderLisiner();
   }
   async function displayProductPage() {
     let DOM = view.getDOMString();
@@ -73,6 +82,8 @@ export const controller = function (model, view) {
 
     //Event listener for like button
     document.getElementById("heartIcon").addEventListener("click", addLike);
+    setupHeaderLisiner();
+
   }
   function displayLoginPage() {
     let DOM = view.getDOMString();
@@ -86,6 +97,10 @@ export const controller = function (model, view) {
     document
       .getElementById("passwordIcon")
       .addEventListener("click", passwordIcon);
+
+
+    setupHeaderLisiner();
+
   }
   function displaySignupPage() {
     let DOM = view.getDOMString();
@@ -97,6 +112,9 @@ export const controller = function (model, view) {
     document
       .getElementById("passwordIcon")
       .addEventListener("click", passwordIcon);
+
+    setupHeaderLisiner();
+
   }
   function passwordIcon() {
     document.getElementById("passwordIcon").classList.toggle("fa-eye-slash");
@@ -178,7 +196,6 @@ export const controller = function (model, view) {
   return {
     init: () => {
       displayHomePage();
-      setupLisiner();
     },
     products: () => {
       displayProductsPage();

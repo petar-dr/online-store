@@ -39,7 +39,18 @@ export const view = (function () {
       content: "",
     },
   ];
+  function displayHamMenu() {
 
+     const navbar = document.getElementById("navbar");
+     navbar.classList.add("displayNavbar");
+
+  }
+  function closeHamMenu() {
+
+    const navbar = document.getElementById("navbar");
+    navbar.classList.remove("displayNavbar");
+
+ }
   function createCardsSection2(card, cardClass2) {
     // Create card link
     const cardLink = document.createElement("a");
@@ -387,6 +398,8 @@ export const view = (function () {
 
     // Create ham-button element
     const hamButton = document.createElement("div");
+    hamButton.id = "hamBtn";
+
     hamButton.classList.add("ham", "header__main__right__ham");
     menuBtnLabel.appendChild(hamButton);
 
@@ -407,6 +420,7 @@ export const view = (function () {
 
     // Create navbar element
     const navbar = document.createElement("div");
+    navbar.id="navbar"
     navbar.classList.add(
       "header__nav",
       "navbar",
@@ -417,7 +431,7 @@ export const view = (function () {
 
     // Create header__nav__box element
     const navBox = document.createElement("div");
-    navBox.classList.add("header__nav__box", "container-fluid");
+    navBox.classList.add("header__nav__box");
     navbar.appendChild(navBox);
 
     // Create header__nav__box__list element
@@ -459,6 +473,7 @@ export const view = (function () {
 
     return header;
   }
+
   function loadFooter() {
     // Create footer element
     const footer = document.createElement("footer");
@@ -1633,5 +1648,7 @@ export const view = (function () {
     },
     loadSection2,
     loadSection2Small,
+    displayHamMenu,
+    closeHamMenu,
   };
 })();

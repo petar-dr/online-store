@@ -1,5 +1,7 @@
-#carouselSection2 {
-  width: 80%;
+@media ((min-width: 0px) and (max-width: 992px)) {
+  #carouselSection2 {
+    width: 80%;
+  }
 }
 
 .section2Small {
