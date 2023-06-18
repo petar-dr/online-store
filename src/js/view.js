@@ -1411,9 +1411,26 @@ export const view = (function () {
 
     const dimensionsAccordionBodyDiv = document.createElement("div");
     dimensionsAccordionBodyDiv.classList.add("accordion-body");
-    dimensionsAccordionBodyDiv.innerHTML = ` <p>height: <span>${obj.dimensions.height}</span></p> 
-      <p>width: <span>${obj.dimensions.width}</span></p>
-      <p>length: <span>${obj.dimensions.length}</span></p>`;
+
+    //Create ul list element
+    const dimensionList = document.createElement("ul");
+    dimensionList.classList.add("accordionProductPage__list");
+    dimensionsAccordionBodyDiv.appendChild(dimensionList);
+
+    //Create li element form object
+    const dimensions = obj.dimensions;
+    const entries = Object.entries(dimensions);
+
+    for (let i = 0; i < entries.length; i++) {
+      const entry = entries[i];
+
+      const listItem = document.createElement("li");
+      listItem.classList.add("accordionProductPage__list__item");
+
+      listItem.textContent = `${entry[0]}: ${entry[1]}`;
+      listItem.innerHTML+="cm"
+      dimensionList.appendChild(listItem);
+    }
     dimensionsAccordionCollapseDiv.appendChild(dimensionsAccordionBodyDiv);
 
     // Create share section

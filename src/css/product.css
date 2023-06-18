@@ -22,6 +22,7 @@
   height: fit-content;
   display: flex;
   justify-content: center;
+  width: 40%;
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
   .productPage__main__images {
@@ -201,4 +202,10 @@
 
 .productPage__main__info__header__heartIcon--clicked {
   color: #87d61f;
+}
+
+.accordionProductPage__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }/*# sourceMappingURL=product.css.map */
