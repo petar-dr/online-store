@@ -1,0 +1,22 @@
+.page-link--products {
+  border: none;
+  color: black;
+}
+.page-link--products:hover {
+  color: #666;
+  background-color: white;
+}
+.page-link--products:focus {
+  box-shadow: none;
+  color: black;
+  background-color: white;
+}
+
+.currentPage {
+  border-bottom: 1px solid black;
+}
+
+.pagination--products {
+  font-size: 16px;
+  font-weight: bold;
+}/*# sourceMappingURL=pagination.css.map */

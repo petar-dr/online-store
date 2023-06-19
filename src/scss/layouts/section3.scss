@@ -1,71 +1,32 @@
 @use "../basic/" as *;
-@use "../buttons/" as *;
 
-a {
-  text-decoration: none;
-  color: black;
-  &:hover {
-    color: black;
-  }
-}
 .section3 {
-  height: fit-content;
-  margin: 100px 0;
-  display: flex;
-  flex-direction: row;
   width: 100%;
-  text-decoration: none;
-  overflow: hidden;
-}
-.card {
-  border: none;
-  border-right: 1px solid $border_light;
-  width: 33%;
-  padding: 0 40px;
-  cursor: pointer;
+  height: fit-content;
+  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  &:last-child {
-    border: none;
-  }
-  &__divImg {
-    overflow: hidden;
-    width: 80%;
-
-    & img {
-      transition: 0.3s;
-      width: 100%;
-      
+  &__title {
+    & h2 {
+      font-size: 40px;
     }
   }
-
-  &__text {
+  &__popularProducts {
     width: 100%;
-   
-    &__title{
-      font-size: 30px;
-      margin: 20px 0;
-    }
-    &__btn {
-      @include btn--a;
-      font-size: 16px;
-      width: 50%;
-      color: #000;
-      border-color: #000;
-      border: 2px solid #000;
-      transition: 0.3s;
-    }
-   
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
-  &:hover {
-    & > div > img {
-      scale: 1.05;
+}
+.item--popular {
+  @include media("lg") {
+    width: 25%;
+    &:last-child {
+      display: none;
     }
-    & > div > .card__text__btn {
-      background-color: #000;
-      color: white;
-      transition: 0.3s;
-    }
+  }
+  @include media("md") {
+    width: 50%;
   }
 }

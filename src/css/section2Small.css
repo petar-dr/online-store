@@ -1,0 +1,15 @@
+@media ((min-width: 0px) and (max-width: 992px)) {
+  #carouselSection2 {
+    width: 80%;
+  }
+}
+
+.section2Small {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.card__divImg {
+  width: 100%;
+}/*# sourceMappingURL=section2Small.css.map */

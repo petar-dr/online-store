@@ -1,0 +1,49 @@
+@use "../basic/" as *;
+
+.products {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+
+  &__aside {
+    padding: 40px;
+    font-size: 18px;
+    width: 20%;
+    & ul {
+      padding: 0;
+      list-style: none;
+      & li {
+        & a {
+          cursor: pointer;
+          border-bottom: 1px solid $border_transparent;
+          width: fit-content;
+          &:hover {
+            border-bottom: 1px solid $border_hover_text;
+          }
+        }
+      }
+    }
+  }
+  &__main {
+    width: 80%;
+    &__items {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+      justify-content: center;
+    }
+  }
+}
+.item-products {
+  @include media("lg") {
+    width: 25%;
+  }
+  @include media("md") {
+    width: 33%;
+  }
+  @include media("sm") {
+    width: 50%;
+  }
+}

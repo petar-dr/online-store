@@ -1,0 +1,201 @@
+@use "../basic/" as *;
+
+.productPage__main {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 10%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  @include media("md") {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+  }
+  &__images {
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    @include media("md") {
+      margin-bottom: 30px;
+      width: 80%;
+    }
+    &__carousel {
+      height: calc(100vh - 200px);
+      margin: 0 80px;
+    }
+  }
+  &__info {
+    width: 40%;
+    @include media("md") {
+      width: 90%;
+    }
+    &__header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      font-size: 20px;
+      margin-bottom: 20px;
+      &__available {
+        font-size: 15px;
+        cursor: pointer;
+
+        &__icon {
+          color: $accent;
+        }
+      }
+      &__heartIcon {
+        cursor: pointer;
+        &:hover {
+          color: black;
+        }
+      }
+    }
+    &__name {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+    &__priceBox {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      column-gap: 10px;
+      margin-bottom: 20px;
+      &__oldPrice {
+        font-size: 16px;
+      }
+      &__price {
+        font-size: 25px;
+        font-weight: 500;
+      }
+    }
+
+    &__code {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    &__cartButtons {
+      display: flex;
+      column-gap: 10px;
+      height: 43px;
+      margin-bottom: 20px;
+
+      &__quantity {
+        height: 100%;
+        display: inline-flex;
+        min-width: 100px;
+        max-width: 150px;
+        @include media("md") {
+          width: 30%;
+        min-width: 50px;
+        }
+
+        &__minus {
+          height: 100%;
+          padding: 0;
+          margin: 0;
+          border: none;
+          width: 33%;
+          background-color: black;
+          color: white;
+          font-size: 18px;
+        }
+        &__number {
+          height: 100%;
+          padding: 0;
+          margin: 0;
+          border: none;
+          width: 33%;
+          background-color: black;
+          color: white;
+          font-size: 18px;
+        }
+        &__plus {
+          height: 100%;
+          padding: 0;
+          margin: 0;
+          border: none;
+          width: 33%;
+          background-color: black;
+          color: white;
+          font-size: 18px;
+        }
+      }
+      &__addToCart {
+        height: 100%;
+        width: 60%;
+        min-width: 200px;
+        max-width: 300px;
+        font-size: 18px;
+        border: none;
+        color: black;
+        background-color: $accent;
+        @include media("md") {
+          width: 50%;
+          min-width: 100px;
+        }
+        &:hover {
+          color: white;
+          background-color: black;
+        }
+      }
+    }
+  }
+}
+
+// carousel/carousel img
+.carousel--item--poducts {
+  height: calc(100vh - 200px);
+  max-height: 700px;
+  @include media("md") {
+    height: fit-content;
+  }
+}
+.carousel--item--poducts img {
+  object-fit: cover;
+  position: relative;
+  bottom: 0;
+  height: 100%
+  
+ 
+}
+
+//carousel arrow
+.carousel-control-prev--product {
+  left: -8%;
+}
+
+.carousel-control-next--product {
+  right: -8%;
+}
+
+//size of arrow
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+}
+//size of button
+.carousel-control-prev,
+.carousel-control-next {
+  top: calc(50% - 3rem);
+  bottom: calc(50% - 3rem);
+  width: 10%;
+}
+.productPage__main__info__header__heartIcon--normal {
+  color: #e3e2dc;
+}
+.productPage__main__info__header__heartIcon--clicked {
+  color: $accent;
+}
+// accordion list
+
+.accordionProductPage__list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

@@ -57,136 +57,77 @@
   transition: 0.3s;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: black;
+}
+
 .section2 {
-  height: calc(100vh - 145px);
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 100px 0;
+  display: flex;
+  flex-direction: row;
   width: 100%;
-  margin-top: 145px;
-}
-@media ((min-width: 0px) and (max-width: 992px)) {
-  .section2 {
-    height: calc(100vh - 65px);
-    margin-top: 65px;
-  }
-}
-@media ((min-width: 0px) and (max-width: 576px)) {
-  .section2 {
-    background-color: #e3e2dc;
-    height: 765px;
-  }
+  text-decoration: none;
+  overflow: hidden;
 }
 
-@media ((min-width: 0px) and (max-width: 576px)) {
-  .carousel-item {
-    height: 765px;
-  }
-}
-
-.carousel-item img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  position: relative;
-  bottom: 0;
-  height: calc(100vh - 145px);
+.card {
+  border: none;
+  border-right: 1px solid #ddd;
+  width: 33%;
+  padding: 0 40px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
-  .carousel-item img {
-    height: calc(100vh - 65px);
+  .card {
+    width: 100%;
+    padding: 0;
   }
 }
-@media ((min-width: 0px) and (max-width: 576px)) {
-  .carousel-item img {
-    height: 50%;
-  }
+.card:last-child {
+  border: none;
 }
-
-.my__caption {
-  position: absolute;
-  max-width: 500px;
-  top: 50%;
-  left: 10%;
-  transform: translateY(-50%);
-  text-align: start;
+.card__divImg {
+  overflow: hidden;
+  width: 80%;
 }
-@media ((min-width: 0px) and (max-width: 992px)) {
-  .my__caption {
-    max-width: 300px;
-  }
+.card__divImg img {
+  transition: 0.3s;
+  width: 100%;
 }
-@media ((min-width: 0px) and (max-width: 576px)) {
-  .my__caption {
-    width: 90%;
-    max-width: none;
-    top: 55%;
-    transform: none;
-  }
+.card__text {
+  width: 100%;
 }
-.my__caption h6 {
-  font-size: 1.06em;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.card__text__title {
+  font-size: 30px;
+  margin: 20px 0;
 }
-@media (max-width: 400px) {
-  .my__caption h6 {
-    font-size: 1em;
-  }
-}
-.my__caption h2 {
-  font-size: 3.6em;
-  font-weight: bold;
-  margin-bottom: 0.7em;
-}
-@media (max-width: 400px) {
-  .my__caption h2 {
-    font-size: 2.5em;
-  }
-}
-.my__caption p {
-  font-size: 1.4rem;
-  max-width: 80%;
-  line-height: 1.7;
-  margin-bottom: 3rem;
-  font-weight: bold;
-}
-@media (max-width: 400px) {
-  .my__caption p {
-    font-size: 1em;
-  }
-}
-.my__caption__a {
+.card__text__btn {
   background-color: transparent;
   padding: 0.75em 1.33em 0.8em 1.33em;
   text-decoration: none;
   font-size: 1.3rem;
   font-weight: bold;
-}
-.my__caption span {
-  font-size: 20px;
-}
-
-.my__caption__a--black {
+  font-size: 16px;
+  width: 50%;
   color: #000;
   border-color: #000;
   border: 2px solid #000;
+  transition: 0.3s;
 }
-.my__caption__a--black:hover {
+.card:hover > div > img {
+  scale: 1.05;
+}
+.card:hover > div > .card__text__btn {
   background-color: #000;
   color: white;
-}
-
-.my__caption__a--white {
-  color: #fff;
-  border-color: #fff;
-  border: 2px solid #fff;
-}
-.my__caption__a--white:hover {
-  background-color: #fff;
-  color: #000;
-}
-
-.my__caption--black {
-  color: #000;
-}
-
-.my__caption--white {
-  color: #fff;
+  transition: 0.3s;
 }/*# sourceMappingURL=section2.css.map */

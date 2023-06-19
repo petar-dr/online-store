@@ -1,0 +1,95 @@
+.accordion-item--text {
+  font-size: 16px;
+}
+
+.accordion-button--title,
+.thridAccordion {
+  padding-left: 0;
+  font-size: 18px;
+  padding: 0;
+  padding: 16px 0;
+}
+
+.accordion-button--productPage:focus {
+  outline: none;
+  background-color: #fff;
+  color: black;
+  border: none;
+  box-shadow: none;
+}
+
+.accordion-button--productPage:active {
+  background-color: #fff;
+  color: black;
+}
+
+.accordion-button--productPage:not(.collapsed) {
+  background-color: #fff;
+  color: black;
+}
+
+.thridAccordion {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+.thridAccordion a i {
+  padding-right: 10px;
+  font-size: 20px;
+  color: black;
+}
+.thridAccordion__title {
+  font-size: 18px !important;
+  font-weight: 0 !important;
+  margin: 0;
+}
+
+.accordion-item--footerMenu {
+  border: none;
+  color: black;
+  box-shadow: none;
+  border-bottom: 1px solid black;
+}
+
+.accordion-button--footerMenu {
+  color: black;
+  background-color: #e3e2dc;
+}
+
+.accordion-button--footerMenu:active {
+  color: black;
+}
+
+.accordion-button--footerMenu:focus {
+  color: black;
+  background-color: #e3e2dc;
+  box-shadow: none;
+}
+
+.accordion-button--footerMenu:not(.collapsed) {
+  box-shadow: none;
+  color: black;
+  background-color: #e3e2dc;
+}
+
+.accordion-body--footerMenu {
+  background-color: #e3e2dc;
+  padding: 1rem 0;
+}
+
+.accordionFooterMenu__list {
+  list-style: none;
+  padding: 0;
+}
+.accordionFooterMenu__list__item {
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 18px;
+}
+.accordionFooterMenu__list__item:hover {
+  border-bottom: 1px solid #000;
+}/*# sourceMappingURL=accordion.css.map */

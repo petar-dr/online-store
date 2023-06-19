@@ -12,6 +12,9 @@ footer {
   &__box {
     &__text {
       width: 450px;
+      @include media("xs") {
+        width: 100%;
+      }
       & h3 {
         font-size: 30px;
         margin-bottom: 20px;
@@ -33,11 +36,13 @@ footer {
           width: 250px;
           padding: 10px;
           color: black;
+          @include media("xs") {
+            width: 100%;
+          }
           &:focus {
             outline: none;
             border: 3px solid black;
           }
-          
         }
         &__submit {
           height: 30px;
@@ -66,6 +71,11 @@ footer {
     flex-direction: column;
     padding: 0;
   }
+  &__footerMenuLarge{
+    width: 100%;
+    display: flex;
+  justify-content: space-between;
+  }
   &__box {
     min-width: 100px;
     padding: 0 10px;
@@ -86,10 +96,10 @@ footer {
       @include media("sm") {
         display: none;
       }
-      &__item{
+      &__item {
         border-bottom: 1px solid transparent;
         width: fit-content;
-        &:hover{
+        &:hover {
           border-bottom: 1px solid black;
         }
       }

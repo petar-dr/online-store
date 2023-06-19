@@ -1,0 +1,96 @@
+@use "../basic/" as *;
+
+.signupPageMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__signupBox {
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0;
+    font-size: 18px;
+    row-gap: 20px;
+    width: 100%;
+    max-width: 300px;
+    &__title {
+      font-size: 30px;
+    }
+    &__name {
+      &__input {
+        border: none;
+        border-bottom: 1px solid black;
+        width: 100%;
+        &:focus {
+          outline: none;
+        }
+      }
+      &__warning {
+        color: red;
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+
+    &__email {
+      &__input {
+        border: none;
+        border-bottom: 1px solid black;
+        width: 100%;
+        &:focus {
+          outline: none;
+        }
+      }
+      &__warning {
+        color: red;
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+    &__password {
+      margin-bottom: 20px;
+      position: relative;
+      & i {
+        position: absolute;
+        right: 0;
+        top: 8px;
+        font-size: 16px;
+      }
+      &__input {
+        border: none;
+        border-bottom: 1px solid black;
+        width: 100%;
+        &:focus {
+          outline: none;
+        }
+      }
+      &__warning {
+        color: red;
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+    &__submit {
+      border: none;
+      background-color: black;
+      color: white;
+      font-size: 20px;
+      &:hover {
+        background-color: $accent;
+        color: black;
+      }
+    }
+    &__message {
+      display: flex;
+      justify-content: center;
+      font-size: 16px;
+      color: grey;
+
+      &__link {
+        border-bottom: 1px solid transparent;
+        &:hover {
+          border-bottom: 1px solid black;
+        }
+      }
+    }
+  }
+}

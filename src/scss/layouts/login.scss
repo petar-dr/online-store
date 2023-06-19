@@ -1,0 +1,100 @@
+@use "../basic/" as *;
+
+.loginPageMain {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__loginBox {
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0;
+    font-size: 18px;
+    row-gap: 20px;
+    width: 100%;
+    max-width: 300px;
+    &__title {
+      font-size: 30px;
+    }
+    &__name {
+      &__input {
+        border: none;
+        border-bottom: 1px solid black;
+        width: 100%;
+        &:focus {
+          outline: none;
+        }
+      }
+      &__warning {
+        display: none;
+        color: red;
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+
+    &__email {
+      &__input {
+        border: none;
+        border-bottom: 1px solid black;
+        width: 100%;
+        &:focus {
+          outline: none;
+        }
+      }
+      &__warning {
+        display: none;
+        color: red;
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+    &__password {
+      position: relative;
+      margin-bottom: 20px;
+      & i {
+        position: absolute;
+        right: 0;
+        top: 8px;
+        font-size: 16px;
+      }
+      &__input {
+        border: none;
+        border-bottom: 1px solid black;
+        width: 100%;
+        &:focus {
+          outline: none;
+        }
+      }
+      &__warning {
+        display: none;
+        color: red;
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+    &__submit {
+      border: none;
+      background-color: black;
+      color: white;
+      font-size: 20px;
+      &:hover {
+        background-color: $accent;
+        color: black;
+      }
+    }
+    &__message {
+      display: flex;
+      justify-content: center;
+      font-size: 16px;
+      color: grey;
+
+      &__link {
+        border-bottom: 1px solid transparent;
+        &:hover {
+          border-bottom: 1px solid black;
+        }
+      }
+    }
+  }
+}

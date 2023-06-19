@@ -3,9 +3,9 @@
 
 .header {
   height: 145px;
-  top: 0;
+  top: -26px;
   display: flex;
-  position: fixed;
+  position: sticky;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -13,8 +13,9 @@
   padding: 0;
   z-index: 110;
   background-color: $primary;
+
   @include media("md") {
-    height: 65px;
+    height: fit-content;
   }
 
   &__top {
@@ -39,11 +40,12 @@
     justify-content: space-between;
     padding: 0 40px;
     @include media("md") {
-      padding: 0 30px;
+      padding: 10px 30px;
       height: 100%;
+      border-bottom: 1px solid $border_light;
     }
     @include media("sm") {
-      padding: 0 20px;
+      padding: 10px 20px;
       height: 100%;
     }
 
@@ -58,7 +60,7 @@
           display: none;
         }
       }
-      &__second{
+      &__second {
         @include media("lg") {
           margin-left: 0;
         }
@@ -71,7 +73,6 @@
       align-items: center;
       @include media("md") {
         justify-content: start;
-        
       }
       & h1 {
         font-size: 3.5rem;
@@ -84,13 +85,30 @@
       display: flex;
       justify-content: right;
       align-items: center;
-      &__first {
+      &__search {
         display: none;
         @include media("md") {
           display: block;
         }
+        @include media("xs") {
+          display: none;
+        }
       }
-    
+      &__profile {
+        @include media("xs") {
+          display: none;
+        }
+      }
+      &__favorite {
+        @include media("xs") {
+          display: none;
+        }
+      }
+      &__cart {
+        @include media("xs") {
+          display: none;
+        }
+      }
     }
   }
   &__nav {
@@ -103,16 +121,30 @@
     border-bottom: 1px solid $border_light;
     @include media("md") {
       display: none;
+      right: 0;
+      position: absolute;
+      top: 86px;
+      background-color: rgba(250, 250, 250, 0.9);
+      border-top: none;
+      border-bottom: none;
+      min-height: 300px;
+      transition: 0.3s;
     }
-
     &__box {
-      padding: 0;
+      width: 100%;
+      height: 100%;
 
+      @include media("md") {
+        width: 100%;
+      }
       &__list {
         width: 100%;
         justify-content: space-between;
+        cursor: pointer;
         @include media("md") {
-          display: none;
+          align-items: center;
+          height: 100%;
+          justify-content: space-around;
         }
       }
     }
@@ -120,20 +152,24 @@
 }
 
 .nav--link {
-  font-size: 15px;
+  font-size: 18px;
   padding-bottom: 1px;
   border-bottom: 1px solid $border_transparent;
   color: $text_dark;
   text-decoration: none;
   font-weight: 400;
   transition: color 0.2s, border 0.2s;
+  @include media("md") {
+    //  font-size: 25px;
+  }
+
   &:hover {
     border-bottom: 1px solid $border_hover_text;
     color: $text_dark;
   }
 }
 .text--medium {
-  font-size: 20px;
+  font-size: 18px;
   border-bottom: 1px solid $border_transparent;
   transition: color 0.2s, border 0.2s;
   font-weight: 400;
@@ -157,4 +193,11 @@
   border-bottom: 1px solid $border_transparent;
   cursor: pointer;
 }
+.displayNavbar {
+  display: block;
 
+  transition: 0.3s;
+}
+.closeNavbar {
+  right: 0;
+}

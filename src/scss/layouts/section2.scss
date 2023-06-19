@@ -1,98 +1,73 @@
 @use "../basic/" as *;
 @use "../buttons/" as *;
 
+a {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    color: black;
+  }
+}
 .section2 {
-  height: calc(100vh - 145px);
+  height: fit-content;
+  margin: 100px 0;
+  display: flex;
+  flex-direction: row;
   width: 100%;
-  margin-top: 145px;
+  text-decoration: none;
+  overflow: hidden;
+}
+.card {
+  border: none;
+  border-right: 1px solid $border_light;
+  width: 33%;
+  padding: 0 40px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   @include media("md") {
-    height: calc(100vh - 65px);
-    margin-top: 65px;
+    width: 100%;
+    padding: 0;
   }
-  @include media("xs") {
-    background-color: #e3e2dc;
-    height: calc(700px + 65px);
+  &:last-child {
+    border: none;
   }
-}
-.carousel-item {
-  @include media("xs") {
-    height: calc(700px + 65px);
-  }
-}
-.carousel-item img {
-  object-fit: cover;
-  position: relative;
-  bottom: 0;
-  height: calc(100vh - 145px);
+  &__divImg {
+    overflow: hidden;
+    width: 80%;
 
-  @include media("md") {
-    height: calc(100vh - 65px);
-  }
-  @include media("xs") {
-    height: 50%;
-  }
-}
-.my__caption {
-  position: absolute;
-  max-width: 500px;
-  top: 50%;
-  left: 10%;
-  transform: translateY(-50%);
-  text-align: start;
-  @include media("md") {
-    max-width: 300px;
-  }
-  @include media("xs") {
-    width: 90%;
-    max-width: none;
-    top: 55%;
-    transform: none;
-  }
-
-  & h6 {
-    font-size: 1.06em;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    @include media("xxs") {
-      font-size: 1em;
+    & img {
+      transition: 0.3s;
+      width: 100%;
     }
   }
-  & h2 {
-    font-size: 3.6em;
-    font-weight: bold;
-    margin-bottom: 0.7em;
-    @include media("xxs") {
-      font-size: 2.5em;
-    }
-  }
-  & p {
-    font-size: 1.4rem;
-    max-width: 80%;
-    line-height: 1.7;
-    margin-bottom: 3rem;
-    font-weight: bold;
-    
-    @include media("xxs") {
-      font-size: 1em;
-    }
-  }
-  &__a {
-    @include btn--a;
-  }
-  & span {
-    font-size: 20px;
-  }
-}
 
-.my__caption__a--black {
-  @include btn--a--dark;
-}
-.my__caption__a--white {
-  @include btn--a--light;
-}
-.my__caption--black {
-  color: $secondary;
-}
-.my__caption--white {
-  color: $primary;
+  &__text {
+    width: 100%;
+
+    &__title {
+      font-size: 30px;
+      margin: 20px 0;
+    }
+    &__btn {
+      @include btn--a;
+      font-size: 16px;
+      width: 50%;
+      color: #000;
+      border-color: #000;
+      border: 2px solid #000;
+      transition: 0.3s;
+    }
+  }
+  &:hover {
+    & > div > img {
+      scale: 1.05;
+    }
+    & > div > .card__text__btn {
+      background-color: #000;
+      color: white;
+      transition: 0.3s;
+    }
+  }
 }
