@@ -25,12 +25,15 @@
       }
     }
   }
-  &__items {
+  &__main {
     width: 80%;
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 50px;
-    justify-content: center;
+    &__items {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+      justify-content: center;
+    }
   }
 }
 .item-products {

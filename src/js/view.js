@@ -1084,7 +1084,7 @@ export const view = (function () {
     return section3;
   }
   // products page
-  function loadProductsMain(obj) {
+  function loadProductsMain() {
     // Create products container
     const productsDiv = document.createElement("div");
     productsDiv.classList.add("products");
@@ -1114,16 +1114,23 @@ export const view = (function () {
       li.appendChild(a);
       ul.appendChild(li);
     });
+    // Create div main products
+    const mainProducts = document.createElement("div");
+    mainProducts.id = "mainProducts";
+    mainProducts.classList.add("products__main");
+    productsDiv.appendChild(mainProducts);
 
     // Create products items container
-    const productsItemsDiv = document.createElement("div");
-    productsItemsDiv.id = "productsItems";
-    productsItemsDiv.classList.add("products__items");
-    obj.forEach((elem) => {
-      const itemClass = "item-products";
-      productsItemsDiv.appendChild(item(elem, itemClass));
-    });
-    productsDiv.appendChild(productsItemsDiv);
+    // const productsItemsDiv = document.createElement("div");
+    // productsItemsDiv.id = "productsItems";
+    // productsItemsDiv.classList.add("products__main__items");
+
+    // obj.forEach((elem) => {
+    //   const itemClass = "item-products";
+    //   productsItemsDiv.appendChild(item(elem, itemClass));
+    // });
+    // productsItemsDiv.appendChild(renderProductsData(obj))
+    // mainProducts.appendChild(productsItemsDiv);
 
     return productsDiv;
   }
@@ -1428,7 +1435,7 @@ export const view = (function () {
       listItem.classList.add("accordionProductPage__list__item");
 
       listItem.textContent = `${entry[0]}: ${entry[1]}`;
-      listItem.innerHTML+="cm"
+      listItem.innerHTML += "cm";
       dimensionList.appendChild(listItem);
     }
     dimensionsAccordionCollapseDiv.appendChild(dimensionsAccordionBodyDiv);
@@ -1703,6 +1710,194 @@ export const view = (function () {
 
     return signupPageDiv;
   }
+  function paginationButton(lastPage) {
+    //Pagination
+    const nav = document.createElement("nav");
+    nav.setAttribute("aria-label", "Page navigation example");
+
+    const ulList = document.createElement("ul");
+    ulList.id = "pageButtonList";
+    ulList.classList.add(
+      "pagination",
+      "justify-content-center",
+      "pagination--products"
+    );
+    if (lastPage > 1) {
+      const li1 = document.createElement("li");
+      li1.id = "previousButton";
+      li1.classList.add("page-item", "disabled");
+      const a1 = document.createElement("a");
+      a1.id = "previousPage";
+      a1.classList.add("page-link", "page-link--products");
+      a1.href = "#";
+      a1.setAttribute("tabindex", "-1");
+      a1.setAttribute("aria-disabled", "true");
+      a1.textContent = "Previous";
+      li1.appendChild(a1);
+      ulList.appendChild(li1);
+
+      const li2 = document.createElement("li");
+      li2.classList.add("page-item");
+      const a2 = document.createElement("a");
+      a2.id = "fristPage";
+      a2.classList.add("page-link", "page-link--products", "pageNumber");
+      a2.href = "#";
+      a2.setAttribute("data-page", "1");
+      a2.textContent = "1";
+      li2.appendChild(a2);
+      ulList.appendChild(li2);
+
+      const li3 = document.createElement("li");
+      li3.classList.add("page-item");
+      const a3 = document.createElement("a");
+      a3.id = "secondPage";
+      a3.classList.add("page-link", "page-link--products", "pageNumber");
+      a3.href = "#";
+      a3.setAttribute("data-page", "2");
+      a3.textContent = "2";
+      li3.appendChild(a3);
+      ulList.appendChild(li3);
+      if (lastPage > 2) {
+        const li4 = document.createElement("li");
+        li4.id = "thrid";
+        li4.classList.add("page-item");
+        const a4 = document.createElement("a");
+        a4.id = "thridPage";
+        a4.classList.add("page-link", "page-link--products", "pageNumber");
+        a4.href = "#";
+        a4.setAttribute("data-page", "3");
+
+        a4.textContent = "3";
+        li4.appendChild(a4);
+        ulList.appendChild(li4);
+      }
+      const li5 = document.createElement("li");
+      li5.id = "nextButton";
+      li5.classList.add("page-item");
+      const a5 = document.createElement("a");
+      a5.id = "nextPage";
+      a5.classList.add("page-link", "page-link--products");
+      a5.href = "#";
+      a5.textContent = "Next";
+      li5.appendChild(a5);
+      ulList.appendChild(li5);
+    }
+    nav.appendChild(ulList);
+
+    mainProducts.appendChild(nav);
+  }
+  function renderProducts(obj, page) {
+    const mainProducts = document.getElementById("mainProducts");
+    // Create products items container
+    const productsItemsDiv = document.createElement("div");
+    productsItemsDiv.id = "productsItems";
+    productsItemsDiv.classList.add("products__main__items");
+    let currentPage = 1;
+    let pageSize;
+    if (window.innerWidth <= 992) {
+      pageSize = 12;
+    } else if (window.innerWidth > 992) {
+      pageSize = 15;
+    }
+    if (typeof page == "number") {
+      currentPage = page;
+    }
+    let lastPage = Math.ceil(obj.length / pageSize);
+
+    if (page == "Next") {
+      let curentButton = document.querySelector(".currentPage");
+      currentPage = Number(curentButton.textContent);
+      if (currentPage * pageSize < obj.length) {
+        currentPage++;
+      }
+    }
+    if (page == "Previous") {
+      let curentButton = document.querySelector(".currentPage");
+      currentPage = Number(curentButton.textContent);
+      if (currentPage > 1) {
+        currentPage--;
+      }
+    }
+
+    obj
+      .filter((elem, index) => {
+        let start = (currentPage - 1) * pageSize;
+        let end = currentPage * pageSize;
+        if (index >= start && index < end) return true;
+      })
+      .forEach((product) => {
+        const itemClass = "item-products";
+        productsItemsDiv.appendChild(item(product, itemClass));
+      });
+    mainProducts.innerHTML = "";
+    mainProducts.appendChild(productsItemsDiv);
+
+    paginationButton(lastPage);
+    if (lastPage > 1) {
+      paginationClasses(currentPage, lastPage);
+    }
+  }
+  function paginationClasses(currentPage, lastPage) {
+    let pagesTake = document.querySelectorAll(".pageNumber");
+    pagesTake.forEach((elem) => {
+      if (elem.dataset.page == currentPage) {
+        elem.classList.add("currentPage");
+      }
+    });
+
+    //Disabled previous and next buttons
+    const previousButton = document.getElementById("previousButton");
+    const nextButton = document.getElementById("nextButton");
+
+    currentPage == 1
+      ? previousButton.classList.add("disabled")
+      : previousButton.classList.remove("disabled");
+    currentPage == lastPage
+      ? nextButton.classList.add("disabled")
+      : nextButton.classList.remove("disabled");
+    //Tex content and classes of pagination buttons
+    if (lastPage == 2) {
+      const fristPage = document.getElementById("fristPage");
+      const secondPage = document.getElementById("secondPage");
+      if (currentPage == 1) {
+        fristPage.textContent = currentPage;
+        secondPage.textContent = currentPage + 1;
+        fristPage.classList.add("currentPage");
+        secondPage.classList.remove("currentPage");
+      } else {
+        fristPage.textContent = currentPage - 1;
+        secondPage.textContent = currentPage;
+        fristPage.classList.remove("currentPage");
+        secondPage.classList.add("currentPage");
+      }
+    } else if (lastPage > 2) {
+      const fristPage = document.getElementById("fristPage");
+      const secondPage = document.getElementById("secondPage");
+      const thridPage = document.getElementById("thridPage");
+      if (currentPage == 1) {
+        fristPage.textContent = currentPage;
+        secondPage.textContent = currentPage + 1;
+        thridPage.textContent = currentPage + 2;
+        fristPage.classList.add("currentPage");
+        secondPage.classList.remove("currentPage");
+        thridPage.classList.remove("currentPage");
+      } else if (currentPage == lastPage) {
+        thridPage.textContent = currentPage;
+        secondPage.textContent = currentPage - 1;
+        fristPage.textContent = currentPage - 2;
+        fristPage.classList.remove("currentPage");
+        secondPage.classList.remove("currentPage");
+        thridPage.classList.add("currentPage");
+      } else {
+        fristPage.textContent = currentPage - 1;
+        secondPage.textContent = currentPage;
+        thridPage.textContent = currentPage + 1;
+        fristPage.classList.remove("currentPage");
+        secondPage.classList.add("currentPage");
+        thridPage.classList.remove("currentPage");
+      }
+    }
+  }
 
   return {
     getDOMString: () => {
@@ -1730,14 +1925,14 @@ export const view = (function () {
       pageContent.appendChild(loadFooter());
       return pageContent;
     },
-    loadProductsPage: (data) => {
+    loadProductsPage: () => {
       const pageContent = document.createElement("div");
       pageContent.setAttribute("id", "pageContent");
       const main = document.createElement("div");
       main.classList.add("main");
       main.setAttribute("id", "main");
 
-      main.appendChild(loadProductsMain(data));
+      main.appendChild(loadProductsMain());
 
       pageContent.appendChild(loadHeader());
       pageContent.appendChild(main);
@@ -1786,5 +1981,6 @@ export const view = (function () {
     closeHamMenu,
     loadfooterMenuSmall,
     loadfooterMenuLarge,
+    renderProducts,
   };
 })();

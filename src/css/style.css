@@ -915,8 +915,11 @@ footer {
 .products__aside ul li a:hover {
   border-bottom: 1px solid #000;
 }
-.products__items {
+.products__main {
   width: 80%;
+}
+.products__main__items {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 50px;
@@ -1427,4 +1430,27 @@ footer {
 }
 .accordionFooterMenu__list__item:hover {
   border-bottom: 1px solid #000;
+}
+
+.page-link--products {
+  border: none;
+  color: black;
+}
+.page-link--products:hover {
+  color: #666;
+  background-color: white;
+}
+.page-link--products:focus {
+  box-shadow: none;
+  color: black;
+  background-color: white;
+}
+
+.currentPage {
+  border-bottom: 1px solid black;
+}
+
+.pagination--products {
+  font-size: 16px;
+  font-weight: bold;
 }/*# sourceMappingURL=style.css.map */

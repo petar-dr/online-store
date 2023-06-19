@@ -23,8 +23,11 @@
 .products__aside ul li a:hover {
   border-bottom: 1px solid #000;
 }
-.products__items {
+.products__main {
   width: 80%;
+}
+.products__main__items {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 50px;
