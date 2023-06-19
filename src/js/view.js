@@ -1120,18 +1120,6 @@ export const view = (function () {
     mainProducts.classList.add("products__main");
     productsDiv.appendChild(mainProducts);
 
-    // Create products items container
-    // const productsItemsDiv = document.createElement("div");
-    // productsItemsDiv.id = "productsItems";
-    // productsItemsDiv.classList.add("products__main__items");
-
-    // obj.forEach((elem) => {
-    //   const itemClass = "item-products";
-    //   productsItemsDiv.appendChild(item(elem, itemClass));
-    // });
-    // productsItemsDiv.appendChild(renderProductsData(obj))
-    // mainProducts.appendChild(productsItemsDiv);
-
     return productsDiv;
   }
   // product page
@@ -1215,15 +1203,24 @@ export const view = (function () {
     availableTextSpan.classList.add(
       "productPage__main__info__header__available__text"
     );
-    availableTextSpan.textContent = "Available ";
-
     const availableIcon = document.createElement("i");
-    availableIcon.classList.add(
-      "fa-solid",
-      "fa-circle-check",
-      "productPage__main__info__header__available__icon"
-    );
+    if (obj.available) {
+      availableTextSpan.textContent = "Available ";
 
+      availableIcon.classList.add(
+        "fa-solid",
+        "fa-circle-check",
+        "productPage__main__info__header__available__iconYes"
+      );
+    } else {
+      availableTextSpan.textContent = "Not available ";
+
+      availableIcon.classList.add(
+        "fa-solid",
+        "fa-circle-xmark",
+        "productPage__main__info__header__available__iconNo"
+      );
+    }
     availableTextSpan.appendChild(availableIcon);
     availableDiv.appendChild(availableTextSpan);
 
@@ -1330,6 +1327,9 @@ export const view = (function () {
     );
     addToCartButton.textContent = "Add to cart";
     cartButtonsDiv.appendChild(addToCartButton);
+    if (!obj.available) {
+      cartButtonsDiv.style.display = "none";
+    }
 
     // Create accordion
     const accordionDiv = document.createElement("div");

@@ -53,8 +53,11 @@
   font-size: 15px;
   cursor: pointer;
 }
-.productPage__main__info__header__available__icon {
+.productPage__main__info__header__available__iconYes {
   color: #87d61f;
+}
+.productPage__main__info__header__available__iconNo {
+  color: black;
 }
 .productPage__main__info__header__heartIcon {
   cursor: pointer;

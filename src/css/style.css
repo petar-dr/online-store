@@ -1006,6 +1006,19 @@ footer {
 .productPage__main__info__header__heartIcon:hover {
   color: black;
 }
+.productPage__main__info__header__notAvailable {
+  font-size: 15px;
+  cursor: pointer;
+}
+.productPage__main__info__header__notAvailable__icon {
+  color: black;
+}
+.productPage__main__info__header__heartIcon {
+  cursor: pointer;
+}
+.productPage__main__info__header__heartIcon:hover {
+  color: black;
+}
 .productPage__main__info__name {
   font-size: 30px;
   margin-bottom: 20px;
