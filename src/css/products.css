@@ -31,7 +31,7 @@
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 50px;
-  justify-content: center;
+  justify-content: start;
 }
 
 @media ((min-width: 0px) and (max-width: 1200px)) {
