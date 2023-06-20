@@ -18,9 +18,30 @@ export const controller = function (model, view) {
     const pageButtonList = document.getElementById("pageButtonList");
     pageButtonList.addEventListener("click", changePage);
   }
+  function setupProductsLiseners(){
+    responsiveFiltersContainer();
+    let screenWidthProductsPage = window.matchMedia("(max-width: 768px)");
+    screenWidthProductsPage.addEventListener("change", responsiveFiltersContainer);
+  }
   //EVENT LISTENERS -- END
 
   // function
+  function responsiveFiltersContainer(){
+    let screenWidthProductsPage = window.matchMedia("(max-width: 768px)");
+    const aside = document.getElementById("productsAside");
+    const productsFilters = document.getElementById("productsFilters");
+
+
+    if (screenWidthProductsPage.matches) {
+      productsFilters.innerHTML = "";
+      aside.innerHTML = "";
+      productsFilters.appendChild(view.loadfooterMenuSmall());
+    } else {
+      productsFilters.innerHTML = "";
+      aside.innerHTML = "";
+      aside.appendChild(view.filtersContainer());
+    }
+  }
   async function changePage(e) {
     let clickPage = e.target.textContent;
     if (
@@ -118,6 +139,7 @@ export const controller = function (model, view) {
     view.renderProducts(data);
 
     setupPageListners();
+    setupProductsLiseners();
     setupPaginationListners();
     
     

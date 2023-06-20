@@ -1091,36 +1091,161 @@ export const view = (function () {
 
     // Create aside
     const aside = document.createElement("aside");
+    aside.id = "productsAside";
     aside.classList.add("products__aside");
     productsDiv.appendChild(aside);
 
-    // Create "Products" heading
-    const heading = document.createElement("h3");
-    heading.textContent = "Products";
-    aside.appendChild(heading);
-
-    // Create ul element
-    const ul = document.createElement("ul");
-    aside.appendChild(ul);
-
-    // Create list items
-    const categories = ["All", "Chairs", "Tables", "Sofas"];
-    categories.forEach(function (category) {
-      let a = document.createElement("a");
-      a.textContent = category;
-      let url = "products.html?category=" + category.toLowerCase();
-      a.href = url;
-      const li = document.createElement("li");
-      li.appendChild(a);
-      ul.appendChild(li);
-    });
     // Create div main products
     const mainProducts = document.createElement("div");
     mainProducts.id = "mainProducts";
     mainProducts.classList.add("products__main");
+
+    // Create filters div
+    const productsFilters = document.createElement("div");
+    productsFilters.id = "productsFilters";
+
+    mainProducts.appendChild(productsFilters);
+
+    // Create display products div
+    const displayProducts = document.createElement("div");
+    displayProducts.id = "displayProducts";
+
+    const productsPagination = document.createElement("div");
+    productsPagination.id = "productsPagination";
+
+    mainProducts.appendChild(displayProducts);
+    mainProducts.appendChild(productsPagination);
+
     productsDiv.appendChild(mainProducts);
 
     return productsDiv;
+  }
+  function filtersContainer() {
+    const filterContainer = document.createElement("div");
+
+    // Create "Categories"
+    const categories = document.createElement("div");
+    categories.id = "filterSection";
+    filterContainer.appendChild(categories);
+
+    const categoriesTitle = document.createElement("span");
+    categoriesTitle.classList.add("filterSection__title");
+    categoriesTitle.textContent = "Categories";
+    categories.appendChild(categoriesTitle);
+
+    const ulCategories = document.createElement("ul");
+    ulCategories.classList.add("filterSection__title__list");
+
+    categories.appendChild(ulCategories);
+
+    const categoriesList = ["All", "Chairs", "Tables", "Sofas"];
+    categoriesList.forEach(function (category) {
+      const liCategories = document.createElement("li");
+      liCategories.classList.add("filterSection__title__list__item");
+
+      const aCategories = document.createElement("a");
+      aCategories.classList.add("filterSection__title__list__item__name");
+      aCategories.textContent = category;
+      const url = "products.html?category=" + category.toLowerCase();
+      aCategories.href = url;
+
+      liCategories.appendChild(aCategories);
+      ulCategories.appendChild(liCategories);
+    });
+
+    // Create "Sort"
+    const sort = document.createElement("div");
+    sort.id = "filterSection";
+    filterContainer.appendChild(sort);
+
+    const sortTitle = document.createElement("span");
+    sortTitle.classList.add("filterSection__title");
+
+    sortTitle.textContent = "Sort";
+    sort.appendChild(sortTitle);
+
+    const ulSort = document.createElement("ul");
+    ulSort.classList.add("filterSection__title__list");
+
+    const sortData = [
+      { id: "popularSort", label: "Popular" },
+      { id: "priceLowSort", label: "Price low-high" },
+      { id: "priceHighSort", label: "Price high-low" },
+    ];
+
+    sortData.forEach(function (option, index) {
+      const liSort = document.createElement("li");
+      liSort.classList.add("filterSection__title__list__item");
+
+      const labelSort = document.createElement("label");
+      labelSort.classList.add("filterSection__title__list__item__name");
+
+      labelSort.setAttribute("for", option.id);
+      labelSort.textContent = option.label;
+      const inputSort = document.createElement("input");
+      inputSort.classList.add("filterSection__title__list__item__name__input");
+
+      if (index == 0) {
+        inputSort.setAttribute("checked", "");
+      }
+      inputSort.setAttribute("type", "radio");
+      inputSort.setAttribute("id", option.id);
+      inputSort.setAttribute("class", "");
+      inputSort.setAttribute("name", "sortList");
+
+      liSort.appendChild(labelSort);
+      liSort.appendChild(inputSort);
+
+      ulSort.appendChild(liSort);
+    });
+
+    sort.appendChild(ulSort);
+
+    // Create "Filters"
+    const filter = document.createElement("div");
+    filter.id = "filterSection";
+
+    filterContainer.appendChild(filter);
+
+    const filterTitle = document.createElement("span");
+    filterTitle.classList.add("filterSection__title");
+    filterTitle.textContent = "Filters";
+    filter.appendChild(filterTitle);
+
+    const ulFilter = document.createElement("ul");
+    ulFilter.classList.add("filterSection__title__list");
+
+    const filterData = [
+      { id: "newFilter", label: "New" },
+      { id: "discountPrice", label: "Discount" },
+      // { id: "", label: "" },
+    ];
+
+    filterData.forEach(function (option) {
+      const liFilter = document.createElement("li");
+      liFilter.classList.add("filterSection__title__list__item");
+      const labelFilter = document.createElement("label");
+      labelFilter.classList.add("filterSection__title__list__item__name");
+      labelFilter.setAttribute("for", option.id);
+      labelFilter.textContent = option.label;
+
+      const inputFilter = document.createElement("input");
+      inputFilter.classList.add("filterSection__title__list__item__name__input");
+
+      inputFilter.setAttribute("type", "checkbox");
+      inputFilter.setAttribute("id", option.id);
+      inputFilter.setAttribute("class", "");
+      inputFilter.setAttribute("name", "filters");
+
+      liFilter.appendChild(labelFilter);
+      liFilter.appendChild(inputFilter);
+
+      ulFilter.appendChild(liFilter);
+    });
+
+    filter.appendChild(ulFilter);
+
+    return filterContainer;
   }
   // product page
   function loadProductMain(obj, array) {
@@ -1715,9 +1840,9 @@ export const view = (function () {
     const nav = document.createElement("nav");
     nav.setAttribute("aria-label", "Page navigation example");
 
-    const ulList = document.createElement("ul");
-    ulList.id = "pageButtonList";
-    ulList.classList.add(
+    const ulButtons = document.createElement("ul");
+    ulButtons.id = "pageButtonList";
+    ulButtons.classList.add(
       "pagination",
       "justify-content-center",
       "pagination--products"
@@ -1734,7 +1859,7 @@ export const view = (function () {
       a1.setAttribute("aria-disabled", "true");
       a1.textContent = "Previous";
       li1.appendChild(a1);
-      ulList.appendChild(li1);
+      ulButtons.appendChild(li1);
 
       const li2 = document.createElement("li");
       li2.classList.add("page-item");
@@ -1745,7 +1870,7 @@ export const view = (function () {
       a2.setAttribute("data-page", "1");
       a2.textContent = "1";
       li2.appendChild(a2);
-      ulList.appendChild(li2);
+      ulButtons.appendChild(li2);
 
       const li3 = document.createElement("li");
       li3.classList.add("page-item");
@@ -1756,7 +1881,7 @@ export const view = (function () {
       a3.setAttribute("data-page", "2");
       a3.textContent = "2";
       li3.appendChild(a3);
-      ulList.appendChild(li3);
+      ulButtons.appendChild(li3);
       if (lastPage > 2) {
         const li4 = document.createElement("li");
         li4.id = "thrid";
@@ -1769,7 +1894,7 @@ export const view = (function () {
 
         a4.textContent = "3";
         li4.appendChild(a4);
-        ulList.appendChild(li4);
+        ulButtons.appendChild(li4);
       }
       const li5 = document.createElement("li");
       li5.id = "nextButton";
@@ -1780,14 +1905,16 @@ export const view = (function () {
       a5.href = "#";
       a5.textContent = "Next";
       li5.appendChild(a5);
-      ulList.appendChild(li5);
+      ulButtons.appendChild(li5);
     }
-    nav.appendChild(ulList);
+    nav.appendChild(ulButtons);
 
-    mainProducts.appendChild(nav);
+    productsPagination.innerHTML = "";
+    productsPagination.appendChild(nav);
   }
   function renderProducts(obj, page) {
-    const mainProducts = document.getElementById("mainProducts");
+    const displayProducts = document.getElementById("displayProducts");
+
     // Create products items container
     const productsItemsDiv = document.createElement("div");
     productsItemsDiv.id = "productsItems";
@@ -1829,8 +1956,8 @@ export const view = (function () {
         const itemClass = "item-products";
         productsItemsDiv.appendChild(item(product, itemClass));
       });
-    mainProducts.innerHTML = "";
-    mainProducts.appendChild(productsItemsDiv);
+    displayProducts.innerHTML = "";
+    displayProducts.appendChild(productsItemsDiv);
 
     paginationButton(lastPage);
     if (lastPage > 1) {
@@ -1982,5 +2109,6 @@ export const view = (function () {
     loadfooterMenuSmall,
     loadfooterMenuLarge,
     renderProducts,
+    filtersContainer,
   };
 })();

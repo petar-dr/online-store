@@ -1,0 +1,32 @@
+@use "../basic/" as *;
+
+.filterSection {
+  &__title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    &__list {
+      list-style: none;
+      padding-left: 10px;
+      &__item {
+        display: flex;
+        justify-content: space-between;
+        max-width: 200px;
+
+        &__name {
+          width: fit-content;
+          border-bottom: 1px solid transparent;
+
+          &:hover {
+            border-bottom: 1px solid black;
+          }
+         
+          
+        }
+      }
+    }
+  }
+}
+.label {
+  cursor: pointer;
+}

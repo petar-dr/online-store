@@ -1,0 +1,26 @@
+.filterSection__title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+.filterSection__title__list {
+  list-style: none;
+  padding-left: 10px;
+}
+.filterSection__title__list__item {
+  display: flex;
+  justify-content: space-between;
+  max-width: 200px;
+}
+.filterSection__title__list__item__name {
+  width: -moz-fit-content;
+  width: fit-content;
+  border-bottom: 1px solid transparent;
+}
+.filterSection__title__list__item__name:hover {
+  border-bottom: 1px solid black;
+}
+
+.label {
+  cursor: pointer;
+}/*# sourceMappingURL=filtersContainer.css.map */
