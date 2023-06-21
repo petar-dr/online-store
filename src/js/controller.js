@@ -20,7 +20,7 @@ export const controller = function (model, view) {
   }
   function setupProductsLiseners() {
     responsiveFiltersContainer();
-    let screenWidthProductsPage = window.matchMedia("(max-width: 768px)");
+    let screenWidthProductsPage = window.matchMedia("(max-width: 576px)");
     screenWidthProductsPage.addEventListener(
       "change",
       responsiveFiltersContainer
@@ -47,18 +47,20 @@ export const controller = function (model, view) {
 
   }
   function responsiveFiltersContainer() {
-    let screenWidthProductsPage = window.matchMedia("(max-width: 768px)");
+    let screenWidthProductsPage = window.matchMedia("(max-width: 576px)");
     const aside = document.getElementById("productsAside");
     const productsFilters = document.getElementById("productsFilters");
 
     if (screenWidthProductsPage.matches) {
       productsFilters.innerHTML = "";
       aside.innerHTML = "";
+      productsFilters.appendChild(view.filterContainerSmall())
     } else {
       productsFilters.innerHTML = "";
       aside.innerHTML = "";
       aside.appendChild(view.filtersContainer());
     }
+    setupFilterLiseners();
   }
   async function changePage(e) {
     let clickPage = e.target.textContent;

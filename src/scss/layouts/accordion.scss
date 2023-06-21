@@ -90,3 +90,22 @@
     }
   }
 }
+// Filters small version
+.accordion-item--fiters {
+  border: none;
+  border-bottom: 1px solid black;
+}
+.accordion-button--filters {
+  font-size: 18px;
+  font-weight: 400;
+}
+.accordion-button--filters:focus {
+  border: none;
+  box-shadow: none;
+}
+.accordion-button--filters:not(.collapsed) {
+  background-color: #fff;
+  color: black;
+  box-shadow: none;
+
+}

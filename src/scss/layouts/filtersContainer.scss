@@ -3,8 +3,11 @@
 .filterSection {
   &__title {
     font-size: 18px;
-    font-weight: bold;
     margin-bottom: 50px;
+    font-weight: bold;
+    @include media ("sm"){
+      margin-bottom: none;
+    }
     &__list {
       list-style: none;
       padding-left: 10px;
@@ -12,10 +15,15 @@
         display: flex;
         justify-content: space-between;
         max-width: 200px;
-
+        font-size: 18px;
+        @include media("xs"){
+          width: 100%;
+          max-width: none;
+        }
         &__name {
           width: fit-content;
           border-bottom: 1px solid transparent;
+          font-weight: none;
           &:hover {
             border-bottom: 1px solid black;
           }
@@ -42,4 +50,12 @@ input[type="radio"] {
   height: 1em;
   border: 0.15em solid currentColor;
   border-radius: 50%;
+}
+.productsFilters{
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 ;
+}
+.filterContainer{
+  width: 90%;
 }

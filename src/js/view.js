@@ -1103,6 +1103,7 @@ export const view = (function () {
     // Create filters div
     const productsFilters = document.createElement("div");
     productsFilters.id = "productsFilters";
+    productsFilters.classList.add("productsFilters")
 
     mainProducts.appendChild(productsFilters);
 
@@ -1119,6 +1120,289 @@ export const view = (function () {
     productsDiv.appendChild(mainProducts);
 
     return productsDiv;
+  }
+  function filterContainerSmall() {
+    const filterContainer = document.createElement("div");
+    filterContainer.classList.add("filterContainer")
+    
+    // Create the main container div
+    const accordion = document.createElement("div");
+    accordion.className = "accordion accordion-flush";
+    accordion.id = "accordionFlushExample";
+
+    // Create the first accordion item
+    const item1 = document.createElement("div");
+    item1.className = "accordion-item accordion-item--fiters";
+
+    // Create the first accordion item header
+    const header1 = document.createElement("h2");
+    header1.className = "accordion-header";
+    header1.id = "flush-headingOne";
+
+    // Create the button inside the first accordion item header
+    const button1 = document.createElement("button");
+    button1.className = "accordion-button collapsed accordion-button--filters";
+    button1.type = "button";
+    button1.setAttribute("data-bs-toggle", "collapse");
+    button1.setAttribute("data-bs-target", "#flush-collapseOne");
+    button1.setAttribute("aria-expanded", "false");
+    button1.setAttribute("aria-controls", "flush-collapseOne");
+    button1.textContent = "Categories";
+
+    // Append the button to the first accordion item header
+    header1.appendChild(button1);
+
+    // Create the first accordion item body
+    const body1 = document.createElement("div");
+    body1.id = "flush-collapseOne";
+    body1.className = "accordion-collapse collapse";
+    body1.setAttribute("aria-labelledby", "flush-headingOne");
+    body1.setAttribute("data-bs-parent", "#accordionFlushExample");
+
+    // Create the content inside the first accordion item body
+    const content1 = document.createElement("div");
+    content1.className = "accordion-body";
+
+    // Create the unordered list inside the first accordion item body
+    const list1 = document.createElement("ul");
+    list1.className = "filterSection__title__list";
+
+    // Create the list items for categories
+    const listItem1 = document.createElement("li");
+    listItem1.className = "filterSection__title__list__item";
+    const link1 = document.createElement("a");
+    link1.className = "filterSection__title__list__item__name";
+    link1.href = "products.html?category=all";
+    link1.textContent = "All";
+    listItem1.appendChild(link1);
+
+    const listItem2 = document.createElement("li");
+    listItem2.className = "filterSection__title__list__item";
+    const link2 = document.createElement("a");
+    link2.className = "filterSection__title__list__item__name";
+    link2.href = "products.html?category=chairs";
+    link2.textContent = "Chairs";
+    listItem2.appendChild(link2);
+
+    const listItem3 = document.createElement("li");
+    listItem3.className = "filterSection__title__list__item";
+    const link3 = document.createElement("a");
+    link3.className = "filterSection__title__list__item__name";
+    link3.href = "products.html?category=tables";
+    link3.textContent = "Tables";
+    listItem3.appendChild(link3);
+
+    const listItem4 = document.createElement("li");
+    listItem4.className = "filterSection__title__list__item";
+    const link4 = document.createElement("a");
+    link4.className = "filterSection__title__list__item__name";
+    link4.href = "products.html?category=sofas";
+    link4.textContent = "Sofas";
+    listItem4.appendChild(link4);
+
+    // Append the list items to the unordered list
+    list1.appendChild(listItem1);
+    list1.appendChild(listItem2);
+    list1.appendChild(listItem3);
+    list1.appendChild(listItem4);
+
+    // Append the unordered list to the content inside the first accordion item body
+    content1.appendChild(list1);
+
+    // Append the content to the first accordion item body
+    body1.appendChild(content1);
+
+    // Append the first accordion item header and body to the first accordion item
+    item1.appendChild(header1);
+    item1.appendChild(body1);
+
+
+    // Create the second accordion item
+    const item2 = document.createElement("div");
+    item2.className = "accordion-item accordion-item--fiters";
+
+    // Create the second accordion item header
+    const header2 = document.createElement("h2");
+    header2.className = "accordion-header";
+    header2.id = "flush-headingTwo";
+
+    // Create the button inside the second accordion item header
+    const button2 = document.createElement("button");
+    button2.className = "accordion-button collapsed accordion-button--filters";
+    button2.type = "button";
+    button2.setAttribute("data-bs-toggle", "collapse");
+    button2.setAttribute("data-bs-target", "#flush-collapseTwo");
+    button2.setAttribute("aria-expanded", "false");
+    button2.setAttribute("aria-controls", "flush-collapseTwo");
+    button2.textContent = "Sort";
+
+    // Append the button to the second accordion item header
+    header2.appendChild(button2);
+
+    // Create the second accordion item body
+    const body2 = document.createElement("div");
+    body2.id = "flush-collapseTwo";
+    body2.className = "accordion-collapse collapse";
+    body2.setAttribute("aria-labelledby", "flush-headingTwo");
+    body2.setAttribute("data-bs-parent", "#accordionFlushExample");
+
+    // Create the content inside the second accordion item body
+    const content2 = document.createElement("div");
+    content2.className = "accordion-body";
+
+    // Create the unordered list inside the second accordion item body
+    const list2 = document.createElement("ul");
+    list2.className = "filterSection__title__list";
+
+    // Create the list items for sorting options
+    const listItem5 = document.createElement("li");
+    listItem5.className = "filterSection__title__list__item";
+    const label1 = document.createElement("label");
+    label1.className = "filterSection__title__list__item__name";
+    label1.setAttribute("for", "popularSort");
+    label1.textContent = "Popular";
+    const input1 = document.createElement("input");
+    input1.setAttribute("type", "radio");
+    input1.id = "popularSort";
+    input1.className = "filterSection__title__list__item__input";
+    input1.name = "sortList";
+    input1.checked = true;
+    listItem5.appendChild(label1);
+    listItem5.appendChild(input1);
+
+    const listItem6 = document.createElement("li");
+    listItem6.className = "filterSection__title__list__item";
+    const label2 = document.createElement("label");
+    label2.className = "filterSection__title__list__item__name";
+    label2.setAttribute("for", "priceLowSort");
+    label2.textContent = "Price low-high";
+    const input2 = document.createElement("input");
+    input2.setAttribute("type", "radio");
+    input2.id = "priceLowSort";
+    input2.className = "filterSection__title__list__item__input";
+    input2.name = "sortList";
+    listItem6.appendChild(label2);
+    listItem6.appendChild(input2);
+
+    const listItem7 = document.createElement("li");
+    listItem7.className = "filterSection__title__list__item";
+    const label3 = document.createElement("label");
+    label3.className = "filterSection__title__list__item__name";
+    label3.setAttribute("for", "priceHighSort");
+    label3.textContent = "Price high-low";
+    const input3 = document.createElement("input");
+    input3.setAttribute("type", "radio");
+    input3.id = "priceHighSort";
+    input3.className = "filterSection__title__list__item__input";
+    input3.name = "sortList";
+    listItem7.appendChild(label3);
+    listItem7.appendChild(input3);
+
+    // Append the list items to the unordered list
+    list2.appendChild(listItem5);
+    list2.appendChild(listItem6);
+    list2.appendChild(listItem7);
+
+    // Append the unordered list to the content inside the second accordion item body
+    content2.appendChild(list2);
+
+    // Append the content to the second accordion item body
+    body2.appendChild(content2);
+
+    // Append the second accordion item header and body to the second accordion item
+    item2.appendChild(header2);
+    item2.appendChild(body2);
+
+    // Create the third accordion item (similar to item2) and append it to the main container div
+    const item3 = document.createElement("div");
+    item3.className = "accordion-item accordion-item--fiters";
+
+    // Create the third accordion item header
+    const header3 = document.createElement("h2");
+    header3.className = "accordion-header";
+    header3.id = "flush-headingThree";
+
+    // Create the button inside the third accordion item header
+    const button3 = document.createElement("button");
+    button3.className = "accordion-button collapsed accordion-button--filters";
+    button3.type = "button";
+    button3.setAttribute("data-bs-toggle", "collapse");
+    button3.setAttribute("data-bs-target", "#flush-collapseThree");
+    button3.setAttribute("aria-expanded", "false");
+    button3.setAttribute("aria-controls", "flush-collapseThree");
+    button3.textContent = "Filters";
+
+    // Append the button to the third accordion item header
+    header3.appendChild(button3);
+
+    // Create the third accordion item body
+    const body3 = document.createElement("div");
+    body3.id = "flush-collapseThree";
+    body3.className = "accordion-collapse collapse";
+    body3.setAttribute("aria-labelledby", "flush-headingThree");
+    body3.setAttribute("data-bs-parent", "#accordionFlushExample");
+
+    // Create the content inside the third accordion item body
+    const content3 = document.createElement("div");
+    content3.className = "accordion-body";
+
+    // Create the unordered list inside the third accordion item body
+    const list3 = document.createElement("ul");
+    list3.className = "filterSection__title__list";
+
+    // Create the list items for filter options
+    const listItem8 = document.createElement("li");
+    listItem8.className = "filterSection__title__list__item";
+    const label4 = document.createElement("label");
+    label4.className = "filterSection__title__list__item__name";
+    label4.setAttribute("for", "newFilter");
+    label4.textContent = "New";
+    const input4 = document.createElement("input");
+    input4.setAttribute("type", "checkbox");
+    input4.id = "newFilter";
+    input4.className = "filterSection__title__list__item__input";
+    input4.name = "filters";
+    listItem8.appendChild(label4);
+    listItem8.appendChild(input4);
+
+    const listItem9 = document.createElement("li");
+    listItem9.className = "filterSection__title__list__item";
+    const label5 = document.createElement("label");
+    label5.className = "filterSection__title__list__item__name";
+    label5.setAttribute("for", "discountPrice");
+    label5.textContent = "Discount";
+    const input5 = document.createElement("input");
+    input5.setAttribute("type", "checkbox");
+    input5.id = "discountPrice";
+    input5.className = "filterSection__title__list__item__input";
+    input5.name = "filters";
+    listItem9.appendChild(label5);
+    listItem9.appendChild(input5);
+
+    // Append the list items to the unordered list
+    list3.appendChild(listItem8);
+    list3.appendChild(listItem9);
+
+    // Append the unordered list to the content inside the third accordion item body
+    content3.appendChild(list3);
+
+    // Append the content to the third accordion item body
+    body3.appendChild(content3);
+
+    // Append the third accordion item header and body to the third accordion item
+    item3.appendChild(header3);
+    item3.appendChild(body3);
+ 
+    accordion.appendChild(item1);
+    accordion.appendChild(item2);
+    accordion.appendChild(item3);
+   
+    filterContainer.appendChild(accordion);
+
+
+
+
+    return filterContainer;
   }
   function filtersContainer() {
     const filterContainer = document.createElement("div");
@@ -1917,6 +2201,7 @@ export const view = (function () {
   }
   function sortPopular(data) {
     const popularSort = document.getElementById("popularSort").checked;
+    console.log(popularSort)
     if (popularSort) {
       data = data.sort((a, b) =>
         parseInt(a.soldItems) < parseInt(b.soldItems) ? 1 : -1
@@ -2163,5 +2448,6 @@ export const view = (function () {
     loadfooterMenuLarge,
     renderProducts,
     filtersContainer,
+    filterContainerSmall,
   };
 })();
