@@ -1182,16 +1182,18 @@ export const view = (function () {
 
       labelSort.setAttribute("for", option.id);
       labelSort.textContent = option.label;
+
       const inputSort = document.createElement("input");
-      inputSort.classList.add("filterSection__title__list__item__name__input");
 
       if (index == 0) {
         inputSort.setAttribute("checked", "");
       }
+
       inputSort.setAttribute("type", "radio");
       inputSort.setAttribute("id", option.id);
       inputSort.setAttribute("class", "");
       inputSort.setAttribute("name", "sortList");
+      inputSort.classList.add("filterSection__title__list__item__input");
 
       liSort.appendChild(labelSort);
       liSort.appendChild(inputSort);
@@ -1218,24 +1220,24 @@ export const view = (function () {
     const filterData = [
       { id: "newFilter", label: "New" },
       { id: "discountPrice", label: "Discount" },
-      // { id: "", label: "" },
     ];
 
     filterData.forEach(function (option) {
       const liFilter = document.createElement("li");
       liFilter.classList.add("filterSection__title__list__item");
+
       const labelFilter = document.createElement("label");
       labelFilter.classList.add("filterSection__title__list__item__name");
       labelFilter.setAttribute("for", option.id);
       labelFilter.textContent = option.label;
 
       const inputFilter = document.createElement("input");
-      inputFilter.classList.add("filterSection__title__list__item__name__input");
 
       inputFilter.setAttribute("type", "checkbox");
       inputFilter.setAttribute("id", option.id);
       inputFilter.setAttribute("class", "");
       inputFilter.setAttribute("name", "filters");
+      inputFilter.classList.add("filterSection__title__list__item__input");
 
       liFilter.appendChild(labelFilter);
       liFilter.appendChild(inputFilter);
@@ -1912,9 +1914,58 @@ export const view = (function () {
     productsPagination.innerHTML = "";
     productsPagination.appendChild(nav);
   }
+  function sortPopular(data) {
+    const popularSort = document.getElementById("popularSort").checked;
+    if (popularSort) {
+      data = data.sort((a, b) =>
+        parseInt(a.soldItems) < parseInt(b.soldItems) ? 1 : -1
+      );
+    }
+    return data;
+  }
+  function sortLowHigh(data) {
+    const priceLowSort = document.getElementById("priceLowSort").checked;
+    if (priceLowSort) {
+      data = data.sort((a, b) =>
+        parseInt(a.price) > parseInt(b.price) ? 1 : -1
+      );
+    }
+    return data;
+  }
+  function sortHighLow(data) {
+    const sortHighLow = document.getElementById("priceHighSort").checked;
+    if (sortHighLow) {
+      data = data.sort((a, b) =>
+        parseInt(a.price) < parseInt(b.price) ? 1 : -1
+      );
+    }
+    return data;
+  }
+  function filterNew(data) {
+    const newFilter = document.getElementById("newFilter").checked;
+    if (newFilter) {
+      return data.filter((elem) => elem.new == true);
+    }
+    return data;
+  }
+  function filterDiscount(data) {
+    const discountPrice = document.getElementById("discountPrice").checked;
+    if (discountPrice) {
+      return data.filter((elem) => elem.discount > 0);
+    }
+    return data;
+  }
   function renderProducts(obj, page) {
-    const displayProducts = document.getElementById("displayProducts");
+    //sort prodacts
+    obj = sortPopular(obj);
+    obj = sortLowHigh(obj);
+    obj = sortHighLow(obj);
 
+    //filters
+    obj = filterNew(obj);
+    obj = filterDiscount(obj);
+
+    const displayProducts = document.getElementById("displayProducts");
     // Create products items container
     const productsItemsDiv = document.createElement("div");
     productsItemsDiv.id = "productsItems";

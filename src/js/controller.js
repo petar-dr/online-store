@@ -18,24 +18,42 @@ export const controller = function (model, view) {
     const pageButtonList = document.getElementById("pageButtonList");
     pageButtonList.addEventListener("click", changePage);
   }
-  function setupProductsLiseners(){
+  function setupProductsLiseners() {
     responsiveFiltersContainer();
     let screenWidthProductsPage = window.matchMedia("(max-width: 768px)");
-    screenWidthProductsPage.addEventListener("change", responsiveFiltersContainer);
+    screenWidthProductsPage.addEventListener(
+      "change",
+      responsiveFiltersContainer
+    );
+    setupFilterLiseners();
+  }
+  function setupFilterLiseners() {
+    const inputsProducts = document.querySelectorAll(
+      ".filterSection__title__list__item__input"
+    );
+    inputsProducts.forEach((elem) =>
+      elem.addEventListener("change", filterChange)
+    );
   }
   //EVENT LISTENERS -- END
 
   // function
-  function responsiveFiltersContainer(){
+  async function filterChange() {
+    let data = await getDataProducts();
+
+    view.renderProducts(data, 1);
+
+    setupPaginationListners();
+    console.log("pozvana");
+  }
+  function responsiveFiltersContainer() {
     let screenWidthProductsPage = window.matchMedia("(max-width: 768px)");
     const aside = document.getElementById("productsAside");
     const productsFilters = document.getElementById("productsFilters");
 
-
     if (screenWidthProductsPage.matches) {
       productsFilters.innerHTML = "";
       aside.innerHTML = "";
-      productsFilters.appendChild(view.loadfooterMenuSmall());
     } else {
       productsFilters.innerHTML = "";
       aside.innerHTML = "";
@@ -135,14 +153,14 @@ export const controller = function (model, view) {
     let main = document.getElementById(DOM.productsPage);
     main.appendChild(view.loadProductsPage());
 
+    setupProductsLiseners();
+
     let data = await getDataProducts();
     view.renderProducts(data);
 
     setupPageListners();
-    setupProductsLiseners();
+
     setupPaginationListners();
-    
-    
   }
 
   async function displayProductPage() {

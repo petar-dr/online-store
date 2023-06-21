@@ -23,4 +23,20 @@
 
 .label {
   cursor: pointer;
+}
+
+input[type=checkbox] {
+  accent-color: black;
+  width: 1em;
+  height: 1em;
+}
+
+input[type=radio] {
+  accent-color: black;
+  font: inherit;
+  color: currentColor;
+  width: 1em;
+  height: 1em;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
 }/*# sourceMappingURL=filtersContainer.css.map */
