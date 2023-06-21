@@ -1360,7 +1360,7 @@ export const view = (function () {
       "fa-heart",
       "productPage__main__info__header__heartIcon"
     );
-      
+
     if (array.includes(obj.id.toString())) {
       heartIcon.classList.add(
         "productPage__main__info__header__heartIcon--clicked"

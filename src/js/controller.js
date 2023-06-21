@@ -44,7 +44,7 @@ export const controller = function (model, view) {
     view.renderProducts(data, 1);
 
     setupPaginationListners();
-    console.log("pozvana");
+
   }
   function responsiveFiltersContainer() {
     let screenWidthProductsPage = window.matchMedia("(max-width: 768px)");
