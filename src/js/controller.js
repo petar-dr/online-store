@@ -167,6 +167,8 @@ export const controller = function (model, view) {
     let DOM = view.getDOMString();
     let url = model.getUrl();
     let likeArray = JSON.parse(localStorage.getItem("likeItems"));
+    setLocalStorageLike();
+
 
     let queryString = window.location.search;
     let urlParams = new URLSearchParams(queryString);
@@ -276,7 +278,6 @@ export const controller = function (model, view) {
       localStorage.setItem("likeItems", JSON.stringify(likeArray));
     } else {
       likeArray = JSON.parse(localStorage.getItem("likeItems"));
-      console.log(Array);
       if (likeArray.indexOf(data) > -1) {
         likeArray.splice(likeArray.indexOf(data), 1);
       } else {

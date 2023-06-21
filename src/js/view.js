@@ -1251,6 +1251,7 @@ export const view = (function () {
   }
   // product page
   function loadProductMain(obj, array) {
+
     // Create main container
     const mainDiv = document.createElement("main");
     mainDiv.classList.add("productPage__main");
@@ -1359,7 +1360,7 @@ export const view = (function () {
       "fa-heart",
       "productPage__main__info__header__heartIcon"
     );
-
+      
     if (array.includes(obj.id.toString())) {
       heartIcon.classList.add(
         "productPage__main__info__header__heartIcon--clicked"
@@ -2119,6 +2120,7 @@ export const view = (function () {
       return pageContent;
     },
     loadProductPage: (data, array) => {
+
       const pageContent = document.createElement("div");
       pageContent.setAttribute("id", "pageContent");
       const main = document.createElement("div");
