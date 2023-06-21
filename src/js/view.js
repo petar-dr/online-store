@@ -62,312 +62,6 @@ export const view = (function () {
       content: "",
     },
   ];
-  function loadfooterMenuSmall() {
-    const accordionData = footerMenuData;
-
-    // Create accordion
-    const accordionDiv = document.createElement("div");
-    accordionDiv.classList.add("accordion", "footerMenuSmall");
-    accordionDiv.id = "accordionFooterMenu";
-
-    // Helper function to create accordion button
-    function createAccordionButton(title, collapseId, headingId, expanded) {
-      const button = document.createElement("button");
-      button.classList.add(
-        "accordion-button",
-        "accordion-flush",
-        "accordion-button--footerMenu",
-        "accordion-button--title",
-        "collapsed"
-      );
-      button.type = "button";
-      button.setAttribute("data-bs-toggle", "collapse");
-      button.setAttribute("data-bs-target", "#" + collapseId);
-      button.setAttribute("aria-expanded", expanded);
-      button.setAttribute("aria-controls", collapseId);
-      button.id = headingId;
-      button.textContent = title;
-
-      return button;
-    }
-
-    // Loop through the footerMenuData and create accordion items
-    accordionData.forEach((item, index) => {
-      // Create accordion item div
-      const accordionItemDiv = document.createElement("div");
-      accordionItemDiv.classList.add(
-        "accordion-item",
-        "accordion-item--footerMenu",
-        "accordion-item--text"
-      );
-      accordionDiv.appendChild(accordionItemDiv);
-
-      // Create accordion header div
-      const accordionHeaderDiv = document.createElement("h2");
-      accordionHeaderDiv.classList.add("accordion-header");
-      accordionItemDiv.appendChild(accordionHeaderDiv);
-
-      // Create accordion button
-      const accordionButton = createAccordionButton(
-        item.title,
-        `collapse${index + 1}`,
-        `heading${index + 1}`,
-        index === 0 // Expand the first item by default
-      );
-      accordionHeaderDiv.appendChild(accordionButton);
-
-      // Create accordion collapse div
-      const accordionCollapseDiv = document.createElement("div");
-      accordionCollapseDiv.id = `collapse${index + 1}`;
-      accordionCollapseDiv.classList.add("accordion-collapse", "collapse");
-      accordionCollapseDiv.setAttribute(
-        "aria-labelledby",
-        `heading${index + 1}`
-      );
-      accordionCollapseDiv.setAttribute(
-        "data-bs-parent",
-        "#accordionFooterMenu"
-      );
-      accordionItemDiv.appendChild(accordionCollapseDiv);
-
-      // Create accordion body div
-      const accordionBodyDiv = document.createElement("div");
-      accordionBodyDiv.classList.add(
-        "accordion-body",
-        "accordion-body--footerMenu"
-      );
-      const ul = document.createElement("ul");
-      ul.classList.add("accordionFooterMenu__list");
-      item.content.forEach((contentItem) => {
-        const li = document.createElement("li");
-        li.classList.add("accordionFooterMenu__list__item");
-        li.textContent = contentItem;
-        ul.appendChild(li);
-      });
-      accordionBodyDiv.appendChild(ul);
-      accordionCollapseDiv.appendChild(accordionBodyDiv);
-    });
-    // Append the accordion to the desired element in the document
-
-    return accordionDiv;
-  }
-  function loadfooterMenuLarge() {
-    const accordionData = footerMenuData;
-
-    // Create footerMenuLarge div
-    const footerMenuLarge = document.createElement("div");
-    footerMenuLarge.classList.add("middle__footerMenuLarge");
-    footerMenuLarge.id = "footerMenuLarge";
-    // Create customerService div
-    const customerServiceDiv = document.createElement("div");
-    customerServiceDiv.id = "customerService";
-    customerServiceDiv.classList.add("middle__box");
-    footerMenuLarge.appendChild(customerServiceDiv);
-
-    // Create customerService title
-    const customerServiceTitle = document.createElement("span");
-    customerServiceTitle.classList.add("middle__box__title");
-    customerServiceTitle.textContent = "Customer service";
-    customerServiceDiv.appendChild(customerServiceTitle);
-
-    // Create customerService list
-    const customerServiceList = document.createElement("ul");
-    customerServiceList.classList.add("middle__box__list");
-    customerServiceDiv.appendChild(customerServiceList);
-
-    // Create customerService list items
-    const customerServiceItems = ["Contact", "Delivery", "FAQ"];
-    for (let i = 0; i < customerServiceItems.length; i++) {
-      let customerServiceItem = customerServiceItems[i];
-      const listItem = document.createElement("li");
-      listItem.classList.add("middle__box__list__item");
-      customerServiceList.appendChild(listItem);
-
-      const link = document.createElement("a");
-      link.href = "#";
-      link.textContent = customerServiceItem;
-      listItem.appendChild(link);
-    }
-
-    // Create information div
-    const informationDiv = document.createElement("div");
-    informationDiv.id = "information";
-    informationDiv.classList.add("middle__box");
-    footerMenuLarge.appendChild(informationDiv);
-
-    // Create information title
-    const informationTitle = document.createElement("span");
-    informationTitle.classList.add("middle__box__title");
-    informationTitle.textContent = "Information";
-    informationDiv.appendChild(informationTitle);
-
-    // Create information list
-    const informationList = document.createElement("ul");
-    informationList.classList.add("middle__box__list");
-    informationDiv.appendChild(informationList);
-
-    // Create information list items
-    const informationItems = ["Terms of use", "Privacy policy"];
-    for (let i = 0; i < informationItems.length; i++) {
-      let informationItem = informationItems[i];
-      const listItem = document.createElement("li");
-      listItem.classList.add("middle__box__list__item");
-      informationList.appendChild(listItem);
-
-      const link = document.createElement("a");
-      link.href = "#";
-      link.textContent = informationItem;
-      listItem.appendChild(link);
-    }
-
-    // Create stayInTouch div
-    const stayInTouchDiv = document.createElement("div");
-    stayInTouchDiv.id = "stayInTouch";
-    stayInTouchDiv.classList.add("middle__box");
-    footerMenuLarge.appendChild(stayInTouchDiv);
-
-    // Create stayInTouch title
-    const stayInTouchTitle = document.createElement("span");
-    stayInTouchTitle.classList.add("middle__box__title");
-    stayInTouchTitle.textContent = "Stay in touch";
-    stayInTouchDiv.appendChild(stayInTouchTitle);
-
-    // Create stayInTouch list
-    const stayInTouchList = document.createElement("ul");
-    stayInTouchList.id = "stayInTouch__list";
-    stayInTouchList.classList.add("middle__box__list");
-    stayInTouchDiv.appendChild(stayInTouchList);
-
-    // Create stayInTouch list items
-    const stayInTouchItems = ["Facebook", "Instagram", "Pinterest", "LinkedIn"];
-    for (let i = 0; i < stayInTouchItems.length; i++) {
-      let stayInTouchItem = stayInTouchItems[i];
-      const listItem = document.createElement("li");
-      listItem.classList.add("middle__box__list__item");
-      stayInTouchList.appendChild(listItem);
-
-      const link = document.createElement("a");
-      link.href = "#";
-      link.textContent = stayInTouchItem;
-      listItem.appendChild(link);
-    }
-
-    // Create inspiration div
-    const inspirationDiv = document.createElement("div");
-    inspirationDiv.id = "inspiration";
-    inspirationDiv.classList.add("middle__box");
-    footerMenuLarge.appendChild(inspirationDiv);
-
-    // Create inspiration title
-    const inspirationTitle = document.createElement("span");
-    inspirationTitle.classList.add("middle__box__title");
-    inspirationTitle.textContent = "Inspiration";
-    inspirationDiv.appendChild(inspirationTitle);
-
-    // Create inspiration list
-    const inspirationList = document.createElement("ul");
-    inspirationList.id = "inspiration__list";
-    inspirationList.classList.add("middle__box__list");
-    inspirationDiv.appendChild(inspirationList);
-
-    // Create inspiration list items
-    const inspirationItems = ["Ideas", "Story"];
-    for (let i = 0; i < inspirationItems.length; i++) {
-      let inspirationItem = inspirationItems[i];
-      const listItem = document.createElement("li");
-      listItem.classList.add("middle__box__list__item");
-      inspirationList.appendChild(listItem);
-
-      const link = document.createElement("a");
-      link.href = "#";
-      link.textContent = inspirationItem;
-      listItem.appendChild(link);
-    }
-    // Create aboutUs div
-    const aboutUsDiv = document.createElement("div");
-    aboutUsDiv.id = "aboutUs";
-    aboutUsDiv.classList.add("middle__box");
-    footerMenuLarge.appendChild(aboutUsDiv);
-
-    // Create aboutUs title
-    const aboutUsTitle = document.createElement("span");
-    aboutUsTitle.classList.add("middle__box__title");
-    aboutUsTitle.textContent = "About us";
-    aboutUsDiv.appendChild(aboutUsTitle);
-
-    // Create aboutUs list
-    const aboutUsList = document.createElement("ul");
-    aboutUsList.id = "aboutUs__list";
-    aboutUsList.classList.add("middle__box__list");
-    aboutUsDiv.appendChild(aboutUsList);
-
-    // Create aboutUs list items
-    const aboutUsItems = ["Our Store", "Production"];
-    for (let i = 0; i < aboutUsItems.length; i++) {
-      let aboutUsItem = aboutUsItems[i];
-      const listItem = document.createElement("li");
-      listItem.classList.add("middle__box__list__item");
-      aboutUsList.appendChild(listItem);
-
-      const link = document.createElement("a");
-      link.href = "#";
-      link.textContent = aboutUsItem;
-      listItem.appendChild(link);
-    }
-    return footerMenuLarge;
-  }
-  function displayHamMenu() {
-    const navbar = document.getElementById("navbar");
-    navbar.classList.add("displayNavbar");
-  }
-  function closeHamMenu() {
-    const navbar = document.getElementById("navbar");
-    navbar.classList.remove("displayNavbar");
-  }
-  function createCardsSection2(card, cardClass2) {
-    // Create card link
-    const cardLink = document.createElement("a");
-    cardLink.id = "card";
-    cardLink.href = card.aUrl;
-    cardLink.classList.add("card", "text-center", cardClass2);
-
-    // Create card image container
-    const divImg = document.createElement("div");
-    divImg.classList.add("card__divImg");
-    cardLink.appendChild(divImg);
-
-    // Create card image
-    const cardImg = document.createElement("img");
-    cardImg.classList.add("card-img-top");
-    cardImg.src = card.imageSrc;
-    cardImg.alt = card.imageAlt;
-    divImg.appendChild(cardImg);
-
-    // Create card text container
-    const cardText = document.createElement("div");
-    cardText.classList.add("card__text");
-    cardLink.appendChild(cardText);
-
-    // Create card title
-    const cardTitle = document.createElement("h2");
-    cardTitle.classList.add("card__text__title");
-    cardTitle.textContent = card.title;
-    cardText.appendChild(cardTitle);
-
-    // Create card content
-    const cardContent = document.createElement("p");
-    cardContent.classList.add("card-text");
-    cardContent.textContent = card.content;
-    cardText.appendChild(cardContent);
-
-    // Create "See more" button
-    const seeMoreBtn = document.createElement("button");
-    seeMoreBtn.classList.add("card__text__btn");
-    seeMoreBtn.textContent = "See more";
-    cardText.appendChild(seeMoreBtn);
-
-    return cardLink;
-  }
 
   function item(obj, itemClass2) {
     //div item
@@ -377,12 +71,6 @@ export const view = (function () {
     const article = document.createElement("div");
     article.classList.add("item__article");
     item.appendChild(article);
-    // heart icon
-    // const icon = document.createElement("i");
-    // icon.setAttribute("id","itemLikeIcon")
-    // icon.classList.add("fa-solid", "fa-heart", "item__article__heart");
-    // article.appendChild(icon);
-    //a tag
     const aTag = document.createElement("a");
     let url = "product.html?id=" + obj.id;
     aTag.setAttribute("href", url);
@@ -445,7 +133,7 @@ export const view = (function () {
       oldPrice.classList.add(
         "item__article__tag__box__text__priceBox__oldPrice"
       );
-      oldPrice.innerHTML = `${obj.price}.00 $ `;
+      oldPrice.innerHTML = `${obj.price}.00&euro;`;
 
       priceBox.appendChild(oldPrice);
 
@@ -453,14 +141,14 @@ export const view = (function () {
 
       const price = document.createElement("span");
       price.classList.add("item__article__tag__box__text__priceBox__price");
-      price.innerHTML = ` ${newPrice}.00 $`;
+      price.innerHTML = ` ${newPrice}.00&euro;`;
       priceBox.appendChild(price);
     }
     //price without discount
     else {
       const price = document.createElement("span");
       price.classList.add("item__article__tag__box__text__priceBox__price");
-      price.innerHTML = ` ${obj.price}.00 $`;
+      price.innerHTML = ` ${obj.price}.00&euro;`;
       priceBox.appendChild(price);
     }
 
@@ -1083,457 +771,315 @@ export const view = (function () {
     section3.appendChild(popularProducts);
     return section3;
   }
-  // products page
-  function loadProductsMain() {
-    // Create products container
-    const productsDiv = document.createElement("div");
-    productsDiv.classList.add("products");
+  //Home page function 
+  function loadfooterMenuSmall() {
+    const accordionData = footerMenuData;
 
-    // Create aside
-    const aside = document.createElement("aside");
-    aside.id = "productsAside";
-    aside.classList.add("products__aside");
-    productsDiv.appendChild(aside);
+    // Create accordion
+    const accordionDiv = document.createElement("div");
+    accordionDiv.classList.add("accordion", "footerMenuSmall");
+    accordionDiv.id = "accordionFooterMenu";
 
-    // Create div main products
-    const mainProducts = document.createElement("div");
-    mainProducts.id = "mainProducts";
-    mainProducts.classList.add("products__main");
+    // Helper function to create accordion button
+    function createAccordionButton(title, collapseId, headingId, expanded) {
+      const button = document.createElement("button");
+      button.classList.add(
+        "accordion-button",
+        "accordion-flush",
+        "accordion-button--footerMenu",
+        "accordion-button--title",
+        "collapsed"
+      );
+      button.type = "button";
+      button.setAttribute("data-bs-toggle", "collapse");
+      button.setAttribute("data-bs-target", "#" + collapseId);
+      button.setAttribute("aria-expanded", expanded);
+      button.setAttribute("aria-controls", collapseId);
+      button.id = headingId;
+      button.textContent = title;
 
-    // Create filters div
-    const productsFilters = document.createElement("div");
-    productsFilters.id = "productsFilters";
-    productsFilters.classList.add("productsFilters")
+      return button;
+    }
 
-    mainProducts.appendChild(productsFilters);
+    // Loop through the footerMenuData and create accordion items
+    accordionData.forEach((item, index) => {
+      // Create accordion item div
+      const accordionItemDiv = document.createElement("div");
+      accordionItemDiv.classList.add(
+        "accordion-item",
+        "accordion-item--footerMenu",
+        "accordion-item--text"
+      );
+      accordionDiv.appendChild(accordionItemDiv);
 
-    // Create display products div
-    const displayProducts = document.createElement("div");
-    displayProducts.id = "displayProducts";
+      // Create accordion header div
+      const accordionHeaderDiv = document.createElement("h2");
+      accordionHeaderDiv.classList.add("accordion-header");
+      accordionItemDiv.appendChild(accordionHeaderDiv);
 
-    const productsPagination = document.createElement("div");
-    productsPagination.id = "productsPagination";
+      // Create accordion button
+      const accordionButton = createAccordionButton(
+        item.title,
+        `collapse${index + 1}`,
+        `heading${index + 1}`,
+        index === 0 // Expand the first item by default
+      );
+      accordionHeaderDiv.appendChild(accordionButton);
 
-    mainProducts.appendChild(displayProducts);
-    mainProducts.appendChild(productsPagination);
+      // Create accordion collapse div
+      const accordionCollapseDiv = document.createElement("div");
+      accordionCollapseDiv.id = `collapse${index + 1}`;
+      accordionCollapseDiv.classList.add("accordion-collapse", "collapse");
+      accordionCollapseDiv.setAttribute(
+        "aria-labelledby",
+        `heading${index + 1}`
+      );
+      accordionCollapseDiv.setAttribute(
+        "data-bs-parent",
+        "#accordionFooterMenu"
+      );
+      accordionItemDiv.appendChild(accordionCollapseDiv);
 
-    productsDiv.appendChild(mainProducts);
-
-    return productsDiv;
-  }
-  function filterContainerSmall() {
-    const filterContainer = document.createElement("div");
-    filterContainer.classList.add("filterContainer")
-    
-    // Create the main container div
-    const accordion = document.createElement("div");
-    accordion.className = "accordion accordion-flush";
-    accordion.id = "accordionFlushExample";
-
-    // Create the first accordion item
-    const item1 = document.createElement("div");
-    item1.className = "accordion-item accordion-item--fiters";
-
-    // Create the first accordion item header
-    const header1 = document.createElement("h2");
-    header1.className = "accordion-header";
-    header1.id = "flush-headingOne";
-
-    // Create the button inside the first accordion item header
-    const button1 = document.createElement("button");
-    button1.className = "accordion-button collapsed accordion-button--filters";
-    button1.type = "button";
-    button1.setAttribute("data-bs-toggle", "collapse");
-    button1.setAttribute("data-bs-target", "#flush-collapseOne");
-    button1.setAttribute("aria-expanded", "false");
-    button1.setAttribute("aria-controls", "flush-collapseOne");
-    button1.textContent = "Categories";
-
-    // Append the button to the first accordion item header
-    header1.appendChild(button1);
-
-    // Create the first accordion item body
-    const body1 = document.createElement("div");
-    body1.id = "flush-collapseOne";
-    body1.className = "accordion-collapse collapse";
-    body1.setAttribute("aria-labelledby", "flush-headingOne");
-    body1.setAttribute("data-bs-parent", "#accordionFlushExample");
-
-    // Create the content inside the first accordion item body
-    const content1 = document.createElement("div");
-    content1.className = "accordion-body";
-
-    // Create the unordered list inside the first accordion item body
-    const list1 = document.createElement("ul");
-    list1.className = "filterSection__title__list";
-
-    // Create the list items for categories
-    const listItem1 = document.createElement("li");
-    listItem1.className = "filterSection__title__list__item";
-    const link1 = document.createElement("a");
-    link1.className = "filterSection__title__list__item__name";
-    link1.href = "products.html?category=all";
-    link1.textContent = "All";
-    listItem1.appendChild(link1);
-
-    const listItem2 = document.createElement("li");
-    listItem2.className = "filterSection__title__list__item";
-    const link2 = document.createElement("a");
-    link2.className = "filterSection__title__list__item__name";
-    link2.href = "products.html?category=chairs";
-    link2.textContent = "Chairs";
-    listItem2.appendChild(link2);
-
-    const listItem3 = document.createElement("li");
-    listItem3.className = "filterSection__title__list__item";
-    const link3 = document.createElement("a");
-    link3.className = "filterSection__title__list__item__name";
-    link3.href = "products.html?category=tables";
-    link3.textContent = "Tables";
-    listItem3.appendChild(link3);
-
-    const listItem4 = document.createElement("li");
-    listItem4.className = "filterSection__title__list__item";
-    const link4 = document.createElement("a");
-    link4.className = "filterSection__title__list__item__name";
-    link4.href = "products.html?category=sofas";
-    link4.textContent = "Sofas";
-    listItem4.appendChild(link4);
-
-    // Append the list items to the unordered list
-    list1.appendChild(listItem1);
-    list1.appendChild(listItem2);
-    list1.appendChild(listItem3);
-    list1.appendChild(listItem4);
-
-    // Append the unordered list to the content inside the first accordion item body
-    content1.appendChild(list1);
-
-    // Append the content to the first accordion item body
-    body1.appendChild(content1);
-
-    // Append the first accordion item header and body to the first accordion item
-    item1.appendChild(header1);
-    item1.appendChild(body1);
-
-
-    // Create the second accordion item
-    const item2 = document.createElement("div");
-    item2.className = "accordion-item accordion-item--fiters";
-
-    // Create the second accordion item header
-    const header2 = document.createElement("h2");
-    header2.className = "accordion-header";
-    header2.id = "flush-headingTwo";
-
-    // Create the button inside the second accordion item header
-    const button2 = document.createElement("button");
-    button2.className = "accordion-button collapsed accordion-button--filters";
-    button2.type = "button";
-    button2.setAttribute("data-bs-toggle", "collapse");
-    button2.setAttribute("data-bs-target", "#flush-collapseTwo");
-    button2.setAttribute("aria-expanded", "false");
-    button2.setAttribute("aria-controls", "flush-collapseTwo");
-    button2.textContent = "Sort";
-
-    // Append the button to the second accordion item header
-    header2.appendChild(button2);
-
-    // Create the second accordion item body
-    const body2 = document.createElement("div");
-    body2.id = "flush-collapseTwo";
-    body2.className = "accordion-collapse collapse";
-    body2.setAttribute("aria-labelledby", "flush-headingTwo");
-    body2.setAttribute("data-bs-parent", "#accordionFlushExample");
-
-    // Create the content inside the second accordion item body
-    const content2 = document.createElement("div");
-    content2.className = "accordion-body";
-
-    // Create the unordered list inside the second accordion item body
-    const list2 = document.createElement("ul");
-    list2.className = "filterSection__title__list";
-
-    // Create the list items for sorting options
-    const listItem5 = document.createElement("li");
-    listItem5.className = "filterSection__title__list__item";
-    const label1 = document.createElement("label");
-    label1.className = "filterSection__title__list__item__name";
-    label1.setAttribute("for", "popularSort");
-    label1.textContent = "Popular";
-    const input1 = document.createElement("input");
-    input1.setAttribute("type", "radio");
-    input1.id = "popularSort";
-    input1.className = "filterSection__title__list__item__input";
-    input1.name = "sortList";
-    input1.checked = true;
-    listItem5.appendChild(label1);
-    listItem5.appendChild(input1);
-
-    const listItem6 = document.createElement("li");
-    listItem6.className = "filterSection__title__list__item";
-    const label2 = document.createElement("label");
-    label2.className = "filterSection__title__list__item__name";
-    label2.setAttribute("for", "priceLowSort");
-    label2.textContent = "Price low-high";
-    const input2 = document.createElement("input");
-    input2.setAttribute("type", "radio");
-    input2.id = "priceLowSort";
-    input2.className = "filterSection__title__list__item__input";
-    input2.name = "sortList";
-    listItem6.appendChild(label2);
-    listItem6.appendChild(input2);
-
-    const listItem7 = document.createElement("li");
-    listItem7.className = "filterSection__title__list__item";
-    const label3 = document.createElement("label");
-    label3.className = "filterSection__title__list__item__name";
-    label3.setAttribute("for", "priceHighSort");
-    label3.textContent = "Price high-low";
-    const input3 = document.createElement("input");
-    input3.setAttribute("type", "radio");
-    input3.id = "priceHighSort";
-    input3.className = "filterSection__title__list__item__input";
-    input3.name = "sortList";
-    listItem7.appendChild(label3);
-    listItem7.appendChild(input3);
-
-    // Append the list items to the unordered list
-    list2.appendChild(listItem5);
-    list2.appendChild(listItem6);
-    list2.appendChild(listItem7);
-
-    // Append the unordered list to the content inside the second accordion item body
-    content2.appendChild(list2);
-
-    // Append the content to the second accordion item body
-    body2.appendChild(content2);
-
-    // Append the second accordion item header and body to the second accordion item
-    item2.appendChild(header2);
-    item2.appendChild(body2);
-
-    // Create the third accordion item (similar to item2) and append it to the main container div
-    const item3 = document.createElement("div");
-    item3.className = "accordion-item accordion-item--fiters";
-
-    // Create the third accordion item header
-    const header3 = document.createElement("h2");
-    header3.className = "accordion-header";
-    header3.id = "flush-headingThree";
-
-    // Create the button inside the third accordion item header
-    const button3 = document.createElement("button");
-    button3.className = "accordion-button collapsed accordion-button--filters";
-    button3.type = "button";
-    button3.setAttribute("data-bs-toggle", "collapse");
-    button3.setAttribute("data-bs-target", "#flush-collapseThree");
-    button3.setAttribute("aria-expanded", "false");
-    button3.setAttribute("aria-controls", "flush-collapseThree");
-    button3.textContent = "Filters";
-
-    // Append the button to the third accordion item header
-    header3.appendChild(button3);
-
-    // Create the third accordion item body
-    const body3 = document.createElement("div");
-    body3.id = "flush-collapseThree";
-    body3.className = "accordion-collapse collapse";
-    body3.setAttribute("aria-labelledby", "flush-headingThree");
-    body3.setAttribute("data-bs-parent", "#accordionFlushExample");
-
-    // Create the content inside the third accordion item body
-    const content3 = document.createElement("div");
-    content3.className = "accordion-body";
-
-    // Create the unordered list inside the third accordion item body
-    const list3 = document.createElement("ul");
-    list3.className = "filterSection__title__list";
-
-    // Create the list items for filter options
-    const listItem8 = document.createElement("li");
-    listItem8.className = "filterSection__title__list__item";
-    const label4 = document.createElement("label");
-    label4.className = "filterSection__title__list__item__name";
-    label4.setAttribute("for", "newFilter");
-    label4.textContent = "New";
-    const input4 = document.createElement("input");
-    input4.setAttribute("type", "checkbox");
-    input4.id = "newFilter";
-    input4.className = "filterSection__title__list__item__input";
-    input4.name = "filters";
-    listItem8.appendChild(label4);
-    listItem8.appendChild(input4);
-
-    const listItem9 = document.createElement("li");
-    listItem9.className = "filterSection__title__list__item";
-    const label5 = document.createElement("label");
-    label5.className = "filterSection__title__list__item__name";
-    label5.setAttribute("for", "discountPrice");
-    label5.textContent = "Discount";
-    const input5 = document.createElement("input");
-    input5.setAttribute("type", "checkbox");
-    input5.id = "discountPrice";
-    input5.className = "filterSection__title__list__item__input";
-    input5.name = "filters";
-    listItem9.appendChild(label5);
-    listItem9.appendChild(input5);
-
-    // Append the list items to the unordered list
-    list3.appendChild(listItem8);
-    list3.appendChild(listItem9);
-
-    // Append the unordered list to the content inside the third accordion item body
-    content3.appendChild(list3);
-
-    // Append the content to the third accordion item body
-    body3.appendChild(content3);
-
-    // Append the third accordion item header and body to the third accordion item
-    item3.appendChild(header3);
-    item3.appendChild(body3);
- 
-    accordion.appendChild(item1);
-    accordion.appendChild(item2);
-    accordion.appendChild(item3);
-   
-    filterContainer.appendChild(accordion);
-
-
-
-
-    return filterContainer;
-  }
-  function filtersContainer() {
-    const filterContainer = document.createElement("div");
-
-    // Create "Categories"
-    const categories = document.createElement("div");
-    categories.id = "filterSection";
-    filterContainer.appendChild(categories);
-
-    const categoriesTitle = document.createElement("span");
-    categoriesTitle.classList.add("filterSection__title");
-    categoriesTitle.textContent = "Categories";
-    categories.appendChild(categoriesTitle);
-
-    const ulCategories = document.createElement("ul");
-    ulCategories.classList.add("filterSection__title__list");
-
-    categories.appendChild(ulCategories);
-
-    const categoriesList = ["All", "Chairs", "Tables", "Sofas"];
-    categoriesList.forEach(function (category) {
-      const liCategories = document.createElement("li");
-      liCategories.classList.add("filterSection__title__list__item");
-
-      const aCategories = document.createElement("a");
-      aCategories.classList.add("filterSection__title__list__item__name");
-      aCategories.textContent = category;
-      const url = "products.html?category=" + category.toLowerCase();
-      aCategories.href = url;
-
-      liCategories.appendChild(aCategories);
-      ulCategories.appendChild(liCategories);
+      // Create accordion body div
+      const accordionBodyDiv = document.createElement("div");
+      accordionBodyDiv.classList.add(
+        "accordion-body",
+        "accordion-body--footerMenu"
+      );
+      const ul = document.createElement("ul");
+      ul.classList.add("accordionFooterMenu__list");
+      item.content.forEach((contentItem) => {
+        const li = document.createElement("li");
+        li.classList.add("accordionFooterMenu__list__item");
+        li.textContent = contentItem;
+        ul.appendChild(li);
+      });
+      accordionBodyDiv.appendChild(ul);
+      accordionCollapseDiv.appendChild(accordionBodyDiv);
     });
+    // Append the accordion to the desired element in the document
 
-    // Create "Sort"
-    const sort = document.createElement("div");
-    sort.id = "filterSection";
-    filterContainer.appendChild(sort);
-
-    const sortTitle = document.createElement("span");
-    sortTitle.classList.add("filterSection__title");
-
-    sortTitle.textContent = "Sort";
-    sort.appendChild(sortTitle);
-
-    const ulSort = document.createElement("ul");
-    ulSort.classList.add("filterSection__title__list");
-
-    const sortData = [
-      { id: "popularSort", label: "Popular" },
-      { id: "priceLowSort", label: "Price low-high" },
-      { id: "priceHighSort", label: "Price high-low" },
-    ];
-
-    sortData.forEach(function (option, index) {
-      const liSort = document.createElement("li");
-      liSort.classList.add("filterSection__title__list__item");
-
-      const labelSort = document.createElement("label");
-      labelSort.classList.add("filterSection__title__list__item__name");
-
-      labelSort.setAttribute("for", option.id);
-      labelSort.textContent = option.label;
-
-      const inputSort = document.createElement("input");
-
-      if (index == 0) {
-        inputSort.setAttribute("checked", "");
-      }
-
-      inputSort.setAttribute("type", "radio");
-      inputSort.setAttribute("id", option.id);
-      inputSort.setAttribute("class", "");
-      inputSort.setAttribute("name", "sortList");
-      inputSort.classList.add("filterSection__title__list__item__input");
-
-      liSort.appendChild(labelSort);
-      liSort.appendChild(inputSort);
-
-      ulSort.appendChild(liSort);
-    });
-
-    sort.appendChild(ulSort);
-
-    // Create "Filters"
-    const filter = document.createElement("div");
-    filter.id = "filterSection";
-
-    filterContainer.appendChild(filter);
-
-    const filterTitle = document.createElement("span");
-    filterTitle.classList.add("filterSection__title");
-    filterTitle.textContent = "Filters";
-    filter.appendChild(filterTitle);
-
-    const ulFilter = document.createElement("ul");
-    ulFilter.classList.add("filterSection__title__list");
-
-    const filterData = [
-      { id: "newFilter", label: "New" },
-      { id: "discountPrice", label: "Discount" },
-    ];
-
-    filterData.forEach(function (option) {
-      const liFilter = document.createElement("li");
-      liFilter.classList.add("filterSection__title__list__item");
-
-      const labelFilter = document.createElement("label");
-      labelFilter.classList.add("filterSection__title__list__item__name");
-      labelFilter.setAttribute("for", option.id);
-      labelFilter.textContent = option.label;
-
-      const inputFilter = document.createElement("input");
-
-      inputFilter.setAttribute("type", "checkbox");
-      inputFilter.setAttribute("id", option.id);
-      inputFilter.setAttribute("class", "");
-      inputFilter.setAttribute("name", "filters");
-      inputFilter.classList.add("filterSection__title__list__item__input");
-
-      liFilter.appendChild(labelFilter);
-      liFilter.appendChild(inputFilter);
-
-      ulFilter.appendChild(liFilter);
-    });
-
-    filter.appendChild(ulFilter);
-
-    return filterContainer;
+    return accordionDiv;
   }
-  // product page
+  function loadfooterMenuLarge() {
+    const accordionData = footerMenuData;
+
+    // Create footerMenuLarge div
+    const footerMenuLarge = document.createElement("div");
+    footerMenuLarge.classList.add("middle__footerMenuLarge");
+    footerMenuLarge.id = "footerMenuLarge";
+    // Create customerService div
+    const customerServiceDiv = document.createElement("div");
+    customerServiceDiv.id = "customerService";
+    customerServiceDiv.classList.add("middle__box");
+    footerMenuLarge.appendChild(customerServiceDiv);
+
+    // Create customerService title
+    const customerServiceTitle = document.createElement("span");
+    customerServiceTitle.classList.add("middle__box__title");
+    customerServiceTitle.textContent = "Customer service";
+    customerServiceDiv.appendChild(customerServiceTitle);
+
+    // Create customerService list
+    const customerServiceList = document.createElement("ul");
+    customerServiceList.classList.add("middle__box__list");
+    customerServiceDiv.appendChild(customerServiceList);
+
+    // Create customerService list items
+    const customerServiceItems = ["Contact", "Delivery", "FAQ"];
+    for (let i = 0; i < customerServiceItems.length; i++) {
+      let customerServiceItem = customerServiceItems[i];
+      const listItem = document.createElement("li");
+      listItem.classList.add("middle__box__list__item");
+      customerServiceList.appendChild(listItem);
+
+      const link = document.createElement("a");
+      link.href = "#";
+      link.textContent = customerServiceItem;
+      listItem.appendChild(link);
+    }
+
+    // Create information div
+    const informationDiv = document.createElement("div");
+    informationDiv.id = "information";
+    informationDiv.classList.add("middle__box");
+    footerMenuLarge.appendChild(informationDiv);
+
+    // Create information title
+    const informationTitle = document.createElement("span");
+    informationTitle.classList.add("middle__box__title");
+    informationTitle.textContent = "Information";
+    informationDiv.appendChild(informationTitle);
+
+    // Create information list
+    const informationList = document.createElement("ul");
+    informationList.classList.add("middle__box__list");
+    informationDiv.appendChild(informationList);
+
+    // Create information list items
+    const informationItems = ["Terms of use", "Privacy policy"];
+    for (let i = 0; i < informationItems.length; i++) {
+      let informationItem = informationItems[i];
+      const listItem = document.createElement("li");
+      listItem.classList.add("middle__box__list__item");
+      informationList.appendChild(listItem);
+
+      const link = document.createElement("a");
+      link.href = "#";
+      link.textContent = informationItem;
+      listItem.appendChild(link);
+    }
+
+    // Create stayInTouch div
+    const stayInTouchDiv = document.createElement("div");
+    stayInTouchDiv.id = "stayInTouch";
+    stayInTouchDiv.classList.add("middle__box");
+    footerMenuLarge.appendChild(stayInTouchDiv);
+
+    // Create stayInTouch title
+    const stayInTouchTitle = document.createElement("span");
+    stayInTouchTitle.classList.add("middle__box__title");
+    stayInTouchTitle.textContent = "Stay in touch";
+    stayInTouchDiv.appendChild(stayInTouchTitle);
+
+    // Create stayInTouch list
+    const stayInTouchList = document.createElement("ul");
+    stayInTouchList.id = "stayInTouch__list";
+    stayInTouchList.classList.add("middle__box__list");
+    stayInTouchDiv.appendChild(stayInTouchList);
+
+    // Create stayInTouch list items
+    const stayInTouchItems = ["Facebook", "Instagram", "Pinterest", "LinkedIn"];
+    for (let i = 0; i < stayInTouchItems.length; i++) {
+      let stayInTouchItem = stayInTouchItems[i];
+      const listItem = document.createElement("li");
+      listItem.classList.add("middle__box__list__item");
+      stayInTouchList.appendChild(listItem);
+
+      const link = document.createElement("a");
+      link.href = "#";
+      link.textContent = stayInTouchItem;
+      listItem.appendChild(link);
+    }
+
+    // Create inspiration div
+    const inspirationDiv = document.createElement("div");
+    inspirationDiv.id = "inspiration";
+    inspirationDiv.classList.add("middle__box");
+    footerMenuLarge.appendChild(inspirationDiv);
+
+    // Create inspiration title
+    const inspirationTitle = document.createElement("span");
+    inspirationTitle.classList.add("middle__box__title");
+    inspirationTitle.textContent = "Inspiration";
+    inspirationDiv.appendChild(inspirationTitle);
+
+    // Create inspiration list
+    const inspirationList = document.createElement("ul");
+    inspirationList.id = "inspiration__list";
+    inspirationList.classList.add("middle__box__list");
+    inspirationDiv.appendChild(inspirationList);
+
+    // Create inspiration list items
+    const inspirationItems = ["Ideas", "Story"];
+    for (let i = 0; i < inspirationItems.length; i++) {
+      let inspirationItem = inspirationItems[i];
+      const listItem = document.createElement("li");
+      listItem.classList.add("middle__box__list__item");
+      inspirationList.appendChild(listItem);
+
+      const link = document.createElement("a");
+      link.href = "#";
+      link.textContent = inspirationItem;
+      listItem.appendChild(link);
+    }
+    // Create aboutUs div
+    const aboutUsDiv = document.createElement("div");
+    aboutUsDiv.id = "aboutUs";
+    aboutUsDiv.classList.add("middle__box");
+    footerMenuLarge.appendChild(aboutUsDiv);
+
+    // Create aboutUs title
+    const aboutUsTitle = document.createElement("span");
+    aboutUsTitle.classList.add("middle__box__title");
+    aboutUsTitle.textContent = "About us";
+    aboutUsDiv.appendChild(aboutUsTitle);
+
+    // Create aboutUs list
+    const aboutUsList = document.createElement("ul");
+    aboutUsList.id = "aboutUs__list";
+    aboutUsList.classList.add("middle__box__list");
+    aboutUsDiv.appendChild(aboutUsList);
+
+    // Create aboutUs list items
+    const aboutUsItems = ["Our Store", "Production"];
+    for (let i = 0; i < aboutUsItems.length; i++) {
+      let aboutUsItem = aboutUsItems[i];
+      const listItem = document.createElement("li");
+      listItem.classList.add("middle__box__list__item");
+      aboutUsList.appendChild(listItem);
+
+      const link = document.createElement("a");
+      link.href = "#";
+      link.textContent = aboutUsItem;
+      listItem.appendChild(link);
+    }
+    return footerMenuLarge;
+  }
+  function displayHamMenu() {
+    const navbar = document.getElementById("navbar");
+    navbar.classList.add("displayNavbar");
+  }
+  function closeHamMenu() {
+    const navbar = document.getElementById("navbar");
+    navbar.classList.remove("displayNavbar");
+  }
+  function createCardsSection2(card, cardClass2) {
+    // Create card link
+    const cardLink = document.createElement("a");
+    cardLink.id = "card";
+    cardLink.href = card.aUrl;
+    cardLink.classList.add("card", "text-center", cardClass2);
+
+    // Create card image container
+    const divImg = document.createElement("div");
+    divImg.classList.add("card__divImg");
+    cardLink.appendChild(divImg);
+
+    // Create card image
+    const cardImg = document.createElement("img");
+    cardImg.classList.add("card-img-top");
+    cardImg.src = card.imageSrc;
+    cardImg.alt = card.imageAlt;
+    divImg.appendChild(cardImg);
+
+    // Create card text container
+    const cardText = document.createElement("div");
+    cardText.classList.add("card__text");
+    cardLink.appendChild(cardText);
+
+    // Create card title
+    const cardTitle = document.createElement("h2");
+    cardTitle.classList.add("card__text__title");
+    cardTitle.textContent = card.title;
+    cardText.appendChild(cardTitle);
+
+    // Create card content
+    const cardContent = document.createElement("p");
+    cardContent.classList.add("card-text");
+    cardContent.textContent = card.content;
+    cardText.appendChild(cardContent);
+
+    // Create "See more" button
+    const seeMoreBtn = document.createElement("button");
+    seeMoreBtn.classList.add("card__text__btn");
+    seeMoreBtn.textContent = "See more";
+    cardText.appendChild(seeMoreBtn);
+
+    return cardLink;
+  }
+
+  // Product page
   function loadProductMain(obj, array) {
 
     // Create main container
@@ -1672,7 +1218,7 @@ export const view = (function () {
     if (obj.discount > 0) {
       const oldPrice = document.createElement("del");
       oldPrice.classList.add("productPage__main__info__priceBox__oldPrice");
-      oldPrice.innerHTML = `  ${obj.price}.00 $ `;
+      oldPrice.innerHTML = `  ${obj.price}.00&euro;`;
 
       priceBox.appendChild(oldPrice);
 
@@ -1680,20 +1226,16 @@ export const view = (function () {
 
       const price = document.createElement("span");
       price.classList.add("productPage__main__info__priceBox__price");
-      price.innerHTML = ` ${newPrice}.00 $`;
+      price.innerHTML = ` ${newPrice}.00&euro;`;
       priceBox.appendChild(price);
     }
     //price without discount
     else {
       const price = document.createElement("span");
       price.classList.add("productPage__main__info__priceBox__price");
-      price.innerHTML = ` ${obj.price}.00 $`;
+      price.innerHTML = ` ${obj.price}.00&euro;`;
       priceBox.appendChild(price);
     }
-    // const productPrice = document.createElement("p");
-    // productPrice.classList.add("productPage__main__info__price");
-    // productPrice.textContent = obj.price + "$";
-    // infoDiv.appendChild(productPrice);
 
     // Create product code
     const productCode = document.createElement("p");
@@ -2122,83 +1664,46 @@ export const view = (function () {
 
     return signupPageDiv;
   }
-  function paginationButton(lastPage) {
-    //Pagination
-    const nav = document.createElement("nav");
-    nav.setAttribute("aria-label", "Page navigation example");
+  // Products page
+  function loadProductsMain() {
+    // Create products container
+    const productsDiv = document.createElement("div");
+    productsDiv.classList.add("products");
 
-    const ulButtons = document.createElement("ul");
-    ulButtons.id = "pageButtonList";
-    ulButtons.classList.add(
-      "pagination",
-      "justify-content-center",
-      "pagination--products"
-    );
-    if (lastPage > 1) {
-      const li1 = document.createElement("li");
-      li1.id = "previousButton";
-      li1.classList.add("page-item", "disabled");
-      const a1 = document.createElement("a");
-      a1.id = "previousPage";
-      a1.classList.add("page-link", "page-link--products");
-      a1.href = "#";
-      a1.setAttribute("tabindex", "-1");
-      a1.setAttribute("aria-disabled", "true");
-      a1.textContent = "Previous";
-      li1.appendChild(a1);
-      ulButtons.appendChild(li1);
+    // Create aside
+    const aside = document.createElement("aside");
+    aside.id = "productsAside";
+    aside.classList.add("products__aside");
+    productsDiv.appendChild(aside);
 
-      const li2 = document.createElement("li");
-      li2.classList.add("page-item");
-      const a2 = document.createElement("a");
-      a2.id = "fristPage";
-      a2.classList.add("page-link", "page-link--products", "pageNumber");
-      a2.href = "#";
-      a2.setAttribute("data-page", "1");
-      a2.textContent = "1";
-      li2.appendChild(a2);
-      ulButtons.appendChild(li2);
+    // Create div main products
+    const mainProducts = document.createElement("div");
+    mainProducts.id = "mainProducts";
+    mainProducts.classList.add("products__main");
 
-      const li3 = document.createElement("li");
-      li3.classList.add("page-item");
-      const a3 = document.createElement("a");
-      a3.id = "secondPage";
-      a3.classList.add("page-link", "page-link--products", "pageNumber");
-      a3.href = "#";
-      a3.setAttribute("data-page", "2");
-      a3.textContent = "2";
-      li3.appendChild(a3);
-      ulButtons.appendChild(li3);
-      if (lastPage > 2) {
-        const li4 = document.createElement("li");
-        li4.id = "thrid";
-        li4.classList.add("page-item");
-        const a4 = document.createElement("a");
-        a4.id = "thridPage";
-        a4.classList.add("page-link", "page-link--products", "pageNumber");
-        a4.href = "#";
-        a4.setAttribute("data-page", "3");
+    // Create filters div
+    const productsFilters = document.createElement("div");
+    productsFilters.id = "productsFilters";
+    productsFilters.classList.add("productsFilters")
 
-        a4.textContent = "3";
-        li4.appendChild(a4);
-        ulButtons.appendChild(li4);
-      }
-      const li5 = document.createElement("li");
-      li5.id = "nextButton";
-      li5.classList.add("page-item");
-      const a5 = document.createElement("a");
-      a5.id = "nextPage";
-      a5.classList.add("page-link", "page-link--products");
-      a5.href = "#";
-      a5.textContent = "Next";
-      li5.appendChild(a5);
-      ulButtons.appendChild(li5);
-    }
-    nav.appendChild(ulButtons);
+    mainProducts.appendChild(productsFilters);
 
-    productsPagination.innerHTML = "";
-    productsPagination.appendChild(nav);
+    // Create display products div
+    const displayProducts = document.createElement("div");
+    displayProducts.id = "displayProducts";
+
+    const productsPagination = document.createElement("div");
+    productsPagination.id = "productsPagination";
+
+    mainProducts.appendChild(displayProducts);
+    mainProducts.appendChild(productsPagination);
+
+    productsDiv.appendChild(mainProducts);
+
+    return productsDiv;
   }
+
+  //Sorts and filters
   function sortPopular(data) {
     const popularSort = document.getElementById("popularSort").checked;
     console.log(popularSort)
@@ -2241,6 +1746,419 @@ export const view = (function () {
     }
     return data;
   }
+  function filterContainerSmall() {
+    const filterContainer = document.createElement("div");
+    filterContainer.classList.add("filterContainer")
+
+    // Create the main container div
+    const accordion = document.createElement("div");
+    accordion.className = "accordion accordion-flush";
+    accordion.id = "accordionFlushExample";
+
+    // Create the first accordion item
+    const item1 = document.createElement("div");
+    item1.className = "accordion-item accordion-item--fiters";
+
+    // Create the first accordion item header
+    const header1 = document.createElement("h2");
+    header1.className = "accordion-header";
+    header1.id = "flush-headingOne";
+
+    // Create the button inside the first accordion item header
+    const button1 = document.createElement("button");
+    button1.className = "accordion-button collapsed accordion-button--filters";
+    button1.type = "button";
+    button1.setAttribute("data-bs-toggle", "collapse");
+    button1.setAttribute("data-bs-target", "#flush-collapseOne");
+    button1.setAttribute("aria-expanded", "false");
+    button1.setAttribute("aria-controls", "flush-collapseOne");
+    button1.textContent = "Categories";
+
+    // Append the button to the first accordion item header
+    header1.appendChild(button1);
+
+    // Create the first accordion item body
+    const body1 = document.createElement("div");
+    body1.id = "flush-collapseOne";
+    body1.className = "accordion-collapse collapse";
+    body1.setAttribute("aria-labelledby", "flush-headingOne");
+    body1.setAttribute("data-bs-parent", "#accordionFlushExample");
+
+    // Create the content inside the first accordion item body
+    const content1 = document.createElement("div");
+    content1.className = "accordion-body";
+
+    // Create the unordered list inside the first accordion item body
+    const list1 = document.createElement("ul");
+    list1.className = "filterSection__title__list";
+
+    // Create the list items for categories
+    const listItem1 = document.createElement("li");
+    listItem1.className = "filterSection__title__list__item";
+    const link1 = document.createElement("a");
+    link1.className = "filterSection__title__list__item__name";
+    link1.href = "products.html?category=all";
+    link1.textContent = "All";
+    listItem1.appendChild(link1);
+
+    const listItem2 = document.createElement("li");
+    listItem2.className = "filterSection__title__list__item";
+    const link2 = document.createElement("a");
+    link2.className = "filterSection__title__list__item__name";
+    link2.href = "products.html?category=chairs";
+    link2.textContent = "Chairs";
+    listItem2.appendChild(link2);
+
+    const listItem3 = document.createElement("li");
+    listItem3.className = "filterSection__title__list__item";
+    const link3 = document.createElement("a");
+    link3.className = "filterSection__title__list__item__name";
+    link3.href = "products.html?category=tables";
+    link3.textContent = "Tables";
+    listItem3.appendChild(link3);
+
+    const listItem4 = document.createElement("li");
+    listItem4.className = "filterSection__title__list__item";
+    const link4 = document.createElement("a");
+    link4.className = "filterSection__title__list__item__name";
+    link4.href = "products.html?category=sofas";
+    link4.textContent = "Sofas";
+    listItem4.appendChild(link4);
+
+    // Append the list items to the unordered list
+    list1.appendChild(listItem1);
+    list1.appendChild(listItem2);
+    list1.appendChild(listItem3);
+    list1.appendChild(listItem4);
+
+    // Append the unordered list to the content inside the first accordion item body
+    content1.appendChild(list1);
+
+    // Append the content to the first accordion item body
+    body1.appendChild(content1);
+
+    // Append the first accordion item header and body to the first accordion item
+    item1.appendChild(header1);
+    item1.appendChild(body1);
+
+
+    // Create the second accordion item
+    const item2 = document.createElement("div");
+    item2.className = "accordion-item accordion-item--fiters";
+
+    // Create the second accordion item header
+    const header2 = document.createElement("h2");
+    header2.className = "accordion-header";
+    header2.id = "flush-headingTwo";
+
+    // Create the button inside the second accordion item header
+    const button2 = document.createElement("button");
+    button2.className = "accordion-button collapsed accordion-button--filters";
+    button2.type = "button";
+    button2.setAttribute("data-bs-toggle", "collapse");
+    button2.setAttribute("data-bs-target", "#flush-collapseTwo");
+    button2.setAttribute("aria-expanded", "false");
+    button2.setAttribute("aria-controls", "flush-collapseTwo");
+    button2.textContent = "Sort";
+
+    // Append the button to the second accordion item header
+    header2.appendChild(button2);
+
+    // Create the second accordion item body
+    const body2 = document.createElement("div");
+    body2.id = "flush-collapseTwo";
+    body2.className = "accordion-collapse collapse";
+    body2.setAttribute("aria-labelledby", "flush-headingTwo");
+    body2.setAttribute("data-bs-parent", "#accordionFlushExample");
+
+    // Create the content inside the second accordion item body
+    const content2 = document.createElement("div");
+    content2.className = "accordion-body";
+
+    // Create the unordered list inside the second accordion item body
+    const list2 = document.createElement("ul");
+    list2.className = "filterSection__title__list";
+
+    // Create the list items for sorting options
+    const listItem5 = document.createElement("li");
+    listItem5.className = "filterSection__title__list__item";
+    const label1 = document.createElement("label");
+    label1.className = "filterSection__title__list__item__name";
+    label1.setAttribute("for", "popularSort");
+    label1.textContent = "Popular";
+    const input1 = document.createElement("input");
+    input1.setAttribute("type", "radio");
+    input1.id = "popularSort";
+    input1.className = "filterSection__title__list__item__input";
+    input1.name = "sortList";
+    input1.checked = true;
+    listItem5.appendChild(label1);
+    listItem5.appendChild(input1);
+
+    const listItem6 = document.createElement("li");
+    listItem6.className = "filterSection__title__list__item";
+    const label2 = document.createElement("label");
+    label2.className = "filterSection__title__list__item__name";
+    label2.setAttribute("for", "priceLowSort");
+    label2.textContent = "Price low-high";
+    const input2 = document.createElement("input");
+    input2.setAttribute("type", "radio");
+    input2.id = "priceLowSort";
+    input2.className = "filterSection__title__list__item__input";
+    input2.name = "sortList";
+    listItem6.appendChild(label2);
+    listItem6.appendChild(input2);
+
+    const listItem7 = document.createElement("li");
+    listItem7.className = "filterSection__title__list__item";
+    const label3 = document.createElement("label");
+    label3.className = "filterSection__title__list__item__name";
+    label3.setAttribute("for", "priceHighSort");
+    label3.textContent = "Price high-low";
+    const input3 = document.createElement("input");
+    input3.setAttribute("type", "radio");
+    input3.id = "priceHighSort";
+    input3.className = "filterSection__title__list__item__input";
+    input3.name = "sortList";
+    listItem7.appendChild(label3);
+    listItem7.appendChild(input3);
+
+    // Append the list items to the unordered list
+    list2.appendChild(listItem5);
+    list2.appendChild(listItem6);
+    list2.appendChild(listItem7);
+
+    // Append the unordered list to the content inside the second accordion item body
+    content2.appendChild(list2);
+
+    // Append the content to the second accordion item body
+    body2.appendChild(content2);
+
+    // Append the second accordion item header and body to the second accordion item
+    item2.appendChild(header2);
+    item2.appendChild(body2);
+
+    // Create the third accordion item (similar to item2) and append it to the main container div
+    const item3 = document.createElement("div");
+    item3.className = "accordion-item accordion-item--fiters";
+
+    // Create the third accordion item header
+    const header3 = document.createElement("h2");
+    header3.className = "accordion-header";
+    header3.id = "flush-headingThree";
+
+    // Create the button inside the third accordion item header
+    const button3 = document.createElement("button");
+    button3.className = "accordion-button collapsed accordion-button--filters";
+    button3.type = "button";
+    button3.setAttribute("data-bs-toggle", "collapse");
+    button3.setAttribute("data-bs-target", "#flush-collapseThree");
+    button3.setAttribute("aria-expanded", "false");
+    button3.setAttribute("aria-controls", "flush-collapseThree");
+    button3.textContent = "Filters";
+
+    // Append the button to the third accordion item header
+    header3.appendChild(button3);
+
+    // Create the third accordion item body
+    const body3 = document.createElement("div");
+    body3.id = "flush-collapseThree";
+    body3.className = "accordion-collapse collapse";
+    body3.setAttribute("aria-labelledby", "flush-headingThree");
+    body3.setAttribute("data-bs-parent", "#accordionFlushExample");
+
+    // Create the content inside the third accordion item body
+    const content3 = document.createElement("div");
+    content3.className = "accordion-body";
+
+    // Create the unordered list inside the third accordion item body
+    const list3 = document.createElement("ul");
+    list3.className = "filterSection__title__list";
+
+    // Create the list items for filter options
+    const listItem8 = document.createElement("li");
+    listItem8.className = "filterSection__title__list__item";
+    const label4 = document.createElement("label");
+    label4.className = "filterSection__title__list__item__name";
+    label4.setAttribute("for", "newFilter");
+    label4.textContent = "New";
+    const input4 = document.createElement("input");
+    input4.setAttribute("type", "checkbox");
+    input4.id = "newFilter";
+    input4.className = "filterSection__title__list__item__input";
+    input4.name = "filters";
+    listItem8.appendChild(label4);
+    listItem8.appendChild(input4);
+
+    const listItem9 = document.createElement("li");
+    listItem9.className = "filterSection__title__list__item";
+    const label5 = document.createElement("label");
+    label5.className = "filterSection__title__list__item__name";
+    label5.setAttribute("for", "discountPrice");
+    label5.textContent = "Discount";
+    const input5 = document.createElement("input");
+    input5.setAttribute("type", "checkbox");
+    input5.id = "discountPrice";
+    input5.className = "filterSection__title__list__item__input";
+    input5.name = "filters";
+    listItem9.appendChild(label5);
+    listItem9.appendChild(input5);
+
+    // Append the list items to the unordered list
+    list3.appendChild(listItem8);
+    list3.appendChild(listItem9);
+
+    // Append the unordered list to the content inside the third accordion item body
+    content3.appendChild(list3);
+
+    // Append the content to the third accordion item body
+    body3.appendChild(content3);
+
+    // Append the third accordion item header and body to the third accordion item
+    item3.appendChild(header3);
+    item3.appendChild(body3);
+
+    accordion.appendChild(item1);
+    accordion.appendChild(item2);
+    accordion.appendChild(item3);
+
+    filterContainer.appendChild(accordion);
+
+
+
+
+    return filterContainer;
+  }
+  function filtersContainer() {
+    const filterContainer = document.createElement("div");
+
+    // Create "Categories"
+    const categories = document.createElement("div");
+    categories.id = "filterSection";
+    filterContainer.appendChild(categories);
+
+    const categoriesTitle = document.createElement("span");
+    categoriesTitle.classList.add("filterSection__title");
+    categoriesTitle.textContent = "Categories";
+    categories.appendChild(categoriesTitle);
+
+    const ulCategories = document.createElement("ul");
+    ulCategories.classList.add("filterSection__title__list");
+
+    categories.appendChild(ulCategories);
+
+    const categoriesList = ["All", "Chairs", "Tables", "Sofas"];
+    categoriesList.forEach(function (category) {
+      const liCategories = document.createElement("li");
+      liCategories.classList.add("filterSection__title__list__item");
+
+      const aCategories = document.createElement("a");
+      aCategories.classList.add("filterSection__title__list__item__name");
+      aCategories.textContent = category;
+      const url = "products.html?category=" + category.toLowerCase();
+      aCategories.href = url;
+
+      liCategories.appendChild(aCategories);
+      ulCategories.appendChild(liCategories);
+    });
+
+    // Create "Sort"
+    const sort = document.createElement("div");
+    sort.id = "filterSection";
+    filterContainer.appendChild(sort);
+
+    const sortTitle = document.createElement("span");
+    sortTitle.classList.add("filterSection__title");
+
+    sortTitle.textContent = "Sort";
+    sort.appendChild(sortTitle);
+
+    const ulSort = document.createElement("ul");
+    ulSort.classList.add("filterSection__title__list");
+
+    const sortData = [
+      { id: "popularSort", label: "Popular" },
+      { id: "priceLowSort", label: "Price low-high" },
+      { id: "priceHighSort", label: "Price high-low" },
+    ];
+
+    sortData.forEach(function (option, index) {
+      const liSort = document.createElement("li");
+      liSort.classList.add("filterSection__title__list__item");
+
+      const labelSort = document.createElement("label");
+      labelSort.classList.add("filterSection__title__list__item__name");
+
+      labelSort.setAttribute("for", option.id);
+      labelSort.textContent = option.label;
+
+      const inputSort = document.createElement("input");
+
+      if (index == 0) {
+        inputSort.setAttribute("checked", "");
+      }
+
+      inputSort.setAttribute("type", "radio");
+      inputSort.setAttribute("id", option.id);
+      inputSort.setAttribute("class", "");
+      inputSort.setAttribute("name", "sortList");
+      inputSort.classList.add("filterSection__title__list__item__input");
+
+      liSort.appendChild(labelSort);
+      liSort.appendChild(inputSort);
+
+      ulSort.appendChild(liSort);
+    });
+
+    sort.appendChild(ulSort);
+
+    // Create "Filters"
+    const filter = document.createElement("div");
+    filter.id = "filterSection";
+
+    filterContainer.appendChild(filter);
+
+    const filterTitle = document.createElement("span");
+    filterTitle.classList.add("filterSection__title");
+    filterTitle.textContent = "Filters";
+    filter.appendChild(filterTitle);
+
+    const ulFilter = document.createElement("ul");
+    ulFilter.classList.add("filterSection__title__list");
+
+    const filterData = [
+      { id: "newFilter", label: "New" },
+      { id: "discountPrice", label: "Discount" },
+    ];
+
+    filterData.forEach(function (option) {
+      const liFilter = document.createElement("li");
+      liFilter.classList.add("filterSection__title__list__item");
+
+      const labelFilter = document.createElement("label");
+      labelFilter.classList.add("filterSection__title__list__item__name");
+      labelFilter.setAttribute("for", option.id);
+      labelFilter.textContent = option.label;
+
+      const inputFilter = document.createElement("input");
+
+      inputFilter.setAttribute("type", "checkbox");
+      inputFilter.setAttribute("id", option.id);
+      inputFilter.setAttribute("class", "");
+      inputFilter.setAttribute("name", "filters");
+      inputFilter.classList.add("filterSection__title__list__item__input");
+
+      liFilter.appendChild(labelFilter);
+      liFilter.appendChild(inputFilter);
+
+      ulFilter.appendChild(liFilter);
+    });
+
+    filter.appendChild(ulFilter);
+
+    return filterContainer;
+  }
+  //Render products and pagination
   function renderProducts(obj, page) {
     //sort prodacts
     obj = sortPopular(obj);
@@ -2361,6 +2279,83 @@ export const view = (function () {
         thridPage.classList.remove("currentPage");
       }
     }
+  }
+  function paginationButton(lastPage) {
+    //Pagination
+    const nav = document.createElement("nav");
+    nav.setAttribute("aria-label", "Page navigation example");
+
+    const ulButtons = document.createElement("ul");
+    ulButtons.id = "pageButtonList";
+    ulButtons.classList.add(
+      "pagination",
+      "justify-content-center",
+      "pagination--products"
+    );
+    if (lastPage > 1) {
+      const li1 = document.createElement("li");
+      li1.id = "previousButton";
+      li1.classList.add("page-item", "disabled");
+      const a1 = document.createElement("a");
+      a1.id = "previousPage";
+      a1.classList.add("page-link", "page-link--products");
+      a1.href = "#";
+      a1.setAttribute("tabindex", "-1");
+      a1.setAttribute("aria-disabled", "true");
+      a1.textContent = "Previous";
+      li1.appendChild(a1);
+      ulButtons.appendChild(li1);
+
+      const li2 = document.createElement("li");
+      li2.classList.add("page-item");
+      const a2 = document.createElement("a");
+      a2.id = "fristPage";
+      a2.classList.add("page-link", "page-link--products", "pageNumber");
+      a2.href = "#";
+      a2.setAttribute("data-page", "1");
+      a2.textContent = "1";
+      li2.appendChild(a2);
+      ulButtons.appendChild(li2);
+
+      const li3 = document.createElement("li");
+      li3.classList.add("page-item");
+      const a3 = document.createElement("a");
+      a3.id = "secondPage";
+      a3.classList.add("page-link", "page-link--products", "pageNumber");
+      a3.href = "#";
+      a3.setAttribute("data-page", "2");
+      a3.textContent = "2";
+      li3.appendChild(a3);
+      ulButtons.appendChild(li3);
+      if (lastPage > 2) {
+        const li4 = document.createElement("li");
+        li4.id = "thrid";
+        li4.classList.add("page-item");
+        const a4 = document.createElement("a");
+        a4.id = "thridPage";
+        a4.classList.add("page-link", "page-link--products", "pageNumber");
+        a4.href = "#";
+        a4.setAttribute("data-page", "3");
+
+        a4.textContent = "3";
+        li4.appendChild(a4);
+        ulButtons.appendChild(li4);
+      }
+      const li5 = document.createElement("li");
+      li5.id = "nextButton";
+      li5.classList.add("page-item");
+      const a5 = document.createElement("a");
+      a5.id = "nextPage";
+      a5.classList.add("page-link", "page-link--products");
+      a5.href = "#";
+      a5.textContent = "Next";
+      li5.appendChild(a5);
+      ulButtons.appendChild(li5);
+    }
+    nav.appendChild(ulButtons);
+
+    productsPagination.innerHTML = "";
+    productsPagination.appendChild(nav);
   }
 
   return {
