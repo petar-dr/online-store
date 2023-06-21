@@ -1,0 +1,45 @@
+@use "../basic/" as *;
+
+.filterSection {
+  &__title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    &__list {
+      list-style: none;
+      padding-left: 10px;
+      &__item {
+        display: flex;
+        justify-content: space-between;
+        max-width: 200px;
+
+        &__name {
+          width: fit-content;
+          border-bottom: 1px solid transparent;
+          &:hover {
+            border-bottom: 1px solid black;
+          }
+        }
+      }
+    }
+  }
+}
+.label {
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  accent-color: black;
+  width: 1em;
+  height: 1em;
+}
+
+input[type="radio"] {
+  accent-color: black;
+  font: inherit;
+  color: currentColor;
+  width: 1em;
+  height: 1em;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+}

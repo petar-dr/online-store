@@ -43,8 +43,11 @@
         font-size: 15px;
         cursor: pointer;
 
-        &__icon {
+        &__iconYes {
           color: $accent;
+        }
+        &__iconNo{
+          color: black;
         }
       }
       &__heartIcon {
