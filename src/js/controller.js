@@ -8,6 +8,18 @@ export const controller = function (model, view) {
 
   function setupHeaderListners() {
     document.getElementById("hamBtn").addEventListener("click", hamMenu);
+    document.getElementById("newPage").addEventListener("click", loadNewPage);
+    document.getElementById("discounts").addEventListener("click", loadDiscountsPage);
+
+  }
+  function loadDiscountsPage() {
+    displayProductsPage();
+    document.getElementById("discountPrice").checked = true;
+  }
+  function loadNewPage() {
+    displayProductsPage();
+    document.getElementById("newFilter").checked = true;
+
   }
   function setupFooterListners() {
     responsivefooterMenu();

@@ -407,7 +407,7 @@ export const view = (function () {
 
     // Create list items
     let navItems = [
-      { id: "new", text: "New" },
+      { id: "newPage", text: "New" },
       { id: "campains", text: "Campains" },
       { id: "products", text: "Products", href: "products.html" },
       { id: "ideas", text: "Ideas" },
