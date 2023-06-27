@@ -287,14 +287,13 @@ export const controller = function (model, view) {
   function setLocalStorageLike(data) {
     let likeArray = [];
     if (localStorage.getItem("likeItems") == null) {
-      likeArray.push(data);
 
       localStorage.setItem("likeItems", JSON.stringify(likeArray));
     } else {
       likeArray = JSON.parse(localStorage.getItem("likeItems"));
       if (likeArray.indexOf(data) > -1) {
         likeArray.splice(likeArray.indexOf(data), 1);
-      } else {
+      } else if (data != null) {
         likeArray.push(data);
       }
       localStorage.setItem("likeItems", JSON.stringify(likeArray));

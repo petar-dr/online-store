@@ -408,9 +408,7 @@ export const view = (function () {
     // Create list items
     let navItems = [
       { id: "newPage", text: "New" },
-      { id: "campains", text: "Campains" },
       { id: "products", text: "Products", href: "products.html" },
-      { id: "ideas", text: "Ideas" },
       { id: "story", text: "Story" },
       { id: "discounts", text: "Discounts" },
       { id: "search", text: "Search" },
@@ -1081,7 +1079,9 @@ export const view = (function () {
 
   // Product page
   function loadProductMain(obj, array) {
-
+    if(array==null){
+      array=[];
+    }
     // Create main container
     const mainDiv = document.createElement("main");
     mainDiv.classList.add("productPage__main");
