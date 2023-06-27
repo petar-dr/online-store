@@ -8,17 +8,40 @@ export const controller = function (model, view) {
 
   function setupHeaderListners() {
     document.getElementById("hamBtn").addEventListener("click", hamMenu);
-    document.getElementById("newPage").addEventListener("click", loadNewPage);
-    document.getElementById("discounts").addEventListener("click", loadDiscountsPage);
 
   }
-  function loadDiscountsPage() {
-    displayProductsPage();
-    document.getElementById("discountPrice").checked = true;
+  async function loadDiscountsPage() {
+    let DOM = view.getDOMString();
+
+    let main = document.getElementById(DOM.discountPage);
+    main.appendChild(view.loadProductsPage());
+
+    setupProductsLiseners();
+
+    let data = await getDataProducts();
+    document.getElementById("discountPrice").checked = true
+    view.renderProducts(data);
+
+    setupPageListners();
+
+    setupPaginationListners();
+
   }
-  function loadNewPage() {
-    displayProductsPage();
-    document.getElementById("newFilter").checked = true;
+  async function loadNewPage() {
+    let DOM = view.getDOMString();
+
+    let main = document.getElementById(DOM.newPage);
+    main.appendChild(view.loadProductsPage());
+
+    setupProductsLiseners();
+
+    let data = await getDataProducts();
+    document.getElementById("newFilter").checked = true
+    view.renderProducts(data);
+
+    setupPageListners();
+
+    setupPaginationListners();
 
   }
   function setupFooterListners() {
@@ -316,5 +339,11 @@ export const controller = function (model, view) {
     signup: () => {
       displaySignupPage();
     },
+    newPage: () => {
+      loadNewPage()
+    },
+    discountsPage: () => {
+      loadDiscountsPage();
+    }
   };
 };

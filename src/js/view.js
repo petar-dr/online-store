@@ -4,6 +4,8 @@ export const view = (function () {
     homePage: "home_page",
     header: "header",
     products: "products",
+    newPage: "new_page",
+    discountPage: "discount_page",
     productsPage: "products_page",
     productPage: "product_page",
     loginPage: "login_page",
@@ -28,10 +30,6 @@ export const view = (function () {
     {
       title: "Stay in touch",
       content: ["Facebook", "Instagram", "Pinterest", "Linkedin"],
-    },
-    {
-      title: "Inspiration",
-      content: ["Ideas", "Story"],
     },
     {
       title: "About us",
@@ -407,10 +405,10 @@ export const view = (function () {
 
     // Create list items
     let navItems = [
-      { id: "newPage", text: "New" },
+      { id: "newPage", text: "New", href: "new.html" },
       { id: "products", text: "Products", href: "products.html" },
       { id: "story", text: "Story" },
-      { id: "discounts", text: "Discounts" },
+      { id: "discounts", text: "Discounts", href: "discount.html" },
       { id: "search", text: "Search" },
     ];
 
@@ -960,37 +958,6 @@ export const view = (function () {
       listItem.appendChild(link);
     }
 
-    // Create inspiration div
-    const inspirationDiv = document.createElement("div");
-    inspirationDiv.id = "inspiration";
-    inspirationDiv.classList.add("middle__box");
-    footerMenuLarge.appendChild(inspirationDiv);
-
-    // Create inspiration title
-    const inspirationTitle = document.createElement("span");
-    inspirationTitle.classList.add("middle__box__title");
-    inspirationTitle.textContent = "Inspiration";
-    inspirationDiv.appendChild(inspirationTitle);
-
-    // Create inspiration list
-    const inspirationList = document.createElement("ul");
-    inspirationList.id = "inspiration__list";
-    inspirationList.classList.add("middle__box__list");
-    inspirationDiv.appendChild(inspirationList);
-
-    // Create inspiration list items
-    const inspirationItems = ["Ideas", "Story"];
-    for (let i = 0; i < inspirationItems.length; i++) {
-      let inspirationItem = inspirationItems[i];
-      const listItem = document.createElement("li");
-      listItem.classList.add("middle__box__list__item");
-      inspirationList.appendChild(listItem);
-
-      const link = document.createElement("a");
-      link.href = "#";
-      link.textContent = inspirationItem;
-      listItem.appendChild(link);
-    }
     // Create aboutUs div
     const aboutUsDiv = document.createElement("div");
     aboutUsDiv.id = "aboutUs";
@@ -1079,8 +1046,8 @@ export const view = (function () {
 
   // Product page
   function loadProductMain(obj, array) {
-    if(array==null){
-      array=[];
+    if (array == null) {
+      array = [];
     }
     // Create main container
     const mainDiv = document.createElement("main");
