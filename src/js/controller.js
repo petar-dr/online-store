@@ -5,6 +5,32 @@ export const controller = function (model, view) {
     setupHeaderListners();
     setupFooterListners();
   }
+  function setupFormListners() {
+    document.getElementById("formSignUp").addEventListener("submit", formSignUp);
+
+  }
+  async function formSignUp(e) {
+    e.preventDefault();
+    let checkFlag = checkData();
+    if (checkFlag) {
+      const username = document.getElementById("usernameInput").value;
+      const email = document.getElementById("emailInput").value
+      const password = document.getElementById("passwordInput").value;
+      console.log(JSON.stringify({ username, email, password }))
+      const result = await fetch("http://localhost:5000/registration", {
+        method: "POST",
+        headers: {
+          "Content-Type": 'application/json'
+        },
+        body: JSON.stringify({ username, email, password })
+      }).then(response => response.json());
+      if (result.status === "ok") {
+        alert("Succes")
+      } else {
+        alert(result.error)
+      }
+    }
+  }
 
   function setupHeaderListners() {
     document.getElementById("hamBtn").addEventListener("click", hamMenu);
@@ -225,9 +251,9 @@ export const controller = function (model, view) {
     let main = document.getElementById(DOM.loginPage);
     main.appendChild(view.loadLoginPage());
 
-    document
-      .getElementById("submitBtnLogin")
-      .addEventListener("click", checkData);
+    // document
+    //   .getElementById("submitBtnLogin")
+    //   .addEventListener("click", checkData);
     document
       .getElementById("passwordIcon")
       .addEventListener("click", passwordIcon);
@@ -240,34 +266,40 @@ export const controller = function (model, view) {
     let main = document.getElementById(DOM.signupPage);
     main.appendChild(view.loadSignupPage());
 
-    document.getElementById("submitBtn").addEventListener("click", checkData);
+    // document.getElementById("submitBtn").addEventListener("click", checkData);
     document
       .getElementById("passwordIcon")
       .addEventListener("click", passwordIcon);
 
     setupPageListners();
+    setupFormListners();
   }
   // PAGES -- END
   function passwordIcon() {
     document.getElementById("passwordIcon").classList.toggle("fa-eye-slash");
     document.getElementById("passwordIcon").classList.toggle("fa-eye");
     const type = document.getElementById("passwordInput").type;
-    console.log(type);
+
     type == "password"
       ? (document.getElementById("passwordInput").type = "text")
       : (document.getElementById("passwordInput").type = "password");
   }
   function checkData() {
+
+    let checkFlag = true;
     // Check name
-    let name = document.getElementById("nameInput").value;
+    let name = document.getElementById("usernameInput").value;
     let checkName = new RegExp(/^[a-zA-Z]{2,15}$/);
     if (name === "") {
       document.getElementById("nameWarning").innerHTML = "Field name is empty";
+      checkFlag = false;
     } else if (checkName.test(name)) {
       document.getElementById("nameWarning").innerHTML = "";
     } else {
       document.getElementById("nameWarning").innerHTML =
         "The name was not entered correctly!";
+      checkFlag = false;
+
     }
     // Check email
     let email = document.getElementById("emailInput").value;
@@ -277,11 +309,15 @@ export const controller = function (model, view) {
     if (email === "") {
       document.getElementById("emailWarning").innerHTML =
         "Field email is empty";
+      checkFlag = false;
+
     } else if (checkEmail.test(email)) {
       document.getElementById("emailWarning").innerHTML = "";
     } else {
       document.getElementById("emailWarning").innerHTML =
         "The email was not entered correctly!";
+      checkFlag = false;
+
     }
     // Check password
     let password = document.getElementById("passwordInput").value;
@@ -291,12 +327,17 @@ export const controller = function (model, view) {
     if (password === "") {
       document.getElementById("passwordWarning").innerHTML =
         "Field password is empty";
+      checkFlag = false;
+
     } else if (checkPassword.test(password)) {
       document.getElementById("passwordWarning").innerHTML = "";
     } else {
       document.getElementById("passwordWarning").innerHTML =
         "The password was not entered correctly!";
+      checkFlag = false;
+
     }
+    return checkFlag;
   }
   // like icon
   function addLike() {

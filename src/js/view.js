@@ -1539,50 +1539,53 @@ export const view = (function () {
     signupBoxDiv.classList.add("signupPageMain__signupBox");
     signupPageDiv.appendChild(signupBoxDiv);
 
+    const form = document.createElement("form");
+    form.id = "formSignUp";
+    form.classList.add("signupPageMain__signupBox__form")
     // Create signupBox title
     const titleH3 = document.createElement("h3");
-    titleH3.classList.add("signupPageMain__signupBox__title");
+    titleH3.classList.add("signupPageMain__signupBox__form__title");
     titleH3.textContent = "Sign up";
-    signupBoxDiv.appendChild(titleH3);
+    form.appendChild(titleH3);
 
     // Create name input field
     const nameDiv = document.createElement("div");
-    nameDiv.classList.add("signupPageMain__signupBox__name");
-    signupBoxDiv.appendChild(nameDiv);
+    nameDiv.classList.add("signupPageMain__signupBox__form__name");
+    form.appendChild(nameDiv);
 
     const nameInput = document.createElement("input");
-    nameInput.id = "nameInput";
+    nameInput.id = "usernameInput";
     nameInput.type = "text";
-    nameInput.classList.add("signupPageMain__signupBox__name__input");
-    nameInput.placeholder = "name";
+    nameInput.classList.add("signupPageMain__signupBox__form__name__input");
+    nameInput.placeholder = "username";
     nameDiv.appendChild(nameInput);
 
     const nameWarningP = document.createElement("p");
     nameWarningP.id = "nameWarning";
-    nameWarningP.classList.add("signupPageMain__signupBox__name__warning");
+    nameWarningP.classList.add("signupPageMain__signupBox__form__name__warning");
     nameDiv.appendChild(nameWarningP);
 
     // Create email input field
     const emailDiv = document.createElement("div");
-    emailDiv.classList.add("signupPageMain__signupBox__email");
-    signupBoxDiv.appendChild(emailDiv);
+    emailDiv.classList.add("signupPageMain__signupBox__form__email");
+    form.appendChild(emailDiv);
 
     const emailInput = document.createElement("input");
     emailInput.id = "emailInput";
     emailInput.type = "email";
-    emailInput.classList.add("signupPageMain__signupBox__email__input");
+    emailInput.classList.add("signupPageMain__signupBox__form__email__input");
     emailInput.placeholder = "youremail@email.com";
     emailDiv.appendChild(emailInput);
 
     const emailWarningP = document.createElement("p");
     emailWarningP.id = "emailWarning";
-    emailWarningP.classList.add("signupPageMain__signupBox__email__warning");
+    emailWarningP.classList.add("signupPageMain__signupBox__form__email__warning");
     emailDiv.appendChild(emailWarningP);
 
     // Create password input field
     const passwordDiv = document.createElement("div");
-    passwordDiv.classList.add("signupPageMain__signupBox__password");
-    signupBoxDiv.appendChild(passwordDiv);
+    passwordDiv.classList.add("signupPageMain__signupBox__form__password");
+    form.appendChild(passwordDiv);
 
     //Create password icon
     const passwordIcon = document.createElement("i");
@@ -1593,23 +1596,27 @@ export const view = (function () {
     const passwordInput = document.createElement("input");
     passwordInput.id = "passwordInput";
     passwordInput.type = "password";
-    passwordInput.classList.add("signupPageMain__signupBox__password__input");
+    passwordInput.classList.add("signupPageMain__signupBox__form__password__input");
     passwordInput.placeholder = "password";
     passwordDiv.appendChild(passwordInput);
 
     const passwordWarningP = document.createElement("p");
     passwordWarningP.id = "passwordWarning";
     passwordWarningP.classList.add(
-      "signupPageMain__signupBox__password__warning"
+      "signupPageMain__signupBox__form__password__warning"
     );
     passwordDiv.appendChild(passwordWarningP);
 
     // Create signup button
     const signupButton = document.createElement("button");
     signupButton.id = "submitBtn";
-    signupButton.classList.add("signupPageMain__signupBox__submit");
+    signupButton.classList.add("signupPageMain__signupBox__form__submit");
     signupButton.textContent = "Sign up";
-    signupBoxDiv.appendChild(signupButton);
+    form.appendChild(signupButton);
+
+    signupBoxDiv.appendChild(form);
+
+
 
     // Create message section
     const messageDiv = document.createElement("div");
