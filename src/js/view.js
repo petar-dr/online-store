@@ -296,7 +296,7 @@ export const view = (function () {
 
     // Create account icon
     const accountIcon = document.createElement("a");
-    accountIcon.setAttribute("href", "signup.html");
+    accountIcon.setAttribute("href", "profile.html");
     accountIcon.classList.add(
       "header__main__right__profile",
       "p--tb",
