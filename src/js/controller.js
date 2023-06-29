@@ -5,19 +5,46 @@ export const controller = function (model, view) {
     setupHeaderListners();
     setupFooterListners();
   }
-  function setupFormListners() {
+  function setupSignUpFormListners() {
     document.getElementById("formSignUp").addEventListener("submit", formSignUp);
-
+    document.getElementById("passwordIcon").addEventListener("click", passwordIcon);
+  }
+  function setupLogInFormListners() {
+    document.getElementById("formLogIn").addEventListener("submit", formLogIn);
+    document.getElementById("passwordIcon").addEventListener("click", passwordIcon);
+  }
+  async function formLogIn(e) {
+    e.preventDefault();
+    let checkFlag = checkData(false, true, true);
+    if (checkFlag) {
+      const email = document.getElementById("emailInput").value
+      const password = document.getElementById("passwordInput").value;
+      const result = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      }).then(response => response.json());
+      if (result.status === "ok") {
+        localStorage.setItem("token", result.token)
+        console.log(result.token)
+        window.location.href = "signup.html";
+        alert("Succes login")
+      } else {
+        alert(result.error)
+      }
+    }
   }
   async function formSignUp(e) {
     e.preventDefault();
-    let checkFlag = checkData();
+    let checkFlag = checkData(true, true, true);
     if (checkFlag) {
       const username = document.getElementById("usernameInput").value;
       const email = document.getElementById("emailInput").value
       const password = document.getElementById("passwordInput").value;
       console.log(JSON.stringify({ username, email, password }))
-      const result = await fetch("http://localhost:5000/registration", {
+      const result = await fetch("http://localhost:5000/singup", {
         method: "POST",
         headers: {
           "Content-Type": 'application/json'
@@ -251,14 +278,8 @@ export const controller = function (model, view) {
     let main = document.getElementById(DOM.loginPage);
     main.appendChild(view.loadLoginPage());
 
-    // document
-    //   .getElementById("submitBtnLogin")
-    //   .addEventListener("click", checkData);
-    document
-      .getElementById("passwordIcon")
-      .addEventListener("click", passwordIcon);
-
     setupPageListners();
+    setupLogInFormListners()
   }
   function displaySignupPage() {
     let DOM = view.getDOMString();
@@ -266,13 +287,10 @@ export const controller = function (model, view) {
     let main = document.getElementById(DOM.signupPage);
     main.appendChild(view.loadSignupPage());
 
-    // document.getElementById("submitBtn").addEventListener("click", checkData);
-    document
-      .getElementById("passwordIcon")
-      .addEventListener("click", passwordIcon);
 
     setupPageListners();
-    setupFormListners();
+    setupSignUpFormListners()
+
   }
   // PAGES -- END
   function passwordIcon() {
@@ -284,58 +302,66 @@ export const controller = function (model, view) {
       ? (document.getElementById("passwordInput").type = "text")
       : (document.getElementById("passwordInput").type = "password");
   }
-  function checkData() {
+  function checkData(checkUsername, checkEmail, checkPassword) {
 
     let checkFlag = true;
-    // Check name
-    let name = document.getElementById("usernameInput").value;
-    let checkName = new RegExp(/^[a-zA-Z]{2,15}$/);
-    if (name === "") {
-      document.getElementById("nameWarning").innerHTML = "Field name is empty";
-      checkFlag = false;
-    } else if (checkName.test(name)) {
-      document.getElementById("nameWarning").innerHTML = "";
-    } else {
-      document.getElementById("nameWarning").innerHTML =
-        "The name was not entered correctly!";
-      checkFlag = false;
+    if (checkUsername) {
+      // Check name
+      let name = document.getElementById("usernameInput").value;
+      let checkName = new RegExp(/^[a-zA-Z]{2,15}$/);
+      if (name === "") {
+        document.getElementById("nameWarning").innerHTML = "Field name is empty";
+        checkFlag = false;
+      } else if (checkName.test(name)) {
+        document.getElementById("nameWarning").innerHTML = "";
+      } else {
+        document.getElementById("nameWarning").innerHTML =
+          "The name was not entered correctly!";
+        checkFlag = false;
 
+      }
     }
-    // Check email
-    let email = document.getElementById("emailInput").value;
-    let checkEmail = new RegExp(
-      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    );
-    if (email === "") {
-      document.getElementById("emailWarning").innerHTML =
-        "Field email is empty";
-      checkFlag = false;
+    if (checkEmail) {
+      // Check email
+      let email = document.getElementById("emailInput").value;
+      let checkEmail = new RegExp(
+        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+      );
+      if (email === "") {
+        const emailValue = document.getElementById("emailWarning");
+        console.log(emailValue);
+        document.getElementById("emailWarning").innerHTML =
+          "Field email is empty";
+        checkFlag = false;
 
-    } else if (checkEmail.test(email)) {
-      document.getElementById("emailWarning").innerHTML = "";
-    } else {
-      document.getElementById("emailWarning").innerHTML =
-        "The email was not entered correctly!";
-      checkFlag = false;
+      } else if (checkEmail.test(email)) {
+        document.getElementById("emailWarning").innerHTML = "";
+      } else {
+        document.getElementById("emailWarning").innerHTML =
+          "The email was not entered correctly!";
+        checkFlag = false;
 
+      }
     }
-    // Check password
-    let password = document.getElementById("passwordInput").value;
-    let checkPassword = new RegExp(
-      /^(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]){6,16}/
-    );
-    if (password === "") {
-      document.getElementById("passwordWarning").innerHTML =
-        "Field password is empty";
-      checkFlag = false;
+    if (checkPassword) {
+      // Check password
+      let password = document.getElementById("passwordInput").value;
+      let checkPassword = new RegExp(
+        /^(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]){6,16}/
+      );
+      if (password === "") {
+        document.getElementById("passwordWarning").innerHTML =
+          "Field password is empty";
+        checkFlag = false;
 
-    } else if (checkPassword.test(password)) {
-      document.getElementById("passwordWarning").innerHTML = "";
-    } else {
-      document.getElementById("passwordWarning").innerHTML =
-        "The password was not entered correctly!";
-      checkFlag = false;
+      } else if (checkPassword.test(password)) {
+        document.getElementById("passwordWarning").innerHTML = "";
+      } else {
+        document.getElementById("passwordWarning").innerHTML =
+          "The password was not entered correctly!";
+        checkFlag = false;
 
+      }
     }
     return checkFlag;
   }

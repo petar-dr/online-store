@@ -1175,11 +1175,9 @@ footer {
 .signupPageMain__signupBox__form {
   display: flex;
   flex-direction: column;
-  margin: 50px 0;
   font-size: 18px;
   row-gap: 20px;
   width: 100%;
-  max-width: 300px;
 }
 .signupPageMain__signupBox__form__title {
   font-size: 30px;
@@ -1271,68 +1269,60 @@ footer {
   width: 100%;
   max-width: 300px;
 }
-.loginPageMain__loginBox__title {
+.loginPageMain__loginBox__form {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  row-gap: 20px;
+  width: 100%;
+  max-width: 300px;
+}
+.loginPageMain__loginBox__form__title {
   font-size: 30px;
 }
-.loginPageMain__loginBox__name__input {
+.loginPageMain__loginBox__form__email__input {
   border: none;
   border-bottom: 1px solid black;
   width: 100%;
 }
-.loginPageMain__loginBox__name__input:focus {
+.loginPageMain__loginBox__form__email__input:focus {
   outline: none;
 }
-.loginPageMain__loginBox__name__warning {
-  display: none;
+.loginPageMain__loginBox__form__email__warning {
   color: red;
   font-size: 16px;
   margin: 0;
 }
-.loginPageMain__loginBox__email__input {
-  border: none;
-  border-bottom: 1px solid black;
-  width: 100%;
-}
-.loginPageMain__loginBox__email__input:focus {
-  outline: none;
-}
-.loginPageMain__loginBox__email__warning {
-  display: none;
-  color: red;
-  font-size: 16px;
-  margin: 0;
-}
-.loginPageMain__loginBox__password {
+.loginPageMain__loginBox__form__password {
   position: relative;
   margin-bottom: 20px;
 }
-.loginPageMain__loginBox__password i {
+.loginPageMain__loginBox__form__password i {
   position: absolute;
   right: 0;
   top: 8px;
   font-size: 16px;
 }
-.loginPageMain__loginBox__password__input {
+.loginPageMain__loginBox__form__password__input {
   border: none;
   border-bottom: 1px solid black;
   width: 100%;
 }
-.loginPageMain__loginBox__password__input:focus {
+.loginPageMain__loginBox__form__password__input:focus {
   outline: none;
 }
-.loginPageMain__loginBox__password__warning {
-  display: none;
+.loginPageMain__loginBox__form__password__warning {
   color: red;
   font-size: 16px;
   margin: 0;
 }
-.loginPageMain__loginBox__submit {
+.loginPageMain__loginBox__form__submit {
   border: none;
   background-color: black;
   color: white;
   font-size: 20px;
 }
-.loginPageMain__loginBox__submit:hover {
+.loginPageMain__loginBox__form__submit:hover {
   background-color: #87d61f;
   color: black;
 }

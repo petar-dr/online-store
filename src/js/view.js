@@ -1452,34 +1452,40 @@ export const view = (function () {
     loginBoxDiv.classList.add("loginPageMain__loginBox");
     loginPageMain.appendChild(loginBoxDiv);
 
+    // Create form element
+    const form = document.createElement("form");
+    form.id = "formLogIn";
+    form.classList.add("loginPageMain__loginBox__form")
+
+
     // Create loginBox title
     const titleH3 = document.createElement("h3");
-    titleH3.classList.add("loginPageMain__loginBox__title");
+    titleH3.classList.add("loginPageMain__loginBox__form__title");
     titleH3.textContent = "Log in";
-    loginBoxDiv.appendChild(titleH3);
+    form.appendChild(titleH3);
 
     // Create email input field
     const emailDiv = document.createElement("div");
-    emailDiv.classList.add("loginPageMain__loginBox__email");
-    loginBoxDiv.appendChild(emailDiv);
+    emailDiv.classList.add("loginPageMain__loginBox__form__email");
+    form.appendChild(emailDiv);
 
     const emailInput = document.createElement("input");
     emailInput.id = "emailInput";
     emailInput.type = "email";
-    emailInput.classList.add("loginPageMain__loginBox__email__input");
+    emailInput.classList.add("loginPageMain__loginBox__form__email__input");
     emailInput.placeholder = "youremail@email.com";
     emailDiv.appendChild(emailInput);
 
     const emailWarningP = document.createElement("p");
     emailWarningP.id = "emailWarning";
-    emailWarningP.classList.add("loginPageMain__loginBox__email__warning");
+    emailWarningP.classList.add("loginPageMain__loginBox__form__email__warning");
     emailWarningP.textContent = "enter email";
     emailDiv.appendChild(emailWarningP);
 
     // Create password input field
     const passwordDiv = document.createElement("div");
-    passwordDiv.classList.add("loginPageMain__loginBox__password");
-    loginBoxDiv.appendChild(passwordDiv);
+    passwordDiv.classList.add("loginPageMain__loginBox__form__password");
+    form.appendChild(passwordDiv);
 
     //Create password icon
     const passwordIcon = document.createElement("i");
@@ -1490,14 +1496,14 @@ export const view = (function () {
     const passwordInput = document.createElement("input");
     passwordInput.id = "passwordInput";
     passwordInput.type = "password";
-    passwordInput.classList.add("loginPageMain__loginBox__password__input");
+    passwordInput.classList.add("loginPageMain__loginBox__form__password__input");
     passwordInput.placeholder = "password";
     passwordDiv.appendChild(passwordInput);
 
     const passwordWarningP = document.createElement("p");
     passwordWarningP.id = "passwordWarning";
     passwordWarningP.classList.add(
-      "loginPageMain__loginBox__password__warning"
+      "loginPageMain__loginBox__form__password__warning"
     );
     passwordWarningP.textContent = "enter password";
     passwordDiv.appendChild(passwordWarningP);
@@ -1505,9 +1511,12 @@ export const view = (function () {
     // Create login button
     const loginButton = document.createElement("button");
     loginButton.id = "submitBtnLogin";
-    loginButton.classList.add("loginPageMain__loginBox__submit");
+    loginButton.classList.add("loginPageMain__loginBox__form__submit");
     loginButton.textContent = "Log in";
-    loginBoxDiv.appendChild(loginButton);
+    form.appendChild(loginButton);
+
+
+    loginBoxDiv.appendChild(form);
 
     // Create message section
     const messageDiv = document.createElement("div");
@@ -1538,7 +1547,7 @@ export const view = (function () {
     const signupBoxDiv = document.createElement("div");
     signupBoxDiv.classList.add("signupPageMain__signupBox");
     signupPageDiv.appendChild(signupBoxDiv);
-
+    // Create form element
     const form = document.createElement("form");
     form.id = "formSignUp";
     form.classList.add("signupPageMain__signupBox__form")
