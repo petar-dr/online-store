@@ -1803,6 +1803,8 @@ export const view = (function () {
     //Product name
     const nameProductTd = document.createElement("td");
     nameProductTd.classList.add("favoritePage__itemsBlock__nameProduct");
+    nameProductTd.setAttribute("data-label","Product: ");
+
 
     const nameTd = document.createElement("span");
     nameTd.classList.add("nameProduct__name")
@@ -1813,6 +1815,8 @@ export const view = (function () {
 
     //Product price
     const priceProduct = document.createElement("td");
+    priceProduct.setAttribute("data-label","Price :");
+
     priceProduct.classList.add("favoritePage__itemsBlock__priceProduct");
     favProduct.appendChild(priceProduct);
 

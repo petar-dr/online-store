@@ -6,6 +6,11 @@
   flex-direction: column;
   padding: 50px;
 }
+@media (max-width: 400px) {
+  .favoritePage {
+    padding: 10px;
+  }
+}
 .favoritePage__titleBlock {
   margin-bottom: 40px;
 }
@@ -46,6 +51,11 @@
   font-weight: bold;
   width: 100%;
 }
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .favoritePage__itemsBlock table thead {
+    display: none;
+  }
+}
 .favoritePage__itemsBlock table thead tr {
   width: 100%;
   border-bottom: 1px solid black;
@@ -53,19 +63,52 @@
 .favoritePage__itemsBlock table thead tr th {
   padding: 10px 12px;
 }
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .favoritePage__itemsBlock table tbody {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}
 .favoritePage__itemsBlock table tbody tr {
   width: 100%;
+}
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .favoritePage__itemsBlock table tbody tr {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 400px;
+    border-bottom: 1px solid black;
+  }
 }
 .favoritePage__itemsBlock table tbody tr td {
   font-size: 18px;
   padding: 10px 12px;
   border-bottom: 1px solid black;
 }
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .favoritePage__itemsBlock table tbody tr td {
+    width: 100%;
+    border-bottom: none;
+  }
+  .favoritePage__itemsBlock table tbody tr td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+}
 .favoritePage__itemsBlock table tbody tr td img {
   height: 150px;
 }
 .favoritePage__itemsBlock__removeProduct {
   width: 5%;
+}
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .favoritePage__itemsBlock__removeProduct {
+    display: flex;
+    justify-content: end;
+  }
 }
 .favoritePage__itemsBlock__removeProduct__icon {
   color: black;
@@ -77,12 +120,39 @@
 .favoritePage__itemsBlock__imgProduct {
   width: 25%;
 }
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .favoritePage__itemsBlock__imgProduct {
+    display: flex;
+    justify-content: center;
+  }
+}
 .favoritePage__itemsBlock__nameProduct {
   width: 30%;
+}
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .favoritePage__itemsBlock__nameProduct {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 .favoritePage__itemsBlock__priceProduct {
   width: 25%;
 }
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .favoritePage__itemsBlock__priceProduct {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+}
 .favoritePage__itemsBlock__addProduct {
   width: 15%;
+}
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .favoritePage__itemsBlock__addProduct {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    height: 60px;
+  }
 }/*# sourceMappingURL=favoritePage.css.map */
