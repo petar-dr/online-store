@@ -1543,4 +1543,93 @@ input[type=radio] {
   background-color: #fff;
   color: black;
   box-shadow: none;
+}
+
+.favoritePage {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+}
+.favoritePage__titleBlock {
+  margin-bottom: 40px;
+}
+.favoritePage__titleBlock__title {
+  font-size: 36px;
+  font-weight: bold;
+  color: black;
+}
+.favoritePage__textContainer__box {
+  font-size: 20px;
+  background-color: #87d61f;
+  margin-bottom: 20px;
+  padding: 12px 0 12px 20px;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+.favoritePage__textContainer__box__icon {
+  margin-right: 10px;
+}
+.favoritePage__textContainer__box__title {
+  margin: 0;
+  color: black;
+}
+.favoritePage__textContainer__description {
+  font-size: 18px;
+  width: 100%;
+  max-width: 800px;
+}
+.favoritePage__itemsBlock {
+  width: 100%;
+}
+.favoritePage__itemsBlock table {
+  width: 100%;
+}
+.favoritePage__itemsBlock table thead {
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
+}
+.favoritePage__itemsBlock table thead tr {
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+.favoritePage__itemsBlock table thead tr th {
+  padding: 10px 12px;
+}
+.favoritePage__itemsBlock table tbody tr {
+  width: 100%;
+}
+.favoritePage__itemsBlock table tbody tr td {
+  font-size: 18px;
+  padding: 10px 12px;
+  border-bottom: 1px solid black;
+}
+.favoritePage__itemsBlock table tbody tr td img {
+  height: 150px;
+}
+.favoritePage__itemsBlock__removeProduct {
+  width: 5%;
+}
+.favoritePage__itemsBlock__removeProduct__icon {
+  color: black;
+  font-size: 14px;
+}
+.favoritePage__itemsBlock__removeProduct__icon:hover {
+  color: grey;
+}
+.favoritePage__itemsBlock__imgProduct {
+  width: 25%;
+}
+.favoritePage__itemsBlock__nameProduct {
+  width: 30%;
+}
+.favoritePage__itemsBlock__priceProduct {
+  width: 25%;
+}
+.favoritePage__itemsBlock__addProduct {
+  width: 15%;
 }/*# sourceMappingURL=style.css.map */

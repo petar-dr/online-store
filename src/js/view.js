@@ -8,6 +8,7 @@ export const view = (function () {
     discountPage: "discount_page",
     productsPage: "products_page",
     productPage: "product_page",
+    favorite: "favorite_page",
     loginPage: "login_page",
     signupPage: "signup_page",
     main: "main",
@@ -1647,6 +1648,188 @@ export const view = (function () {
 
     return signupPageDiv;
   }
+  function loadFavoriteMain(data) {
+    // Create favorite container
+    const favoritePageMain = document.createElement("div");
+    favoritePageMain.classList.add("favoritePage");
+
+    //Create title block
+    const titleBlock = document.createElement("div");
+    titleBlock.classList.add("favoritePage__titleBlock");
+    favoritePageMain.appendChild(titleBlock);
+    //Create title 
+    const title = document.createElement("h1");
+    title.classList.add("favoritePage__titleBlock__title");
+    title.textContent = "Wish list";
+    titleBlock.appendChild(title);
+
+    let wishList = JSON.parse(localStorage.getItem("likeItems"))
+    if (wishList == null) {
+      wishList = [];
+    }
+
+
+
+    data = data.filter((elem) =>
+      wishList.includes((elem.id).toString())
+    )
+
+
+
+    if (wishList.length < 1) {
+
+      //Crete text container
+      const textContainer = document.createElement("div");
+      textContainer.classList.add("favoritePage__textContainer");
+      favoritePageMain.appendChild(textContainer);
+
+      const textBox = document.createElement("div");
+      textBox.classList.add("favoritePage__textContainer__box");
+
+      const icon = document.createElement("i");
+      icon.classList.add("fa-regular", "fa-folder-open", "favoritePage__textContainer__box__icon")
+      textBox.appendChild(icon);
+
+      const textTitle = document.createElement("p");
+      textTitle.classList.add("favoritePage__textContainer__box__title");
+      textTitle.textContent = "There are no products in your wish list";
+      textBox.appendChild(textTitle);
+
+      textContainer.appendChild(textBox);
+
+      const textDescription = document.createElement("div");
+      textDescription.classList.add("favoritePage__textContainer__description");
+      textDescription.textContent = 'Open the page with the product you like and press the heart - this is how you make your wish list. By adding products that you like, you create a list that can serve as inspiration or that you will eventually put in the basket and order. In order for the list to be remembered on all your devices, you need to be logged.'
+      textContainer.appendChild(textDescription);
+
+
+    }
+    else {
+
+      // Create items block
+      const itemsBlock = document.createElement("div");
+      itemsBlock.classList.add("favoritePage__itemsBlock");
+      favoritePageMain.appendChild(itemsBlock);
+
+      const table = document.createElement("table");
+      itemsBlock.appendChild(table);
+
+      const thead = document.createElement("thead");
+      table.appendChild(thead);
+
+
+      const favProductTitle = document.createElement("tr");
+      thead.appendChild(favProductTitle);
+
+      const removeProductTh = document.createElement("th");
+      removeProductTh.classList.add("favoritePage__itemsBlock__removeProduct");
+      removeProductTh.innerHTML = `&nbsp;`
+      favProductTitle.appendChild(removeProductTh);
+
+      const imgProductTh = document.createElement("th");
+      imgProductTh.classList.add("favoritePage__itemsBlock__imgProduct");
+      imgProductTh.innerHTML = `&nbsp;`
+
+      favProductTitle.appendChild(imgProductTh);
+
+
+      const nameProductTh = document.createElement("th");
+      nameProductTh.classList.add("favoritePage__itemsBlock__nameProduct");
+      nameProductTh.textContent = "Product";
+      favProductTitle.appendChild(nameProductTh);
+
+
+      const priceProduct = document.createElement("th");
+      priceProduct.classList.add("favoritePage__itemsBlock__priceProduct");
+      priceProduct.textContent = "Price";
+      favProductTitle.appendChild(priceProduct);
+
+
+      const addProduct = document.createElement("th");
+      addProduct.classList.add("favoritePage__itemsBlock__addProduct");
+      addProduct.innerHTML = `&nbsp;`
+
+      favProductTitle.appendChild(addProduct);
+
+
+      const tbody = document.createElement("tbody");
+      table.appendChild(tbody);
+
+      data.forEach(elem => tbody.appendChild(favoriteProduct(elem)))
+
+      if (wishList.length > 1) {
+        //Create add all items block
+        const addAllBtn = document.createElement("td");
+        addAllBtn.classList.add("favoritePage__addAllBtn");
+        favoritePageMain.appendChild(addAllBtn);
+      }
+    }
+
+    return favoritePageMain
+  }
+  function favoriteProduct(obj) {
+
+    const favProduct = document.createElement("tr");
+    favProduct.classList.add("favoriteProduct");
+
+    //Product remove
+    const removeProduct = document.createElement("td");
+    removeProduct.classList.add("favoritePage__itemsBlock__removeProduct");
+    const iconRemove = document.createElement("i");
+    iconRemove.id="iconRemove"
+    iconRemove.classList.add("fa-solid", "fa-x", "favoritePage__itemsBlock__removeProduct__icon", "removeFavoriteProduct")
+    iconRemove.setAttribute("data-id", obj.id)
+    removeProduct.appendChild(iconRemove);
+    favProduct.appendChild(removeProduct);
+
+    favProduct.appendChild(removeProduct);
+
+    //Product image
+    const imgProductTd = document.createElement("td");
+    imgProductTd.classList.add("favoritePage__itemsBlock__imgProduct");
+
+    const imageTd = document.createElement("img");
+    imageTd.classList.add("favoritePage__itemsBlock__imgProduct__image")
+    imageTd.setAttribute("src", obj.img.img1);
+    imageTd.setAttribute("alt", obj.name)
+
+    imgProductTd.appendChild(imageTd);
+    favProduct.appendChild(imgProductTd);
+
+    //Product name
+    const nameProductTd = document.createElement("td");
+    nameProductTd.classList.add("favoritePage__itemsBlock__nameProduct");
+
+    const nameTd = document.createElement("span");
+    nameTd.classList.add("nameProduct__name")
+    nameTd.textContent = obj.name;
+
+    nameProductTd.appendChild(nameTd);
+    favProduct.appendChild(nameProductTd);
+
+    //Product price
+    const priceProduct = document.createElement("td");
+    priceProduct.classList.add("favoritePage__itemsBlock__priceProduct");
+    favProduct.appendChild(priceProduct);
+
+    const price = document.createElement("span");
+    price.innerHTML = ` ${obj.price}.00&euro;`;
+    priceProduct.appendChild(price)
+
+    //Product add to cart
+    const addProduct = document.createElement("td");
+    addProduct.classList.add("favoritePage__itemsBlock__addProduct");
+    favProduct.appendChild(addProduct);
+
+    const addToCartButton = document.createElement("button");
+    addToCartButton.classList.add(
+      "productPage__main__info__cartButtons__addToCart"
+    );
+    addToCartButton.textContent = "Add to cart";
+    addProduct.appendChild(addToCartButton);
+
+    return favProduct;
+  }
   // Products page
   function loadProductsMain() {
     // Create products container
@@ -2414,6 +2597,16 @@ export const view = (function () {
 
       pageContent.appendChild(loadHeader());
       pageContent.appendChild(loadSignupMain());
+      pageContent.appendChild(loadFooter());
+
+      return pageContent;
+    },
+    loadFavoritePage: (data) => {
+      const pageContent = document.createElement("div");
+      pageContent.setAttribute("id", "pageContent");
+
+      pageContent.appendChild(loadHeader());
+      pageContent.appendChild(loadFavoriteMain(data));
       pageContent.appendChild(loadFooter());
 
       return pageContent;

@@ -1,0 +1,99 @@
+@use "../basic/" as *;
+
+.favoritePage {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  &__titleBlock {
+    margin-bottom: 40px;
+    &__title {
+      font-size: 36px;
+      font-weight: bold;
+      color: black;
+    }
+  }
+  &__textContainer {
+    &__box {
+      font-size: 20px;
+      background-color: $accent;
+      margin-bottom: 20px;
+      padding: 12px 0 12px 20px;
+      color: black;
+
+      display: flex;
+      align-items: center;
+      &__icon {
+        margin-right: 10px;
+      }
+      &__title {
+        margin: 0;
+        color: black;
+      }
+    }
+    &__description {
+      font-size: 18px;
+      width: 100%;
+      max-width: 800px;
+    }
+  }
+  &__itemsBlock {
+    width: 100%;
+    & table {
+      width: 100%;
+      & thead {
+        font-size: 18px;
+        font-weight: bold;
+        width: 100%;
+
+        & tr {
+          width: 100%;
+          border-bottom: 1px solid black;
+          & th {
+            padding: 10px 12px;
+          }
+        }
+      }
+      & tbody {
+        & tr {
+          width: 100%;
+          & td {
+            font-size: 18px;
+            padding: 10px 12px;
+            border-bottom: 1px solid black;
+
+            & img {
+              height: 150px;
+            }
+          }
+        }
+      }
+    }
+
+    &__removeProduct {
+      width: 5%;
+      &__icon{
+        color: black;
+        font-size: 14px;
+
+        &:hover{
+            color: grey;
+        }
+      }
+    }
+    &__imgProduct {
+      width: 25%;
+    }
+
+    &__nameProduct {
+      width: 30%;
+    }
+    &__priceProduct {
+      width: 25%;
+    }
+    &__addProduct {
+      width: 15%;
+    }
+  }
+}

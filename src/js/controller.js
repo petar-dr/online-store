@@ -13,6 +13,22 @@ export const controller = function (model, view) {
     document.getElementById("formLogIn").addEventListener("submit", formLogIn);
     document.getElementById("passwordIcon").addEventListener("click", passwordIcon);
   }
+  function setupFavoriteListeners() {
+    const iconRemove = document.querySelectorAll("#iconRemove");
+    console.log(iconRemove)
+    iconRemove.forEach(elem => {
+      elem.addEventListener("click", removeFavoriteProduct);
+    })
+
+  }
+  function removeFavoriteProduct(e) {
+    e.preventDefault();
+    let likeItems = JSON.parse(localStorage.getItem("likeItems"));
+    likeItems = likeItems.filter(elem => elem != e.target.dataset.id)
+    localStorage.setItem("likeItems", JSON.stringify(likeItems));
+
+    displayFavoritePage();
+  }
   async function formLogIn(e) {
     e.preventDefault();
     let checkFlag = checkData(false, true, true);
@@ -292,6 +308,18 @@ export const controller = function (model, view) {
     setupSignUpFormListners()
 
   }
+  async function displayFavoritePage() {
+    let DOM = view.getDOMString();
+    let url = model.getUrl();
+
+    let main = document.getElementById(DOM.favorite);
+    const data = await model.loadData(url.allProducts);
+    main.innerHTML="";
+    main.appendChild(view.loadFavoritePage(data));
+
+    setupPageListners();
+    setupFavoriteListeners()
+  }
   // PAGES -- END
   function passwordIcon() {
     document.getElementById("passwordIcon").classList.toggle("fa-eye-slash");
@@ -411,6 +439,9 @@ export const controller = function (model, view) {
     },
     discountsPage: () => {
       loadDiscountsPage();
+    },
+    favoritePage: () => {
+      displayFavoritePage();
     }
   };
 };
