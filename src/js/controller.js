@@ -1,6 +1,11 @@
 //CONTROLER
 export const controller = function (model, view) {
   //EVENT LISTENERS -- START
+  function setupProductPageListners() {
+    document.getElementById("heartIcon").addEventListener("click", addLike);
+    document.getElementById("minusBtn").addEventListener("click", setQuantity);
+    document.getElementById("plusBtn").addEventListener("click", setQuantity);
+  };
   function setupPageListners() {
     setupHeaderListners();
     setupFooterListners();
@@ -142,6 +147,23 @@ export const controller = function (model, view) {
   //EVENT LISTENERS -- END
 
   // function
+  function setQuantity(e) {
+
+    let quantity = document.getElementById("quantityBtn").textContent;
+    quantity = Number(quantity);
+    if (e.target.id == "plusBtn") {
+      quantity++;
+    }
+    else{
+      if(quantity>1){
+        quantity--;
+      }
+    }
+    document.getElementById("quantityBtn").textContent=quantity;
+
+    
+
+  }
   async function filterChange() {
     let data = await getDataProducts();
 
@@ -282,10 +304,11 @@ export const controller = function (model, view) {
 
     let data = await model.loadData(url.productId + id);
     let main = document.getElementById(DOM.productPage);
+    main.innerHTML="";
     main.appendChild(view.loadProductPage(data, likeArray));
 
     //Event listener for like button
-    document.getElementById("heartIcon").addEventListener("click", addLike);
+    setupProductPageListners();
     setupPageListners();
   }
   function displayLoginPage() {
@@ -314,7 +337,7 @@ export const controller = function (model, view) {
 
     let main = document.getElementById(DOM.favorite);
     const data = await model.loadData(url.allProducts);
-    main.innerHTML="";
+    main.innerHTML = "";
     main.appendChild(view.loadFavoritePage(data));
 
     setupPageListners();

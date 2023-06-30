@@ -1222,20 +1222,24 @@ export const view = (function () {
     cartButtonsDiv.appendChild(quantityDiv);
 
     const minusButton = document.createElement("button");
+    minusButton.id="minusBtn";
     minusButton.classList.add(
       "productPage__main__info__cartButtons__quantity__minus"
     );
+
     minusButton.textContent = "-";
     quantityDiv.appendChild(minusButton);
 
-    const amountButton = document.createElement("button");
-    amountButton.classList.add(
+    const quantityButton = document.createElement("button");
+    quantityButton.id="quantityBtn";
+    quantityButton.classList.add(
       "productPage__main__info__cartButtons__quantity__number"
     );
-    amountButton.textContent = "1";
-    quantityDiv.appendChild(amountButton);
+    quantityButton.textContent = "1";
+    quantityDiv.appendChild(quantityButton);
 
     const plusButton = document.createElement("button");
+    plusButton.id="plusBtn";
     plusButton.classList.add(
       "productPage__main__info__cartButtons__quantity__plus"
     );
