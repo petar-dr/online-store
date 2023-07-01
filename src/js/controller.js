@@ -358,6 +358,25 @@ export const controller = function (model, view) {
     setupPageListners();
     setupFavoriteListeners()
   }
+  async function displayAccountPage() {
+
+    // let token = localStorage.getItem("token");
+    // console.log(token)
+
+    // const auto = await fetch("http://localhost:5000/autentication", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": 'application/json'
+    //   },
+    //   body: JSON.stringify({ token })
+    // }).then(response => response.json());
+    // if (auto.status === "ok") {
+
+    //   alert("Ulogovan si")
+    // } else {
+    //   alert("ovo je greska" + error)
+    // }
+  }
   // PAGES -- END
   function passwordIcon() {
     document.getElementById("passwordIcon").classList.toggle("fa-eye-slash");
@@ -480,6 +499,10 @@ export const controller = function (model, view) {
     },
     favoritePage: () => {
       displayFavoritePage();
+    },
+    account: () => {
+      displayAccountPage();
+
     }
   };
 };

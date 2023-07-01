@@ -297,7 +297,7 @@ export const view = (function () {
 
     // Create account icon
     const accountIcon = document.createElement("a");
-    accountIcon.setAttribute("href", "profile.html");
+    accountIcon.setAttribute("href", "account.html");
     accountIcon.classList.add(
       "header__main__right__profile",
       "p--tb",
@@ -449,7 +449,7 @@ export const view = (function () {
 
     // Create account icon
     const accountIcon = document.createElement("a");
-    accountIcon.setAttribute("href", "profile.html");
+    accountIcon.setAttribute("href", "account.html");
     accountIcon.classList.add(
       "hamMenuIcons__profile",
       "p--tb",
@@ -624,36 +624,40 @@ export const view = (function () {
     // Create carousel items
     const carouselItems = [
       {
+        href: "http://127.0.0.1:5500/pages/products.html?category=sofas",
         imageSrc: "../img/Carousel/carouselImg1.jpg",
         imageAlt: "carouselImg1",
         captionClass: "my__caption my__caption--black",
         captionTitle: "Pretty and comfortable",
-        captionSubtitle: "Explore new collection",
+        captionSubtitle: "Explore our sofas",
         captionContent:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae voluptates nam quibusdam quas alias libero sapiente, laboriosam sunt ipsam esse in aut dolorem nemo id accusamus dolorum officiis? Consequatur, harum.",
+          "Textiles from ecological materials with the comfort and functionality of Scandinavian design - it's time to bring a new piece into your home.",
         captionLinkClass: "my__caption__a my__caption__a--black",
       },
       {
+        href: "http://127.0.0.1:5500/pages/product.html?id=24",
         imageSrc: "../img/Carousel/carouselImg2.jpg",
         imageAlt: "carouselImg2",
         captionClass: "my__caption my__caption--white",
         captionTitle: "Simplicity",
         captionSubtitle: "Chair for everyone",
         captionContent:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae voluptates nam quibusdam quas alias libero sapiente, laboriosam sunt ipsam esse in aut dolorem nemo id accusamus dolorum officiis? Consequatur, harum.",
+          "The chair is made of oak, its design is permeated by fluid, organic forms, combining strong curves with exceptional lightness. As a result, we got a minimalist design that optimizes comfort and is focused on man and his movements, without lacking aesthetics and characteristic details.",
         captionLinkClass: "my__caption__a my__caption__a--white",
       },
       {
+        href: "http://127.0.0.1:5500/pages/product.html?id=2",
         imageSrc: "../img/Carousel/carouselImg3.jpg",
         imageAlt: "carouselImg3",
         captionClass: "my__caption my__caption--white",
         captionTitle: "New product",
         captionSubtitle: "Chair with style",
         captionContent:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae voluptates nam quibusdam quas alias libero sapiente, laboriosam sunt ipsam esse in aut dolorem nemo id accusamus dolorum officiis? Consequatur, harum.",
+          "This luxury hybrid armchair offers unparalleled seating comfort thanks to its robust frame and soft upholstery. It is characterized by solid legs, made using traditional carpentry techniques, and large armrests and a seat cushion, upholstered in a range of soft fabrics, creating a sense of comfort and lightness in any environment.",
         captionLinkClass: "my__caption__a my__caption__a--white",
       },
     ];
+
 
     for (let j = 0; j < carouselItems.length; j++) {
       let carouselItem = carouselItems[j];
@@ -707,20 +711,19 @@ export const view = (function () {
 
       // Create caption elements
       const captionTitle = document.createElement("h6");
-      captionTitle.textContent = "New product";
+      captionTitle.textContent = carouselItem.captionTitle;
       captionDiv.appendChild(captionTitle);
 
       const captionSubtitle = document.createElement("h2");
-      captionSubtitle.textContent = "Chair with style";
+      captionSubtitle.textContent = carouselItem.captionSubtitle;
       captionDiv.appendChild(captionSubtitle);
 
       const captionContent = document.createElement("p");
-      captionContent.textContent =
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae voluptates nam quibusdam quas alias libero sapiente, laboriosam sunt ipsam esse in aut dolorem nemo id accusamus  dolorum officiis? Consequatur, harum.";
+      captionContent.textContent = carouselItem.captionContent;
       captionDiv.appendChild(captionContent);
 
       const captionLink = document.createElement("a");
-      captionLink.href = "#";
+      captionLink.href = carouselItem.href;
       captionLink.classList.add("my__caption__a", "my__caption__a--white");
       captionLink.innerHTML = "Buy now <span>&#8594;</span>";
       captionDiv.appendChild(captionLink);
