@@ -114,7 +114,7 @@
   &__nav {
     display: flex;
     justify-content: center;
-    
+
     height: calc(26% + 2px);
     width: 100%;
     padding: 0 35px;
@@ -144,12 +144,30 @@
         width: 100%;
         justify-content: space-between;
         cursor: pointer;
+        
+      
         @include media("md") {
           align-items: center;
           height: 100%;
           justify-content: space-around;
         }
       }
+    }
+  }
+}
+.hamMenuIcons__box{
+  width: 80px;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+
+.nav--item{
+  &:first-of-type{
+    display: none;
+    @include media ("xs"){
+      display: block;
     }
   }
 }
@@ -162,10 +180,6 @@
   text-decoration: none;
   font-weight: 400;
   transition: color 0.2s, border 0.2s;
-  @include media("md") {
-    //  font-size: 25px;
-  }
-
   &:hover {
     border-bottom: 1px solid $border_hover_text;
     color: $text_dark;

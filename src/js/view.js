@@ -394,6 +394,13 @@ export const view = (function () {
     navBox.classList.add("header__nav__box");
     navbar.appendChild(navBox);
 
+    // //add hamMenuIcons
+    // const hamMenuIcons = document.createElement("div");
+    // hamMenuIcons.id = "hamMenuIcons";
+    // hamMenuIcons.classList.add("header__nav__box__menuIcons");
+
+    // navBox.appendChild(hamMenuIcons);
+
     // Create header__nav__box__list element
     const navList = document.createElement("ul");
     navList.classList.add(
@@ -403,6 +410,11 @@ export const view = (function () {
       "mb-lg-0"
     );
     navBox.appendChild(navList);
+
+    const hamMenuIcons = document.createElement("li");
+    hamMenuIcons.id = "hamMenuIcons";
+    hamMenuIcons.classList.add("nav--item");
+    navList.appendChild(hamMenuIcons);
 
     // Create list items
     let navItems = [
@@ -418,7 +430,6 @@ export const view = (function () {
       const listItem = document.createElement("li");
       listItem.classList.add("nav--item");
       navList.appendChild(listItem);
-
       const link = document.createElement("a");
       link.classList.add("nav--link");
       link.id = navItem.id;
@@ -430,6 +441,60 @@ export const view = (function () {
     }
 
     return header;
+  }
+  function loadHamMenuIcons() {
+
+    const iconsBox = document.createElement("div");
+    iconsBox.classList.add("hamMenuIcons__box")
+
+    // Create account icon
+    const accountIcon = document.createElement("a");
+    accountIcon.setAttribute("href", "profile.html");
+    accountIcon.classList.add(
+      "hamMenuIcons__profile",
+      "p--tb",
+      "text--medium"
+    );
+    iconsBox.appendChild(accountIcon);
+
+    // Create account icon element
+    const accountIconElement = document.createElement("i");
+    accountIconElement.classList.add("fa-solid", "fa-user");
+    accountIcon.appendChild(accountIconElement);
+
+    // Create favorite icon
+    const favoriteIcon = document.createElement("a");
+    favoriteIcon.setAttribute("href", "favorite.html");
+
+    favoriteIcon.classList.add(
+      "hamMenuIcons__favorite",
+      "p--tb",
+
+      "text--medium"
+    );
+    iconsBox.appendChild(favoriteIcon);
+
+    // Create favorite icon element
+    const favoriteIconElement = document.createElement("i");
+    favoriteIconElement.classList.add("fa-solid", "fa-heart");
+    favoriteIcon.appendChild(favoriteIconElement);
+
+    // Create cart icon
+    const cartIcon = document.createElement("a");
+    cartIcon.setAttribute("href", "cart.html");
+    cartIcon.classList.add(
+      "hamMenuIcons__profile__cart",
+      "p--tb",
+      "text--medium"
+    );
+    iconsBox.appendChild(cartIcon);
+
+    // Create cart icon element
+    const cartIconElement = document.createElement("i");
+    cartIconElement.classList.add("fa-solid", "fa-bag-shopping");
+    cartIcon.appendChild(cartIconElement);
+
+    return iconsBox;
   }
 
   function loadFooter() {
@@ -1222,7 +1287,7 @@ export const view = (function () {
     cartButtonsDiv.appendChild(quantityDiv);
 
     const minusButton = document.createElement("button");
-    minusButton.id="minusBtn";
+    minusButton.id = "minusBtn";
     minusButton.classList.add(
       "productPage__main__info__cartButtons__quantity__minus"
     );
@@ -1231,7 +1296,7 @@ export const view = (function () {
     quantityDiv.appendChild(minusButton);
 
     const quantityButton = document.createElement("button");
-    quantityButton.id="quantityBtn";
+    quantityButton.id = "quantityBtn";
     quantityButton.classList.add(
       "productPage__main__info__cartButtons__quantity__number"
     );
@@ -1239,7 +1304,7 @@ export const view = (function () {
     quantityDiv.appendChild(quantityButton);
 
     const plusButton = document.createElement("button");
-    plusButton.id="plusBtn";
+    plusButton.id = "plusBtn";
     plusButton.classList.add(
       "productPage__main__info__cartButtons__quantity__plus"
     );
@@ -1780,7 +1845,7 @@ export const view = (function () {
     const removeProduct = document.createElement("td");
     removeProduct.classList.add("favoritePage__itemsBlock__removeProduct");
     const iconRemove = document.createElement("i");
-    iconRemove.id="iconRemove"
+    iconRemove.id = "iconRemove"
     iconRemove.classList.add("fa-solid", "fa-x", "favoritePage__itemsBlock__removeProduct__icon", "removeFavoriteProduct")
     iconRemove.setAttribute("data-id", obj.id)
     removeProduct.appendChild(iconRemove);
@@ -1803,7 +1868,7 @@ export const view = (function () {
     //Product name
     const nameProductTd = document.createElement("td");
     nameProductTd.classList.add("favoritePage__itemsBlock__nameProduct");
-    nameProductTd.setAttribute("data-label","Product: ");
+    nameProductTd.setAttribute("data-label", "Product: ");
 
 
     const nameTd = document.createElement("span");
@@ -1815,7 +1880,7 @@ export const view = (function () {
 
     //Product price
     const priceProduct = document.createElement("td");
-    priceProduct.setAttribute("data-label","Price :");
+    priceProduct.setAttribute("data-label", "Price :");
 
     priceProduct.classList.add("favoritePage__itemsBlock__priceProduct");
     favProduct.appendChild(priceProduct);
@@ -2628,5 +2693,6 @@ export const view = (function () {
     renderProducts,
     filtersContainer,
     filterContainerSmall,
+    loadHamMenuIcons
   };
 })();

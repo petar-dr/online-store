@@ -79,9 +79,12 @@ export const controller = function (model, view) {
       }
     }
   }
-
   function setupHeaderListners() {
     document.getElementById("hamBtn").addEventListener("click", hamMenu);
+    hamMenuIcons();
+    let screenWidthHamMenu = window.matchMedia("(max-width: 576px)");
+    screenWidthHamMenu.addEventListener("change", hamMenuIcons);
+
 
   }
   async function loadDiscountsPage() {
@@ -154,14 +157,14 @@ export const controller = function (model, view) {
     if (e.target.id == "plusBtn") {
       quantity++;
     }
-    else{
-      if(quantity>1){
+    else {
+      if (quantity > 1) {
         quantity--;
       }
     }
-    document.getElementById("quantityBtn").textContent=quantity;
+    document.getElementById("quantityBtn").textContent = quantity;
 
-    
+
 
   }
   async function filterChange() {
@@ -222,6 +225,18 @@ export const controller = function (model, view) {
     } else {
       view.closeHamMenu();
     }
+  }
+  function hamMenuIcons() {
+    let screenWidthHamMenu = window.matchMedia("(max-width: 576px)");
+    const menuIcons = document.getElementById("hamMenuIcons");
+    if (screenWidthHamMenu.matches) {
+      menuIcons.innerHTML = "";
+      menuIcons.append(view.loadHamMenuIcons());
+    }
+    else {
+      menuIcons.innerHTML = "";
+    }
+
   }
   function resposniveSection2() {
     let screenWidthSection2 = window.matchMedia("(max-width: 992px)");
@@ -304,7 +319,7 @@ export const controller = function (model, view) {
 
     let data = await model.loadData(url.productId + id);
     let main = document.getElementById(DOM.productPage);
-    main.innerHTML="";
+    main.innerHTML = "";
     main.appendChild(view.loadProductPage(data, likeArray));
 
     //Event listener for like button
