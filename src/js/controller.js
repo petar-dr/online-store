@@ -377,6 +377,14 @@ export const controller = function (model, view) {
     //   alert("ovo je greska" + error)
     // }
   }
+  function displaySearchPage(){
+    let DOM = view.getDOMString();
+
+    let main = document.getElementById(DOM.search);
+    main.appendChild(view.loadSearchPage());
+
+    setupPageListners();
+  }
   // PAGES -- END
   function passwordIcon() {
     document.getElementById("passwordIcon").classList.toggle("fa-eye-slash");
@@ -503,6 +511,9 @@ export const controller = function (model, view) {
     account: () => {
       displayAccountPage();
 
+    },
+    search:()=>{
+      displaySearchPage();
     }
   };
 };

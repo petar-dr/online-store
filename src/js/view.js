@@ -9,6 +9,7 @@ export const view = (function () {
     productsPage: "products_page",
     productPage: "product_page",
     favorite: "favorite_page",
+    search: "search_page",
     loginPage: "login_page",
     signupPage: "signup_page",
     main: "main",
@@ -394,12 +395,6 @@ export const view = (function () {
     navBox.classList.add("header__nav__box");
     navbar.appendChild(navBox);
 
-    // //add hamMenuIcons
-    // const hamMenuIcons = document.createElement("div");
-    // hamMenuIcons.id = "hamMenuIcons";
-    // hamMenuIcons.classList.add("header__nav__box__menuIcons");
-
-    // navBox.appendChild(hamMenuIcons);
 
     // Create header__nav__box__list element
     const navList = document.createElement("ul");
@@ -420,9 +415,8 @@ export const view = (function () {
     let navItems = [
       { id: "newPage", text: "New", href: "new.html" },
       { id: "products", text: "Products", href: "products.html" },
-      { id: "story", text: "Story" },
       { id: "discounts", text: "Discounts", href: "discount.html" },
-      { id: "search", text: "Search" },
+      { id: "search", text: "Search", href: "search.html" },
     ];
 
     for (let i = 0; i < navItems.length; i++) {
@@ -1944,6 +1938,38 @@ export const view = (function () {
 
     return productsDiv;
   }
+  function loadSearchMain(){
+
+    const searchContainer = document.createElement("div");
+    searchContainer.classList.add("searchContainer");
+
+    // const searchTitle = document.createElement("div");
+    // searchTitle.classList.add("searchContainer__title");
+    // searchTitle.textContent= "Search"
+    // searchContainer.appendChild(searchTitle);
+
+    const searchBox = document.createElement("form");
+    searchBox.classList.add("searchContainer__box");
+    searchContainer.appendChild(searchBox);
+
+    const searchInput = document.createElement("input");
+    searchInput.type="search";
+    searchInput.placeholder="enter product name"
+    searchInput.classList.add("searchContainer__box__input");
+    searchBox.appendChild(searchInput);
+
+    const searchBtn = document.createElement("button");
+    searchBtn.classList.add("searchContainer__box__btn");
+    searchBtn.type="submit";
+    searchBtn.textContent=" Search"
+    searchBox.appendChild(searchBtn);
+
+    // const searchContent = document.createElement("div");
+    // searchContent.classList.add("searchContainer__content");
+    // searchContainer.appendChild(searchContent);
+    
+    return searchContainer
+  }
 
   //Sorts and filters
   function sortPopular(data) {
@@ -2687,6 +2713,15 @@ export const view = (function () {
 
       return pageContent;
     },
+    loadSearchPage:()=>{
+      const pageContent = document.createElement("div");
+      pageContent.setAttribute("id", "pageContent");
+
+      pageContent.appendChild(loadHeader());
+      pageContent.appendChild(loadSearchMain());
+      
+      return pageContent;
+    },
     loadSection2,
     loadSection2Small,
     displayHamMenu,
@@ -2696,6 +2731,7 @@ export const view = (function () {
     renderProducts,
     filtersContainer,
     filterContainerSmall,
-    loadHamMenuIcons
+    loadHamMenuIcons,
+    
   };
 })();
