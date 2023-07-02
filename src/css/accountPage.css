@@ -1,0 +1,39 @@
+.accountContainer {
+  display: flex;
+  padding: 50px;
+  flex-direction: column;
+  min-height: calc(100vh - 145px);
+}
+.accountContainer__title {
+  font-size: 36px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 50px;
+}
+.accountContainer__main__box {
+  font-size: 20px;
+  background-color: #87d61f;
+  margin-bottom: 20px;
+  padding: 12px 0 12px 20px;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+.accountContainer__main__box__icon {
+  margin-right: 10px;
+}
+.accountContainer__main__box__title {
+  margin: 0;
+  color: black;
+}
+.accountContainer__main__description {
+  font-size: 18px;
+  width: 100%;
+  max-width: 800px;
+}
+.accountContainer__main__description__mark {
+  font-weight: bold;
+}
+.accountContainer__main__description__mark:hover {
+  border-bottom: 1px solid black;
+}/*# sourceMappingURL=accountPage.css.map */

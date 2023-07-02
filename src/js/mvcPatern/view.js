@@ -12,6 +12,7 @@ export const view = (function () {
     search: "search_page",
     loginPage: "login_page",
     signupPage: "signup_page",
+    account: "account_page",
     main: "main",
     footer: "footer",
     delivery: "iconDelivery",
@@ -1546,7 +1547,6 @@ export const view = (function () {
     const emailWarningP = document.createElement("p");
     emailWarningP.id = "emailWarning";
     emailWarningP.classList.add("loginPageMain__loginBox__form__email__warning");
-    emailWarningP.textContent = "enter email";
     emailDiv.appendChild(emailWarningP);
 
     // Create password input field
@@ -1572,7 +1572,6 @@ export const view = (function () {
     passwordWarningP.classList.add(
       "loginPageMain__loginBox__form__password__warning"
     );
-    passwordWarningP.textContent = "enter password";
     passwordDiv.appendChild(passwordWarningP);
 
     // Create login button
@@ -1900,6 +1899,79 @@ export const view = (function () {
 
     return favProduct;
   }
+  function loadAccountMain() {
+
+    // Create account container
+    const accountContainer = document.createElement("div");
+    accountContainer.classList.add("accountContainer");
+
+    // Create account title
+    const accountTitle = document.createElement("h1");
+    accountTitle.classList.add("accountContainer__title");
+    accountTitle.textContent = "Account"
+    accountContainer.appendChild(accountTitle);
+
+    // Create div main account
+    const mainAccount = document.createElement("div");
+    mainAccount.id = "mainaccount";
+    mainAccount.classList.add("accountContainer__main");
+    accountContainer.appendChild(mainAccount);
+
+    const textBox = document.createElement("div");
+    textBox.classList.add("accountContainer__main__box");
+
+    const icon = document.createElement("i");
+    icon.classList.add("fa-solid", "fa-circle-xmark", "accountContainer__main__box__icon")
+    textBox.appendChild(icon);
+
+    const textTitle = document.createElement("p");
+    textTitle.classList.add("accountContainer__main__box__title");
+    textTitle.textContent = "You can't enter in account, because you are log out.";
+    textBox.appendChild(textTitle);
+
+    mainAccount.appendChild(textBox);
+
+    const textDescription = document.createElement("div");
+    textDescription.classList.add("accountContainer__main__description");
+    textDescription.innerHTML = `To open the account menu, you need to go to <a href="signup.html" class="accountContainer__main__description__mark">sign up</a> page and create an account, or if you already have an account you need to go to <a href="login.html" class="accountContainer__main__description__mark">log in</a> page.`
+    accountContainer.appendChild(textDescription);
+
+    // Create aside account
+    // const asideAccount = document.createElement("aside");
+    // asideAccount.id = "asideAccount";
+    // asideAccount.classList.add("accountContainer__main__aside");
+    // mainAccount.appendChild(asideAccount);
+
+    // const menuAccount = document.createElement("ul");
+    // menuAccount.id = "asideAccount";
+    // menuAccount.classList.add("accountContainer__main__aside__menuList");
+    // asideAccount.appendChild(menuAccount);
+
+    // const menuOption = ["Account data", "Wish list", "Log out"];
+    // menuOption.forEach((elem, index) => {
+    //   const liOption = document.createElement("li");
+    //   liOption.classList.add("accountContainer__main__aside__menuList__item");
+
+    //   const aOption = document.createElement("a");
+    //   aOption.classList.add("accountContainer__main__aside__menuList__item__name");
+    //   aOption.textContent = elem;
+    //   if (index == 1) {
+    //     aOption.href = "favorite.html";
+    //   }
+    //   liOption.appendChild(aOption);
+    //   menuAccount.appendChild(liOption);
+    // });
+
+
+    // // Create div main account
+    // const menuContent = document.createElement("div");
+    // menuContent.id = "mainaccount";
+    // menuContent.classList.add("accountContainer__main__content");
+    // mainAccount.appendChild(menuContent);
+
+    return accountContainer;
+  }
+
   // Products page
   function loadProductsMain() {
     // Create products container
@@ -2779,6 +2851,18 @@ export const view = (function () {
     loadSearchResult: (data, searchValue) => {
       return searchResult(data, searchValue);
     },
+    loadAcountPage: () => {
+
+      const pageContent = document.createElement("div");
+      pageContent.setAttribute("id", "pageContent");
+
+      pageContent.appendChild(loadHeader());
+      pageContent.appendChild(loadAccountMain());
+      pageContent.appendChild(loadFooter());
+
+      return pageContent;
+    },
+
     loadSection2,
     loadSection2Small,
     displayHamMenu,
@@ -2789,7 +2873,6 @@ export const view = (function () {
     filtersContainer,
     filterContainerSmall,
     loadHamMenuIcons,
-
 
   };
 })();

@@ -1,0 +1,44 @@
+@use "../basic/" as *;
+
+.accountContainer {
+  display: flex;
+  padding: 50px;
+  flex-direction: column;
+  min-height: calc(100vh - 145px);
+  &__title {
+    font-size: 36px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 50px;
+  }
+  &__main {
+    &__box{
+        font-size: 20px;
+      background-color: $accent;
+      margin-bottom: 20px;
+      padding: 12px 0 12px 20px;
+      color: black;
+
+      display: flex;
+      align-items: center;
+      &__icon {
+        margin-right: 10px;
+      }
+      &__title {
+        margin: 0;
+        color: black;
+      }
+    }
+    &__description {
+        font-size: 18px;
+        width: 100%;
+        max-width: 800px;
+        &__mark{
+            font-weight: bold;
+            &:hover{
+                border-bottom: 1px solid black;
+            }
+        }
+      }
+  }
+}

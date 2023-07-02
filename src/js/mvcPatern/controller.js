@@ -350,7 +350,7 @@ export const controller = function (model, view) {
     main.appendChild(view.loadLoginPage());
 
     setupPageListners();
-    setupLogInFormListners()
+    setupLogInFormListners();
   }
   function displaySignupPage() {
     let DOM = view.getDOMString();
@@ -360,7 +360,7 @@ export const controller = function (model, view) {
 
 
     setupPageListners();
-    setupSignUpFormListners()
+    setupSignUpFormListners();
 
   }
   async function displayFavoritePage() {
@@ -376,23 +376,11 @@ export const controller = function (model, view) {
     setupFavoriteListeners()
   }
   async function displayAccountPage() {
+    let DOM = view.getDOMString();
 
-    // let token = localStorage.getItem("token");
-    // console.log(token)
-
-    // const auto = await fetch("http://localhost:5000/autentication", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": 'application/json'
-    //   },
-    //   body: JSON.stringify({ token })
-    // }).then(response => response.json());
-    // if (auto.status === "ok") {
-
-    //   alert("Ulogovan si")
-    // } else {
-    //   alert("ovo je greska" + error)
-    // }
+    let main = document.getElementById(DOM.account);
+    main.appendChild(view.loadAcountPage());
+    setupPageListners();
   }
   function displaySearchPage() {
     let DOM = view.getDOMString();
@@ -532,6 +520,7 @@ export const controller = function (model, view) {
     },
     search: () => {
       displaySearchPage();
-    }
+    },
+
   };
 };
