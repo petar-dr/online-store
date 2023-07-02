@@ -283,7 +283,9 @@ export const view = (function () {
     headerMain.appendChild(headerMainRight);
 
     // Create search icon
-    const searchIcon = document.createElement("span");
+    const searchIcon = document.createElement("a");
+    searchIcon.setAttribute("href", "search.html");
+
     searchIcon.classList.add(
       "header__main__right__search",
       "p--tb",
@@ -441,6 +443,23 @@ export const view = (function () {
 
     const iconsBox = document.createElement("div");
     iconsBox.classList.add("hamMenuIcons__box")
+
+    // Create search icon
+    const searchIcon = document.createElement("a");
+    searchIcon.setAttribute("href", "search.html");
+
+    searchIcon.classList.add(
+      "hamMenuIcons__search",
+      "p--tb",
+      
+      "text--medium"
+    );
+    iconsBox.appendChild(searchIcon);
+
+    // Create search icon element
+    const searchIconElement = document.createElement("i");
+    searchIconElement.classList.add("fa-solid", "fa-magnifying-glass");
+    searchIcon.appendChild(searchIconElement);
 
     // Create account icon
     const accountIcon = document.createElement("a");
@@ -2738,7 +2757,7 @@ export const view = (function () {
         warningMessage.textContent = ""
 
         data.forEach(elem =>
-          dataContainer.appendChild(item(elem)));
+          dataContainer.appendChild(item(elem, "item--search")));
       }
       return dataContainer;
     }

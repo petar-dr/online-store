@@ -521,6 +521,9 @@ export const controller = function (model, view) {
     search: () => {
       displaySearchPage();
     },
+    cart: () => {
+      displayCartPage();
+    },
 
   };
 };

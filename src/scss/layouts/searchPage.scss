@@ -77,3 +77,37 @@
     }
   }
 }
+
+.item--search{
+  @include media("xxl") {
+    width: 20%;
+    &:nth-child(5n){
+      border-right:none;
+    }
+  }
+  @include media("xl") {
+    width: 20%;
+    &:nth-child(5n){
+      border-right:none;
+    }
+  }
+  @include media("lg") {
+    width: 25%;
+    &:nth-child(4n){
+      border-right:none;
+    }
+  
+  }
+  @include media("md") {
+    width: 33.33%;
+    &:nth-child(3n){
+      border-right:none;
+    }
+  }
+  @include media("sm") {
+    width: 50%;
+    &:nth-child(even){
+      border-right:none;
+    }
+  }
+}
