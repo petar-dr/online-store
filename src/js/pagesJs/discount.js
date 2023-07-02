@@ -1,5 +1,6 @@
-import {controller} from "../MVC patern/controller.js";
-import {view} from "../MVC patern/view.js";
-import {model}  from "../MVC patern/model.js";
+import {controller} from "../mvcPatern/controller.js";
+import {view} from "../mvcPatern/view.js";
+import {model}  from "../mvcPatern/model.js";
+
 
 controller(model, view).discountsPage();
