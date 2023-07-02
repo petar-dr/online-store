@@ -1938,36 +1938,55 @@ export const view = (function () {
 
     return productsDiv;
   }
-  function loadSearchMain(){
+  function loadSearchMain() {
 
     const searchContainer = document.createElement("div");
     searchContainer.classList.add("searchContainer");
 
-    // const searchTitle = document.createElement("div");
-    // searchTitle.classList.add("searchContainer__title");
-    // searchTitle.textContent= "Search"
-    // searchContainer.appendChild(searchTitle);
 
-    const searchBox = document.createElement("form");
+    const title = document.createElement("h1");
+    title.classList.add("searchContainer__title");
+    title.textContent = "Search";
+    searchContainer.appendChild(title);
+
+    const searchBox = document.createElement("div");
+    searchBox.id = "searchBox";
     searchBox.classList.add("searchContainer__box");
     searchContainer.appendChild(searchBox);
 
+    const formBox = document.createElement("form");
+    formBox.id = "searchForm";
+    formBox.classList.add("searchContainer__box__form");
+    searchBox.appendChild(formBox);
+
     const searchInput = document.createElement("input");
-    searchInput.type="search";
-    searchInput.placeholder="enter product name"
-    searchInput.classList.add("searchContainer__box__input");
-    searchBox.appendChild(searchInput);
+    searchInput.id = "searchValue";
+    searchInput.type = "search";
+    searchInput.placeholder = "enter product name"
+    searchInput.classList.add("searchContainer__box__form__input");
+    formBox.appendChild(searchInput);
 
     const searchBtn = document.createElement("button");
-    searchBtn.classList.add("searchContainer__box__btn");
-    searchBtn.type="submit";
-    searchBtn.textContent=" Search"
-    searchBox.appendChild(searchBtn);
+    searchBtn.classList.add("searchContainer__box__form__btn");
+    searchBtn.type = "submit";
+    searchBtn.textContent = " Search"
+    formBox.appendChild(searchBtn);
 
-    // const searchContent = document.createElement("div");
-    // searchContent.classList.add("searchContainer__content");
-    // searchContainer.appendChild(searchContent);
-    
+    const messageBox = document.createElement("div");
+    messageBox.id = "messageBox";
+    messageBox.classList.add("searchContainer__box__messageBox");
+    searchBox.appendChild(messageBox);
+
+    const warningMessage = document.createElement("p");
+    warningMessage.id = "warningMessage";
+    warningMessage.classList.add("searchContainer__box__messageBox__warning");
+    searchBox.appendChild(warningMessage);
+
+    const searchResult = document.createElement("div");
+    searchResult.id = "searchResult";
+    searchResult.classList.add("searchContainer__searchResult");
+    searchContainer.appendChild(searchResult);
+
     return searchContainer
   }
 
@@ -2625,6 +2644,40 @@ export const view = (function () {
     productsPagination.innerHTML = "";
     productsPagination.appendChild(nav);
   }
+  function searchResult(data, searchValue) {
+
+    let searchResult = document.getElementById("searchResult");
+    searchResult.innerHTML = "";
+
+    const warningMessage = document.getElementById("warningMessage");
+
+
+    let dataContainer = document.createElement("div");
+    dataContainer.classList.add("searchContainer__searchResult__dataContainer");
+    if (searchValue == "") {
+      warningMessage.textContent = "Search field is empty! Enter product name and press button";
+      return dataContainer;
+    }
+    else {
+      console.log(data.length)
+      if (data.length < 1) {
+        warningMessage.textContent = "Don't have any product with that name.";
+      } else {
+        warningMessage.textContent = ""
+
+        data.forEach(elem =>
+          dataContainer.appendChild(item(elem)));
+      }
+      return dataContainer;
+    }
+
+
+
+
+
+
+  }
+
 
   return {
     getDOMString: () => {
@@ -2713,14 +2766,18 @@ export const view = (function () {
 
       return pageContent;
     },
-    loadSearchPage:()=>{
+    loadSearchPage: () => {
       const pageContent = document.createElement("div");
       pageContent.setAttribute("id", "pageContent");
 
       pageContent.appendChild(loadHeader());
       pageContent.appendChild(loadSearchMain());
-      
+      pageContent.appendChild(loadFooter());
+
       return pageContent;
+    },
+    loadSearchResult: (data, searchValue) => {
+      return searchResult(data, searchValue);
     },
     loadSection2,
     loadSection2Small,
@@ -2732,6 +2789,7 @@ export const view = (function () {
     filtersContainer,
     filterContainerSmall,
     loadHamMenuIcons,
-    
+
+
   };
 })();

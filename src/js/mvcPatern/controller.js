@@ -1,6 +1,22 @@
 //CONTROLER
 export const controller = function (model, view) {
   //EVENT LISTENERS -- START
+  function setupSearchPageListners() {
+    document.getElementById("searchForm").addEventListener("submit", searchProducts);
+
+  }
+  async function searchProducts(e) {
+    e.preventDefault();
+    let url = model.getUrl();
+    let searchValue = document.getElementById("searchValue").value;
+
+    let searchResult = document.getElementById("searchResult");
+    let data = await model.loadData(url.allProducts);
+    data = data.filter(elem => elem.name.toLowerCase().indexOf(searchValue.trim().toLowerCase()) != -1);
+    searchResult.appendChild(view.loadSearchResult(data, searchValue));
+
+
+  }
   function setupProductPageListners() {
     document.getElementById("heartIcon").addEventListener("click", addLike);
     document.getElementById("minusBtn").addEventListener("click", setQuantity);
@@ -209,13 +225,14 @@ export const controller = function (model, view) {
   function responsivefooterMenu() {
     let screenWidthFooterMenu = window.matchMedia("(max-width: 768px)");
     const footerMenu = document.getElementById("footerMenu");
-
-    if (screenWidthFooterMenu.matches) {
-      footerMenu.innerHTML = "";
-      footerMenu.appendChild(view.loadfooterMenuSmall());
-    } else {
-      footerMenu.innerHTML = "";
-      footerMenu.appendChild(view.loadfooterMenuLarge());
+    if (footerMenu) {
+      if (screenWidthFooterMenu.matches) {
+        footerMenu.innerHTML = "";
+        footerMenu.appendChild(view.loadfooterMenuSmall());
+      } else {
+        footerMenu.innerHTML = "";
+        footerMenu.appendChild(view.loadfooterMenuLarge());
+      }
     }
   }
   function hamMenu() {
@@ -377,13 +394,14 @@ export const controller = function (model, view) {
     //   alert("ovo je greska" + error)
     // }
   }
-  function displaySearchPage(){
+  function displaySearchPage() {
     let DOM = view.getDOMString();
 
     let main = document.getElementById(DOM.search);
     main.appendChild(view.loadSearchPage());
 
     setupPageListners();
+    setupSearchPageListners();
   }
   // PAGES -- END
   function passwordIcon() {
@@ -512,7 +530,7 @@ export const controller = function (model, view) {
       displayAccountPage();
 
     },
-    search:()=>{
+    search: () => {
       displaySearchPage();
     }
   };
