@@ -1655,7 +1655,7 @@ export const view = (function () {
     nameDiv.appendChild(nameInput);
 
     const nameWarningP = document.createElement("p");
-    nameWarningP.id = "nameWarning";
+    nameWarningP.id = "usernameWarning";
     nameWarningP.classList.add("signupPageMain__signupBox__form__name__warning");
     nameDiv.appendChild(nameWarningP);
 
@@ -1955,7 +1955,7 @@ export const view = (function () {
     textDescription.innerHTML = `To open the account menu, you need to go to <a href="signup.html" class="accountContainer__main__description__mark">sign up</a> page and create an account, or if you already have an account you need to go to <a href="login.html" class="accountContainer__main__description__mark">log in</a> page.`
     accountContainer.appendChild(textDescription);
 
-   
+
 
     return accountContainer;
   }
@@ -1976,7 +1976,7 @@ export const view = (function () {
     mainAccount.classList.add("accountContainer__main");
     accountContainer.appendChild(mainAccount);
 
-     //Create aside account
+    //Create aside account
     const asideAccount = document.createElement("aside");
     asideAccount.id = "asideAccount";
     asideAccount.classList.add("accountContainer__main__aside");
@@ -1998,7 +1998,7 @@ export const view = (function () {
       if (index == 1) {
         aOption.href = "favorite.html";
       }
-      if(index==2){
+      if (index == 2) {
         aOption.id = "logOut"
       }
       liOption.appendChild(aOption);
@@ -2785,15 +2785,132 @@ export const view = (function () {
       }
       return dataContainer;
     }
+  }
+  function addLikeClasses() {
+    const like = document.getElementById("heartIcon");
+    like.classList.toggle("productPage__main__info__header__heartIcon--normal");
+    like.classList.toggle(
+      "productPage__main__info__header__heartIcon--clicked"
+    );
+    return like.dataset.id;
+  }
+  function resposniveSection2() {
+    let screenWidthSection2 = window.matchMedia("(max-width: 992px)");
+    const section2 = document.getElementById("section2");
 
+    if (screenWidthSection2.matches) {
+      section2.innerHTML = "";
+      section2.appendChild(view.loadSection2Small());
+    } else {
+      section2.innerHTML = "";
+      section2.appendChild(view.loadSection2());
+    }
+  }
+  function setQuantity(e) {
 
-
-
-
+    let quantity = document.getElementById("quantityBtn").textContent;
+    quantity = Number(quantity);
+    if (e.target.id == "plusBtn") {
+      quantity++;
+    }
+    else {
+      if (quantity > 1) {
+        quantity--;
+      }
+    }
+    document.getElementById("quantityBtn").textContent = quantity;
+  }
+  function hamMenu() {
+    const checkBox = document.getElementById("menu-btn");
+    if (checkBox.checked === false) {
+      displayHamMenu();
+    } else {
+      closeHamMenu();
+    }
+  }
+  function hamMenuIcons() {
+    let screenWidthHamMenu = window.matchMedia("(max-width: 576px)");
+    const menuIcons = document.getElementById("hamMenuIcons");
+    if (screenWidthHamMenu.matches) {
+      menuIcons.innerHTML = "";
+      menuIcons.append(loadHamMenuIcons());
+    }
+    else {
+      menuIcons.innerHTML = "";
+    }
 
   }
+  function responsivefooterMenu() {
+    let screenWidthFooterMenu = window.matchMedia("(max-width: 768px)");
+    const footerMenu = document.getElementById("footerMenu");
+    if (footerMenu) {
+      if (screenWidthFooterMenu.matches) {
+        footerMenu.innerHTML = "";
+        footerMenu.appendChild(loadfooterMenuSmall());
+      } else {
+        footerMenu.innerHTML = "";
+        footerMenu.appendChild(loadfooterMenuLarge());
+      }
+    }
+  }
+  function passwordIcon() {
+    document.getElementById("passwordIcon").classList.toggle("fa-eye-slash");
+    document.getElementById("passwordIcon").classList.toggle("fa-eye");
+    const type = document.getElementById("passwordInput").type;
 
+    type == "password"
+      ? (document.getElementById("passwordInput").type = "text")
+      : (document.getElementById("passwordInput").type = "password");
+  }
+  function loadResponsiveFiltersContainer() {
+    let screenWidthProductsPage = window.matchMedia("(max-width: 576px)");
+    const aside = document.getElementById("productsAside");
+    const productsFilters = document.getElementById("productsFilters");
 
+    if (screenWidthProductsPage.matches) {
+      productsFilters.innerHTML = "";
+      aside.innerHTML = "";
+      productsFilters.appendChild(filterContainerSmall())
+    } else {
+      productsFilters.innerHTML = "";
+      aside.innerHTML = "";
+      aside.appendChild(filtersContainer());
+    }
+
+  }
+  function processUsername(testName, username) {
+    let message = document.getElementById("usernameWarning");
+
+    if (username === "") {
+      message.innerHTML = "Field name is empty";
+    } else if (testName) {
+      message.innerHTML = "";
+    } else {
+      message.innerHTML = "The name was not entered correctly!";
+    }
+  }
+  function processEmail(testEmail, email) {
+    let message = document.getElementById("emailWarning");
+    if (email === "") {
+      message.innerHTML =
+        "Field email is empty";
+    } else if (testEmail) {
+      message.innerHTML = "";
+    } else {
+      message.innerHTML = "The email was not entered correctly!";
+
+    }
+  }
+  function processPassword(testPassword, password){
+    let message = document.getElementById("passwordWarning");
+    if (password === "") {
+      message.innerHTML ="Field password is empty";
+    } else if (testPassword) {
+      message.innerHTML = "";
+    } else {
+      message.innerHTML ="The password was not entered correctly!";
+    }
+  }
   return {
     getDOMString: () => {
       return DOMString;
@@ -2927,7 +3044,17 @@ export const view = (function () {
     filtersContainer,
     filterContainerSmall,
     loadHamMenuIcons,
-    
+    addLikeClasses,
+    resposniveSection2,
+    setQuantity,
+    hamMenu,
+    hamMenuIcons,
+    responsivefooterMenu,
+    passwordIcon,
+    loadResponsiveFiltersContainer,
+    processUsername,
+    processEmail,
+    processPassword
 
   };
 })();
