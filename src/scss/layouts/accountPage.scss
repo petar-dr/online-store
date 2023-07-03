@@ -12,8 +12,32 @@
     margin-bottom: 50px;
   }
   &__main {
-    &__box{
-        font-size: 20px;
+    &__aside {
+      font-size: 18px;
+      width: 25%;
+      min-width: 200px;
+      &__menuList {
+        list-style: none;
+        &__item {
+          &:last-child {
+            margin-top: 20px;
+          }
+          &__name {
+            width: fit-content;
+            border-bottom: 1px solid transparent;
+            font-weight: none;
+
+            &:hover {
+              border-bottom: 1px solid black;
+            }
+          }
+        }
+      }
+    }
+    &__content {
+    }
+    &__box {
+      font-size: 20px;
       background-color: $accent;
       margin-bottom: 20px;
       padding: 12px 0 12px 20px;
@@ -30,15 +54,15 @@
       }
     }
     &__description {
-        font-size: 18px;
-        width: 100%;
-        max-width: 800px;
-        &__mark{
-            font-weight: bold;
-            &:hover{
-                border-bottom: 1px solid black;
-            }
+      font-size: 18px;
+      width: 100%;
+      max-width: 800px;
+      &__mark {
+        font-weight: bold;
+        &:hover {
+          border-bottom: 1px solid black;
         }
       }
+    }
   }
 }

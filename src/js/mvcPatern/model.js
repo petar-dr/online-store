@@ -8,18 +8,39 @@ export const model = (function () {
     sofas: "http://localhost:5000/products/sofas",
     popularProducts: "http://localhost:5000/products/popular",
     productId: "http://localhost:5000/product/",
+    getUser: "http://localhost:5000/user/",
   };
-  
+
   async function loadData(url) {
-    let response = await fetch(url).then(res=>res.json());
+    let response = await fetch(url).then(res => res.json());
     return await response;
   }
+  function getUserLocal() {
+    let user = JSON.parse(localStorage.getItem("curentUser"));
+    return user;
+  }
+  async function getUserData(username, token) {
+    let urlFetch = url.getUser + username;
+    const result = await fetch(urlFetch, {
+      method: "GET",
+      headers: {
+        "Content-Type": 'application/json',
+        ["x-access-token"]: token,
+      },
+    }).then(response => response.json())
+    return result;
+
+  }
   return {
-    getUrl: ()=>{
+    getUrl: () => {
       return url;
     },
-    loadData: (url)=>{
-     return loadData(url);
-    }
+    loadData: (url) => {
+      return loadData(url);
+    },
+    getUser: (username, token) => {
+      return getUserData(username, token);
+    },
+    getUserLocal
   };
 })();

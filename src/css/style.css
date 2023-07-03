@@ -1295,15 +1295,15 @@ footer {
 .loginPageMain__loginBox__form__title {
   font-size: 30px;
 }
-.loginPageMain__loginBox__form__email__input {
+.loginPageMain__loginBox__form__username__input {
   border: none;
   border-bottom: 1px solid black;
   width: 100%;
 }
-.loginPageMain__loginBox__form__email__input:focus {
+.loginPageMain__loginBox__form__username__input:focus {
   outline: none;
 }
-.loginPageMain__loginBox__form__email__warning {
+.loginPageMain__loginBox__form__username__warning {
   color: red;
   font-size: 16px;
   margin: 0;
@@ -1847,6 +1847,26 @@ input[type=radio] {
   font-weight: bold;
   color: black;
   margin-bottom: 50px;
+}
+.accountContainer__main__aside {
+  font-size: 18px;
+  width: 25%;
+  min-width: 200px;
+}
+.accountContainer__main__aside__menuList {
+  list-style: none;
+}
+.accountContainer__main__aside__menuList__item:last-child {
+  margin-top: 20px;
+}
+.accountContainer__main__aside__menuList__item__name {
+  width: -moz-fit-content;
+  width: fit-content;
+  border-bottom: 1px solid transparent;
+  font-weight: none;
+}
+.accountContainer__main__aside__menuList__item__name:hover {
+  border-bottom: 1px solid black;
 }
 .accountContainer__main__box {
   font-size: 20px;

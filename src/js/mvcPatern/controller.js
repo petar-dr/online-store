@@ -1,6 +1,14 @@
 //CONTROLER
 export const controller = function (model, view) {
   //EVENT LISTENERS -- START
+  function setupAccountPageListners() {
+    document.getElementById("logOut").addEventListener("click", userLogOut);
+
+  }
+  function userLogOut() {
+    localStorage.removeItem("curentUser");
+    window.location.href = "index.html";
+  }
   function setupSearchPageListners() {
     document.getElementById("searchForm").addEventListener("submit", searchProducts);
 
@@ -36,7 +44,6 @@ export const controller = function (model, view) {
   }
   function setupFavoriteListeners() {
     const iconRemove = document.querySelectorAll("#iconRemove");
-    console.log(iconRemove)
     iconRemove.forEach(elem => {
       elem.addEventListener("click", removeFavoriteProduct);
     })
@@ -52,21 +59,24 @@ export const controller = function (model, view) {
   }
   async function formLogIn(e) {
     e.preventDefault();
-    let checkFlag = checkData(false, true, true);
+    let checkFlag = checkData(true, false, true);
     if (checkFlag) {
-      const email = document.getElementById("emailInput").value
+      const username = document.getElementById("usernameInput").value
       const password = document.getElementById("passwordInput").value;
       const result = await fetch("http://localhost:5000/login", {
         method: "POST",
         headers: {
           "Content-Type": 'application/json'
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ username, password })
       }).then(response => response.json());
       if (result.status === "ok") {
-        localStorage.setItem("token", result.token)
-        console.log(result.token)
-        window.location.href = "signup.html";
+
+        let userData = JSON.stringify({ username: result.username, token: result.token });
+        localStorage.setItem("curentUser", userData);
+
+
+        window.location.href = "account.html";
         alert("Succes login")
       } else {
         alert(result.error)
@@ -80,7 +90,8 @@ export const controller = function (model, view) {
       const username = document.getElementById("usernameInput").value;
       const email = document.getElementById("emailInput").value
       const password = document.getElementById("passwordInput").value;
-      console.log(JSON.stringify({ username, email, password }))
+
+
       const result = await fetch("http://localhost:5000/singup", {
         method: "POST",
         headers: {
@@ -90,6 +101,7 @@ export const controller = function (model, view) {
       }).then(response => response.json());
       if (result.status === "ok") {
         alert("Succes")
+        window.location.href = "login.html";
       } else {
         alert(result.error)
       }
@@ -377,10 +389,23 @@ export const controller = function (model, view) {
   }
   async function displayAccountPage() {
     let DOM = view.getDOMString();
-
     let main = document.getElementById(DOM.account);
-    main.appendChild(view.loadAcountPage());
+
+    let userLocalData = model.getUserLocal();
+    if (userLocalData) {
+      let user = await model.getUser(userLocalData.username, userLocalData.token)
+      if (user) {
+        main.innerHTML = "";
+        main.appendChild(view.loadAcountAccessPage(user))
+      } else {
+        main.appendChild(view.loadAcountPage());
+      }
+    }
+    else {
+      main.appendChild(view.loadAcountPage());
+    }
     setupPageListners();
+    setupAccountPageListners();
   }
   function displaySearchPage() {
     let DOM = view.getDOMString();
@@ -409,12 +434,12 @@ export const controller = function (model, view) {
       let name = document.getElementById("usernameInput").value;
       let checkName = new RegExp(/^[a-zA-Z]{2,15}$/);
       if (name === "") {
-        document.getElementById("nameWarning").innerHTML = "Field name is empty";
+        document.getElementById("usernameWarning").innerHTML = "Field name is empty";
         checkFlag = false;
       } else if (checkName.test(name)) {
-        document.getElementById("nameWarning").innerHTML = "";
+        document.getElementById("usernameWarning").innerHTML = "";
       } else {
-        document.getElementById("nameWarning").innerHTML =
+        document.getElementById("usernameWarning").innerHTML =
           "The name was not entered correctly!";
         checkFlag = false;
 

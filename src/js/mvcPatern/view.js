@@ -451,7 +451,7 @@ export const view = (function () {
     searchIcon.classList.add(
       "hamMenuIcons__search",
       "p--tb",
-      
+
       "text--medium"
     );
     iconsBox.appendChild(searchIcon);
@@ -1551,22 +1551,22 @@ export const view = (function () {
     titleH3.textContent = "Log in";
     form.appendChild(titleH3);
 
-    // Create email input field
-    const emailDiv = document.createElement("div");
-    emailDiv.classList.add("loginPageMain__loginBox__form__email");
-    form.appendChild(emailDiv);
+    // Create username input field
+    const usernameDiv = document.createElement("div");
+    usernameDiv.classList.add("loginPageMain__loginBox__form__username");
+    form.appendChild(usernameDiv);
 
-    const emailInput = document.createElement("input");
-    emailInput.id = "emailInput";
-    emailInput.type = "email";
-    emailInput.classList.add("loginPageMain__loginBox__form__email__input");
-    emailInput.placeholder = "youremail@email.com";
-    emailDiv.appendChild(emailInput);
+    const usernameInput = document.createElement("input");
+    usernameInput.id = "usernameInput";
+    usernameInput.type = "username";
+    usernameInput.classList.add("loginPageMain__loginBox__form__username__input");
+    usernameInput.placeholder = "username";
+    usernameDiv.appendChild(usernameInput);
 
-    const emailWarningP = document.createElement("p");
-    emailWarningP.id = "emailWarning";
-    emailWarningP.classList.add("loginPageMain__loginBox__form__email__warning");
-    emailDiv.appendChild(emailWarningP);
+    const usernameWarningP = document.createElement("p");
+    usernameWarningP.id = "usernameWarning";
+    usernameWarningP.classList.add("loginPageMain__loginBox__form__username__warning");
+    usernameDiv.appendChild(usernameWarningP);
 
     // Create password input field
     const passwordDiv = document.createElement("div");
@@ -1955,38 +1955,63 @@ export const view = (function () {
     textDescription.innerHTML = `To open the account menu, you need to go to <a href="signup.html" class="accountContainer__main__description__mark">sign up</a> page and create an account, or if you already have an account you need to go to <a href="login.html" class="accountContainer__main__description__mark">log in</a> page.`
     accountContainer.appendChild(textDescription);
 
-    // Create aside account
-    // const asideAccount = document.createElement("aside");
-    // asideAccount.id = "asideAccount";
-    // asideAccount.classList.add("accountContainer__main__aside");
-    // mainAccount.appendChild(asideAccount);
+   
 
-    // const menuAccount = document.createElement("ul");
-    // menuAccount.id = "asideAccount";
-    // menuAccount.classList.add("accountContainer__main__aside__menuList");
-    // asideAccount.appendChild(menuAccount);
+    return accountContainer;
+  }
+  function loadAccountAccessMain() {
+    // Create account container
+    const accountContainer = document.createElement("div");
+    accountContainer.classList.add("accountContainer");
 
-    // const menuOption = ["Account data", "Wish list", "Log out"];
-    // menuOption.forEach((elem, index) => {
-    //   const liOption = document.createElement("li");
-    //   liOption.classList.add("accountContainer__main__aside__menuList__item");
+    // Create account title
+    const accountTitle = document.createElement("h1");
+    accountTitle.classList.add("accountContainer__title");
+    accountTitle.textContent = "Account"
+    accountContainer.appendChild(accountTitle);
 
-    //   const aOption = document.createElement("a");
-    //   aOption.classList.add("accountContainer__main__aside__menuList__item__name");
-    //   aOption.textContent = elem;
-    //   if (index == 1) {
-    //     aOption.href = "favorite.html";
-    //   }
-    //   liOption.appendChild(aOption);
-    //   menuAccount.appendChild(liOption);
-    // });
+    // Create div main account
+    const mainAccount = document.createElement("div");
+    mainAccount.id = "mainaccount";
+    mainAccount.classList.add("accountContainer__main");
+    accountContainer.appendChild(mainAccount);
+
+     //Create aside account
+    const asideAccount = document.createElement("aside");
+    asideAccount.id = "asideAccount";
+    asideAccount.classList.add("accountContainer__main__aside");
+    mainAccount.appendChild(asideAccount);
+
+    const menuAccount = document.createElement("ul");
+    menuAccount.id = "asideAccount";
+    menuAccount.classList.add("accountContainer__main__aside__menuList");
+    asideAccount.appendChild(menuAccount);
+
+    const menuOption = ["Account data", "Wish list", "Log out"];
+    menuOption.forEach((elem, index) => {
+      const liOption = document.createElement("li");
+      liOption.classList.add("accountContainer__main__aside__menuList__item");
+
+      const aOption = document.createElement("a");
+      aOption.classList.add("accountContainer__main__aside__menuList__item__name");
+      aOption.textContent = elem;
+      if (index == 1) {
+        aOption.href = "favorite.html";
+      }
+      if(index==2){
+        aOption.id = "logOut"
+      }
+      liOption.appendChild(aOption);
+      menuAccount.appendChild(liOption);
+    });
 
 
-    // // Create div main account
-    // const menuContent = document.createElement("div");
-    // menuContent.id = "mainaccount";
-    // menuContent.classList.add("accountContainer__main__content");
-    // mainAccount.appendChild(menuContent);
+    // Create div main account
+    const menuContent = document.createElement("div");
+    menuContent.id = "mainaccount";
+    menuContent.classList.add("accountContainer__main__content");
+    mainAccount.appendChild(menuContent);
+
 
     return accountContainer;
   }
@@ -2084,7 +2109,6 @@ export const view = (function () {
   //Sorts and filters
   function sortPopular(data) {
     const popularSort = document.getElementById("popularSort").checked;
-    console.log(popularSort)
     if (popularSort) {
       data = data.sort((a, b) =>
         parseInt(a.soldItems) < parseInt(b.soldItems) ? 1 : -1
@@ -2877,6 +2901,17 @@ export const view = (function () {
 
       pageContent.appendChild(loadHeader());
       pageContent.appendChild(loadAccountMain());
+      pageContent.appendChild(loadFooter());
+
+      return pageContent;
+    },
+    loadAcountAccessPage: () => {
+
+      const pageContent = document.createElement("div");
+      pageContent.setAttribute("id", "pageContent");
+
+      pageContent.appendChild(loadHeader());
+      pageContent.appendChild(loadAccountAccessMain());
       pageContent.appendChild(loadFooter());
 
       return pageContent;
