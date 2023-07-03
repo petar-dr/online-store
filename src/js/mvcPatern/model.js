@@ -15,6 +15,12 @@ export const model = (function () {
     let response = await fetch(url).then(res => res.json());
     return await response;
   }
+  function userLogOut() {
+    localStorage.removeItem("curentUser");
+    localStorage.removeItem("likeItems");
+
+    window.location.href = "index.html";
+  }
   function getUserLocal() {
     let user = JSON.parse(localStorage.getItem("curentUser"));
     return user;
@@ -31,6 +37,10 @@ export const model = (function () {
     return result;
 
   }
+  async function searchFilter(searchValue) {
+    let data = await model.loadData(url.allProducts);
+    return data.filter(elem => elem.name.toLowerCase().indexOf(searchValue.trim().toLowerCase()) != -1);
+  }
   return {
     getUrl: () => {
       return url;
@@ -41,6 +51,8 @@ export const model = (function () {
     getUser: (username, token) => {
       return getUserData(username, token);
     },
-    getUserLocal
+    getUserLocal,
+    userLogOut,
+    searchFilter
   };
 })();

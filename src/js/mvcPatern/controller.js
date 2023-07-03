@@ -1,13 +1,10 @@
 //CONTROLER
 export const controller = function (model, view) {
+
   //EVENT LISTENERS -- START
   function setupAccountPageListners() {
-    document.getElementById("logOut").addEventListener("click", userLogOut);
+    document.getElementById("logOut").addEventListener("click", model.userLogOut);
 
-  }
-  function userLogOut() {
-    localStorage.removeItem("curentUser");
-    window.location.href = "index.html";
   }
   function setupSearchPageListners() {
     document.getElementById("searchForm").addEventListener("submit", searchProducts);
@@ -15,15 +12,11 @@ export const controller = function (model, view) {
   }
   async function searchProducts(e) {
     e.preventDefault();
-    let url = model.getUrl();
     let searchValue = document.getElementById("searchValue").value;
-
     let searchResult = document.getElementById("searchResult");
-    let data = await model.loadData(url.allProducts);
-    data = data.filter(elem => elem.name.toLowerCase().indexOf(searchValue.trim().toLowerCase()) != -1);
+    
+    let data = await model.searchFilter(searchValue)
     searchResult.appendChild(view.loadSearchResult(data, searchValue));
-
-
   }
   function setupProductPageListners() {
     document.getElementById("heartIcon").addEventListener("click", addLike);
@@ -106,6 +99,14 @@ export const controller = function (model, view) {
         alert(result.error)
       }
     }
+  }
+  async function searchProducts(e) {
+    e.preventDefault();
+    let searchValue = document.getElementById("searchValue").value;
+    let searchResult = document.getElementById("searchResult");
+    
+    let data = await model.searchFilter(searchValue)
+    searchResult.appendChild(view.loadSearchResult(data, searchValue));
   }
   function setupHeaderListners() {
     document.getElementById("hamBtn").addEventListener("click", hamMenu);

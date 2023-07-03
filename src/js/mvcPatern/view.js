@@ -2927,6 +2927,7 @@ export const view = (function () {
     filtersContainer,
     filterContainerSmall,
     loadHamMenuIcons,
+    
 
   };
 })();
