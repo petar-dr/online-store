@@ -1,154 +1,160 @@
 @use "../basic/" as *;
 
 .cartPage {
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    padding: 50px;
-    min-height: calc(100vh - 145px);
-  
-    @include media("xxs") {
-      padding: 10px;
-    }
-    &__titleBlock {
-      &__title {
-        font-size: 36px;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  min-height: calc(100vh - 145px);
+
+  @include media("xxs") {
+    padding: 10px;
+  }
+  &__titleBlock {
+    &__title {
+      font-size: 36px;
       font-weight: bold;
       color: black;
       margin-bottom: 50px;
-      }
     }
-    &__textContainer {
-      &__box {
-        font-size: 20px;
-        background-color: $accent;
-        margin-bottom: 20px;
-        padding: 12px 0 12px 20px;
+  }
+  &__textContainer {
+    &__box {
+      font-size: 20px;
+      background-color: $accent;
+      margin-bottom: 20px;
+      padding: 12px 0 12px 20px;
+      color: black;
+
+      display: flex;
+      align-items: center;
+      &__icon {
+        margin-right: 10px;
+      }
+      &__title {
+        margin: 0;
         color: black;
-  
-        display: flex;
-        align-items: center;
-        &__icon {
-          margin-right: 10px;
-        }
-        &__title {
-          margin: 0;
-          color: black;
-        }
-      }
-      &__description {
-        font-size: 18px;
-        width: 100%;
-        max-width: 800px;
       }
     }
-    &__itemsBlock {
+    &__description {
+      font-size: 18px;
       width: 100%;
-      & table {
+      max-width: 800px;
+    }
+  }
+  &__itemsBlock {
+    width: 100%;
+    & table {
+      width: 100%;
+      & thead {
+        font-size: 18px;
+        font-weight: bold;
         width: 100%;
-        & thead {
-          font-size: 18px;
-          font-weight: bold;
+        @include media("sm") {
+          display: none;
+        }
+
+        & tr {
+          width: 100%;
+          border-bottom: 1px solid black;
+          & th {
+            padding: 10px 12px;
+          }
+        }
+      }
+      & tbody {
+        @include media("sm") {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+        }
+        & tr {
           width: 100%;
           @include media("sm") {
-            display: none;
-          }
-  
-          & tr {
-            width: 100%;
-            border-bottom: 1px solid black;
-            & th {
-              padding: 10px 12px;
-            }
-          }
-        }
-        & tbody {
-          @include media("sm") {
             display: flex;
-            align-items: center;
             flex-direction: column;
+            justify-content: center;
+            max-width: 400px;
+            border-bottom: 1px solid black;
           }
-          & tr {
-            width: 100%;
+          & td {
+            font-size: 18px;
+            padding: 10px 12px;
+            border-bottom: 1px solid black;
             @include media("sm") {
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              max-width: 400px;
-              border-bottom: 1px solid black;
+              width: 100%;
+              border-bottom: none;
+
+              &::before {
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+              }
             }
-            & td {
-              font-size: 18px;
-              padding: 10px 12px;
-              border-bottom: 1px solid black;
-              @include media("sm") {
-                width: 100%;
-  
-                border-bottom: none;
-  
-                &::before {
-                  content: attr(data-label);
-                  float: left;
-                  font-weight: bold;
-                }
-              }
-  
-              & img {
-                height: 150px;
-              }
+
+            & img {
+              height: 150px;
             }
           }
         }
       }
-  
-      &__removeProduct {
-        width: 5%;
-        @include media("sm") {
-          display: flex;
-          justify-content: end;
-        }
-        &__icon {
-          color: black;
-          font-size: 14px;
-  
-          &:hover {
-            color: grey;
-          }
+    }
+
+    &__removeProduct {
+      width: 5%;
+      margin-top: 20px;
+      @include media("sm") {
+        display: flex;
+        justify-content: end;
+      }
+      &__icon {
+        color: black;
+        font-size: 14px;
+
+        &:hover {
+          color: grey;
         }
       }
-      &__imgProduct {
-        width: 25%;
-        @include media("sm") {
-          display: flex;
-          justify-content: center;
-        }
+    }
+    &__imgProduct {
+      width: 20%;
+      @include media("sm") {
+        display: flex;
+        justify-content: center;
       }
-      &__nameProduct {
-        width: 30%;
-        @include media("sm") {
-          display: flex;
-          justify-content: space-between;
-        }
+    }
+    &__nameProduct {
+      width: 20%;
+      @include media("sm") {
+        display: flex;
+        justify-content: space-between;
       }
-      &__priceProduct {
-        width: 25%;
-        @include media("sm") {
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 20px;
-        
-        }
+    }
+    &__priceProduct {
+      width: 20%;
+      @include media("sm") {
+        display: flex;
+        justify-content: space-between;
       }
-      &__addProduct {
-        width: 15%;
-        @include media("sm") {
-          display: flex;
-          justify-content: center;
-          margin-bottom: 20px;
-          height: 60px;
+    }
+    &__quantityProduct {
+      width: 20%;
+      @include media("sm") {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    &__total {
+      width: 20%;
+      @include media("sm") {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        &__price {
         }
       }
     }
   }
-  
+}

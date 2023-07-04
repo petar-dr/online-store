@@ -1276,7 +1276,7 @@ export const view = (function () {
 
     // Create addToCart button
     const addToCartButton = document.createElement("button");
-    addToCartButton.id="addToCart";
+    addToCartButton.id = "addToCart";
     addToCartButton.classList.add(
       "productPage__main__info__cartButtons__addToCart"
     );
@@ -1680,7 +1680,7 @@ export const view = (function () {
 
     return signupPageDiv;
   }
-  function loadCartPageMain(cartProduct) {
+  function loadCartPageMain(data) {
     // Create cart container
     const cartPageMain = document.createElement("div");
     cartPageMain.classList.add("cartPage");
@@ -1695,7 +1695,7 @@ export const view = (function () {
     title.textContent = "Cart";
     titleBlock.appendChild(title);
 
-    if (cartProduct.length < 1) {
+    if (data.length < 1) {
 
       //Crete text container
       const textContainer = document.createElement("div");
@@ -1763,20 +1763,23 @@ export const view = (function () {
       priceProduct.textContent = "Price";
       favProductTitle.appendChild(priceProduct);
 
+      const quantityProduct = document.createElement("th");
+      quantityProduct.classList.add("cartPage__itemsBlock__quantityProduct");
+      quantityProduct.textContent = "Quantity";
+      favProductTitle.appendChild(quantityProduct);
 
-      const addProduct = document.createElement("th");
-      addProduct.classList.add("cartPage__itemsBlock__addProduct");
-      addProduct.innerHTML = `&nbsp;`
-
-      favProductTitle.appendChild(addProduct);
+      const totalPrice = document.createElement("th");
+      totalPrice.classList.add("cartPage__itemsBlock__totalPrice");
+      totalPrice.textContent = "Total price";
+      favProductTitle.appendChild(totalPrice);
 
 
       const tbody = document.createElement("tbody");
       table.appendChild(tbody);
 
-      cartProduct.forEach(elem => tbody.appendChild(favoriteProduct(elem)))
+      data.forEach(elem => tbody.appendChild(cartProduct(elem)))
 
-      if (cartProduct.length > 1) {
+      if (data.length > 1) {
         //Create add all items block
         const addAllBtn = document.createElement("td");
         addAllBtn.classList.add("cartPage__addAllBtn");
@@ -1785,6 +1788,85 @@ export const view = (function () {
     }
 
     return cartPageMain
+  }
+  function cartProduct(obj) {
+
+    const favProduct = document.createElement("tr");
+    favProduct.classList.add("cartProduct");
+
+    //Product remove
+    const removeProduct = document.createElement("td");
+    removeProduct.classList.add("cartPage__itemsBlock__removeProduct");
+    const iconRemove = document.createElement("i");
+    iconRemove.id = "iconRemove"
+    iconRemove.classList.add("fa-solid", "fa-x", "cartPage__itemsBlock__removeProduct__icon", "removeFavoriteProduct")
+    iconRemove.setAttribute("data-id", obj.id)
+    removeProduct.appendChild(iconRemove);
+    favProduct.appendChild(removeProduct);
+
+    favProduct.appendChild(removeProduct);
+
+    //Product image
+    const imgProductTd = document.createElement("td");
+    imgProductTd.classList.add("cartPage__itemsBlock__imgProduct");
+
+    const imageTd = document.createElement("img");
+    imageTd.classList.add("cartPage__itemsBlock__imgProduct__image")
+    imageTd.setAttribute("src", obj.img.img1);
+    imageTd.setAttribute("alt", obj.name)
+
+    imgProductTd.appendChild(imageTd);
+    favProduct.appendChild(imgProductTd);
+
+    //Product name
+    const nameProductTd = document.createElement("td");
+    nameProductTd.classList.add("cartPage__itemsBlock__nameProduct");
+    nameProductTd.setAttribute("data-label", "Product: ");
+
+
+    const nameTd = document.createElement("span");
+    nameTd.classList.add("nameProduct__name")
+    nameTd.textContent = obj.name;
+
+    nameProductTd.appendChild(nameTd);
+    favProduct.appendChild(nameProductTd);
+
+    //Product price
+    const priceProduct = document.createElement("td");
+    priceProduct.setAttribute("data-label", "Price :");
+    priceProduct.classList.add("cartPage__itemsBlock__priceProduct");
+    favProduct.appendChild(priceProduct);
+
+    const price = document.createElement("span");
+    price.innerHTML = ` ${obj.price}.00&euro;`;
+    priceProduct.appendChild(price)
+
+    //Product quantity
+    const quantityProduct = document.createElement("td");
+    quantityProduct.setAttribute("data-label", "Quantity:");
+
+    quantityProduct.classList.add("cartPage__itemsBlock__quantityProduct");
+    favProduct.appendChild(quantityProduct);
+
+    const quantity = document.createElement("span");
+    quantity.innerHTML = ` ${obj.quantity} pieces`;
+    quantityProduct.appendChild(quantity)
+
+    //Product add to cart
+    const total = document.createElement("td");
+    total.setAttribute("data-label", "Total price:");
+    total.classList.add("cartPage__itemsBlock__total");
+    favProduct.appendChild(total);
+
+    const totalPrice = document.createElement("span");
+    totalPrice.classList.add(
+      "cartPage__itemsBlock__total__price"
+    );
+    let calcTotal = obj.quantity * obj.price
+    totalPrice.innerHTML = ` ${calcTotal}.00&euro;`;
+    total.appendChild(totalPrice);
+
+    return favProduct;
   }
   function loadFavoriteMain(wishList) {
     // Create favorite container

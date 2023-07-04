@@ -35,14 +35,13 @@ export const model = (function () {
     )
   }
   async function cartProducts() {
+
     let cartItems = getLocalCartProducts();
-    if (cartItems == null) {
-      cartItems = [];
+    if (cartItems == null || cartItems.length < 1) {
+      return [];
     }
-    const data = await model.loadData(url.allProducts);
-    return data.filter((elem) =>
-      cartItems.includes((elem.id).toString())
-    )
+    return cartItems;
+
   }
   async function getDataProducts() {
 
@@ -163,27 +162,32 @@ export const model = (function () {
     );
     return checkPassword.test(password);
   }
-  function setCartProducts(productQuantity, productId) {
+  async function setCartProducts(productQuantity, productId) {
     let cartArray = [];
-    let item = { id: productId, quantity: productQuantity };
+
+    let products = await loadData(url.allProducts)
+    let product = products.find(e => e.id == productId)
+    product.quantity = productQuantity;
+
     let cartProducts = JSON.parse(localStorage.getItem("cartProducts"));
     if (cartProducts && cartProducts.length > 0) {
-      if (cartProducts.find(elem => elem.id == item.id)) {
-        cartProducts.forEach((elem, index) => {
-          if (item.id == elem.id) {
-            elem.quantity = item.quantity;
+      if (cartProducts.find(elem => elem.id == product.id)) {
+        cartProducts.forEach((elem) => {
+          if (product.id == elem.id) {
+            elem.quantity = product.quantity;
           }
         })
         localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
       }
       else {
-        cartProducts.push(item)
+        cartProducts.push(product)
         localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
       }
     } else {
-      cartArray.push(item)
+      cartArray.push(product)
       localStorage.setItem("cartProducts", JSON.stringify(cartArray))
     }
+
   }
 
   return {

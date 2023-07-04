@@ -102,6 +102,7 @@
 }
 .cartPage__itemsBlock__removeProduct {
   width: 5%;
+  margin-top: 20px;
 }
 @media ((min-width: 0px) and (max-width: 768px)) {
   .cartPage__itemsBlock__removeProduct {
@@ -117,7 +118,7 @@
   color: grey;
 }
 .cartPage__itemsBlock__imgProduct {
-  width: 25%;
+  width: 20%;
 }
 @media ((min-width: 0px) and (max-width: 768px)) {
   .cartPage__itemsBlock__imgProduct {
@@ -126,7 +127,7 @@
   }
 }
 .cartPage__itemsBlock__nameProduct {
-  width: 30%;
+  width: 20%;
 }
 @media ((min-width: 0px) and (max-width: 768px)) {
   .cartPage__itemsBlock__nameProduct {
@@ -135,23 +136,30 @@
   }
 }
 .cartPage__itemsBlock__priceProduct {
-  width: 25%;
+  width: 20%;
 }
 @media ((min-width: 0px) and (max-width: 768px)) {
   .cartPage__itemsBlock__priceProduct {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
   }
 }
-.cartPage__itemsBlock__addProduct {
-  width: 15%;
+.cartPage__itemsBlock__quantityProduct {
+  width: 20%;
 }
 @media ((min-width: 0px) and (max-width: 768px)) {
-  .cartPage__itemsBlock__addProduct {
+  .cartPage__itemsBlock__quantityProduct {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+  }
+}
+.cartPage__itemsBlock__total {
+  width: 20%;
+}
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .cartPage__itemsBlock__total {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 20px;
-    height: 60px;
   }
 }/*# sourceMappingURL=cartPage.css.map */

@@ -78,7 +78,6 @@ export const controller = function (model, view) {
     let productQuantity = Number(document.getElementById("quantityBtn").textContent);
     let productId = e.target.dataset.id;
     model.setCartProducts(productQuantity, productId)
-    
   }
   async function filterChange() {
     let data = await model.getDataProducts();
@@ -326,11 +325,12 @@ export const controller = function (model, view) {
     let DOM = view.getDOMString();
     let main = document.getElementById(DOM.cart);
     let cartProducts = await model.cartProducts()
+    
     main.innerHTML = "";
+
     main.appendChild(view.loadCartPage(cartProducts));
 
     setupPageListners();
-
   }
   //LOAD PAGES -- END
 
