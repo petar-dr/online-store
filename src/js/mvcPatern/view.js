@@ -517,60 +517,60 @@ export const view = (function () {
     const footer = document.createElement("footer");
     footer.id = "footer";
 
-    // Create top section
-    const topSection = document.createElement("div");
-    topSection.classList.add("top");
-    footer.appendChild(topSection);
+    // // Create top section
+    // const topSection = document.createElement("div");
+    // topSection.classList.add("top");
+    // footer.appendChild(topSection);
 
-    // Create top__box div
-    const topBox = document.createElement("div");
-    topBox.classList.add("top__box");
-    topSection.appendChild(topBox);
+    // // Create top__box div
+    // const topBox = document.createElement("div");
+    // topBox.classList.add("top__box");
+    // topSection.appendChild(topBox);
 
-    // Create top__box__text div
-    const topBoxText = document.createElement("div");
-    topBoxText.classList.add("top__box__text");
-    topBox.appendChild(topBoxText);
+    // // Create top__box__text div
+    // const topBoxText = document.createElement("div");
+    // topBoxText.classList.add("top__box__text");
+    // topBox.appendChild(topBoxText);
 
-    // Create newsletter title
-    const newsletterTitle = document.createElement("h3");
-    newsletterTitle.textContent = "Newsletter registration";
-    topBoxText.appendChild(newsletterTitle);
+    // // Create newsletter title
+    // const newsletterTitle = document.createElement("h3");
+    // newsletterTitle.textContent = "Newsletter registration";
+    // topBoxText.appendChild(newsletterTitle);
 
-    // Create newsletter description
-    const newsletterDescription = document.createElement("p");
-    newsletterDescription.textContent =
-      "Subscribe to our free newsletter and get the first information about new products, interesting people and events.";
-    topBoxText.appendChild(newsletterDescription);
+    // // Create newsletter description
+    // const newsletterDescription = document.createElement("p");
+    // newsletterDescription.textContent =
+    //   "Subscribe to our free newsletter and get the first information about new products, interesting people and events.";
+    // topBoxText.appendChild(newsletterDescription);
 
-    // Create top__box__input div
-    const topBoxInput = document.createElement("div");
-    topBoxInput.classList.add("top__box__input");
-    topBox.appendChild(topBoxInput);
+    // // Create top__box__input div
+    // const topBoxInput = document.createElement("div");
+    // topBoxInput.classList.add("top__box__input");
+    // topBox.appendChild(topBoxInput);
 
-    // Create form element
-    const form = document.createElement("form");
-    form.action = "post";
-    topBoxInput.appendChild(form);
+    // // Create form element
+    // const form = document.createElement("form");
+    // form.action = "post";
+    // topBoxInput.appendChild(form);
 
-    // Create top__box__input__buttons div
-    const inputButtons = document.createElement("div");
-    inputButtons.classList.add("top__box__input__buttons");
-    form.appendChild(inputButtons);
+    // // Create top__box__input__buttons div
+    // const inputButtons = document.createElement("div");
+    // inputButtons.classList.add("top__box__input__buttons");
+    // form.appendChild(inputButtons);
 
-    // Create email input field
-    const emailInput = document.createElement("input");
-    emailInput.classList.add("top__box__input__buttons__email");
-    emailInput.type = "email";
-    emailInput.placeholder = "Enter your email";
-    inputButtons.appendChild(emailInput);
+    // // Create email input field
+    // const emailInput = document.createElement("input");
+    // emailInput.classList.add("top__box__input__buttons__email");
+    // emailInput.type = "email";
+    // emailInput.placeholder = "Enter your email";
+    // inputButtons.appendChild(emailInput);
 
-    // Create submit button
-    const submitButton = document.createElement("input");
-    submitButton.classList.add("top__box__input__buttons__submit");
-    submitButton.type = "submit";
-    submitButton.value = "Send";
-    inputButtons.appendChild(submitButton);
+    // // Create submit button
+    // const submitButton = document.createElement("input");
+    // submitButton.classList.add("top__box__input__buttons__submit");
+    // submitButton.type = "submit";
+    // submitButton.value = "Send";
+    // inputButtons.appendChild(submitButton);
 
     // Create middle section
     const middleSection = document.createElement("div");
