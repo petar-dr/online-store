@@ -201,6 +201,21 @@ export const model = (function () {
     }
 
   }
+  function setCartQuantity(productID, btnId) {
+    productID = Number(productID)
+    let cartProducts = JSON.parse(localStorage.getItem("cartProducts"));
+
+    let productIndex = cartProducts.findIndex(elem => elem.id == productID)
+    if (btnId == "cartPlusBtn") {
+      cartProducts[productIndex].quantity++;
+    } else {
+      if (cartProducts[productIndex].quantity > 1) {
+        cartProducts[productIndex].quantity--;
+
+      }
+    }
+    localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+  }
 
   return {
     getUrl: () => {
@@ -232,6 +247,7 @@ export const model = (function () {
     getLocalCartProducts,
     wishListItems,
     cartProducts,
-    removeCartItem
+    removeCartItem,
+    setCartQuantity
   };
 })();

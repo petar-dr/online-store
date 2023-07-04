@@ -7,13 +7,10 @@ export const controller = function (model, view) {
     iconRemove.forEach(elem => {
       elem.addEventListener("click", removeCartProduct);
     })
+    document.getElementById("cartMinusBtn").addEventListener("click", cartQuantity);
+    document.getElementById("cartPlusBtn").addEventListener("click", cartQuantity);
   }
-  function removeCartProduct(e) {
-   console.log("usao")
-    model.removeCartItem(e.target.dataset.id)
 
-    displayCartPage();
-  }
   function setupHomePageListners() {
     let screenWidthSection2 = window.matchMedia("(max-width: 992px)");
     screenWidthSection2.addEventListener("change", view.resposniveSection2);
@@ -90,6 +87,15 @@ export const controller = function (model, view) {
     );
   }
   //EVENT LISTENERS -- END
+  function removeCartProduct(e) {
+    model.removeCartItem(e.target.dataset.id);
+    displayCartPage();
+  }
+  function cartQuantity(e) {
+    model.setCartQuantity(e.target.dataset.id, e.target.id);
+
+    displayCartPage();
+  }
   function addToCartFromWishList(e) {
 
   }

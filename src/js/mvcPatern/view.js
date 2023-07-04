@@ -1847,36 +1847,40 @@ export const view = (function () {
     quantityProduct.classList.add("cartPage__itemsBlock__quantityProduct");
     favProduct.appendChild(quantityProduct);
 
-     // Create quantity buttons
-     const quantityDiv = document.createElement("div");
-     quantityDiv.classList.add("cartPage__itemsBlock__quantityProduct__quantity");
-     quantityProduct.appendChild(quantityDiv);
- 
-     const minusButton = document.createElement("button");
-     minusButton.id = "minusBtn";
-     minusButton.classList.add(
-       "cartPage__itemsBlock__quantityProduct__quantity__minus"
-     );
- 
-     minusButton.textContent = "-";
-     quantityDiv.appendChild(minusButton);
- 
-     const quantityButton = document.createElement("button");
-     quantityButton.id = "quantityBtn";
-     quantityButton.classList.add(
-       "cartPage__itemsBlock__quantityProduct__quantity__number"
-     );
-     quantityButton.textContent = obj.quantity;
-     quantityDiv.appendChild(quantityButton);
- 
-     const plusButton = document.createElement("button");
-     plusButton.id = "plusBtn";
-     plusButton.classList.add(
-       "cartPage__itemsBlock__quantityProduct__quantity__plus"
-     );
-     plusButton.textContent = "+";
-     quantityDiv.appendChild(plusButton);
- 
+    // Create quantity buttons
+    const quantityDiv = document.createElement("div");
+    quantityDiv.classList.add("cartPage__itemsBlock__quantityProduct__quantity");
+    quantityProduct.appendChild(quantityDiv);
+
+    const minusButton = document.createElement("button");
+    minusButton.id = "cartMinusBtn";
+    minusButton.setAttribute("data-id", obj.id)
+
+    minusButton.classList.add(
+      "cartPage__itemsBlock__quantityProduct__quantity__minus"
+    );
+
+    minusButton.textContent = "-";
+    quantityDiv.appendChild(minusButton);
+
+    const quantityButton = document.createElement("button");
+    quantityButton.id = "cartQuantityBtn";
+    quantityButton.classList.add(
+      "cartPage__itemsBlock__quantityProduct__quantity__number"
+    );
+    quantityButton.textContent = obj.quantity;
+    quantityDiv.appendChild(quantityButton);
+
+    const plusButton = document.createElement("button");
+    plusButton.id = "cartPlusBtn";
+    plusButton.setAttribute("data-id", obj.id)
+
+    plusButton.classList.add(
+      "cartPage__itemsBlock__quantityProduct__quantity__plus"
+    );
+    plusButton.textContent = "+";
+    quantityDiv.appendChild(plusButton);
+
     //Product total price
     const total = document.createElement("td");
     total.setAttribute("data-label", "Total price:");
@@ -2058,7 +2062,7 @@ export const view = (function () {
     favProduct.appendChild(addProduct);
 
     const addToCartButton = document.createElement("button");
-    addToCartButton.id="addBtn"
+    addToCartButton.id = "addBtn"
     addToCartButton.classList.add(
       "productPage__main__info__cartButtons__addToCart"
     );
@@ -2956,7 +2960,6 @@ export const view = (function () {
     }
   }
   function setQuantity(e) {
-
     let quantity = document.getElementById("quantityBtn").textContent;
     quantity = Number(quantity);
     if (e.target.id == "plusBtn") {
@@ -2969,6 +2972,19 @@ export const view = (function () {
     }
     document.getElementById("quantityBtn").textContent = quantity;
   }
+  // function setCartQuantity(e) {
+  //   let quantity = document.getElementById("cartQuantityBtn").textContent;
+  //   quantity = Number(quantity);
+  //   if (e.target.id == "cartPlusBtn") {
+  //     quantity++;
+  //   }
+  //   else {
+  //     if (quantity > 1) {
+  //       quantity--;
+  //     }
+  //   }
+  //   document.getElementById("cartQuantityBtn").textContent = quantity;
+  // }
   function hamMenu() {
     const checkBox = document.getElementById("menu-btn");
     if (checkBox.checked === false) {
@@ -3213,7 +3229,8 @@ export const view = (function () {
     loadResponsiveFiltersContainer,
     processUsername,
     processEmail,
-    processPassword
+    processPassword,
+
 
   };
 })();
