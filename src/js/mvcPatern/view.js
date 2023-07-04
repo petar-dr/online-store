@@ -516,7 +516,7 @@ export const view = (function () {
     // Create footer element
     const footer = document.createElement("footer");
     footer.id = "footer";
-    
+
     // Create middle section
     const middleSection = document.createElement("div");
     middleSection.id = "footerMenu";
@@ -1276,10 +1276,12 @@ export const view = (function () {
 
     // Create addToCart button
     const addToCartButton = document.createElement("button");
+    addToCartButton.id="addToCart";
     addToCartButton.classList.add(
       "productPage__main__info__cartButtons__addToCart"
     );
     addToCartButton.textContent = "Add to cart";
+    addToCartButton.setAttribute("data-id", obj.id)
     cartButtonsDiv.appendChild(addToCartButton);
     if (!obj.available) {
       cartButtonsDiv.style.display = "none";

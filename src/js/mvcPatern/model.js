@@ -19,6 +19,11 @@ export const model = (function () {
   function getLocalLikeItems() {
     return JSON.parse(localStorage.getItem("likeItems"));
   }
+  function getUserLocal() {
+    let user = JSON.parse(localStorage.getItem("curentUser"));
+    return user;
+  }
+
   async function wishListItems() {
     let likeArray = getLocalLikeItems();
     if (likeArray == null) {
@@ -36,7 +41,7 @@ export const model = (function () {
     }
     const data = await model.loadData(url.allProducts);
     return data.filter((elem) =>
-    cartItems.includes((elem.id).toString())
+      cartItems.includes((elem.id).toString())
     )
   }
   async function getDataProducts() {
@@ -102,10 +107,7 @@ export const model = (function () {
     let response = await fetch(url).then(res => res.json());
     return await response;
   }
-  function getUserLocal() {
-    let user = JSON.parse(localStorage.getItem("curentUser"));
-    return user;
-  }
+
   async function getUserData(username, token) {
     let urlFetch = url.getUser + username;
     const result = await fetch(urlFetch, {
@@ -161,6 +163,28 @@ export const model = (function () {
     );
     return checkPassword.test(password);
   }
+  function setCartProducts(productQuantity, productId) {
+    let cartArray = [];
+    let item = { id: productId, quantity: productQuantity };
+    let cartProducts = JSON.parse(localStorage.getItem("cartProducts"));
+    if (cartProducts && cartProducts.length > 0) {
+      if (cartProducts.find(elem => elem.id == item.id)) {
+        cartProducts.forEach((elem, index) => {
+          if (item.id == elem.id) {
+            elem.quantity = item.quantity;
+          }
+        })
+        localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+      }
+      else {
+        cartProducts.push(item)
+        localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+      }
+    } else {
+      cartArray.push(item)
+      localStorage.setItem("cartProducts", JSON.stringify(cartArray))
+    }
+  }
 
   return {
     getUrl: () => {
@@ -178,6 +202,7 @@ export const model = (function () {
     logInUser: (username, password) => {
       return logIn(username, password)
     },
+    setCartProducts,
     getUserLocal,
     userLogOut,
     searchFilter,

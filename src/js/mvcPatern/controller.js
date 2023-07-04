@@ -20,6 +20,7 @@ export const controller = function (model, view) {
     document.getElementById("heartIcon").addEventListener("click", addLike);
     document.getElementById("minusBtn").addEventListener("click", view.setQuantity);
     document.getElementById("plusBtn").addEventListener("click", view.setQuantity);
+    document.getElementById("addToCart").addEventListener("click", addToCart);
   };
   function setupPageListners() {
     setupHeaderListners();
@@ -73,7 +74,12 @@ export const controller = function (model, view) {
     );
   }
   //EVENT LISTENERS -- END
-
+  function addToCart(e) {
+    let productQuantity = Number(document.getElementById("quantityBtn").textContent);
+    let productId = e.target.dataset.id;
+    model.setCartProducts(productQuantity, productId)
+    
+  }
   async function filterChange() {
     let data = await model.getDataProducts();
 
@@ -250,6 +256,7 @@ export const controller = function (model, view) {
     let data = await model.loadData(url.productId + id);
     let main = document.getElementById(DOM.productPage);
     main.innerHTML = "";
+
     main.appendChild(view.loadProductPage(data, likeArray));
 
     setupProductPageListners();
