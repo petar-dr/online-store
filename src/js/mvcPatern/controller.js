@@ -2,6 +2,18 @@
 export const controller = function (model, view) {
 
   //EVENT LISTENERS -- START
+  function setupCartPageListners() {
+    const iconRemove = document.querySelectorAll("#iconRemove");
+    iconRemove.forEach(elem => {
+      elem.addEventListener("click", removeCartProduct);
+    })
+  }
+  function removeCartProduct(e) {
+   console.log("usao")
+    model.removeCartItem(e.target.dataset.id)
+
+    displayCartPage();
+  }
   function setupHomePageListners() {
     let screenWidthSection2 = window.matchMedia("(max-width: 992px)");
     screenWidthSection2.addEventListener("change", view.resposniveSection2);
@@ -79,7 +91,7 @@ export const controller = function (model, view) {
   }
   //EVENT LISTENERS -- END
   function addToCartFromWishList(e) {
-    
+
   }
   function addToCart(e) {
     let productQuantity = Number(document.getElementById("quantityBtn").textContent);
@@ -338,6 +350,7 @@ export const controller = function (model, view) {
     main.appendChild(view.loadCartPage(cartProducts));
 
     setupPageListners();
+    setupCartPageListners();
   }
   //LOAD PAGES -- END
 

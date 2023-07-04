@@ -144,9 +144,17 @@ export const model = (function () {
     }
   }
   function removeItem(itemId) {
-    let likeItems = model.getLocalLikeItems();
+    let likeItems = getLocalLikeItems();
     likeItems = likeItems.filter(elem => elem != itemId)
     localStorage.setItem("likeItems", JSON.stringify(likeItems));
+  }
+  function removeCartItem(itemId) {
+
+    let cartProducts = getLocalCartProducts();
+    console.log(cartProducts)
+    cartProducts = cartProducts.filter(elem => elem.id != itemId);
+    console.log(cartProducts)
+    localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
   }
   function testUsername(username) {
     let checkName = new RegExp(/^[a-zA-Z]{3,15}$/);
@@ -223,6 +231,7 @@ export const model = (function () {
     testPassword,
     getLocalCartProducts,
     wishListItems,
-    cartProducts
+    cartProducts,
+    removeCartItem
   };
 })();
