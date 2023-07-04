@@ -144,6 +144,44 @@
         display: flex;
         justify-content: space-between;
       }
+      &__quantity {
+        height: 100%;
+        display: inline-flex;
+        min-width: 100px;
+        max-width: 150px;
+      
+
+        &__minus {
+          height: 100%;
+          padding: 0;
+          margin: 0;
+          border: none;
+          width: 33%;
+          background-color: black;
+          color: white;
+          font-size: 18px;
+        }
+        &__number {
+          height: 100%;
+          padding: 0;
+          margin: 0;
+          border: none;
+          width: 33%;
+          background-color: black;
+          color: white;
+          font-size: 18px;
+        }
+        &__plus {
+          height: 100%;
+          padding: 0;
+          margin: 0;
+          border: none;
+          width: 33%;
+          background-color: black;
+          color: white;
+          font-size: 18px;
+        }
+      }
     }
     &__total {
       width: 20%;

@@ -162,19 +162,23 @@ export const model = (function () {
     );
     return checkPassword.test(password);
   }
-  async function setCartProducts(productQuantity, productId) {
+  async function setCartProducts(productId, productQuantity) {
     let cartArray = [];
 
     let products = await loadData(url.allProducts)
     let product = products.find(e => e.id == productId)
+
     product.quantity = productQuantity;
+
 
     let cartProducts = JSON.parse(localStorage.getItem("cartProducts"));
     if (cartProducts && cartProducts.length > 0) {
       if (cartProducts.find(elem => elem.id == product.id)) {
         cartProducts.forEach((elem) => {
           if (product.id == elem.id) {
+
             elem.quantity = product.quantity;
+
           }
         })
         localStorage.setItem("cartProducts", JSON.stringify(cartProducts));

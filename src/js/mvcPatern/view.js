@@ -1844,15 +1844,40 @@ export const view = (function () {
     //Product quantity
     const quantityProduct = document.createElement("td");
     quantityProduct.setAttribute("data-label", "Quantity:");
-
     quantityProduct.classList.add("cartPage__itemsBlock__quantityProduct");
     favProduct.appendChild(quantityProduct);
 
-    const quantity = document.createElement("span");
-    quantity.innerHTML = ` ${obj.quantity} pieces`;
-    quantityProduct.appendChild(quantity)
-
-    //Product add to cart
+     // Create quantity buttons
+     const quantityDiv = document.createElement("div");
+     quantityDiv.classList.add("cartPage__itemsBlock__quantityProduct__quantity");
+     quantityProduct.appendChild(quantityDiv);
+ 
+     const minusButton = document.createElement("button");
+     minusButton.id = "minusBtn";
+     minusButton.classList.add(
+       "cartPage__itemsBlock__quantityProduct__quantity__minus"
+     );
+ 
+     minusButton.textContent = "-";
+     quantityDiv.appendChild(minusButton);
+ 
+     const quantityButton = document.createElement("button");
+     quantityButton.id = "quantityBtn";
+     quantityButton.classList.add(
+       "cartPage__itemsBlock__quantityProduct__quantity__number"
+     );
+     quantityButton.textContent = obj.quantity;
+     quantityDiv.appendChild(quantityButton);
+ 
+     const plusButton = document.createElement("button");
+     plusButton.id = "plusBtn";
+     plusButton.classList.add(
+       "cartPage__itemsBlock__quantityProduct__quantity__plus"
+     );
+     plusButton.textContent = "+";
+     quantityDiv.appendChild(plusButton);
+ 
+    //Product total price
     const total = document.createElement("td");
     total.setAttribute("data-label", "Total price:");
     total.classList.add("cartPage__itemsBlock__total");
@@ -2033,6 +2058,7 @@ export const view = (function () {
     favProduct.appendChild(addProduct);
 
     const addToCartButton = document.createElement("button");
+    addToCartButton.id="addBtn"
     addToCartButton.classList.add(
       "productPage__main__info__cartButtons__addToCart"
     );

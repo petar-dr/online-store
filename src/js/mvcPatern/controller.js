@@ -50,6 +50,10 @@ export const controller = function (model, view) {
     iconRemove.forEach(elem => {
       elem.addEventListener("click", removeFavoriteProduct);
     })
+    const addBtn = document.querySelectorAll("#addBtn");
+    addBtn.forEach(elem => {
+      elem.addEventListener("click", addToCartFromWishList);
+    })
 
   }
   function setupPaginationListners() {
@@ -74,10 +78,13 @@ export const controller = function (model, view) {
     );
   }
   //EVENT LISTENERS -- END
+  function addToCartFromWishList(e) {
+    
+  }
   function addToCart(e) {
     let productQuantity = Number(document.getElementById("quantityBtn").textContent);
     let productId = e.target.dataset.id;
-    model.setCartProducts(productQuantity, productId)
+    model.setCartProducts(productId, productQuantity)
   }
   async function filterChange() {
     let data = await model.getDataProducts();
@@ -325,7 +332,7 @@ export const controller = function (model, view) {
     let DOM = view.getDOMString();
     let main = document.getElementById(DOM.cart);
     let cartProducts = await model.cartProducts()
-    
+
     main.innerHTML = "";
 
     main.appendChild(view.loadCartPage(cartProducts));
