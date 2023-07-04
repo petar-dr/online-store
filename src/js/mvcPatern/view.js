@@ -8,6 +8,7 @@ export const view = (function () {
     discountPage: "discount_page",
     productsPage: "products_page",
     productPage: "product_page",
+    cart: "cart_page",
     favorite: "favorite_page",
     search: "search_page",
     loginPage: "login_page",
@@ -1732,7 +1733,113 @@ export const view = (function () {
 
     return signupPageDiv;
   }
-  function loadFavoriteMain(data) {
+  function loadCartPageMain(cartProduct) {
+    // Create cart container
+    const cartPageMain = document.createElement("div");
+    cartPageMain.classList.add("cartPage");
+
+    //Create title block
+    const titleBlock = document.createElement("div");
+    titleBlock.classList.add("cartPage__titleBlock");
+    cartPageMain.appendChild(titleBlock);
+    //Create title 
+    const title = document.createElement("h1");
+    title.classList.add("cartPage__titleBlock__title");
+    title.textContent = "Cart";
+    titleBlock.appendChild(title);
+
+    if (cartProduct.length < 1) {
+
+      //Crete text container
+      const textContainer = document.createElement("div");
+      textContainer.classList.add("cartPage__textContainer");
+      cartPageMain.appendChild(textContainer);
+
+      const textBox = document.createElement("div");
+      textBox.classList.add("cartPage__textContainer__box");
+
+      const icon = document.createElement("i");
+      icon.classList.add("fa-regular", "fa-folder-open", "cartPage__textContainer__box__icon")
+      textBox.appendChild(icon);
+
+      const textTitle = document.createElement("p");
+      textTitle.classList.add("cartPage__textContainer__box__title");
+      textTitle.textContent = "There are no products in your cart";
+      textBox.appendChild(textTitle);
+
+      textContainer.appendChild(textBox);
+
+      const textDescription = document.createElement("div");
+      textDescription.classList.add("cartPage__textContainer__description");
+      textDescription.textContent = 'The shopping cart works like any shopping cart - you put what you like in it. If your shopping cart is empty, it means that you have not selected any products. If you want to choose one of the products from our online store, you need to go to the product page and press the Add to cart button.'
+      textContainer.appendChild(textDescription);
+
+
+    }
+    else {
+
+      // Create items block
+      const itemsBlock = document.createElement("div");
+      itemsBlock.classList.add("cartPage__itemsBlock");
+      cartPageMain.appendChild(itemsBlock);
+
+      const table = document.createElement("table");
+      itemsBlock.appendChild(table);
+
+      const thead = document.createElement("thead");
+      table.appendChild(thead);
+
+
+      const favProductTitle = document.createElement("tr");
+      thead.appendChild(favProductTitle);
+
+      const removeProductTh = document.createElement("th");
+      removeProductTh.classList.add("cartPage__itemsBlock__removeProduct");
+      removeProductTh.innerHTML = `&nbsp;`
+      favProductTitle.appendChild(removeProductTh);
+
+      const imgProductTh = document.createElement("th");
+      imgProductTh.classList.add("cartPage__itemsBlock__imgProduct");
+      imgProductTh.innerHTML = `&nbsp;`
+
+      favProductTitle.appendChild(imgProductTh);
+
+
+      const nameProductTh = document.createElement("th");
+      nameProductTh.classList.add("cartPage__itemsBlock__nameProduct");
+      nameProductTh.textContent = "Product";
+      favProductTitle.appendChild(nameProductTh);
+
+
+      const priceProduct = document.createElement("th");
+      priceProduct.classList.add("cartPage__itemsBlock__priceProduct");
+      priceProduct.textContent = "Price";
+      favProductTitle.appendChild(priceProduct);
+
+
+      const addProduct = document.createElement("th");
+      addProduct.classList.add("cartPage__itemsBlock__addProduct");
+      addProduct.innerHTML = `&nbsp;`
+
+      favProductTitle.appendChild(addProduct);
+
+
+      const tbody = document.createElement("tbody");
+      table.appendChild(tbody);
+
+      cartProduct.forEach(elem => tbody.appendChild(favoriteProduct(elem)))
+
+      if (cartProduct.length > 1) {
+        //Create add all items block
+        const addAllBtn = document.createElement("td");
+        addAllBtn.classList.add("cartPage__addAllBtn");
+        cartPageMain.appendChild(addAllBtn);
+      }
+    }
+
+    return cartPageMain
+  }
+  function loadFavoriteMain(wishList) {
     // Create favorite container
     const favoritePageMain = document.createElement("div");
     favoritePageMain.classList.add("favoritePage");
@@ -1746,19 +1853,6 @@ export const view = (function () {
     title.classList.add("favoritePage__titleBlock__title");
     title.textContent = "Wish list";
     titleBlock.appendChild(title);
-
-    let wishList = JSON.parse(localStorage.getItem("likeItems"))
-    if (wishList == null) {
-      wishList = [];
-    }
-
-
-
-    data = data.filter((elem) =>
-      wishList.includes((elem.id).toString())
-    )
-
-
 
     if (wishList.length < 1) {
 
@@ -1839,7 +1933,7 @@ export const view = (function () {
       const tbody = document.createElement("tbody");
       table.appendChild(tbody);
 
-      data.forEach(elem => tbody.appendChild(favoriteProduct(elem)))
+      wishList.forEach(elem => tbody.appendChild(favoriteProduct(elem)))
 
       if (wishList.length > 1) {
         //Create add all items block
@@ -2901,14 +2995,14 @@ export const view = (function () {
 
     }
   }
-  function processPassword(testPassword, password){
+  function processPassword(testPassword, password) {
     let message = document.getElementById("passwordWarning");
     if (password === "") {
-      message.innerHTML ="Field password is empty";
+      message.innerHTML = "Field password is empty";
     } else if (testPassword) {
       message.innerHTML = "";
     } else {
-      message.innerHTML ="The password was not entered correctly!";
+      message.innerHTML = "The password was not entered correctly!";
     }
   }
   return {
@@ -3032,6 +3126,16 @@ export const view = (function () {
       pageContent.appendChild(loadFooter());
 
       return pageContent;
+    },
+    loadCartPage: (data) => {
+      const pageContent = document.createElement("div");
+      pageContent.setAttribute("id", "pageContent");
+
+      pageContent.appendChild(loadHeader());
+      pageContent.appendChild(loadCartPageMain(data));
+      pageContent.appendChild(loadFooter());
+
+      return pageContent
     },
 
     loadSection2,

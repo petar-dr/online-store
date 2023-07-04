@@ -13,8 +13,31 @@ export const model = (function () {
     logIn: "http://localhost:5000/login",
   };
   //Load data
+  function getLocalCartProducts() {
+    return JSON.parse(localStorage.getItem("cartProducts"));
+  }
   function getLocalLikeItems() {
     return JSON.parse(localStorage.getItem("likeItems"));
+  }
+  async function wishListItems() {
+    let likeArray = getLocalLikeItems();
+    if (likeArray == null) {
+      likeArray = [];
+    }
+    const data = await model.loadData(url.allProducts);
+    return data.filter((elem) =>
+      likeArray.includes((elem.id).toString())
+    )
+  }
+  async function cartProducts() {
+    let cartItems = getLocalCartProducts();
+    if (cartItems == null) {
+      cartItems = [];
+    }
+    const data = await model.loadData(url.allProducts);
+    return data.filter((elem) =>
+    cartItems.includes((elem.id).toString())
+    )
   }
   async function getDataProducts() {
 
@@ -124,15 +147,15 @@ export const model = (function () {
     likeItems = likeItems.filter(elem => elem != itemId)
     localStorage.setItem("likeItems", JSON.stringify(likeItems));
   }
-  function testUsername(username){
+  function testUsername(username) {
     let checkName = new RegExp(/^[a-zA-Z]{3,15}$/);
-     return checkName.test(username)
+    return checkName.test(username)
   }
-  function testEmail(email){
+  function testEmail(email) {
     let checkEmail = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
     return checkEmail.test(email);
   }
-  function testPassword(password){
+  function testPassword(password) {
     let checkPassword = new RegExp(
       /^(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]){6,16}/
     );
@@ -164,6 +187,9 @@ export const model = (function () {
     removeItem,
     testUsername,
     testEmail,
-    testPassword
+    testPassword,
+    getLocalCartProducts,
+    wishListItems,
+    cartProducts
   };
 })();

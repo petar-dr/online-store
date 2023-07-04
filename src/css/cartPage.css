@@ -1,0 +1,157 @@
+.cartPage {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  min-height: calc(100vh - 145px);
+}
+@media (max-width: 400px) {
+  .cartPage {
+    padding: 10px;
+  }
+}
+.cartPage__titleBlock__title {
+  font-size: 36px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 50px;
+}
+.cartPage__textContainer__box {
+  font-size: 20px;
+  background-color: #87d61f;
+  margin-bottom: 20px;
+  padding: 12px 0 12px 20px;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+.cartPage__textContainer__box__icon {
+  margin-right: 10px;
+}
+.cartPage__textContainer__box__title {
+  margin: 0;
+  color: black;
+}
+.cartPage__textContainer__description {
+  font-size: 18px;
+  width: 100%;
+  max-width: 800px;
+}
+.cartPage__itemsBlock {
+  width: 100%;
+}
+.cartPage__itemsBlock table {
+  width: 100%;
+}
+.cartPage__itemsBlock table thead {
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
+}
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .cartPage__itemsBlock table thead {
+    display: none;
+  }
+}
+.cartPage__itemsBlock table thead tr {
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+.cartPage__itemsBlock table thead tr th {
+  padding: 10px 12px;
+}
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .cartPage__itemsBlock table tbody {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+.cartPage__itemsBlock table tbody tr {
+  width: 100%;
+}
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .cartPage__itemsBlock table tbody tr {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 400px;
+    border-bottom: 1px solid black;
+  }
+}
+.cartPage__itemsBlock table tbody tr td {
+  font-size: 18px;
+  padding: 10px 12px;
+  border-bottom: 1px solid black;
+}
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .cartPage__itemsBlock table tbody tr td {
+    width: 100%;
+    border-bottom: none;
+  }
+  .cartPage__itemsBlock table tbody tr td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+}
+.cartPage__itemsBlock table tbody tr td img {
+  height: 150px;
+}
+.cartPage__itemsBlock__removeProduct {
+  width: 5%;
+}
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .cartPage__itemsBlock__removeProduct {
+    display: flex;
+    justify-content: end;
+  }
+}
+.cartPage__itemsBlock__removeProduct__icon {
+  color: black;
+  font-size: 14px;
+}
+.cartPage__itemsBlock__removeProduct__icon:hover {
+  color: grey;
+}
+.cartPage__itemsBlock__imgProduct {
+  width: 25%;
+}
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .cartPage__itemsBlock__imgProduct {
+    display: flex;
+    justify-content: center;
+  }
+}
+.cartPage__itemsBlock__nameProduct {
+  width: 30%;
+}
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .cartPage__itemsBlock__nameProduct {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.cartPage__itemsBlock__priceProduct {
+  width: 25%;
+}
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .cartPage__itemsBlock__priceProduct {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+}
+.cartPage__itemsBlock__addProduct {
+  width: 15%;
+}
+@media ((min-width: 0px) and (max-width: 768px)) {
+  .cartPage__itemsBlock__addProduct {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    height: 60px;
+  }
+}/*# sourceMappingURL=cartPage.css.map */

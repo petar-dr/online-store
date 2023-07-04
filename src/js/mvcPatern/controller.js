@@ -154,7 +154,7 @@ export const controller = function (model, view) {
       let testEmail = model.testEmail(email);
       view.processEmail(testEmail, email);
       checkFlag = testEmail;
-      
+
     }
     if (checkPassword) {
       // Check password
@@ -277,12 +277,11 @@ export const controller = function (model, view) {
   }
   async function displayFavoritePage() {
     let DOM = view.getDOMString();
-    let url = model.getUrl();
-
     let main = document.getElementById(DOM.favorite);
-    const data = await model.loadData(url.allProducts);
+
+    let wishListItems = await model.wishListItems()
     main.innerHTML = "";
-    main.appendChild(view.loadFavoritePage(data));
+    main.appendChild(view.loadFavoritePage(wishListItems));
 
     setupPageListners();
     setupFavoriteListeners()
@@ -315,6 +314,16 @@ export const controller = function (model, view) {
 
     setupPageListners();
     setupSearchPageListners();
+  }
+  async function displayCartPage() {
+    let DOM = view.getDOMString();
+    let main = document.getElementById(DOM.cart);
+    let cartProducts = await model.cartProducts()
+    main.innerHTML = "";
+    main.appendChild(view.loadCartPage(cartProducts));
+
+    setupPageListners();
+
   }
   //LOAD PAGES -- END
 
