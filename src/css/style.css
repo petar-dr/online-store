@@ -1687,7 +1687,7 @@ input[type=radio] {
   width: 100%;
   height: -moz-fit-content;
   height: fit-content;
-  min-height: 50vh;
+  min-height: calc(100vh - 145px);
   padding: 50px;
   display: flex;
   justify-content: start;
@@ -1749,7 +1749,6 @@ input[type=radio] {
 }
 .searchContainer__searchResult {
   width: 100%;
-  height: calc(100vh - 145px);
 }
 .searchContainer__searchResult__dataContainer {
   width: 100%;
