@@ -139,7 +139,7 @@ export const view = (function () {
 
       priceBox.appendChild(oldPrice);
 
-      let newPrice = obj.price - Math.floor(obj.price / obj.discount);
+      let newPrice = obj.price - Math.floor(obj.price * (obj.discount / 100));
 
       const price = document.createElement("span");
       price.classList.add("item__article__tag__box__text__priceBox__price");
@@ -1215,10 +1215,9 @@ export const view = (function () {
       const oldPrice = document.createElement("del");
       oldPrice.classList.add("productPage__main__info__priceBox__oldPrice");
       oldPrice.innerHTML = `  ${obj.price}.00&euro;`;
-
       priceBox.appendChild(oldPrice);
 
-      let newPrice = obj.price - Math.floor(obj.price / obj.discount);
+      let newPrice = obj.price - (obj.price - (obj.price * (obj.discount / 100)));
 
       const price = document.createElement("span");
       price.classList.add("productPage__main__info__priceBox__price");
@@ -2273,7 +2272,7 @@ export const view = (function () {
     const priceLowSort = document.getElementById("priceLowSort").checked;
     if (priceLowSort) {
       data = data.sort((a, b) =>
-        parseInt(a.price) > parseInt(b.price) ? 1 : -1
+        parseInt(a.price - (a.price * (a.discount / 100))) > parseInt(b.price - (b.price * (b.discount / 100))) ? 1 : -1
       );
     }
     return data;
@@ -2282,7 +2281,7 @@ export const view = (function () {
     const sortHighLow = document.getElementById("priceHighSort").checked;
     if (sortHighLow) {
       data = data.sort((a, b) =>
-        parseInt(a.price) < parseInt(b.price) ? 1 : -1
+        parseInt(a.price - (a.price * (a.discount / 100))) < parseInt(b.price - (b.price * (b.discount / 100))) ? 1 : -1
       );
     }
     return data;

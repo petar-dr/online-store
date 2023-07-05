@@ -262,14 +262,12 @@ export const controller = function (model, view) {
 
     let main = document.getElementById(DOM.productsPage);
     main.appendChild(view.loadProductsPage());
-
     setupProductsLiseners();
 
     let data = await model.getDataProducts();
     view.renderProducts(data);
 
     setupPageListners();
-
     setupPaginationListners();
   }
 
