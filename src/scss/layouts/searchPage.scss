@@ -67,7 +67,7 @@
 
   &__searchResult {
     width: 100%;
-    height: fit-content;
+    height: calc(100vh - 145px);
     &__dataContainer {
       width: 100%;
       display: flex;

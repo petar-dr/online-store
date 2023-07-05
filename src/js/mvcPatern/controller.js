@@ -15,10 +15,7 @@ export const controller = function (model, view) {
     cartPlusBtn.forEach(elem => {
       elem.addEventListener("click", cartQuantity);
     })
-
-
   }
-
   function setupHomePageListners() {
     let screenWidthSection2 = window.matchMedia("(max-width: 992px)");
     screenWidthSection2.addEventListener("change", view.resposniveSection2);
@@ -106,17 +103,21 @@ export const controller = function (model, view) {
   }
   function addToCartFromWishList(e) {
 
+    model.fromWishToCart(e.target.dataset.id);
+
+    displayFavoritePage();
   }
   function addToCart(e) {
     let productQuantity = Number(document.getElementById("quantityBtn").textContent);
     let productId = e.target.dataset.id;
     model.setCartProducts(productId, productQuantity)
+    document.getElementById("messageProduct").appendChild(view.addMessageProduct())
+    window.scrollTo(0, 0);
   }
   async function filterChange() {
     let data = await model.getDataProducts();
 
     view.renderProducts(data, 1);
-
     setupPaginationListners();
 
   }

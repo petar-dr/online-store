@@ -14,6 +14,25 @@
     align-items: center;
     margin-top: 0;
   }
+  &__messageBox {
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 20px;
+    &__content {
+      width: 100%;
+      background-color: $accent;
+      font-size: 20px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      height: fit-content;
+      &__icon {
+        padding-right: 10px;
+      }
+    }
+
+   
+  }
   &__images {
     height: fit-content;
     display: flex;
@@ -46,7 +65,7 @@
         &__iconYes {
           color: $accent;
         }
-        &__iconNo{
+        &__iconNo {
           color: black;
         }
       }
@@ -93,7 +112,7 @@
         max-width: 150px;
         @include media("md") {
           width: 30%;
-        min-width: 50px;
+          min-width: 50px;
         }
 
         &__minus {
@@ -161,9 +180,7 @@
   object-fit: cover;
   position: relative;
   bottom: 0;
-  height: 100%
-  
- 
+  height: 100%;
 }
 
 //carousel arrow
@@ -197,7 +214,7 @@
 }
 // accordion list
 
-.accordionProductPage__list{
+.accordionProductPage__list {
   list-style: none;
   padding: 0;
   margin: 0;

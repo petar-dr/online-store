@@ -198,4 +198,22 @@
     justify-content: space-between;
     margin-bottom: 20px;
   }
+}
+.cartPage__buy {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  margin-top: 50px;
+}
+.cartPage__buy__price {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  font-size: 18px;
+}
+.cartPage__buy__price__text {
+  font-weight: bold;
+  padding-right: 20px;
 }/*# sourceMappingURL=cartPage.css.map */

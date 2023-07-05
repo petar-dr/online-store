@@ -1216,9 +1216,9 @@ export const view = (function () {
       oldPrice.classList.add("productPage__main__info__priceBox__oldPrice");
       oldPrice.innerHTML = `  ${obj.price}.00&euro;`;
       priceBox.appendChild(oldPrice);
-
-      let newPrice = obj.price - (obj.price - (obj.price * (obj.discount / 100)));
-
+      console.log(obj.price)
+      let newPrice = (obj.price - Math.floor(obj.price * (obj.discount / 100)));
+      console.log(newPrice)
       const price = document.createElement("span");
       price.classList.add("productPage__main__info__priceBox__price");
       price.innerHTML = ` ${newPrice}.00&euro;`;
@@ -1769,7 +1769,7 @@ export const view = (function () {
 
       const totalPrice = document.createElement("th");
       totalPrice.classList.add("cartPage__itemsBlock__totalPrice");
-      totalPrice.textContent = "Total price";
+      totalPrice.textContent = "Total";
       favProductTitle.appendChild(totalPrice);
 
 
@@ -1778,11 +1778,32 @@ export const view = (function () {
 
       data.forEach(elem => tbody.appendChild(cartProduct(elem)))
 
-      if (data.length > 1) {
-        //Create add all items block
-        const addAllBtn = document.createElement("td");
-        addAllBtn.classList.add("cartPage__addAllBtn");
-        cartPageMain.appendChild(addAllBtn);
+      console.log(data.length)
+      if (data.length > 0) {
+        //Create buy box
+        const buyContainer = document.createElement("div");
+        buyContainer.classList.add("cartPage__buy");
+        cartPageMain.appendChild(buyContainer);
+
+        //Create buy box price
+        const buyBoxPrice = document.createElement("div");
+        buyBoxPrice.classList.add("cartPage__buy__price");
+        buyContainer.appendChild(buyBoxPrice);
+
+        const buyBoxLabel = document.createElement("span");
+        buyBoxLabel.classList.add("cartPage__buy__price__text");
+        buyBoxLabel.textContent = "Total cart price: "
+        buyBoxPrice.appendChild(buyBoxLabel);
+
+        let totalPrice = 0;
+        data.forEach(elem => {
+          totalPrice += (elem.quantity * elem.price);
+        })
+        const buyBoxNumber = document.createElement("span");
+        buyBoxNumber.classList.add("cartPage__buy__price__number");
+        buyBoxNumber.innerHTML = ` ${totalPrice}.00&euro;`;
+        buyBoxPrice.appendChild(buyBoxNumber);
+
       }
     }
 
@@ -2062,9 +2083,11 @@ export const view = (function () {
 
     const addToCartButton = document.createElement("button");
     addToCartButton.id = "addBtn"
+
     addToCartButton.classList.add(
       "productPage__main__info__cartButtons__addToCart"
     );
+    addToCartButton.setAttribute("data-id", obj.id)
     addToCartButton.textContent = "Add to cart";
     addProduct.appendChild(addToCartButton);
 
@@ -3075,6 +3098,24 @@ export const view = (function () {
       message.innerHTML = "The password was not entered correctly!";
     }
   }
+  function addMessageProduct() {
+    document.getElementById("messageProduct").innerHTML = ""
+
+    const messageContent = document.createElement("div");
+    messageContent.classList.add("productPage__main__messageBox__content");
+
+    const messageIcon = document.createElement("i");
+    messageIcon.classList.add("fa-solid", "fa-circle-check", "productPage__main__messageBox__content__icon");
+    messageContent.appendChild(messageIcon)
+
+
+    const messageText = document.createElement("span");
+    messageText.classList.add("productPage__main__messageBox__content__text")
+    messageText.textContent = "Product is added to your cart"
+    messageContent.appendChild(messageText)
+
+    return messageContent;
+  }
   return {
     getDOMString: () => {
       return DOMString;
@@ -3124,6 +3165,12 @@ export const view = (function () {
       main.classList.add("main");
       main.setAttribute("id", "main");
 
+      const messageBox = document.createElement("div");
+      messageBox.id = "messageProduct"
+      messageBox.classList.add("productPage__main__messageBox");
+      messageBox.innerHTML = "";
+
+      main.appendChild(messageBox)
       main.appendChild(loadProductMain(data, array));
 
       pageContent.appendChild(loadHeader());
@@ -3229,7 +3276,7 @@ export const view = (function () {
     processUsername,
     processEmail,
     processPassword,
-
+    addMessageProduct
 
   };
 })();

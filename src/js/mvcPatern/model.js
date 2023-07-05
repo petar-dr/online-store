@@ -169,6 +169,7 @@ export const model = (function () {
     return checkPassword.test(password);
   }
   async function setCartProducts(productId, productQuantity) {
+
     let cartArray = [];
 
     let products = await loadData(url.allProducts)
@@ -214,6 +215,11 @@ export const model = (function () {
     }
     localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
   }
+  async function fromWishToCart(productId) {
+    productId = Number(productId);
+    removeItem(productId);
+    setCartProducts(productId, 1);
+  }
 
   return {
     getUrl: () => {
@@ -246,6 +252,7 @@ export const model = (function () {
     wishListItems,
     cartProducts,
     removeCartItem,
-    setCartQuantity
+    setCartQuantity,
+    fromWishToCart,
   };
 })();
