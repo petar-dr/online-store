@@ -25,7 +25,7 @@ export const view = (function () {
   const footerMenuData = [
     {
       title: "Costumer service",
-      content: ["Contact", "Delivery", "FAQ"],
+      content: ["Costumer support", "Delivery"],
     },
     {
       title: "Information",
@@ -225,7 +225,7 @@ export const view = (function () {
     const iconServiceIcon = document.createElement("i");
     iconServiceIcon.classList.add("icon--left", "fa-solid", "fa-phone");
     iconService.appendChild(iconServiceIcon);
-    iconService.innerHTML += "Customer service";
+    iconService.innerHTML += "Customer support";
 
     // Create header__main__middle element
     const headerMainMiddle = document.createElement("div");
@@ -501,22 +501,6 @@ export const view = (function () {
     middleSection.classList.add("middle");
     footer.appendChild(middleSection);
 
-    // Create bottom section
-    const bottomSection = document.createElement("div");
-    bottomSection.classList.add("bottom");
-    footer.appendChild(bottomSection);
-
-    // Create visa card image
-    const visaImage = document.createElement("img");
-    visaImage.src = "../img/footer/visa.png";
-    visaImage.alt = "Visa card img";
-    bottomSection.appendChild(visaImage);
-
-    // Create mastercard image
-    const mastercardImage = document.createElement("img");
-    mastercardImage.src = "../img/footer/mastercard.png";
-    mastercardImage.alt = "Mastercard img";
-    bottomSection.appendChild(mastercardImage);
     return footer;
   }
   // home page - sections
@@ -889,7 +873,7 @@ export const view = (function () {
     customerServiceDiv.appendChild(customerServiceList);
 
     // Create customerService list items
-    const customerServiceItems = ["Contact", "Delivery", "FAQ"];
+    const customerServiceItems = ["Contact", "Delivery"];
     for (let i = 0; i < customerServiceItems.length; i++) {
       let customerServiceItem = customerServiceItems[i];
       const listItem = document.createElement("li");
