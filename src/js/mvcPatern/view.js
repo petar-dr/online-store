@@ -25,19 +25,23 @@ export const view = (function () {
   const footerMenuData = [
     {
       title: "Costumer service",
-      content: ["Costumer support", "Delivery"],
+      content: [{ name: "Costumer support", link: "support.html" }, { name: "Delivery", link: "delivery.html" }],
+
     },
     {
       title: "Information",
-      content: ["Term of use", "Privacy policy"],
+      content: [{ name: "Term of use", link: "termofuse.html" }, { name: "Privacy policy", link: "privacypolicy.html" }],
+
+
     },
     {
       title: "Stay in touch",
-      content: ["Facebook", "Instagram", "Pinterest", "Linkedin"],
+      content: [{ name: "Facebook", link: "http://www.facebook.com" }, { name: "Instagram", link: "http://www.instagram.com" }, { name: "Pinterest", link: "http://www.pinterest.com" }, { name: "Linkedin", link: "http://www.linkedin.com" }],
+
     },
     {
       title: "About us",
-      content: ["Our Store", "Production"],
+      content: [{ name: "Our Store", link: "#" }, { name: "Production", link: "#" }],
     },
   ];
 
@@ -838,7 +842,10 @@ export const view = (function () {
       item.content.forEach((contentItem) => {
         const li = document.createElement("li");
         li.classList.add("accordionFooterMenu__list__item");
-        li.textContent = contentItem;
+        const a = document.createElement("a");
+        li.appendChild(a);
+        a.textContent = contentItem.name;
+        a.href = contentItem.link;
         ul.appendChild(li);
       });
       accordionBodyDiv.appendChild(ul);
@@ -873,15 +880,15 @@ export const view = (function () {
     customerServiceDiv.appendChild(customerServiceList);
 
     // Create customerService list items
-    const customerServiceItems = ["Contact", "Delivery"];
+    const customerServiceItems = [{ name: "Support", link: "support.html" }, { name: "Delivery", link: "delivery.html" }];
     for (let i = 0; i < customerServiceItems.length; i++) {
-      let customerServiceItem = customerServiceItems[i];
+      let customerServiceItem = customerServiceItems[i].name;
       const listItem = document.createElement("li");
       listItem.classList.add("middle__box__list__item");
       customerServiceList.appendChild(listItem);
 
       const link = document.createElement("a");
-      link.href = "#";
+      link.href = customerServiceItems[i].link;
       link.textContent = customerServiceItem;
       listItem.appendChild(link);
     }
