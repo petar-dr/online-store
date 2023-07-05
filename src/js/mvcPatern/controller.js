@@ -7,8 +7,16 @@ export const controller = function (model, view) {
     iconRemove.forEach(elem => {
       elem.addEventListener("click", removeCartProduct);
     })
-    document.getElementById("cartMinusBtn").addEventListener("click", cartQuantity);
-    document.getElementById("cartPlusBtn").addEventListener("click", cartQuantity);
+    const cartMinusBtn = document.querySelectorAll("#cartMinusBtn");
+    cartMinusBtn.forEach(elem => {
+      elem.addEventListener("click", cartQuantity);
+    })
+    const cartPlusBtn = document.querySelectorAll("#cartPlusBtn");
+    cartPlusBtn.forEach(elem => {
+      elem.addEventListener("click", cartQuantity);
+    })
+
+
   }
 
   function setupHomePageListners() {
