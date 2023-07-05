@@ -207,7 +207,7 @@ export const view = (function () {
 
     //Create a tag for Service
     const aService = document.createElement("a");
-    aService.setAttribute("href", "service.html");
+    aService.setAttribute("href", "support.html");
     headerMainLeft.appendChild(aService);
 
     // Create iconService element
@@ -3137,6 +3137,63 @@ export const view = (function () {
 
     return pageContent;
   }
+  function loadSupportPageMain() {
+    const pageContent = document.createElement("div");
+    pageContent.classList.add("supportPage");
+    pageContent.innerHTML = `<h1 class="supportPage__title">Customer support</h1>`
+
+    const pageText = document.createElement("div");
+    pageText.classList.add("supportPage__text");
+    pageText.innerHTML = `
+    <p class="supportPage__text__paraf">
+    We appreciate your interest in our furniture store and would be
+    delighted to assist you. Our dedicated customer support team is here to
+    provide you with the best possible service and address any questions or
+    concerns you may have.
+  </p>
+
+  <p class="supportPage__text__paraf">
+    To reach us, simply give us a call at
+    <strong>1-800-123-4567</strong> during our business hours, and one of
+    our knowledgeable representatives will be ready to assist you.
+    Alternatively, you can send us an email at
+    <strong>support@furniturestore.com</strong>, and we will promptly
+    respond to your inquiry.
+  </p>
+
+  <p class="supportPage__text__paraf">
+    We understand that finding the perfect furniture pieces for your home is
+    important, and we are here to guide you through the process. Whether you
+    need help with product recommendations, measurements, or any other
+    inquiries, our team is well-equipped to provide you with the information
+    you need to make an informed decision.
+  </p>
+
+  <p class="supportPage__text__paraf">
+    At our furniture store, we take pride in ensuring your satisfaction from
+    the moment you start browsing our collection to the delivery and beyond.
+    If you encounter any issues with your order, such as damages or missing
+    parts, please let us know, and we will work diligently to resolve it for
+    you.
+  </p>
+
+  <p class="supportPage__text__paraf">
+    Your feedback is valuable to us, as it helps us improve our products and
+    services. We encourage you to share your thoughts and suggestions with
+    us so that we can continue to enhance your shopping experience.
+  </p>
+
+  <p class="supportPage__text__paraf">
+    Thank you for choosing our furniture store. We look forward to serving
+    you and helping you create a beautiful and comfortable living space.
+  </p>
+  
+    `
+
+    pageContent.appendChild(pageText)
+
+    return pageContent;
+  }
   return {
     getDOMString: () => {
       return DOMString;
@@ -3274,6 +3331,16 @@ export const view = (function () {
 
       pageContent.appendChild(loadHeader());
       pageContent.appendChild(loadDeliveryPageMain());
+      pageContent.appendChild(loadFooter());
+
+      return pageContent
+    },
+    loadSupportPage: () => {
+      const pageContent = document.createElement("div");
+      pageContent.setAttribute("id", "pageContent");
+
+      pageContent.appendChild(loadHeader());
+      pageContent.appendChild(loadSupportPageMain());
       pageContent.appendChild(loadFooter());
 
       return pageContent

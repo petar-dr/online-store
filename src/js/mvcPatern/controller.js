@@ -370,6 +370,11 @@ export const controller = function (model, view) {
     main.appendChild(view.loadDeliveryPage());
     setupPageListners();
 
+  }function supportPage(){
+    let main = document.getElementById("support_page");
+    main.appendChild(view.loadSupportPage());
+    setupPageListners();
+
   }
   //LOAD PAGES -- END
 
@@ -410,6 +415,9 @@ export const controller = function (model, view) {
     },
     delivery: () =>{
       deliveryPage()
+    },
+    support: () =>{
+      supportPage()
     }
 
   };
