@@ -1,0 +1,26 @@
+.deliveryPage {
+  width: 100%;
+  padding: 50px;
+}
+.deliveryPage__title {
+  font-size: 36px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 50px;
+}
+.deliveryPage__text {
+  width: 100%;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.deliveryPage__text__paraf {
+  display: inline-block;
+  max-width: 800px;
+  margin-bottom: 10px;
+}
+.deliveryPage__text__list {
+  max-width: 800px;
+  margin-bottom: 10px;
+}/*# sourceMappingURL=deliveryPage.css.map */

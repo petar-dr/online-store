@@ -365,6 +365,12 @@ export const controller = function (model, view) {
     setupPageListners();
     setupCartPageListners();
   }
+  function deliveryPage(){
+    let main = document.getElementById("delivery_page");
+    main.appendChild(view.loadDeliveryPage());
+    setupPageListners();
+
+  }
   //LOAD PAGES -- END
 
   return {
@@ -402,6 +408,9 @@ export const controller = function (model, view) {
     cart: () => {
       displayCartPage();
     },
+    delivery: () =>{
+      deliveryPage()
+    }
 
   };
 };

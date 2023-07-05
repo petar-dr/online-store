@@ -157,28 +157,6 @@ export const view = (function () {
     return item;
   }
 
-  function loadDelivery() {
-    const main = document.getElementById("main");
-    const content = `   <div class="products">
-    <aside class="products__aside">
-      <h3>Delivery</h3>
-     
-    </aside>
-    <div id="productsItems" class="products__items">OVO JE DELIVERY</div>
-    </div>`;
-    main.innerHTML = content;
-  }
-  function loadService() {
-    const main = document.getElementById("main");
-    const content = `   <div class="products">
-    <aside class="products__aside">
-      <h3>Service</h3>
-     
-    </aside>
-    <div id="productsItems" class="products__items">OVO JE Service</div>
-    </div>`;
-    main.innerHTML = content;
-  }
   // header and footer
   function loadHeader() {
     // create header element
@@ -2994,19 +2972,7 @@ export const view = (function () {
     }
     document.getElementById("quantityBtn").textContent = quantity;
   }
-  // function setCartQuantity(e) {
-  //   let quantity = document.getElementById("cartQuantityBtn").textContent;
-  //   quantity = Number(quantity);
-  //   if (e.target.id == "cartPlusBtn") {
-  //     quantity++;
-  //   }
-  //   else {
-  //     if (quantity > 1) {
-  //       quantity--;
-  //     }
-  //   }
-  //   document.getElementById("cartQuantityBtn").textContent = quantity;
-  // }
+
   function hamMenu() {
     const checkBox = document.getElementById("menu-btn");
     if (checkBox.checked === false) {
@@ -3116,16 +3082,80 @@ export const view = (function () {
 
     return messageContent;
   }
+  function loadDeliveryPageMain() {
+    const pageContent = document.createElement("div");
+    pageContent.classList.add("deliveryPage");
+    pageContent.innerHTML = `<h1 class="deliveryPage__title">Delivery</h1>`
+
+    const pageText = document.createElement("div");
+    pageText.classList.add("deliveryPage__text");
+    pageText.innerHTML = `
+      <p class="deliveryPage__text__paraf">
+        At furniture store, we understand the excitement and anticipation of
+        receiving your new furniture. We strive to make the delivery process as
+        seamless and convenient as possible, ensuring that your items arrive
+        safely and on time. Our dedicated delivery team is committed to
+        providing you with exceptional service from the moment you make your
+        purchase to the final placement of your furniture in your home.
+      </p>
+      <ol class="deliveryPage__text__list">
+        <li class="deliveryPage__text__list__item">
+          <strong>Fast and Reliable Delivery:</strong> We know you're eager to enjoy your new
+          furniture, which is why we offer fast and reliable delivery options.
+          Once your order is placed, our team will work diligently to schedule a
+          delivery time that is convenient for you.
+        </li>
+        <li class="deliveryPage__text__list__item">
+          <strong>Expert Handling:</strong> Our delivery professionals are highly trained and
+          experienced in handling furniture of all shapes and sizes. They will
+          carefully load, transport, and unload your items, ensuring that they
+          arrive in pristine condition. We take every precaution to protect your
+          furniture during transit, using specialized packaging and pa
+        </li>
+        <li class="deliveryPage__text__list__item">
+          <strong>White Glove Service: </strong> We take pride in offering a white glove delivery
+          service that goes above and beyond your expectations. Our team will
+          not only deliver your furniture but also handle the assembly,
+          placement, and installation, if required. Sit back and relax while we
+          take care of all the heavy lifting.
+        </li>
+        <li class="deliveryPage__text__list__item">
+          <strong>Timely Communication:</strong> We understand the importance of effective
+          communication throughout the delivery process. Our team will keep you
+          informed every step of the way, from confirming your delivery
+          appointment to providing real-time updates on the status of your
+          shipment. You can rely on us to be transparent and responsive to any
+          inquiries you may have.
+        </li>
+        <li class="deliveryPage__text__list__item">
+          <strong>Flexible Delivery Options:</strong> We offer flexible delivery options to
+          accommodate your schedule. Whether you prefer weekday or weekend
+          deliveries, morning or evening time slots, we strive to find a
+          convenient window that works best for you. We value your time and aim
+          to make the delivery process hassle-free.
+        </li>
+        <li class="deliveryPage__text__list__item">
+          <strong>Courteous and Professional Staff:</strong> Our delivery team is committed to
+          providing exceptional customer service. They will treat your home with
+          the utmost respect, ensuring a smooth and pleasant delivery
+          experience. If you have any special requests or concerns, please don't
+          hesitate to let us know, and we will do our best to accommodate them.
+        </li>
+      </ol>
+      <p class="deliveryPage__text__paraf">
+        Thank you for choosing furniture store for all your furniture needs. We
+        look forward to delivering high-quality, stylish furniture that will
+        transform your space. If you have any questions or need assistance,
+        please feel free to reach out to our friendly customer support team.
+      </p>`;
+
+    pageContent.appendChild(pageText)
+
+    return pageContent;
+  }
   return {
     getDOMString: () => {
       return DOMString;
-    },
-
-    loadDelivery: () => {
-      return loadDelivery();
-    },
-    loadService: () => {
-      return loadService();
     },
     loadHomePage: (data) => {
       const pageContent = document.createElement("div");
@@ -3250,6 +3280,16 @@ export const view = (function () {
 
       pageContent.appendChild(loadHeader());
       pageContent.appendChild(loadCartPageMain(data));
+      pageContent.appendChild(loadFooter());
+
+      return pageContent
+    },
+    loadDeliveryPage: () => {
+      const pageContent = document.createElement("div");
+      pageContent.setAttribute("id", "pageContent");
+
+      pageContent.appendChild(loadHeader());
+      pageContent.appendChild(loadDeliveryPageMain());
       pageContent.appendChild(loadFooter());
 
       return pageContent
