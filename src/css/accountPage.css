@@ -4,6 +4,11 @@
   flex-direction: column;
   min-height: calc(100vh - 145px);
 }
+@media ((min-width: 0px) and (max-width: 992px)) {
+  .accountContainer {
+    min-height: calc(100vh - 86px);
+  }
+}
 .accountContainer__title {
   font-size: 36px;
   font-weight: bold;

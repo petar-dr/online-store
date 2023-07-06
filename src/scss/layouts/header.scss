@@ -15,7 +15,7 @@
   background-color: $primary;
 
   @include media("md") {
-    height: fit-content;
+    height: 88px
   }
 
   &__top {
@@ -48,6 +48,10 @@
       padding: 10px 20px;
       height: 100%;
     }
+    @include media("sm") {
+      padding: 0px 5px;
+    
+    }
 
     &__left {
       display: flex;
@@ -73,11 +77,15 @@
       align-items: center;
       @include media("md") {
         justify-content: start;
+        height: 100%;
       }
       & h1 {
-        font-size: 3.5rem;
+        font-size: 35px;
         @include media("md") {
-          font-size: 3rem;
+          font-size: 30px;
+        }
+        @include media("xxs") {
+          font-size: 22px;
         }
       }
     }

@@ -49,6 +49,9 @@ a {
     &__title {
       font-size: 30px;
       margin: 20px 0;
+      @include media("xs") {
+        font-size: 20px;
+      }
     }
     &__btn {
       @include btn--a;
@@ -58,6 +61,9 @@ a {
       border-color: #000;
       border: 2px solid #000;
       transition: 0.3s;
+      @include media("xxs") {
+        font-size: 12px;
+      }
     }
   }
   &:hover {

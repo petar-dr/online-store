@@ -7,6 +7,9 @@
   align-items: center;
   min-height: calc(100vh - 145px);
   padding: 5%;
+  @include media("md") {
+    min-height: calc(100vh - 86px);
+  }
   &__loginBox {
     display: flex;
     flex-direction: column;

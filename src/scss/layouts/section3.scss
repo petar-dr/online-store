@@ -10,6 +10,12 @@
   &__title {
     & h2 {
       font-size: 40px;
+      @include media("xs") {
+        font-size: 30px;
+      }
+      @include media("xxs") {
+        font-size: 20px;
+      }
     }
   }
   &__popularProducts {

@@ -11,6 +11,9 @@
     background-color: #e3e2dc;
     height: calc(700px + 65px);
   }
+  @include media("xxs") {
+    // height: calc(600px + 65px);
+  }
 }
 .carousel--item--section1 {
   @include media("xs") {
@@ -46,6 +49,9 @@
     top: 55%;
     transform: none;
   }
+  @include media("xxs") {
+    top: 60%;
+  }
 
   & h6 {
     font-size: 14px;
@@ -69,7 +75,7 @@
     line-height: 1.7;
     margin-bottom: 3rem;
     // font-weight: bold;
-    
+
     @include media("xxs") {
       font-size: 1em;
     }
@@ -77,6 +83,9 @@
   &__a {
     @include btn--a;
     font-size: 16px;
+    @include media("xxs") {
+      font-size: 12px;
+    }
   }
   & span {
     font-size: 20px;

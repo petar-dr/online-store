@@ -5,6 +5,10 @@
   padding: 50px;
   flex-direction: column;
   min-height: calc(100vh - 145px);
+  @include media("md"){
+  min-height: calc(100vh - 86px);
+
+  }
   &__title {
     font-size: 36px;
     font-weight: bold;

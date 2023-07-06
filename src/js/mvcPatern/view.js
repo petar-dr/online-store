@@ -1652,13 +1652,11 @@ export const view = (function () {
       const textBox = document.createElement("div");
       textBox.classList.add("cartPage__textContainer__box");
 
-      const icon = document.createElement("i");
-      icon.classList.add("fa-regular", "fa-folder-open", "cartPage__textContainer__box__icon")
-      textBox.appendChild(icon);
+
 
       const textTitle = document.createElement("p");
       textTitle.classList.add("cartPage__textContainer__box__title");
-      textTitle.textContent = "There are no products in your cart";
+      textTitle.innerHTML = `<i class="fa-regular fa-folder-open cartPage__textContainer__box__icon"></i> There are no products in your cart`;
       textBox.appendChild(textTitle);
 
       textContainer.appendChild(textBox);
@@ -1890,13 +1888,11 @@ export const view = (function () {
       const textBox = document.createElement("div");
       textBox.classList.add("favoritePage__textContainer__box");
 
-      const icon = document.createElement("i");
-      icon.classList.add("fa-regular", "fa-folder-open", "favoritePage__textContainer__box__icon")
-      textBox.appendChild(icon);
+
 
       const textTitle = document.createElement("p");
       textTitle.classList.add("favoritePage__textContainer__box__title");
-      textTitle.textContent = "There are no products in your wish list";
+      textTitle.innerHTML = ` <i class="fa-regular fa-folder-open favoritePage__textContainer__box__icon"></i>There are no products in your wish list`;
       textBox.appendChild(textTitle);
 
       textContainer.appendChild(textBox);
@@ -2062,13 +2058,9 @@ export const view = (function () {
     const textBox = document.createElement("div");
     textBox.classList.add("accountContainer__main__box");
 
-    const icon = document.createElement("i");
-    icon.classList.add("fa-solid", "fa-circle-xmark", "accountContainer__main__box__icon")
-    textBox.appendChild(icon);
-
     const textTitle = document.createElement("p");
     textTitle.classList.add("accountContainer__main__box__title");
-    textTitle.textContent = "You can't enter in account, because you are log out.";
+    textTitle.innerHTML = `<i class="fa-solid fa-circle-xmark accountContainer__main__box__icon"></i> You can't enter in account, because you are log out.`;
     textBox.appendChild(textTitle);
 
     mainAccount.appendChild(textBox);
