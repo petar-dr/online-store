@@ -19,17 +19,23 @@
     padding: 20px;
   }
   &__title {
+    font-size: 36px;
     font-weight: bold;
     color: black;
     margin-bottom: 50px;
+    @include media("xs") {
+      margin-bottom: 20px;
+      font-size: 30px;
+    }
+    @include media("xxs") {
+      font-size: 22px;
+    }
   }
   &__box {
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
-    @include media("xs") {
-    }
     &__form {
       width: 100%;
       display: flex;

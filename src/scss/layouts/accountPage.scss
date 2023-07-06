@@ -5,15 +5,24 @@
   padding: 50px;
   flex-direction: column;
   min-height: calc(100vh - 145px);
-  @include media("md"){
-  min-height: calc(100vh - 86px);
-
+  @include media("md") {
+    min-height: calc(100vh - 86px);
+  }
+  @include media("xs") {
+    padding: 10px;
   }
   &__title {
     font-size: 36px;
     font-weight: bold;
     color: black;
     margin-bottom: 50px;
+    @include media("xs") {
+      margin-bottom: 20px;
+      font-size: 30px;
+    }
+    @include media("xxs") {
+      font-size: 22px;
+    }
   }
   &__main {
     &__aside {
@@ -38,17 +47,22 @@
         }
       }
     }
-    &__content {
-    }
+
     &__box {
       font-size: 20px;
       background-color: $accent;
       margin-bottom: 20px;
-      padding: 12px 0 12px 20px;
+      padding: 12px 20px;
       color: black;
-
       display: flex;
       align-items: center;
+      @include media("xs") {
+        font-size: 18px;
+        padding: 12px 10px;
+      }
+      @include media("xxs") {
+        font-size: 16px;
+      }
       &__icon {
         margin-right: 10px;
       }
@@ -61,7 +75,14 @@
       font-size: 18px;
       width: 100%;
       max-width: 800px;
+      @include media("xs") {
+        font-size: 16px;
+      }
+      @include media("xxs") {
+        font-size: 14px;
+      }
       &__mark {
+        display: inline-block;
         font-weight: bold;
         &:hover {
           border-bottom: 1px solid black;
