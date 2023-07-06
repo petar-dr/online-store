@@ -1,6 +1,6 @@
 //VIEW
 export const view = (function () {
- 
+
   const footerMenuData = [
     {
       title: "Costumer service",
@@ -2226,7 +2226,31 @@ export const view = (function () {
     searchResult.classList.add("searchContainer__searchResult");
     searchContainer.appendChild(searchResult);
 
+    const searchImgBox = document.createElement("div");
+    searchImgBox.classList.add("searchContainer__searchResult__box");
+    searchResult.appendChild(searchImgBox);
+
+    const searchImg = document.createElement("img");
+    searchImg.classList.add("searchContainer__searchResult__box__img");
+    searchImg.setAttribute("src", "../../../img/search/search-results.png");
+    searchImg.setAttribute("alt", "search result");
+    searchImgBox.appendChild(searchImg);
+
     return searchContainer
+  }
+  function searchNoResult() {
+
+    const searchImgBox = document.createElement("div");
+    searchImgBox.classList.add("searchContainer__searchResult__box");
+
+
+    const searchImg = document.createElement("img");
+    searchImg.classList.add("searchContainer__searchResult__box__img");
+    searchImg.setAttribute("src", "../../../img/search/search-results.png");
+    searchImg.setAttribute("alt", "search result");
+    searchImgBox.appendChild(searchImg);
+
+    return searchImgBox
   }
 
   //Sorts and filters
@@ -2894,12 +2918,14 @@ export const view = (function () {
     dataContainer.classList.add("searchContainer__searchResult__dataContainer");
     if (searchValue == "") {
       warningMessage.textContent = "Search field is empty! Enter product name and press button";
-      return dataContainer;
+      return searchNoResult();
     }
     else {
       console.log(data.length)
       if (data.length < 1) {
         warningMessage.textContent = "Don't have any product with that name.";
+        return searchNoResult();
+
       } else {
         warningMessage.textContent = ""
 
@@ -3353,7 +3379,8 @@ export const view = (function () {
     processUsername,
     processEmail,
     processPassword,
-    addMessageProduct
+    addMessageProduct,
+
 
   };
 })();

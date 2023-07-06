@@ -213,7 +213,7 @@ export const controller = function (model, view) {
 
   // LOAD PAGES -- START
   async function displayHomePage() {
-   
+
     let url = model.getUrl();
 
     let main = document.getElementById("home_page");
@@ -225,7 +225,7 @@ export const controller = function (model, view) {
     setupPageListners();
   }
   async function loadNewPage() {
-    
+
 
     let main = document.getElementById("new_page");
     main.appendChild(view.loadProductsPage());
@@ -242,7 +242,7 @@ export const controller = function (model, view) {
 
   }
   async function loadDiscountsPage() {
-    
+
 
     let main = document.getElementById("discount_page");
     main.appendChild(view.loadProductsPage());
@@ -259,7 +259,7 @@ export const controller = function (model, view) {
 
   }
   async function displayProductsPage() {
-    
+
 
     let main = document.getElementById("products_page");
     main.appendChild(view.loadProductsPage());
@@ -273,7 +273,7 @@ export const controller = function (model, view) {
   }
 
   async function displayProductPage() {
-   
+
     let url = model.getUrl();
     let likeArray = model.getLocalLikeItems();
 
@@ -300,7 +300,7 @@ export const controller = function (model, view) {
     setupPageListners();
     setupLogInFormListners();
   }
-  function displaySignupPage() { 
+  function displaySignupPage() {
     let main = document.getElementById("signup_page");
     main.appendChild(view.loadSignupPage());
 
@@ -310,7 +310,7 @@ export const controller = function (model, view) {
 
   }
   async function displayFavoritePage() {
-   let main = document.getElementById("favorite_page");
+    let main = document.getElementById("favorite_page");
 
     let wishListItems = await model.wishListItems()
     main.innerHTML = "";
@@ -320,7 +320,7 @@ export const controller = function (model, view) {
     setupFavoriteListeners()
   }
   async function displayAccountPage() {
-  let main = document.getElementById("account_page");
+    let main = document.getElementById("account_page");
 
     let userLocalData = model.getUserLocal();
     if (userLocalData) {
@@ -339,14 +339,14 @@ export const controller = function (model, view) {
     setupPageListners();
   }
   function displaySearchPage() {
-  let main = document.getElementById("search_page",);
+    let main = document.getElementById("search_page",);
     main.appendChild(view.loadSearchPage());
 
     setupPageListners();
     setupSearchPageListners();
   }
   async function displayCartPage() {
-  let main = document.getElementById("cart_page");
+    let main = document.getElementById("cart_page");
     let cartProducts = await model.cartProducts()
 
     main.innerHTML = "";
@@ -356,12 +356,12 @@ export const controller = function (model, view) {
     setupPageListners();
     setupCartPageListners();
   }
-  function deliveryPage(){
+  function deliveryPage() {
     let main = document.getElementById("delivery_page");
     main.appendChild(view.loadDeliveryPage());
     setupPageListners();
 
-  }function supportPage(){
+  } function supportPage() {
     let main = document.getElementById("support_page");
     main.appendChild(view.loadSupportPage());
     setupPageListners();
@@ -404,10 +404,10 @@ export const controller = function (model, view) {
     cart: () => {
       displayCartPage();
     },
-    delivery: () =>{
+    delivery: () => {
       deliveryPage()
     },
-    support: () =>{
+    support: () => {
       supportPage()
     }
 
