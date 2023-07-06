@@ -213,10 +213,10 @@ export const controller = function (model, view) {
 
   // LOAD PAGES -- START
   async function displayHomePage() {
-    let DOM = view.getDOMString();
+   
     let url = model.getUrl();
 
-    let main = document.getElementById(DOM.homePage);
+    let main = document.getElementById("home_page");
     const data = await model.loadData(url.popularProducts);
     main.appendChild(view.loadHomePage(data));
 
@@ -225,9 +225,9 @@ export const controller = function (model, view) {
     setupPageListners();
   }
   async function loadNewPage() {
-    let DOM = view.getDOMString();
+    
 
-    let main = document.getElementById(DOM.newPage);
+    let main = document.getElementById("new_page");
     main.appendChild(view.loadProductsPage());
 
     setupProductsLiseners();
@@ -242,9 +242,9 @@ export const controller = function (model, view) {
 
   }
   async function loadDiscountsPage() {
-    let DOM = view.getDOMString();
+    
 
-    let main = document.getElementById(DOM.discountPage);
+    let main = document.getElementById("discount_page");
     main.appendChild(view.loadProductsPage());
 
     setupProductsLiseners();
@@ -259,9 +259,9 @@ export const controller = function (model, view) {
 
   }
   async function displayProductsPage() {
-    let DOM = view.getDOMString();
+    
 
-    let main = document.getElementById(DOM.productsPage);
+    let main = document.getElementById("products_page");
     main.appendChild(view.loadProductsPage());
     setupProductsLiseners();
 
@@ -273,7 +273,7 @@ export const controller = function (model, view) {
   }
 
   async function displayProductPage() {
-    let DOM = view.getDOMString();
+   
     let url = model.getUrl();
     let likeArray = model.getLocalLikeItems();
 
@@ -285,7 +285,7 @@ export const controller = function (model, view) {
     let id = urlParams.get("id");
 
     let data = await model.loadData(url.productId + id);
-    let main = document.getElementById(DOM.productPage);
+    let main = document.getElementById("product_page");
     main.innerHTML = "";
 
     main.appendChild(view.loadProductPage(data, likeArray));
@@ -294,18 +294,14 @@ export const controller = function (model, view) {
     setupPageListners();
   }
   function displayLoginPage() {
-    let DOM = view.getDOMString();
-
-    let main = document.getElementById(DOM.loginPage);
+    let main = document.getElementById("login_page");
     main.appendChild(view.loadLoginPage());
 
     setupPageListners();
     setupLogInFormListners();
   }
-  function displaySignupPage() {
-    let DOM = view.getDOMString();
-
-    let main = document.getElementById(DOM.signupPage);
+  function displaySignupPage() { 
+    let main = document.getElementById("signup_page");
     main.appendChild(view.loadSignupPage());
 
 
@@ -314,8 +310,7 @@ export const controller = function (model, view) {
 
   }
   async function displayFavoritePage() {
-    let DOM = view.getDOMString();
-    let main = document.getElementById(DOM.favorite);
+   let main = document.getElementById("favorite_page");
 
     let wishListItems = await model.wishListItems()
     main.innerHTML = "";
@@ -325,8 +320,7 @@ export const controller = function (model, view) {
     setupFavoriteListeners()
   }
   async function displayAccountPage() {
-    let DOM = view.getDOMString();
-    let main = document.getElementById(DOM.account);
+  let main = document.getElementById("account_page");
 
     let userLocalData = model.getUserLocal();
     if (userLocalData) {
@@ -345,17 +339,14 @@ export const controller = function (model, view) {
     setupPageListners();
   }
   function displaySearchPage() {
-    let DOM = view.getDOMString();
-
-    let main = document.getElementById(DOM.search);
+  let main = document.getElementById("search_page",);
     main.appendChild(view.loadSearchPage());
 
     setupPageListners();
     setupSearchPageListners();
   }
   async function displayCartPage() {
-    let DOM = view.getDOMString();
-    let main = document.getElementById(DOM.cart);
+  let main = document.getElementById("cart_page");
     let cartProducts = await model.cartProducts()
 
     main.innerHTML = "";

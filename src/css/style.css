@@ -520,7 +520,7 @@ html {
   }
 }
 .my__caption h6 {
-  font-size: 1.06em;
+  font-size: 14px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -530,7 +530,7 @@ html {
   }
 }
 .my__caption h2 {
-  font-size: 3.6em;
+  font-size: 40px;
   font-weight: bold;
   margin-bottom: 0.7em;
 }
@@ -540,11 +540,10 @@ html {
   }
 }
 .my__caption p {
-  font-size: 1.4rem;
+  font-size: 18px;
   max-width: 80%;
   line-height: 1.7;
   margin-bottom: 3rem;
-  font-weight: bold;
 }
 @media (max-width: 400px) {
   .my__caption p {
@@ -557,6 +556,7 @@ html {
   text-decoration: none;
   font-size: 1.3rem;
   font-weight: bold;
+  font-size: 16px;
 }
 .my__caption span {
   font-size: 20px;

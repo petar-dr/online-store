@@ -1,27 +1,6 @@
 //VIEW
 export const view = (function () {
-  const DOMString = {
-    homePage: "home_page",
-    header: "header",
-    products: "products",
-    newPage: "new_page",
-    discountPage: "discount_page",
-    productsPage: "products_page",
-    productPage: "product_page",
-    cart: "cart_page",
-    favorite: "favorite_page",
-    search: "search_page",
-    loginPage: "login_page",
-    signupPage: "signup_page",
-    account: "account_page",
-    main: "main",
-    footer: "footer",
-    delivery: "iconDelivery",
-    service: "iconService",
-    chairs: "chairs",
-    tables: "tables",
-    sofas: "sofas",
-  };
+ 
   const footerMenuData = [
     {
       title: "Costumer service",
@@ -568,7 +547,7 @@ export const view = (function () {
         captionTitle: "Simplicity",
         captionSubtitle: "Chair for everyone",
         captionContent:
-          "The chair is made of oak, its design is permeated by fluid, organic forms, combining strong curves with exceptional lightness. As a result, we got a minimalist design that optimizes comfort and is focused on man and his movements, without lacking aesthetics and characteristic details.",
+          "The chair is made of oak, its design is permeated by fluid, organic forms, combining strong curves with exceptional lightness. As a result, we got a minimalist design . . .",
         captionLinkClass: "my__caption__a my__caption__a--white",
       },
       {
@@ -579,7 +558,7 @@ export const view = (function () {
         captionTitle: "New product",
         captionSubtitle: "Chair with style",
         captionContent:
-          "This luxury hybrid armchair offers unparalleled seating comfort thanks to its robust frame and soft upholstery. It is characterized by solid legs, made using traditional carpentry techniques, and large armrests and a seat cushion, upholstered in a range of soft fabrics, creating a sense of comfort and lightness in any environment.",
+          "This luxury hybrid armchair offers unparalleled seating comfort thanks to its robust frame and soft upholstery. It is characterized by solid legs, made using traditional . . .",
         captionLinkClass: "my__caption__a my__caption__a--white",
       },
     ];
@@ -651,7 +630,7 @@ export const view = (function () {
       const captionLink = document.createElement("a");
       captionLink.href = carouselItem.href;
       captionLink.classList.add("my__caption__a", "my__caption__a--white");
-      captionLink.innerHTML = "Buy now <span>&#8594;</span>";
+      captionLink.innerHTML = "Buy now";
       captionDiv.appendChild(captionLink);
     }
 
@@ -3202,9 +3181,9 @@ export const view = (function () {
     return pageContent;
   }
   return {
-    getDOMString: () => {
-      return DOMString;
-    },
+    // getDOMString: () => {
+    //   return DOMString;
+    // },
     loadHomePage: (data) => {
       const pageContent = document.createElement("div");
       pageContent.setAttribute("id", "pageContent");
