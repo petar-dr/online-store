@@ -68,38 +68,40 @@ export const model = (function () {
   }
   async function signUp(username, email, password) {
 
-    const result = await fetch(url.signUp, {
+    const res = await fetch(url.signUp, {
       method: "POST",
       headers: {
         "Content-Type": 'application/json'
       },
       body: JSON.stringify({ username, email, password })
     }).then(response => response.json());
-    if (result.status === "ok") {
-      alert("Succes")
+    console.log(res)
+    if (res.status == 200) {
+      alert(res.message)
       window.location.href = "login.html";
+
     } else {
-      alert(result.error)
+      alert(res.error)
     }
   }
   async function logIn(username, password) {
-    const result = await fetch(url.logIn, {
+    const res = await fetch(url.logIn, {
       method: "POST",
       headers: {
         "Content-Type": 'application/json'
       },
       body: JSON.stringify({ username, password })
     }).then(response => response.json());
-    if (result.status === "ok") {
-
-      let userData = JSON.stringify({ username: result.username, token: result.token });
+    if (res.status === 200) {
+      console.log(res)
+      let userData = JSON.stringify({ username: res.username, token: res.token });
       localStorage.setItem("curentUser", userData);
-
-
+      console.log(res.message)
+      alert(res.message)
       window.location.href = "account.html";
-      alert("Succes login")
+
     } else {
-      alert(result.error)
+      alert(res.error)
     }
   }
   async function loadData(url) {
@@ -117,7 +119,6 @@ export const model = (function () {
       },
     }).then(response => response.json())
     return result;
-
   }
   function userLogOut() {
     localStorage.removeItem("curentUser");

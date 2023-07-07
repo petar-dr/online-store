@@ -2074,58 +2074,57 @@ export const view = (function () {
 
     return accountContainer;
   }
-  function loadAccountAccessMain() {
+  function loadAccountAccessMain(user) {
+
     // Create account container
     const accountContainer = document.createElement("div");
-    accountContainer.classList.add("accountContainer");
+    accountContainer.classList.add("accountAccessContainer");
 
     // Create account title
     const accountTitle = document.createElement("h1");
-    accountTitle.classList.add("accountContainer__title");
+    accountTitle.classList.add("accountAccessContainer__title");
     accountTitle.textContent = "Account"
     accountContainer.appendChild(accountTitle);
 
     // Create div main account
     const mainAccount = document.createElement("div");
     mainAccount.id = "mainaccount";
-    mainAccount.classList.add("accountContainer__main");
+    mainAccount.classList.add("accountAccessContainer__main");
     accountContainer.appendChild(mainAccount);
 
-    //Create aside account
-    const asideAccount = document.createElement("aside");
-    asideAccount.id = "asideAccount";
-    asideAccount.classList.add("accountContainer__main__aside");
-    mainAccount.appendChild(asideAccount);
 
-    const menuAccount = document.createElement("ul");
-    menuAccount.id = "asideAccount";
-    menuAccount.classList.add("accountContainer__main__aside__menuList");
-    asideAccount.appendChild(menuAccount);
+    const tableBox = document.createElement("div");
+    tableBox.classList.add("accountAccessContainer__main__tableBox");
+    mainAccount.appendChild(tableBox);
 
-    const menuOption = ["Account data", "Wish list", "Log out"];
-    menuOption.forEach((elem, index) => {
-      const liOption = document.createElement("li");
-      liOption.classList.add("accountContainer__main__aside__menuList__item");
+    tableBox.innerHTML = `
+    <table>
+    <tr>
+      <th>Username: </th>
+      <td class="firstItem"> ${user.username}</td>
+    </tr>
+    <tr>
+      <th>Email: </th>
+      <td class="secondItem"> ${user.email}</td>
+    </tr>
+    </table>`
 
-      const aOption = document.createElement("a");
-      aOption.classList.add("accountContainer__main__aside__menuList__item__name");
-      aOption.textContent = elem;
-      if (index == 1) {
-        aOption.href = "favorite.html";
-      }
-      if (index == 2) {
-        aOption.id = "logOut"
-      }
-      liOption.appendChild(aOption);
-      menuAccount.appendChild(liOption);
-    });
+    const logOut = document.createElement("a");
+    logOut.id = "logOut"
+    logOut.classList.add("accountAccessContainer__main__tableBox__logOut");
+    logOut.textContent = "Log out";
+    tableBox.appendChild(logOut);
 
+    const textBox = document.createElement("div");
+    textBox.classList.add("accountAccessContainer__main__textBox");
+    mainAccount.appendChild(textBox);
 
-    // Create div main account
-    const menuContent = document.createElement("div");
-    menuContent.id = "mainaccount";
-    menuContent.classList.add("accountContainer__main__content");
-    mainAccount.appendChild(menuContent);
+    const mainTitle = document.createElement("p");
+    mainTitle.classList.add("accountAccessContainer__main__textBox__text");
+    mainTitle.innerHTML = `<i class="fa-solid fa-right-to-bracket accountAccessContainer__main__textBox__icon"></i> 
+    As long as you are logged in, your wish list will be saved. 
+    View your <a href="favorite.html" class="accountAccessContainer__main__textBox__text__link ">wish list</a>.`
+    textBox.appendChild(mainTitle);
 
 
     return accountContainer;
@@ -3255,13 +3254,13 @@ export const view = (function () {
 
       return pageContent;
     },
-    loadAcountAccessPage: () => {
+    loadAcountAccessPage: (user) => {
 
       const pageContent = document.createElement("div");
       pageContent.setAttribute("id", "pageContent");
 
       pageContent.appendChild(loadHeader());
-      pageContent.appendChild(loadAccountAccessMain());
+      pageContent.appendChild(loadAccountAccessMain(user));
       pageContent.appendChild(loadFooter());
 
       return pageContent;

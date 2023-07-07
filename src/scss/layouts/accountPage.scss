@@ -25,30 +25,8 @@
     }
   }
   &__main {
-    &__aside {
-      font-size: 18px;
-      width: 25%;
-      min-width: 200px;
-      &__menuList {
-        list-style: none;
-        &__item {
-          &:last-child {
-            margin-top: 20px;
-          }
-          &__name {
-            width: fit-content;
-            border-bottom: 1px solid transparent;
-            font-weight: none;
-
-            &:hover {
-              border-bottom: 1px solid black;
-            }
-          }
-        }
-      }
-    }
-
     &__box {
+      
       font-size: 20px;
       background-color: $accent;
       margin-bottom: 20px;
