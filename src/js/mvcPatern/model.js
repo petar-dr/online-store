@@ -220,7 +220,47 @@ export const model = (function () {
     removeItem(productId);
     setCartProducts(productId, 1);
   }
-
+  function sortPopular(data) {
+    const popularSort = document.getElementById("popularSort").checked;
+    if (popularSort) {
+      data = data.sort((a, b) =>
+        parseInt(a.soldItems) < parseInt(b.soldItems) ? 1 : -1
+      );
+    }
+    return data;
+  }
+  function sortLowHigh(data) {
+    const priceLowSort = document.getElementById("priceLowSort").checked;
+    if (priceLowSort) {
+      data = data.sort((a, b) =>
+        parseInt(a.price - (a.price * (a.discount / 100))) > parseInt(b.price - (b.price * (b.discount / 100))) ? 1 : -1
+      );
+    }
+    return data;
+  }
+  function sortHighLow(data) {
+    const sortHighLow = document.getElementById("priceHighSort").checked;
+    if (sortHighLow) {
+      data = data.sort((a, b) =>
+        parseInt(a.price - (a.price * (a.discount / 100))) < parseInt(b.price - (b.price * (b.discount / 100))) ? 1 : -1
+      );
+    }
+    return data;
+  }
+  function filterNew(data) {
+    const newFilter = document.getElementById("newFilter").checked;
+    if (newFilter) {
+      return data.filter((elem) => elem.new == true);
+    }
+    return data;
+  }
+  function filterDiscount(data) {
+    const discountPrice = document.getElementById("discountPrice").checked;
+    if (discountPrice) {
+      return data.filter((elem) => elem.discount > 0);
+    }
+    return data;
+  }
   return {
     getUrl: () => {
       return url;
@@ -254,5 +294,10 @@ export const model = (function () {
     removeCartItem,
     setCartQuantity,
     fromWishToCart,
+    sortPopular,
+    sortLowHigh,
+    sortHighLow,
+    filterNew,
+    filterDiscount
   };
 })();

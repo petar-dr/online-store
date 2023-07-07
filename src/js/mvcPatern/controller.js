@@ -117,6 +117,12 @@ export const controller = function (model, view) {
   async function filterChange() {
     let data = await model.getDataProducts();
 
+    data = model.sortPopular(data);
+    data = model.sortLowHigh(data);
+    data = model.sortHighLow(data);
+    data = model.filterNew(data);
+    data = model.filterDiscount(data);
+
     view.renderProducts(data, 1);
     setupPaginationListners();
 

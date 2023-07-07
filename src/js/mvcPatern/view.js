@@ -2245,48 +2245,6 @@ export const view = (function () {
     return searchImgBox
   }
 
-  //Sorts and filters
-  function sortPopular(data) {
-    const popularSort = document.getElementById("popularSort").checked;
-    if (popularSort) {
-      data = data.sort((a, b) =>
-        parseInt(a.soldItems) < parseInt(b.soldItems) ? 1 : -1
-      );
-    }
-    return data;
-  }
-  function sortLowHigh(data) {
-    const priceLowSort = document.getElementById("priceLowSort").checked;
-    if (priceLowSort) {
-      data = data.sort((a, b) =>
-        parseInt(a.price - (a.price * (a.discount / 100))) > parseInt(b.price - (b.price * (b.discount / 100))) ? 1 : -1
-      );
-    }
-    return data;
-  }
-  function sortHighLow(data) {
-    const sortHighLow = document.getElementById("priceHighSort").checked;
-    if (sortHighLow) {
-      data = data.sort((a, b) =>
-        parseInt(a.price - (a.price * (a.discount / 100))) < parseInt(b.price - (b.price * (b.discount / 100))) ? 1 : -1
-      );
-    }
-    return data;
-  }
-  function filterNew(data) {
-    const newFilter = document.getElementById("newFilter").checked;
-    if (newFilter) {
-      return data.filter((elem) => elem.new == true);
-    }
-    return data;
-  }
-  function filterDiscount(data) {
-    const discountPrice = document.getElementById("discountPrice").checked;
-    if (discountPrice) {
-      return data.filter((elem) => elem.discount > 0);
-    }
-    return data;
-  }
   function filterContainerSmall() {
     const filterContainer = document.createElement("div");
     filterContainer.classList.add("filterContainer")
@@ -2565,9 +2523,6 @@ export const view = (function () {
 
     filterContainer.appendChild(accordion);
 
-
-
-
     return filterContainer;
   }
   function filtersContainer() {
@@ -2701,14 +2656,6 @@ export const view = (function () {
   }
   //Render products and pagination
   function renderProducts(obj, page) {
-    //sort prodacts
-    obj = sortPopular(obj);
-    obj = sortLowHigh(obj);
-    obj = sortHighLow(obj);
-
-    //filters
-    obj = filterNew(obj);
-    obj = filterDiscount(obj);
 
     const displayProducts = document.getElementById("displayProducts");
     // Create products items container
