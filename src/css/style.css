@@ -975,6 +975,7 @@ footer {
        column-gap: 10%;
   margin-top: 50px;
   margin-bottom: 50px;
+  min-height: calc(100vh - 145px);
 }
 @media ((min-width: 0px) and (max-width: 992px)) {
   .productPage__main {
@@ -2075,6 +2076,7 @@ input[type=radio] {
 .accountContainer__main__description__mark {
   display: inline-block;
   font-weight: bold;
+  border-bottom: 1px solid transparent;
 }
 .accountContainer__main__description__mark:hover {
   border-bottom: 1px solid black;

@@ -96,6 +96,7 @@
 .accountContainer__main__description__mark {
   display: inline-block;
   font-weight: bold;
+  border-bottom: 1px solid transparent;
 }
 .accountContainer__main__description__mark:hover {
   border-bottom: 1px solid black;
