@@ -11,6 +11,7 @@ export const model = (function () {
     getUser: "http://localhost:5000/user/",
     signUp: "http://localhost:5000/singup",
     logIn: "http://localhost:5000/login",
+    setWishList: "http://localhost:5000/setwishlist"
   };
   //Load data
   function getLocalCartProducts() {
@@ -94,9 +95,8 @@ export const model = (function () {
     }).then(response => response.json());
     if (res.status === 200) {
       console.log(res)
-      let userData = JSON.stringify({ username: res.username, token: res.token });
+      let userData = JSON.stringify({ user: res.user, token: res.token });
       localStorage.setItem("curentUser", userData);
-      console.log(res.message)
       alert(res.message)
       window.location.href = "account.html";
 
@@ -110,6 +110,7 @@ export const model = (function () {
   }
 
   async function getUserData(username, token) {
+
     let urlFetch = url.getUser + username;
     const result = await fetch(urlFetch, {
       method: "GET",
@@ -123,6 +124,8 @@ export const model = (function () {
   function userLogOut() {
     localStorage.removeItem("curentUser");
     localStorage.removeItem("likeItems");
+    localStorage.removeItem("cartProducts");
+
     window.location.href = "index.html";
   }
   async function searchFilter(searchValue) {
@@ -262,6 +265,32 @@ export const model = (function () {
     }
     return data;
   }
+  function setDataBase() {
+    const curentUser = JSON.parse(localStorage.getItem("curentUser"));
+    const likeList = getLocalLikeItems();
+
+    if (curentUser) {
+      const userId = curentUser.user._id;
+      const token = curentUser.token.trim();
+      setWishListData(userId, likeList, token);
+    }
+  }
+  async function setWishListData(userId, likeList, token) {
+    const res = await fetch(url.setWishList, {
+      method: "PUT",
+      headers: {
+        "Content-Type": 'application/json',
+        ["x-access-token"]: token,
+      },
+      body: JSON.stringify({ userId, likeList })
+    }).then(response => response.json());
+    if (res.status == 200) {
+      
+    }
+  }
+  function loadWishList(wishListBase) {
+    localStorage.setItem("likeItems", JSON.stringify(wishListBase));
+  }
   return {
     getUrl: () => {
       return url;
@@ -299,6 +328,9 @@ export const model = (function () {
     sortLowHigh,
     sortHighLow,
     filterNew,
-    filterDiscount
+    filterDiscount,
+    setDataBase,
+    loadWishList,
+
   };
 })();

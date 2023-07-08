@@ -1139,10 +1139,13 @@ export const view = (function () {
       heartIcon.classList.add(
         "productPage__main__info__header__heartIcon--clicked"
       );
+      heartIcon.setAttribute("data-like", true);
     } else {
       heartIcon.classList.add(
         "productPage__main__info__header__heartIcon--normal"
       );
+      heartIcon.setAttribute("data-like", false);
+
     }
 
     heartIcon.setAttribute("data-id", `${obj.id}`);
@@ -1164,9 +1167,7 @@ export const view = (function () {
       oldPrice.classList.add("productPage__main__info__priceBox__oldPrice");
       oldPrice.innerHTML = `  ${obj.price}.00&euro;`;
       priceBox.appendChild(oldPrice);
-      console.log(obj.price)
       let newPrice = (obj.price - Math.floor(obj.price * (obj.discount / 100)));
-      console.log(newPrice)
       const price = document.createElement("span");
       price.classList.add("productPage__main__info__priceBox__price");
       price.innerHTML = ` ${newPrice}.00&euro;`;
@@ -2873,13 +2874,19 @@ export const view = (function () {
       return dataContainer;
     }
   }
-  function addLikeClasses() {
-    const like = document.getElementById("heartIcon");
-    like.classList.toggle("productPage__main__info__header__heartIcon--normal");
-    like.classList.toggle(
-      "productPage__main__info__header__heartIcon--clicked"
-    );
-    return like.dataset.id;
+  function addLikeClasses(likeState) {
+    
+    const heartIcon = document.getElementById("heartIcon");
+    if (likeState == "true") {
+      heartIcon.classList.add("productPage__main__info__header__heartIcon--normal");
+      heartIcon.classList.remove("productPage__main__info__header__heartIcon--clicked");
+      heartIcon.dataset.like = "false";
+    } else {
+      heartIcon.classList.remove("productPage__main__info__header__heartIcon--normal");
+      heartIcon.classList.add("productPage__main__info__header__heartIcon--clicked");
+      heartIcon.dataset.like = "true";
+    }
+
   }
   function resposniveSection2() {
     let screenWidthSection2 = window.matchMedia("(max-width: 992px)");

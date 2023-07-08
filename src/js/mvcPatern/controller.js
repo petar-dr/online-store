@@ -105,6 +105,7 @@ export const controller = function (model, view) {
 
     model.fromWishToCart(e.target.dataset.id);
 
+    model.setDataBase();
     displayFavoritePage();
   }
   function addToCart(e) {
@@ -135,6 +136,7 @@ export const controller = function (model, view) {
     e.preventDefault();
     model.removeItem(e.target.dataset.id)
 
+    model.setDataBase();
     displayFavoritePage();
   }
   async function searchProducts(e) {
@@ -211,9 +213,10 @@ export const controller = function (model, view) {
     }
     return checkFlag;
   }
-  function addLike() {
-    const like = view.addLikeClasses();
-    model.setLocalStorageLike(like);
+  function addLike(e) {
+    view.addLikeClasses(e.target.dataset.like);
+    model.setLocalStorageLike(e.target.dataset.id);
+    model.setDataBase();
   }
 
 
@@ -330,8 +333,12 @@ export const controller = function (model, view) {
 
     let userLocalData = model.getUserLocal();
     if (userLocalData) {
-      let user = await model.getUser(userLocalData.username, userLocalData.token)
+      let user = await model.getUser(userLocalData.user.username, userLocalData.token)
       if (user) {
+        if (user.wishList != null && user.wishList.length > 0) {
+          console.log(" od baze " + user.wishList)
+          model.loadWishList(user.wishList);
+        }
         main.innerHTML = "";
         main.appendChild(view.loadAcountAccessPage(user))
         setupAccountAccessPageListners()
