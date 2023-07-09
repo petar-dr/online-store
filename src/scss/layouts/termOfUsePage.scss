@@ -1,0 +1,48 @@
+@use "../basic/" as *;
+
+.termOfUsePage {
+  width: 100%;
+  padding: 50px;
+  color: black;
+  @include media("md") {
+    padding: 30px;
+  }
+  @include media("xs") {
+    padding: 10px;
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: bold;
+
+    margin-bottom: 50px;
+    @include media("xs") {
+      margin-bottom: 20px;
+      font-size: 30px;
+    }
+    @include media("xxs") {
+      font-size: 22px;
+    }
+  }
+  &__text {
+    width: 100%;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__paraf {
+      display: inline-block;
+      max-width: 800px;
+      margin-bottom: 20px;
+    }
+    &__list {
+      counter-reset: item;
+      max-width: 800px;
+      margin-bottom: 10px;
+      & h2{
+        font-size: 18px;
+      }
+ 
+    }
+  }
+}

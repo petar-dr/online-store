@@ -18,10 +18,7 @@ export const view = (function () {
       content: [{ name: "Facebook", link: "http://www.facebook.com" }, { name: "Instagram", link: "http://www.instagram.com" }, { name: "Pinterest", link: "http://www.pinterest.com" }, { name: "Linkedin", link: "http://www.linkedin.com" }],
 
     },
-    {
-      title: "About us",
-      content: [{ name: "Our Store", link: "#" }, { name: "Production", link: "#" }],
-    },
+
   ];
 
   const cardsSection2 = [
@@ -890,15 +887,15 @@ export const view = (function () {
     informationDiv.appendChild(informationList);
 
     // Create information list items
-    const informationItems = ["Terms of use", "Privacy policy"];
+    const informationItems = [{ name: "Term of use", link: "termofuse.html" }, { name: "Privacy policy", link: "privacypolicy.html" }];
     for (let i = 0; i < informationItems.length; i++) {
-      let informationItem = informationItems[i];
+      let informationItem = informationItems[i].name;
       const listItem = document.createElement("li");
       listItem.classList.add("middle__box__list__item");
       informationList.appendChild(listItem);
 
       const link = document.createElement("a");
-      link.href = "#";
+      link.href = informationItems[i].link;
       link.textContent = informationItem;
       listItem.appendChild(link);
     }
@@ -922,50 +919,19 @@ export const view = (function () {
     stayInTouchDiv.appendChild(stayInTouchList);
 
     // Create stayInTouch list items
-    const stayInTouchItems = ["Facebook", "Instagram", "Pinterest", "LinkedIn"];
+    const stayInTouchItems = [{ site: "Facebook", url: "http://www.facebook.com" }, { site: "Instagram", url: "http://www.instagram.com" }, { site: "Pinterest", url: "http://www.pinterest.com" }, { site: "LinkedIn", url: "http://www.linkedin.com" }];
     for (let i = 0; i < stayInTouchItems.length; i++) {
-      let stayInTouchItem = stayInTouchItems[i];
+      let stayInTouchItem = stayInTouchItems[i].site;
       const listItem = document.createElement("li");
       listItem.classList.add("middle__box__list__item");
       stayInTouchList.appendChild(listItem);
 
       const link = document.createElement("a");
-      link.href = "#";
+      link.href = stayInTouchItems[i].url;
       link.textContent = stayInTouchItem;
       listItem.appendChild(link);
     }
 
-    // Create aboutUs div
-    const aboutUsDiv = document.createElement("div");
-    aboutUsDiv.id = "aboutUs";
-    aboutUsDiv.classList.add("middle__box");
-    footerMenuLarge.appendChild(aboutUsDiv);
-
-    // Create aboutUs title
-    const aboutUsTitle = document.createElement("span");
-    aboutUsTitle.classList.add("middle__box__title");
-    aboutUsTitle.textContent = "About us";
-    aboutUsDiv.appendChild(aboutUsTitle);
-
-    // Create aboutUs list
-    const aboutUsList = document.createElement("ul");
-    aboutUsList.id = "aboutUs__list";
-    aboutUsList.classList.add("middle__box__list");
-    aboutUsDiv.appendChild(aboutUsList);
-
-    // Create aboutUs list items
-    const aboutUsItems = ["Our Store", "Production"];
-    for (let i = 0; i < aboutUsItems.length; i++) {
-      let aboutUsItem = aboutUsItems[i];
-      const listItem = document.createElement("li");
-      listItem.classList.add("middle__box__list__item");
-      aboutUsList.appendChild(listItem);
-
-      const link = document.createElement("a");
-      link.href = "#";
-      link.textContent = aboutUsItem;
-      listItem.appendChild(link);
-    }
     return footerMenuLarge;
   }
   function displayHamMenu() {
@@ -2875,7 +2841,7 @@ export const view = (function () {
     }
   }
   function addLikeClasses(likeState) {
-    
+
     const heartIcon = document.getElementById("heartIcon");
     if (likeState == "true") {
       heartIcon.classList.add("productPage__main__info__header__heartIcon--normal");
@@ -3151,10 +3117,283 @@ export const view = (function () {
 
     return pageContent;
   }
+
+  function loadPrivacyPolicyPageMain() {
+    const pageContent = document.createElement("div");
+    pageContent.classList.add("privacyPolicyPage");
+    pageContent.innerHTML = `<h1 class="privacyPolicyPage__title">Privacy policy</h1>`
+
+    const pageText = document.createElement("div");
+    pageText.classList.add("privacyPolicyPage__text");
+    pageText.innerHTML = `
+  
+      <p class="privacyPolicyPage__text__paraf">
+        At Furniture Store Name, we value your privacy and are committed to
+        protecting your personal information. This Privacy Policy outlines how
+        we collect, use, and disclose your information when you interact with
+        our website and services. By using our website, you consent to the
+        practices described in this policy.
+      </p>
+
+      <ol class="privacyPolicyPage__text__list">
+        <li  class="privacyPolicyPage__text__list__item">
+          <h2>Information We Collect:</h2>
+
+          <ol class="privacyPolicyPage__text__list__item__content">
+            <li>
+              <h3>Personal Information:</h3>
+              <p>
+                We may collect personal information that you provide to us
+                voluntarily, such as your name, email address, postal address,
+                phone number, and payment information when you make a purchase,
+                create an account, or contact us for support.
+              </p>
+            </li>
+            <li>
+              <h3>Non-Personal Information:</h3>
+              <p>
+                We may also collect non-personal information, such as your
+                browser type, device information, IP address, and browsing
+                patterns, through cookies and similar technologies. This
+                information helps us improve our website and provide a better
+                user experience.
+              </p>
+            </li>
+          </ol>
+        </li>
+        <li class="privacyPolicyPage__text__list__item">
+          <h2>Use of Information:</h2>
+
+          <ol class="privacyPolicyPage__text__list__item__content">
+            <li>
+              <h3>Providing Services:</h3>
+              <p>
+                We use the information you provide to fulfill your orders,
+                process payments, and deliver products to you. We may also use
+                your information to communicate with you about your orders,
+                respond to your inquiries, and provide customer support.
+              </p>
+            </li>
+            <li>
+              <h3>Personalization:</h3>
+              <p>
+                We may use your information to personalize your shopping
+                experience, recommend products or promotions that may interest
+                you, and provide relevant advertisements.
+              </p>
+            </li>
+            <li>
+              <h3>Analytics and Improvements:</h3>
+              <p>
+                We analyze non-personal information to understand user behavior,
+                improve our website, and enhance our services. This may include
+                using cookies and similar technologies to gather information
+                about your browsing activities.
+              </p>
+            </li>
+            <li>
+              <h3>Marketing Communication:</h3>
+              <p>
+                With your consent, we may send you marketing emails or
+                newsletters to inform you about our latest products, promotions,
+                and updates. You can opt-out of these communications at any time
+                by following the unsubscribe instructions provided in the
+                emails.
+              </p>
+            </li>
+          </ol>
+        </li>
+        <li class="privacyPolicyPage__text__list__item">
+          <h2>Information Sharing:</h2>
+
+          <ol class="privacyPolicyPage__text__list__item__content">
+            <li>
+              <h3>Service Providers:</h3>
+              <p>
+                We may share your personal information with trusted third-party
+                service providers who assist us in operating our business, such
+                as payment processors, shipping partners, and marketing
+                agencies. These service providers are obligated to keep your
+                information confidential and use it only for the purposes we
+                specify.
+              </p>
+            </li>
+            <li>
+              <h3>Legal Compliance:</h3>
+              <p>
+                We may disclose your information if required to comply with
+                applicable laws, regulations, or legal processes. We may also
+                share information to protect our rights, investigate fraud, or
+                respond to a government request.
+              </p>
+            </li>
+            <li>
+              <h3>Business Transfers:</h3>
+              <p>
+                In the event of a merger, acquisition, or sale of all or a
+                portion of our business, your information may be transferred to
+                the acquiring entity or merged with the assets of the acquiring
+                entity. We will notify you and provide choices regarding your
+                information in such circumstances.
+              </p>
+            </li>
+          </ol>
+        </li>
+        <li class="privacyPolicyPage__text__list__item">
+          <h2>Data Security:</h2>
+          <p class="privacyPolicyPage__text__list__item__content">
+            We implement reasonable security measures to protect your
+            information from unauthorized access, alteration, or disclosure.
+            However, no data transmission over the internet or electronic
+            storage system can be guaranteed to be 100% secure. While we strive
+            to protect your personal information, we cannot guarantee its
+            absolute security.
+          </p>
+        </li>
+        <li>
+          <h2>Your Rights:</h2>
+          <p class="privacyPolicyPage__text__list__item__content">
+            You have the right to access, correct, update, or delete your
+            personal information. If you would like to exercise any of these
+            rights or have any concerns about your information, please reach out
+            to us using the contact information provided on our website.
+          </p>
+        </li>
+        <li class="privacyPolicyPage__text__list__item">
+          <h2>Third-Party Links:</h2>
+          <p class="privacyPolicyPage__text__list__item__content">
+            Our website may contain links to third-party websites or services.
+            We are not responsible for the privacy practices or content of such
+            third parties. We encourage you to read the privacy policies of
+            those websites before providing any personal information.
+          </p>
+        </li>
+        <li class="privacyPolicyPage__text__list__item">
+          <h2>Changes to the Privacy Policy:</h2>
+          <p class="privacyPolicyPage__text__list__item__content">
+            We may update this Privacy Policy from time to time. Any changes
+            will be effective upon posting the revised policy on our website. We
+            encourage you to review this policy periodically to stay informed
+            about how we handle your information.
+          </p>
+        </li>
+      </ol>
+
+      <p class="privacyPolicyPage__text__paraf">
+        By using our website and services, you signify your acceptance of this
+        Privacy Policy.
+      </p>
+    `
+
+    pageContent.appendChild(pageText)
+
+    return pageContent;
+  }
+  function loadTermOfUsePagePageMain() {
+    const pageContent = document.createElement("div");
+    pageContent.classList.add("termOfUsePage");
+    pageContent.innerHTML = `<h1 class="termOfUsePage__title">Term of use</h1>`
+
+    const pageText = document.createElement("div");
+    pageText.classList.add("termOfUsePage__text");
+    pageText.innerHTML = `
+  
+    <p class="termOfUsePage__text__paraf">
+    Welcome to our online furniture shop. These Terms of Use govern your use
+    of our website and the services we offer. By accessing or using our
+    website, you agree to be bound by these Terms of Use. Please read them
+    carefully before proceeding.
+  </p>
+
+  <ol class="termOfUsePage__text__list">
+    <li class="termOfUsePage__text__list__item">
+      <h2>Acceptance of Terms:</h2>
+      <p>
+        By using our website, you acknowledge that you have read,
+        understood, and agreed to these Terms of Use. If you do not agree
+        with any part of these terms, you must not use our website.
+      </p>
+    </li>
+    <li class="termOfUsePage__text__list__item">
+      <h2>Website Usage:</h2>
+      <p>
+        Our website is intended for personal, non-commercial use. You may
+        browse our products, view information, and make purchases in
+        accordance with these Terms of Use. You are solely responsible for
+        any actions you take while using our website.
+      </p>
+    </li>
+    <li class="termOfUsePage__text__list__item">
+      <h2>Product Information:</h2>
+      <p>
+        We strive to provide accurate and up-to-date information about our
+        products. However, we do not warrant or guarantee the accuracy,
+        completeness, or reliability of any product descriptions, images, or
+        specifications on our website. It is your responsibility to verify
+        the information before making a purchase.
+      </p>
+    </li>
+    <li class="termOfUsePage__text__list__item">
+      <h2>Ordering and Payment:</h2>
+      <p>
+        When you place an order through our website, you are making an offer
+        to purchase the selected products. We reserve the right to accept or
+        decline your order at our discretion. All prices are subject to
+        change without notice. Payment for the products and any applicable
+        fees must be made in full at the time of purchase.
+      </p>
+    </li>
+    <li class="termOfUsePage__text__list__item">
+      <h2>Returns and Refunds:</h2>
+      <p>
+        If you are not satisfied with your purchase, you may be eligible for
+        a return or refund in accordance with our Return Policy. Please
+        review the policy carefully to understand the requirements and
+        procedures for returns and refunds.
+      </p>
+    </li>
+    <li class="termOfUsePage__text__list__item">
+      <h2>Shipping and Delivery:</h2>
+      <p>
+        We will make reasonable efforts to deliver the products to you
+        within the estimated timeframe. However, we are not responsible for
+        any delays or damages that may occur during shipping or delivery.
+        Please refer to our Shipping Policy for more information.
+      </p>
+    </li>
+    <li class="termOfUsePage__text__list__item">
+      <h2>Intellectual Property:</h2>
+      <p>
+        All content on our website, including text, images, logos, and
+        trademarks, is protected by intellectual property laws and is the
+        property of our company or its licensors. You may not use,
+        reproduce, modify, or distribute any content without our prior
+        written permission.
+      </p>
+    </li>
+    <li class="termOfUsePage__text__list__item">
+      <h2>Modification of Terms:</h2>
+      <p>
+        We reserve the right to modify these Terms of Use at any time
+        without prior notice. Any changes will be effective immediately upon
+        posting on our website. Your continued use of our website after the
+        modifications will constitute your acceptance of the revised terms.
+      </p>
+    </li>
+  </ol>
+
+  <p class="termOfUsePage__text__paraf">
+    If you have any questions or concerns about these Terms of Use, please
+    contact us.
+  </p>
+    `
+
+    pageContent.appendChild(pageText)
+
+    return pageContent;
+  }
   return {
-    // getDOMString: () => {
-    //   return DOMString;
-    // },
+
     loadHomePage: (data) => {
       const pageContent = document.createElement("div");
       pageContent.setAttribute("id", "pageContent");
@@ -3298,6 +3537,26 @@ export const view = (function () {
 
       pageContent.appendChild(loadHeader());
       pageContent.appendChild(loadSupportPageMain());
+      pageContent.appendChild(loadFooter());
+
+      return pageContent
+    },
+    loadPrivacyPolicyPage: () => {
+      const pageContent = document.createElement("div");
+      pageContent.setAttribute("id", "pageContent");
+
+      pageContent.appendChild(loadHeader());
+      pageContent.appendChild(loadPrivacyPolicyPageMain());
+      pageContent.appendChild(loadFooter());
+
+      return pageContent
+    },
+    loadTermOfUsePagePage: () => {
+      const pageContent = document.createElement("div");
+      pageContent.setAttribute("id", "pageContent");
+
+      pageContent.appendChild(loadHeader());
+      pageContent.appendChild(loadTermOfUsePagePageMain());
       pageContent.appendChild(loadFooter());
 
       return pageContent

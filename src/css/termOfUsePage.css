@@ -1,0 +1,51 @@
+.termOfUsePage {
+  width: 100%;
+  padding: 50px;
+  color: black;
+}
+@media ((min-width: 0px) and (max-width: 992px)) {
+  .termOfUsePage {
+    padding: 30px;
+  }
+}
+@media ((min-width: 0px) and (max-width: 576px)) {
+  .termOfUsePage {
+    padding: 10px;
+  }
+}
+.termOfUsePage__title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+@media ((min-width: 0px) and (max-width: 576px)) {
+  .termOfUsePage__title {
+    margin-bottom: 20px;
+    font-size: 30px;
+  }
+}
+@media (max-width: 400px) {
+  .termOfUsePage__title {
+    font-size: 22px;
+  }
+}
+.termOfUsePage__text {
+  width: 100%;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.termOfUsePage__text__paraf {
+  display: inline-block;
+  max-width: 800px;
+  margin-bottom: 20px;
+}
+.termOfUsePage__text__list {
+  counter-reset: item;
+  max-width: 800px;
+  margin-bottom: 10px;
+}
+.termOfUsePage__text__list h2 {
+  font-size: 18px;
+}/*# sourceMappingURL=termOfUsePage.css.map */

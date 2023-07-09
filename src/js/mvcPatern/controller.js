@@ -380,6 +380,16 @@ export const controller = function (model, view) {
     setupPageListners();
 
   }
+  function privacyPolicyPage(){
+    let main = document.getElementById("policy_page");
+    main.appendChild(view.loadPrivacyPolicyPage());
+    setupPageListners();
+  }
+  function termOfUsePage(){
+    let main = document.getElementById("termofuse_page");
+    main.appendChild(view.loadTermOfUsePagePage());
+    setupPageListners();
+  }
   //LOAD PAGES -- END
 
   return {
@@ -421,7 +431,13 @@ export const controller = function (model, view) {
       deliveryPage()
     },
     support: () => {
-      supportPage()
+      supportPage();
+    },
+    policy:()=>{
+      privacyPolicyPage();
+    },
+    termofuse:()=>{
+      termOfUsePage();
     }
 
   };
