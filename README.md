@@ -14,3 +14,7 @@ Technologies Used
 - SCSS: SCSS is used as a preprocessor to write cleaner and more maintainable CSS.
 - Bootstrap: The bootstrap framework is employed for responsive layout and UI components.
 - Font Awesome: Font Awesome icons are used to enhance the visual appeal of the website.
+
+Run app
+1.  firstly run the "backend online store" app (it is among my repositories)
+2.  run app using visual code and the live server extension.
