@@ -1,0 +1,122 @@
+@use "../basic/" as *;
+
+.accountAccessContainer {
+  display: flex;
+  padding: 50px;
+  flex-direction: column;
+  min-height: calc(100vh - 145px);
+  @include media("md") {
+    min-height: calc(100vh - 86px);
+  }
+  @include media("xs") {
+    padding: 10px;
+  }
+  &__title {
+    font-size: 36px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 50px;
+    @include media("xs") {
+      margin-bottom: 20px;
+      font-size: 30px;
+    }
+    @include media("xxs") {
+      font-size: 22px;
+    }
+  }
+  &__main {
+    display: flex;
+    font-size: 20px;
+    @include media("md") {
+      flex-direction: column-reverse;
+    }
+    &__tableBox {
+      width: 30%;
+      min-width: fit-content;
+      margin-right: 20px;
+      @include media("md") {
+        margin-right: none;
+      }
+      & table {
+        margin-bottom: 20px;
+        & tr {
+          & th {
+            padding: 0 10px;
+            @include media("xxs") {
+              display: none;
+            }
+          }
+          & td {
+            padding: 0 10px;
+            @include media("xxs") {
+              padding: 0;
+            }
+          }
+        }
+      }
+      &__logOut {
+        margin-left: 10px;
+        cursor: pointer;
+        width: fit-content;
+        border-bottom: 1px solid transparent;
+        @include media("xxs") {
+          margin-left: 0;
+        }
+        &:hover {
+          border-bottom: 1px solid black;
+        }
+      }
+    }
+    &__textBox {
+      color: black;
+      @include media("md") {
+        margin-bottom: 20px;
+      }
+      &__text {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: $accent;
+        &__link{
+            font-weight: bold;
+            border-bottom: 1px solid transparent;
+            &:hover{
+            border-bottom: 1px solid black;
+
+            }
+        }
+      }
+      &__icon {
+        padding-right: 10px;
+        font-size: 20px;
+        @include media("md") {
+          font-size: 16px;
+        }
+        @include media("md") {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+.firstItem {
+  @include media("xxs") {
+    display: flex;
+    flex-direction: column;
+    &::before {
+      content: "Username:";
+      float: left;
+      font-weight: bold;
+    }
+  }
+}
+.secondItem {
+  @include media("xxs") {
+    display: flex;
+    flex-direction: column;
+    &::before {
+      content: "Email:";
+      float: left;
+      font-weight: bold;
+    }
+  }
+}

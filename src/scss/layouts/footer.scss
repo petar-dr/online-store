@@ -7,58 +7,6 @@ footer {
     padding: 30px;
   }
 }
-.top {
-  padding-bottom: 60px;
-  &__box {
-    &__text {
-      width: 450px;
-      @include media("xs") {
-        width: 100%;
-      }
-      & h3 {
-        font-size: 30px;
-        margin-bottom: 20px;
-      }
-      & p {
-        font-size: 16px;
-        margin-bottom: 20px;
-        line-height: 1.7;
-      }
-    }
-    &__input {
-      &__buttons {
-        display: flex;
-        flex-direction: row;
-        font-size: 16px;
-        &__email {
-          height: 30px;
-          border: none;
-          width: 250px;
-          padding: 10px;
-          color: black;
-          @include media("xs") {
-            width: 100%;
-          }
-          &:focus {
-            outline: none;
-            border: 3px solid black;
-          }
-        }
-        &__submit {
-          height: 30px;
-          border: none;
-          color: white;
-          background-color: grey;
-          padding: 0 10px;
-          &:hover {
-            background-color: black;
-            color: white;
-          }
-        }
-      }
-    }
-  }
-}
 .middle {
   display: flex;
   justify-content: space-between;

@@ -5,6 +5,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: calc(100vh - 145px);
+  padding: 5%;
+  @include media("md") {
+    min-height: calc(100vh - 86px);
+  }
   &__loginBox {
     display: flex;
     flex-direction: column;
@@ -13,74 +18,65 @@
     row-gap: 20px;
     width: 100%;
     max-width: 300px;
-    &__title {
-      font-size: 30px;
-    }
-    &__name {
-      &__input {
-        border: none;
-        border-bottom: 1px solid black;
-        width: 100%;
-        &:focus {
-          outline: none;
-        }
-      }
-      &__warning {
-        display: none;
-        color: red;
-        font-size: 16px;
-        margin: 0;
-      }
-    }
 
-    &__email {
-      &__input {
-        border: none;
-        border-bottom: 1px solid black;
-        width: 100%;
-        &:focus {
-          outline: none;
+    &__form {
+      display: flex;
+      flex-direction: column;
+      font-size: 18px;
+      row-gap: 20px;
+      width: 100%;
+      max-width: 300px;
+
+      &__title {
+        font-size: 30px;
+      }
+      &__username {
+        &__input {
+          border: none;
+          border-bottom: 1px solid black;
+          width: 100%;
+          &:focus {
+            outline: none;
+          }
+        }
+        &__warning {
+          color: red;
+          font-size: 16px;
+          margin: 0;
         }
       }
-      &__warning {
-        display: none;
-        color: red;
-        font-size: 16px;
-        margin: 0;
-      }
-    }
-    &__password {
-      position: relative;
-      margin-bottom: 20px;
-      & i {
-        position: absolute;
-        right: 0;
-        top: 8px;
-        font-size: 16px;
-      }
-      &__input {
-        border: none;
-        border-bottom: 1px solid black;
-        width: 100%;
-        &:focus {
-          outline: none;
+      &__password {
+        position: relative;
+        margin-bottom: 20px;
+        & i {
+          position: absolute;
+          right: 0;
+          top: 8px;
+          font-size: 16px;
+        }
+        &__input {
+          border: none;
+          border-bottom: 1px solid black;
+          width: 100%;
+          &:focus {
+            outline: none;
+          }
+        }
+        &__warning {
+          color: red;
+          font-size: 16px;
+          margin: 0;
         }
       }
-      &__warning {
-        display: none;
-        color: red;
-        font-size: 16px;
-        margin: 0;
-      }
-    }
-    &__submit {
-      border: none;
-      background-color: black;
-      color: white;
-      font-size: 20px;
-      &:hover {
-        background-color: $accent;
-        color: black;
+      &__submit {
+        border: none;
+        background-color: black;
+        color: white;
+        font-size: 20px;
+        &:hover {
+          background-color: $accent;
+          color: black;
+        }
       }
     }
     &__message {

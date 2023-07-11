@@ -11,6 +11,9 @@
     background-color: #e3e2dc;
     height: calc(700px + 65px);
   }
+  @include media("xxs") {
+    // height: calc(600px + 65px);
+  }
 }
 .carousel--item--section1 {
   @include media("xs") {
@@ -46,9 +49,12 @@
     top: 55%;
     transform: none;
   }
+  @include media("xxs") {
+    top: 60%;
+  }
 
   & h6 {
-    font-size: 1.06em;
+    font-size: 14px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     @include media("xxs") {
@@ -56,7 +62,7 @@
     }
   }
   & h2 {
-    font-size: 3.6em;
+    font-size: 40px;
     font-weight: bold;
     margin-bottom: 0.7em;
     @include media("xxs") {
@@ -64,18 +70,22 @@
     }
   }
   & p {
-    font-size: 1.4rem;
+    font-size: 18px;
     max-width: 80%;
     line-height: 1.7;
     margin-bottom: 3rem;
-    font-weight: bold;
-    
+    // font-weight: bold;
+
     @include media("xxs") {
       font-size: 1em;
     }
   }
   &__a {
     @include btn--a;
+    font-size: 16px;
+    @include media("xxs") {
+      font-size: 12px;
+    }
   }
   & span {
     font-size: 20px;

@@ -1,0 +1,145 @@
+.accountAccessContainer {
+  display: flex;
+  padding: 50px;
+  flex-direction: column;
+  min-height: calc(100vh - 145px);
+}
+@media ((min-width: 0px) and (max-width: 992px)) {
+  .accountAccessContainer {
+    min-height: calc(100vh - 86px);
+  }
+}
+@media ((min-width: 0px) and (max-width: 576px)) {
+  .accountAccessContainer {
+    padding: 10px;
+  }
+}
+.accountAccessContainer__title {
+  font-size: 36px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 50px;
+}
+@media ((min-width: 0px) and (max-width: 576px)) {
+  .accountAccessContainer__title {
+    margin-bottom: 20px;
+    font-size: 30px;
+  }
+}
+@media (max-width: 400px) {
+  .accountAccessContainer__title {
+    font-size: 22px;
+  }
+}
+.accountAccessContainer__main {
+  display: flex;
+  font-size: 20px;
+}
+@media ((min-width: 0px) and (max-width: 992px)) {
+  .accountAccessContainer__main {
+    flex-direction: column-reverse;
+  }
+}
+.accountAccessContainer__main__tableBox {
+  width: 30%;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  margin-right: 20px;
+}
+@media ((min-width: 0px) and (max-width: 992px)) {
+  .accountAccessContainer__main__tableBox {
+    margin-right: none;
+  }
+}
+.accountAccessContainer__main__tableBox table {
+  margin-bottom: 20px;
+}
+.accountAccessContainer__main__tableBox table tr th {
+  padding: 0 10px;
+}
+@media (max-width: 400px) {
+  .accountAccessContainer__main__tableBox table tr th {
+    display: none;
+  }
+}
+.accountAccessContainer__main__tableBox table tr td {
+  padding: 0 10px;
+}
+@media (max-width: 400px) {
+  .accountAccessContainer__main__tableBox table tr td {
+    padding: 0;
+  }
+}
+.accountAccessContainer__main__tableBox__logOut {
+  margin-left: 10px;
+  cursor: pointer;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-bottom: 1px solid transparent;
+}
+@media (max-width: 400px) {
+  .accountAccessContainer__main__tableBox__logOut {
+    margin-left: 0;
+  }
+}
+.accountAccessContainer__main__tableBox__logOut:hover {
+  border-bottom: 1px solid black;
+}
+.accountAccessContainer__main__textBox {
+  color: black;
+}
+@media ((min-width: 0px) and (max-width: 992px)) {
+  .accountAccessContainer__main__textBox {
+    margin-bottom: 20px;
+  }
+}
+.accountAccessContainer__main__textBox__text {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #87d61f;
+}
+.accountAccessContainer__main__textBox__text__link {
+  font-weight: bold;
+  border-bottom: 1px solid transparent;
+}
+.accountAccessContainer__main__textBox__text__link:hover {
+  border-bottom: 1px solid black;
+}
+.accountAccessContainer__main__textBox__icon {
+  padding-right: 10px;
+  font-size: 20px;
+}
+@media ((min-width: 0px) and (max-width: 992px)) {
+  .accountAccessContainer__main__textBox__icon {
+    font-size: 16px;
+  }
+}
+@media ((min-width: 0px) and (max-width: 992px)) {
+  .accountAccessContainer__main__textBox__icon {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .firstItem {
+    display: flex;
+    flex-direction: column;
+  }
+  .firstItem::before {
+    content: "Username:";
+    float: left;
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 400px) {
+  .secondItem {
+    display: flex;
+    flex-direction: column;
+  }
+  .secondItem::before {
+    content: "Email:";
+    float: left;
+    font-weight: bold;
+  }
+}/*# sourceMappingURL=accountAccessPage.css.map */
